@@ -14,6 +14,9 @@ let cookieSession = require('cookie-session');
 let cookieParser = require('cookie-parser');
 let serveStatic = require('serve-static');
 
+// import datalayer
+let { setupDataLayer } = require("./service/DataLayer");
+
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
@@ -26,7 +29,7 @@ var spec = fs.readFileSync(path.join(__dirname,'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add cookies to responses
-app.use(coolieParser());
+app.use(cookieParser());
 app.use(cookieSession({ name: 'session', keys: ['123', '456']}));
 
 // Initialize the Swagger middleware
