@@ -1,2 +1,2 @@
-/backend/node_module
-.DS_Store
+/backend/node_modules/*
+.DS_store
