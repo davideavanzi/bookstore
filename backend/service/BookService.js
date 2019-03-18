@@ -14,11 +14,11 @@ exports.booksDbSetup = function(database) {
       return database.schema.createTable("books", table => {
         table.increments();
         table.text("title");
-        table.int("authorID");
+        table.integer("authorID");
         table.text("photoUrl");
         table.float("value");
         table.text("currency");
-        table.int("stock");
+        table.integer("stock");
       });
     }
   });
