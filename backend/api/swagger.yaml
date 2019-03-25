@@ -26,6 +26,27 @@ tags:
 # - https
 paths:
   /books:
+    post:
+      tags:
+      - book
+      summary: Add a new book
+      description: Insert new book in the system - this can only be done by the logged in ADMIN.
+      operationId: addBook
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: The book object that needs to be added to the bookstore
+        required: true
+        schema:
+          $ref: '#/definitions/Book'
+      responses:
+        405:
+          description: Invalid input
+
     get:
       tags:
       - book
@@ -61,26 +82,6 @@ paths:
         404:
           description: Not found
       x-swagger-router-controller: Book
-    post:
-      tags:
-      - book
-      summary: Add a new book
-      description: Insert new book in the system - this can only be done by the logged in ADMIN.
-      operationId: addBook
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - in: body
-        name: body
-        description: The book object that needs to be added to the bookstore
-        required: true
-        schema:
-          $ref: '#/definitions/Book'
-      responses:
-        405:
-          description: Invalid input
 
   /books/{bookId}:
     get:
@@ -124,7 +125,7 @@ paths:
         type: string
       - in: body
         name: body
-        description: Updated user object
+        description: Updated book object
         required: true
         schema:
           $ref: '#/definitions/Book'
@@ -152,6 +153,147 @@ paths:
           description: Invalid bookId supplied
         404:
           description: Book not found
+          
+  /review:
+    post:
+      tags:
+      - review
+      summary: Add a new review
+      description: Insert a new review in the system - this can only be done by logged users.
+      operationId: addReview
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: The review object that needs to be added
+        required: true
+        schema:
+          $ref: '#/definitions/Review'
+      responses:
+        404:
+          description: Book not found
+        403:
+          description: Unauthorized
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - review
+      summary: All reviews, optionally filtered
+      description: List of reviews
+      operationId: GetReviews
+      produces:
+      - application/json
+      parameters:
+      - name: offset
+        in: query
+        description: Pagination offset. Default is 0
+        required: false
+        type: integer
+      - name: limit
+        in: query
+        description: Maximum number of items per page. Default is 20, max is 500.
+        required: false
+        type: integer
+      #FILTER PARAMETERS
+      - name: userId
+        in: query
+        description: Id of the user that made the review
+        required: false
+        type: integer
+      - name: bookId
+        in: query
+        description: Id of the book to get reviews
+        required: false
+        type: integer
+      responses:
+        200:
+          description: List of reviews
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Review'
+        404:
+          description: Not found
+      x-swagger-router-controller: Review
+
+  /review/{reviewId}:
+    get:
+      tags:
+      - review
+      summary: Find review by ID
+      description: Returns a book
+      operationId: getReviewById
+      produces:
+      - application/json
+      parameters:
+      - name: reviewId
+        in: path
+        description: ID of the review to retrieve
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Review'
+        400:
+          description: Invalid ID
+        404:
+          description: Book not found
+      x-swagger-router-controller: Book
+    put:
+      tags:
+      - review
+      summary: Update a specific book
+      description: Update values of a book - this can only be done by the logged in ADMIN or the user that made it.
+      operationId: updateReview
+      produces:
+      - application/json
+      parameters:
+      - name: reviewId
+        in: path
+        description: id of the review that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated review object
+        required: true
+        schema:
+          $ref: '#/definitions/Review'
+      responses:
+        400:
+          description: Invalid reviewId supplied
+        404:
+          description: Review not found
+        403:
+          description: Unauthorized
+    delete:
+      tags:
+      - review
+      summary: Delete a specific review
+      description: Delete a review - this can only be done by the logged in ADMIN or the user that made it.
+      operationId: deleteReview
+      produces:
+      - application/json
+      parameters:
+      - name: reviewId
+        in: path
+        description: The id of the review that needs to be deleted
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid reviewId supplied
+        404:
+          description: Review not found
+        403:
+          description: Unauthorized
       
   /author:
     get:
