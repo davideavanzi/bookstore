@@ -1,128 +1,267 @@
----
-swagger: "2.0"
+swagger: '2.0'
 info:
-  description: "Bookstore - Hypermedia applications project \n"
-  version: "1.0.0"
-  title: "Bookstore"
+  description: |
+    Bookstore - Hypermedia applications project 
+  version: 1.0.0
+  title: Bookstore
   contact:
-    email: "davide@avanzi.dev"
+    email: davide@avanzi.dev
   license:
-    name: "Apache 2.0"
-    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "virtserver.swaggerhub.com"
-basePath: "/fcars/library/1.0.0"
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+# host: "localhost:8080"
+# basePath: /v2
 tags:
-- name: "book"
-  description: "Operations on books"
-- name: "cart"
-  description: "Operations on cart"
-- name: "user"
-  description: "Operations about user"
-schemes:
-- "https"
-- "http"
+- name: book
+  description: Operations on books
+- name: cart
+  description: Operations on cart
+- name: user
+  description: Operations about user
+  #externalDocs:
+  #  description: Find out more about our store
+  #  url: https://avanzi.dev/library
+# schemes:
+# - http
+# - https
 paths:
   /books:
     get:
       tags:
-      - "book"
-      summary: "All books"
-      description: "List of books inserted books"
-      operationId: "GetBooks"
+      - book
+      summary: All books, optionally filtered
+      description: List of books inserted books
+      operationId: GetBooks
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "offset"
-        in: "query"
-        description: "Pagination offset. Default is 0"
+      - name: offset
+        in: query
+        description: Pagination offset. Default is 0
         required: false
-        type: "integer"
-      - name: "limit"
-        in: "query"
-        description: "Maximum number of items per page. Default is 20, max is 500."
+        type: integer
+      - name: limit
+        in: query
+        description: Maximum number of items per page. Default is 20, max is 500.
         required: false
-        type: "integer"
+        type: integer
+      #FILTER PARAMETERS
+      - name: authorId
+        in: query
+        description: Id of the author to filter books
+        required: false
+        type: integer
       responses:
         200:
-          description: "List of Books"
+          description: List of Books
           schema:
-            type: "array"
+            type: array
             items:
-              $ref: "#/definitions/Book"
+              $ref: '#/definitions/Book'
         404:
-          description: "Error"
-      x-swagger-router-controller: "Book"
+          description: Not found
+      x-swagger-router-controller: Book
+    post:
+      tags:
+      - book
+      summary: Add a new book
+      description: Insert new book in the system - this can only be done by the logged in ADMIN.
+      operationId: addBook
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: The book object that needs to be added to the bookstore
+        required: true
+        schema:
+          $ref: '#/definitions/Book'
+      responses:
+        405:
+          description: Invalid input
+
   /books/{bookId}:
     get:
       tags:
-      - "book"
-      summary: "Find book by ID"
-      description: "Returns a book"
-      operationId: "getBookById"
+      - book
+      summary: Find book by ID
+      description: Returns a book
+      operationId: getBookById
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "bookId"
-        in: "path"
-        description: "ID of the book to retrieve"
+      - name: bookId
+        in: path
+        description: ID of the book to retrieve
         required: true
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       responses:
         200:
-          description: "successful operation"
+          description: successful operation
           schema:
-            $ref: "#/definitions/Book"
+            $ref: '#/definitions/Book'
         400:
-          description: "Invalid ID"
+          description: Invalid ID
         404:
-          description: "Book not found"
-      x-swagger-router-controller: "Book"
+          description: Book not found
+      x-swagger-router-controller: Book
+    put:
+      tags:
+      - book
+      summary: Update a specific book
+      description: Update values of a book - this can only be done by the logged in ADMIN.
+      operationId: updateBook
+      produces:
+      - application/json
+      parameters:
+      - name: bookId
+        in: path
+        description: id of the book that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated user object
+        required: true
+        schema:
+          $ref: '#/definitions/Book'
+      responses:
+        400:
+          description: Invalid bookId supplied
+        404:
+          description: Book not found
+    delete:
+      tags:
+      - book
+      summary: Delete a specific book
+      description: Delete a book - this can only be done by the logged in ADMIN.
+      operationId: deleteBook
+      produces:
+      - application/json
+      parameters:
+      - name: bookId
+        in: path
+        description: The id of the book that needs to be deleted
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid bookId supplied
+        404:
+          description: Book not found
+      
+  /author:
+    get:
+      tags:
+      - author
+      summary: All authors, optionally filtered
+      description: List of authors
+      operationId: GetAuthors
+      produces:
+      - application/json
+      parameters:
+      - name: offset
+        in: query
+        description: Pagination offset. Default is 0
+        required: false
+        type: integer
+      - name: limit
+        in: query
+        description: Maximum number of items per page. Default is 20, max is 500.
+        required: false
+        type: integer
+      #FILTER PARAMETERS
+      - name: authorId
+        in: query
+        description: Id of the author to filter books
+        required: false
+        type: integer
+      responses:
+        200:
+          description: List of Books
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Author'
+        404:
+          description: Not found
+      x-swagger-router-controller: Author
+      
+  /author/{authorId}:
+    get:
+      tags:
+      - author
+      summary: Find author by ID
+      description: Returns an author
+      operationId: getAuthorById
+      produces:
+      - application/json
+      parameters:
+      - name: authorId
+        in: path
+        description: ID of the author to retrieve
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Author'
+        400:
+          description: Invalid ID
+        404:
+          description: Author not found
+      x-swagger-router-controller: Author
+      
   /user/register:
     post:
       tags:
-      - "user"
-      summary: "Register a new user"
-      description: "This registers a new user in the store."
-      operationId: "registerUser"
+      - user
+      summary: Register a new user
+      description: This registers a new user in the store.
+      operationId: registerUser
       consumes:
-      - "application/x-www-form-urlencoded"
+      - application/x-www-form-urlencoded
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - in: "body"
-        name: "body"
-        description: "Created user object"
+      - in: body
+        name: body
+        description: Created user object
         required: true
         schema:
-          $ref: "#/definitions/User"
+          $ref: '#/definitions/User'
       responses:
         200:
-          description: "succesfull registration"
+          description: succesfull registration
         404:
-          description: "unauthorized"
-      x-swagger-router-controller: "User"
+          description: unauthorized
+      x-swagger-router-controller: User
   /user/login:
     post:
       tags:
-      - "user"
-      summary: "Logs user into the system"
-      operationId: "loginUser"
+      - user
+      summary: Logs user into the system
+      operationId: loginUser
       consumes:
-      - "application/x-www-form-urlencoded"
+      - application/x-www-form-urlencoded
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "username"
-        in: "query"
-        description: "The user name for login"
+      - name: username
+        in: query
+        description: The user name for login
         required: true
-        type: "string"
-      - name: "password"
-        in: "query"
-        description: "The password for login in clear text"
+        type: string
+      - name: password
+        in: query
+        description: The password for login in clear text
         required: true
-        type: "string"
+        type: string
       responses:
         200:
           description: "succesfull login"
@@ -132,326 +271,285 @@ paths:
   /user/logout:
     get:
       tags:
-      - "user"
-      summary: "Logs out current logged in user session"
-      operationId: "logoutUser"
+      - user
+      summary: Logs out current logged in user session
+      operationId: logoutUser
       produces:
-      - "application/json"
-      - "application/xml"
+      - application/json
+      - application/xml
       parameters: []
       responses:
         default:
-          description: "successful operation"
-      x-swagger-router-controller: "User"
-  /user/{username}:
+          description: successful operation
+  /user/{userId}:
     get:
       tags:
-      - "user"
-      summary: "Get user by user name"
-      operationId: "getUserByName"
+      - user
+      summary: Get user by user id
+      operationId: getUserById
       produces:
-      - "application/json"
-      - "application/xml"
+      - application/json
       parameters:
-      - name: "username"
-        in: "path"
-        description: "The name that needs to be fetched. Use user1 for testing."
+      - name: userId
+        in: path
+        description: The id that needs to be fetched. 
         required: true
-        type: "string"
+        type: string
       responses:
         200:
-          description: "successful operation"
+          description: successful operation
           schema:
-            $ref: "#/definitions/User"
+            $ref: '#/definitions/User'
         400:
-          description: "Invalid username supplied"
+          description: Invalid username supplied
         404:
-          description: "User not found"
-      x-swagger-router-controller: "User"
+          description: User not found
     put:
       tags:
-      - "user"
-      summary: "Updated user"
-      description: "This can only be done by the logged in user."
-      operationId: "updateUser"
+      - user
+      summary: Updated user
+      description: This can only be done by the logged in user.
+      operationId: updateUser
       produces:
-      - "application/json"
-      - "application/xml"
+      - application/json
       parameters:
-      - name: "username"
-        in: "path"
-        description: "name that need to be updated"
+      - name: userId
+        in: path
+        description: name that need to be updated
         required: true
-        type: "string"
-      - in: "body"
-        name: "body"
-        description: "Updated user object"
+        type: string
+      - in: body
+        name: body
+        description: Updated user object
         required: true
         schema:
-          $ref: "#/definitions/User"
+          $ref: '#/definitions/User'
       responses:
         400:
-          description: "Invalid user supplied"
+          description: Invalid user supplied
         404:
-          description: "User not found"
-      x-swagger-router-controller: "User"
+          description: User not found
     delete:
       tags:
-      - "user"
-      summary: "Delete user"
-      description: "This can only be done by the logged in user."
-      operationId: "deleteUser"
+      - user
+      summary: Delete user
+      description: This can only be done by the logged in user.
+      operationId: deleteUser
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "username"
-        in: "path"
-        description: "The name that needs to be deleted"
+      - name: userId
+        in: path
+        description: The name that needs to be deleted
         required: true
-        type: "string"
+        type: string
       responses:
         400:
-          description: "Invalid username supplied"
+          description: Invalid username supplied
         404:
-          description: "User not found"
-      x-swagger-router-controller: "User"
+          description: User not found
   /cart/{cartId}:
     get:
       tags:
-      - "cart"
-      summary: "Get the content of a cart"
-      operationId: "GetCartById"
+      - cart
+      summary: Get the content of a cart
+      operationId: GetCartById
       produces:
-      - "application/json"
+      - application/json
       parameters:
-      - name: "cartId"
-        in: "path"
+      - name: cartId
+        in: path
         required: true
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       responses:
         200:
-          description: "success"
+          description: success
           schema:
             $ref: "#/definitions/Cart"
+        403:
+          description: unauthorized
         404:
-          description: "unauthorized"
-      x-swagger-router-controller: "Cart"
+          description: not found
+      x-swagger-router-controller: Cart
+    put:
+      tags:
+      - cart
+      summary: Update an user's cart
+      description: Update  - this can only be done by the logged in USER (proprietary of the cart or by an ADMIN).
+      operationId: updateCart
+      produces:
+      - application/json
+      parameters:
+      - name: cartId
+        in: path
+        description: id of the cart that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated cart object
+        required: true
+        schema:
+          $ref: '#/definitions/Cart'
+      responses:
+        400:
+          description: Invalid cartId supplied
+        403:
+          description: Unauthorized
+        404:
+          description: Cart not found
+    
+## DEFINITIONS
+
 definitions:
   Book:
-    type: "object"
+    type: object
     required:
-    - "name"
+    - name
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       name:
-        type: "string"
-      genre:
-        type: "array"
+       type: string
+      genre:  #array of genres
+        type: array
         xml:
-          name: "genre"
+          name: genre
           wrapped: true
         items:
-          $ref: "#/definitions/Genre"
+          type: string
       photoUrl:
-        type: "string"
+        type: string
+      price:
+        $ref: '#/definitions/Amount'
       abstract:
-        type: "string"
-      author:
-        type: "array"
+        type: string
+      author:  #array of authors - names
+        type: array
         xml:
-          name: "author"
+          name: author
           wrapped: true
         items:
-          $ref: "#/definitions/Author"
+          $ref: '#/definitions/Author'
     xml:
-      name: "Book"
-    example:
-      photoUrl: "photoUrl"
-      author:
-      - books:
-        - null
-        - null
-        name: "name"
-        id: 1
-      - books:
-        - null
-        - null
-        name: "name"
-        id: 1
-      name: "name"
-      genre:
-      - name: "name"
-        id: 6
-      - name: "name"
-        id: 6
-      id: 0
-      abstract: "abstract"
-  Genre:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-    xml:
-      name: "Genre"
-    example:
-      name: "name"
-      id: 6
-  Author:
-    type: "object"
-    properties:
-      id:
-        type: "integer"
-        format: "int64"
-      name:
-        type: "string"
-      books:
-        type: "array"
-        xml:
-          name: "book"
-          wrapped: true
-        items:
-          $ref: "#/definitions/Book"
-    xml:
-      name: "Author"
-    example:
-      books:
-      - null
-      - null
-      name: "name"
-      id: 1
-  Cart:
-    type: "object"
+      name: Book
+  
+  Amount:
+    type: object
     required:
-    - "user"
+    - currency
+    - value
     properties:
-      user:
-        $ref: "#/definitions/User"
-      books:
-        type: "array"
+      value:
+        type: number
+        format: double
+        minimum: 0.01
+        maximum: 1000000000000000
+      currency:
+        $ref: '#/definitions/Currency'
+    description: Price
+    example:
+      currency: EUR
+      value: 65.7
+      
+  Currency:
+    type: string
+    pattern: '^[A-Z]{3,3}$'
+    description: currency identifier (3 letters)
+    example: EUR
+  
+  Author:  #do we need more fields?
+    type: object
+    properties:
+      id:
+        type: integer
+        format: int64
+      name:
+        type: string
+    xml:
+      name: Author
+      
+  Cart:
+    type: object
+    required:
+    - username
+    properties:
+      #id or whole object reference?
+      username:
+        type: string
+      books:  #array of books
+        type: array
         xml:
-          name: "book"
+          name: book
           wrapped: true
         items:
-          $ref: "#/definitions/Book"
+          $ref: '#/definitions/Book'
     xml:
-      name: "Cart"
-    example:
-      books:
-      - photoUrl: "photoUrl"
-        author:
-        - books:
-          - null
-          - null
-          name: "name"
-          id: 1
-        - books:
-          - null
-          - null
-          name: "name"
-          id: 1
-        name: "name"
-        genre:
-        - name: "name"
-          id: 6
-        - name: "name"
-          id: 6
-        id: 0
-        abstract: "abstract"
-      - photoUrl: "photoUrl"
-        author:
-        - books:
-          - null
-          - null
-          name: "name"
-          id: 1
-        - books:
-          - null
-          - null
-          name: "name"
-          id: 1
-        name: "name"
-        genre:
-        - name: "name"
-          id: 6
-        - name: "name"
-          id: 6
-        id: 0
-        abstract: "abstract"
-      user:
-        firstName: "firstName"
-        lastName: "lastName"
-        password: "password"
-        userStatus: 6
-        phone: "phone"
-        id: 0
-        email: "email"
-        username: "username"
+      name: Cart
+  
   User:
-    type: "object"
+    type: object
+    required:
+      - email
+      - password
     properties:
       id:
-        type: "integer"
-        format: "int64"
-      username:
-        type: "string"
+        type: integer
+        format: int64
       firstName:
-        type: "string"
+        type: string
       lastName:
-        type: "string"
-      email:
-        type: "string"
+        type: string
+      email:  # will be used as username / login credential
+        type: string
       password:
-        type: "string"
+        type: string
       phone:
-        type: "string"
-      userStatus:
-        type: "integer"
-        format: "int64"
-        description: "User Status"
+        type: string
+      role:
+        type: string
+        description: User role
+        enum:
+        - USER
+        - ADMIN
+        default: USER
+
     xml:
-      name: "User"
-    example:
-      firstName: "firstName"
-      lastName: "lastName"
-      password: "password"
-      userStatus: 6
-      phone: "phone"
-      id: 0
-      email: "email"
-      username: "username"
+      name: User
+      
   Reservation:
-    type: "object"
-    properties:
+    type: object
+    required:
+    - user
+    properties:  #is it better to keep reference of only the id or the whole object?
+      #user:  
+      #  $ref: '#/definitions/User'
+      book:  
+        $ref: '#/definitions/Book'
       userId:
-        type: "integer"
-        format: "int64"
-      bookId:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
     xml:
-      name: "Reservation"
-  Review:
-    type: "object"
+      name: Reservation
+    
+  Review: #TODO: do we add a custom message field?
+    type: object
     properties:
       id:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       userId:
-        type: "integer"
-        format: "int64"
+        type: integer
+        format: int64
       bookId:
-        type: "integer"
-        format: "int64"
-      status:
-        type: "integer"
-        format: "int64"
-        description: "Stars amount"
+        type: integer
+        format: int64
+      rate:
+        type: integer
+        format: int64
+        description: Stars amount
         enum:
         - 1
         - 2
@@ -459,14 +557,21 @@ definitions:
         - 4
         - 5
     xml:
-      name: "Review"
-  ApiResponse:
-    type: "object"
-    properties:
-      code:
-        type: "integer"
-        format: "int64"
-      type:
-        type: "string"
-      message:
-        type: "string"
+      name: Review
+ 
+#externalDocs:
+#  description: Find out more about Swagger
+#  url: http://swagger.io
+# Added by API Auto Mocking Plugin
+#host: virtserver.swaggerhub.com
+# basePath: /fcars/Library/1.0.0
+#schemes:
+# - https
+# - http
+# Added by API Auto Mocking Plugin
+basePath: /fcars/library/1.0.0
+# Added by API Auto Mocking Plugin
+host: virtserver.swaggerhub.com
+schemes:
+ - https
+ - http

@@ -1,0 +1,472 @@
+---
+swagger: "2.0"
+info:
+  description: "Bookstore - Hypermedia applications project \n"
+  version: "1.0.0"
+  title: "Bookstore"
+  contact:
+    email: "davide@avanzi.dev"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+host: "virtserver.swaggerhub.com"
+basePath: "/fcars/library/1.0.0"
+tags:
+- name: "book"
+  description: "Operations on books"
+- name: "cart"
+  description: "Operations on cart"
+- name: "user"
+  description: "Operations about user"
+schemes:
+- "https"
+- "http"
+paths:
+  /books:
+    get:
+      tags:
+      - "book"
+      summary: "All books"
+      description: "List of books inserted books"
+      operationId: "GetBooks"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Error"
+      x-swagger-router-controller: "Book"
+  /books/{bookId}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by ID"
+      description: "Returns a book"
+      operationId: "getBookById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "path"
+        description: "ID of the book to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid ID"
+        404:
+          description: "Book not found"
+      x-swagger-router-controller: "Book"
+  /user/register:
+    post:
+      tags:
+      - "user"
+      summary: "Register a new user"
+      description: "This registers a new user in the store."
+      operationId: "registerUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "succesfull registration"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "User"
+  /user/login:
+    post:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      operationId: "loginUser"
+      consumes:
+      - "application/x-www-form-urlencoded"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "query"
+        description: "The user name for login"
+        required: true
+        type: "string"
+      - name: "password"
+        in: "query"
+        description: "The password for login in clear text"
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "succesfull login"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      operationId: "logoutUser"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters: []
+      responses:
+        default:
+          description: "successful operation"
+      x-swagger-router-controller: "User"
+  /user/{username}:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by user name"
+      operationId: "getUserByName"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be fetched. Use user1 for testing."
+        required: true
+        type: "string"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    put:
+      tags:
+      - "user"
+      summary: "Updated user"
+      description: "This can only be done by the logged in user."
+      operationId: "updateUser"
+      produces:
+      - "application/json"
+      - "application/xml"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "name that need to be updated"
+        required: true
+        type: "string"
+      - in: "body"
+        name: "body"
+        description: "Updated user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        400:
+          description: "Invalid user supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+    delete:
+      tags:
+      - "user"
+      summary: "Delete user"
+      description: "This can only be done by the logged in user."
+      operationId: "deleteUser"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "username"
+        in: "path"
+        description: "The name that needs to be deleted"
+        required: true
+        type: "string"
+      responses:
+        400:
+          description: "Invalid username supplied"
+        404:
+          description: "User not found"
+      x-swagger-router-controller: "User"
+  /cart/{cartId}:
+    get:
+      tags:
+      - "cart"
+      summary: "Get the content of a cart"
+      operationId: "GetCartById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cartId"
+        in: "path"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "success"
+          schema:
+            $ref: "#/definitions/Cart"
+        404:
+          description: "unauthorized"
+      x-swagger-router-controller: "Cart"
+definitions:
+  Book:
+    type: "object"
+    required:
+    - "name"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      genre:
+        type: "array"
+        xml:
+          name: "genre"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Genre"
+      photoUrl:
+        type: "string"
+      abstract:
+        type: "string"
+      author:
+        type: "array"
+        xml:
+          name: "author"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Author"
+    xml:
+      name: "Book"
+    example:
+      photoUrl: "photoUrl"
+      author:
+      - books:
+        - null
+        - null
+        name: "name"
+        id: 1
+      - books:
+        - null
+        - null
+        name: "name"
+        id: 1
+      name: "name"
+      genre:
+      - name: "name"
+        id: 6
+      - name: "name"
+        id: 6
+      id: 0
+      abstract: "abstract"
+  Genre:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Genre"
+    example:
+      name: "name"
+      id: 6
+  Author:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      books:
+        type: "array"
+        xml:
+          name: "book"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Book"
+    xml:
+      name: "Author"
+    example:
+      books:
+      - null
+      - null
+      name: "name"
+      id: 1
+  Cart:
+    type: "object"
+    required:
+    - "user"
+    properties:
+      user:
+        $ref: "#/definitions/User"
+      books:
+        type: "array"
+        xml:
+          name: "book"
+          wrapped: true
+        items:
+          $ref: "#/definitions/Book"
+    xml:
+      name: "Cart"
+    example:
+      books:
+      - photoUrl: "photoUrl"
+        author:
+        - books:
+          - null
+          - null
+          name: "name"
+          id: 1
+        - books:
+          - null
+          - null
+          name: "name"
+          id: 1
+        name: "name"
+        genre:
+        - name: "name"
+          id: 6
+        - name: "name"
+          id: 6
+        id: 0
+        abstract: "abstract"
+      - photoUrl: "photoUrl"
+        author:
+        - books:
+          - null
+          - null
+          name: "name"
+          id: 1
+        - books:
+          - null
+          - null
+          name: "name"
+          id: 1
+        name: "name"
+        genre:
+        - name: "name"
+          id: 6
+        - name: "name"
+          id: 6
+        id: 0
+        abstract: "abstract"
+      user:
+        firstName: "firstName"
+        lastName: "lastName"
+        password: "password"
+        userStatus: 6
+        phone: "phone"
+        id: 0
+        email: "email"
+        username: "username"
+  User:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      username:
+        type: "string"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      userStatus:
+        type: "integer"
+        format: "int64"
+        description: "User Status"
+    xml:
+      name: "User"
+    example:
+      firstName: "firstName"
+      lastName: "lastName"
+      password: "password"
+      userStatus: 6
+      phone: "phone"
+      id: 0
+      email: "email"
+      username: "username"
+  Reservation:
+    type: "object"
+    properties:
+      userId:
+        type: "integer"
+        format: "int64"
+      bookId:
+        type: "integer"
+        format: "int64"
+    xml:
+      name: "Reservation"
+  Review:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      userId:
+        type: "integer"
+        format: "int64"
+      bookId:
+        type: "integer"
+        format: "int64"
+      status:
+        type: "integer"
+        format: "int64"
+        description: "Stars amount"
+        enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    xml:
+      name: "Review"
+  ApiResponse:
+    type: "object"
+    properties:
+      code:
+        type: "integer"
+        format: "int64"
+      type:
+        type: "string"
+      message:
+        type: "string"
