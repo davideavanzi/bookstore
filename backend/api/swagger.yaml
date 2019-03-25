@@ -331,6 +331,28 @@ paths:
         404:
           description: Not found
       x-swagger-router-controller: Author
+    post:
+      tags:
+      - author
+      summary: Add a new author
+      description: Insert new author in the system - this can only be done by the logged in ADMIN.
+      operationId: addAuthor
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: The author object that needs to be added to the bookstore
+        required: true
+        schema:
+          $ref: '#/definitions/Author'
+      responses:
+        403:
+          description: Unauthorized
+        405:
+          description: Invalid input
       
   /author/{authorId}:
     get:
@@ -358,34 +380,6 @@ paths:
         404:
           description: Author not found
       x-swagger-router-controller: Author
-    post:
-      tags:
-      - author
-      summary: Add a new author
-      description: Insert new author in the system - this can only be done by the logged in ADMIN.
-      operationId: addAuthor
-      consumes:
-      - application/json
-      produces:
-      - application/json
-      parameters:
-      - name: authorId
-        in: path
-        description: ID of the author to retrieve
-        required: true
-        type: integer
-        format: int64
-      - in: body
-        name: body
-        description: The author object that needs to be added to the bookstore
-        required: true
-        schema:
-          $ref: '#/definitions/Author'
-      responses:
-        403:
-          description: Unauthorized
-        405:
-          description: Invalid input
     put:
       tags:
       - author
@@ -793,3 +787,4 @@ host: virtserver.swaggerhub.com
 schemes:
  - https
  - http
+
