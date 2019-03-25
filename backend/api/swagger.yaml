@@ -358,6 +358,82 @@ paths:
         404:
           description: Author not found
       x-swagger-router-controller: Author
+    post:
+      tags:
+      - author
+      summary: Add a new author
+      description: Insert new author in the system - this can only be done by the logged in ADMIN.
+      operationId: addAuthor
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - name: authorId
+        in: path
+        description: ID of the author to retrieve
+        required: true
+        type: integer
+        format: int64
+      - in: body
+        name: body
+        description: The author object that needs to be added to the bookstore
+        required: true
+        schema:
+          $ref: '#/definitions/Author'
+      responses:
+        403:
+          description: Unauthorized
+        405:
+          description: Invalid input
+    put:
+      tags:
+      - author
+      summary: Update a specific author
+      description: Update values of an author - this can only be done by the logged in ADMIN.
+      operationId: updateAuthor
+      produces:
+      - application/json
+      parameters:
+      - name: authorId
+        in: path
+        description: id of the author that needs to be updated
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: Updated author object
+        required: true
+        schema:
+          $ref: '#/definitions/Author'
+      responses:
+        400:
+          description: Invalid author supplied
+        403:
+          description: Unauthorized
+        404:
+          description: Author not found
+    delete:
+      tags:
+      - author
+      summary: Delete a specific author
+      description: Delete a author - this can only be done by the logged in ADMIN.
+      operationId: deleteAuthor
+      produces:
+      - application/json
+      parameters:
+      - name: authorId
+        in: path
+        description: The id of the author that needs to be deleted
+        required: true
+        type: string
+      responses:
+        400:
+          description: Invalid author supplied
+        403:
+          description: Unauthorized
+        404:
+          description: Author not found
       
   /user/register:
     post:
