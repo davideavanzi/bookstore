@@ -17,7 +17,13 @@ tags:
 - name: cart
   description: Operations on cart
 - name: user
-  description: Operations about user
+  description: Operations on users
+- name: review
+  description: Operation on reviews
+- name: author
+  description: Operation on authors
+- name: reservation
+  description: Operation on reservations
   #externalDocs:
   #  description: Find out more about our store
   #  url: https://avanzi.dev/library
@@ -673,8 +679,10 @@ paths:
         schema:
           $ref: '#/definitions/Reservation'
       responses:
+        200:
+          description: Reservation added
         404:
-          description: Book not found
+          description: Not found
         403:
           description: Unauthorized
         405:
@@ -741,11 +749,11 @@ paths:
           schema:
             $ref: '#/definitions/Reservation'
         400:
-          description: Invalid ID
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
         404:
-          description: Reservation not found
+          description: Not found
       x-swagger-router-controller: Reservation
     put:
       tags:
@@ -770,12 +778,14 @@ paths:
         type: integer
         format: int64
       responses:
+        200:
+          description: Reservation updated
         400:
-          description: Invalid reservationId supplied or amount not available
+          description: Invalid input # or amount not available
         404:
-          description: Reservation not found
+          description: Not found
         403:
-          description: Unauthorized
+          description: Forbidden
     delete:
       tags:
       - review
@@ -792,12 +802,14 @@ paths:
         type: integer
         format: int64
       responses:
+        200:
+          description: Reservation deleted
         400:
-          description: Invalid reservationId supplied
+          description: Invalid input
         404:
-          description: Reservation not found
+          description: Not found
         403:
-          description: Unauthorized
+          description: Forbidden
           
 ## DEFINITIONS
 
