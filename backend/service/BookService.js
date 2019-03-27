@@ -13,7 +13,7 @@ exports.booksDbSetup = function(database) {
   console.log("Checking if books table exists");
   return database.schema.hasTable("books").then(exists => {
     if (!exists) {
-      console.log("It doesn't so we create it");
+      console.log("Table not found. Creating...");
       return database.schema.createTable("books", table => {
         table.increments(); //id
         table.text("title");

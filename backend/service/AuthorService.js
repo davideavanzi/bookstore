@@ -1,5 +1,25 @@
 'use strict';
 
+/**
+ * Authors table DB setup
+ *
+ * Creates a table in the DB to store authors
+ **/
+exports.authorsDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if authors table exists");
+  return database.schema.hasTable("authors").then(exists => {
+    if (!exists) {
+      console.log("Table not found. Creating...");
+      return database.schema.createTable("authors", table => {
+        table.increments();
+        table.text("name");
+      });
+    }
+  });
+};
+
+
 
 /**
  * Add a new author
@@ -65,11 +85,11 @@ exports.getAuthors = function(offset,limit,authorId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
-  "name" : "name",
-  "id" : 6
+  "name" : "ava",
+  "id" : 0
 }, {
-  "name" : "name",
-  "id" : 6
+  "name" : "fabr",
+  "id" : 1
 } ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);

@@ -1,7 +1,15 @@
 const sqlDbFactory = require("knex");
 
 let { booksDbSetup } = require("./BookService");
+let { authorsDbSetup } = require("./AuthorService");
 
+/**
+ * Db connection setup
+ * parameters:
+ *  username: postgres
+ *  password: postgres
+ *  db name: postgres
+ */
 let sqlDb = sqlDbFactory({
   client: "pg",
   connection: 'postres://postgres:postgres@localhost/postgres',
@@ -11,7 +19,9 @@ let sqlDb = sqlDbFactory({
 
 function setupDataLayer() {
   console.log("Setting up data layer");
-  return booksDbSetup(sqlDb);
+  booksDbSetup(sqlDb);
+  authorsDbSetup(sqlDb);
+  return;
 }
 
 module.exports = { database: sqlDb, setupDataLayer };

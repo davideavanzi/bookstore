@@ -624,7 +624,7 @@ paths:
       tags:
       - "cart"
       summary: "Get the content of a cart"
-      operationId: "GetCartById"
+      operationId: "getCartById"
       produces:
       - "application/json"
       parameters:
@@ -679,7 +679,7 @@ paths:
       - "reservation"
       summary: "All reservations, optionally filtered"
       description: "List of reservations"
-      operationId: "GetReservations"
+      operationId: "getReservations"
       produces:
       - "application/json"
       parameters:
@@ -867,15 +867,12 @@ definitions:
       photoUrl: "photoUrl"
       price:
         currency: "EUR"
-        value: 65.7000000000000028421709430404007434844970703125
+        value: 65.70
       author:
-      - name: "name"
-        id: 6
       - name: "name"
         id: 6
       name: "name"
       genre:
-      - "genre"
       - "genre"
       id: 0
       abstract: "abstract"
@@ -895,7 +892,7 @@ definitions:
     description: "Price"
     example:
       currency: "EUR"
-      value: 65.7000000000000028421709430404007434844970703125
+      value: 65.70
   Currency:
     type: "string"
     pattern: "^[A-Z]{3,3}$"
