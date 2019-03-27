@@ -76,6 +76,7 @@ paths:
         description: Id of the author to filter books
         required: false
         type: integer
+        format: int64
       responses:
         200:
           description: List of Books
@@ -126,7 +127,8 @@ paths:
         in: path
         description: id of the book that needs to be updated
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: Updated book object
@@ -155,7 +157,8 @@ paths:
         in: path
         description: The id of the book that needs to be deleted
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         200:
           description: Book deleted
@@ -264,7 +267,7 @@ paths:
       tags:
       - review
       summary: Update a specific review
-      description: Update values of a revkew - this can only be done by the logged in ADMIN or the user that made it.
+      description: Update values of a review - this can only be done by the logged in ADMIN or the user that made it.
       operationId: updateReview
       produces:
       - application/json
@@ -273,7 +276,8 @@ paths:
         in: path
         description: id of the review that needs to be updated
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: Updated review object
@@ -339,6 +343,7 @@ paths:
         description: Id of the author to filter books
         required: false
         type: integer
+        format: int64
       responses:
         200:
           description: List of Books
@@ -531,9 +536,10 @@ paths:
       parameters:
       - name: userId
         in: path
-        description: The id that needs to be fetched. 
+        description: The id of the user that needs to be fetched. 
         required: true
-        type: string
+        type: integer
+        format: int64
       responses:
         200:
           description: successful operation
@@ -554,9 +560,10 @@ paths:
       parameters:
       - name: userId
         in: path
-        description: name that need to be updated
+        description: id of the user that need to be updated
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: Updated user object
@@ -632,7 +639,8 @@ paths:
         in: path
         description: id of the cart that needs to be updated
         required: true
-        type: string
+        type: integer
+        format: int64
       - in: body
         name: body
         description: Updated cart object
@@ -645,7 +653,156 @@ paths:
         403:
           description: Forbidden
         404:
+<<<<<<< HEAD
           description: Not found
+=======
+          description: Cart not found
+  /reservation:
+    post:
+      tags:
+      - reservation
+      summary: Add a new reservation
+      description: Insert a new reservation in the system - this can only be done by logged users.
+      operationId: addReservation
+      consumes:
+      - application/json
+      produces:
+      - application/json
+      parameters:
+      - in: body
+        name: body
+        description: The reservation object that needs to be added
+        required: true
+        schema:
+          $ref: '#/definitions/Reservation'
+      responses:
+        404:
+          description: Book not found
+        403:
+          description: Unauthorized
+        405:
+          description: Invalid input
+    get:
+      tags:
+      - reservation
+      summary: All reservations, optionally filtered
+      description: List of reservations
+      operationId: GetReservations
+      produces:
+      - application/json
+      parameters:
+      - name: offset
+        in: query
+        description: Pagination offset. Default is 0
+        required: false
+        type: integer
+      - name: limit
+        in: query
+        description: Maximum number of items per page. Default is 20, max is 500.
+        required: false
+        type: integer
+      #FILTER PARAMETERS
+      - name: userId
+        in: query
+        description: Id of the user that made the reservation
+        required: false
+        type: integer
+      - name: bookId
+        in: query
+        description: Id of the book to get reservations
+        required: false
+        type: integer
+      responses:
+        200:
+          description: List of reservations
+          schema:
+            type: array
+            items:
+              $ref: '#/definitions/Reservation'
+        404:
+          description: Not found
+      x-swagger-router-controller: Reservation
+  /reservation/{reservationId}:
+    get:
+      tags:
+      - reservation
+      summary: Find reservation by ID
+      description: Insert get a single reservation in the system - this can only be done by logged users or admin.
+      operationId: getReservationById
+      produces:
+      - application/json
+      parameters:
+      - name: reservationId
+        in: path
+        description: ID of the reservation to retrieve
+        required: true
+        type: integer
+        format: int64
+      responses:
+        200:
+          description: successful operation
+          schema:
+            $ref: '#/definitions/Reservation'
+        400:
+          description: Invalid ID
+        403:
+          description: Unauthorized
+        404:
+          description: Reservation not found
+      x-swagger-router-controller: Reservation
+    put:
+      tags:
+      - reservation
+      summary: Update a specific reservation
+      description: Update values of a reservation - this can only be done by the logged in ADMIN or the user that made it.
+      operationId: updateReservation
+      produces:
+      - application/json
+      consumes: 
+      - multipart/form-data
+      parameters:
+      - name: reservationId
+        in: path
+        description: id of the reservation that needs to be updated
+        required: true
+        type: integer
+        format: int64
+      - name: reservationAmount
+        in: formData
+        description: Updated reserved book amount
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid reservationId supplied or amount not available
+        404:
+          description: Reservation not found
+        403:
+          description: Unauthorized
+    delete:
+      tags:
+      - review
+      summary: Delete a specific reservation
+      description: Delete a reservation - this can only be done by the logged in ADMIN or the user that made it.
+      operationId: deleteReservation
+      produces:
+      - application/json
+      parameters:
+      - name: reservationId
+        in: path
+        description: The id of the reservation that needs to be deleted
+        required: true
+        type: integer
+        format: int64
+      responses:
+        400:
+          description: Invalid reservationId supplied
+        404:
+          description: Reservation not found
+        403:
+          description: Unauthorized
+      
+>>>>>>> reservations, api refactoring
     
 ## DEFINITIONS
 
@@ -769,19 +926,21 @@ definitions:
   Reservation:
     type: object
     required:
-    - user
-    properties:  #is it better to keep reference of only the id or the whole object?
-      #user:  
-      #  $ref: '#/definitions/User'
+    - userId
+    - book
+    properties: 
       book:  
         $ref: '#/definitions/Book'
       userId:
         type: integer
         format: int64
+      quantity:
+        type: integer
+        format: int64
     xml:
       name: Reservation
     
-  Review: #TODO: do we add a custom message field?
+  Review:
     type: object
     required: 
     - userId
