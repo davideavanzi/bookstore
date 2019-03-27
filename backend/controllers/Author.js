@@ -1,11 +1,11 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Book = require('../service/BookService');
+var Author = require('../service/AuthorService');
 
-module.exports.addBook = function addBook (req, res, next) {
+module.exports.addAuthor = function addAuthor (req, res, next) {
   var body = req.swagger.params['body'].value;
-  Book.addBook(body)
+  Author.addAuthor(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -14,9 +14,9 @@ module.exports.addBook = function addBook (req, res, next) {
     });
 };
 
-module.exports.deleteBook = function deleteBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  Book.deleteBook(bookId)
+module.exports.deleteAuthor = function deleteAuthor (req, res, next) {
+  var authorId = req.swagger.params['authorId'].value;
+  Author.deleteAuthor(authorId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -25,9 +25,9 @@ module.exports.deleteBook = function deleteBook (req, res, next) {
     });
 };
 
-module.exports.getBookById = function getBookById (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  Book.getBookById(bookId)
+module.exports.getAuthorById = function getAuthorById (req, res, next) {
+  var authorId = req.swagger.params['authorId'].value;
+  Author.getAuthorById(authorId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -36,11 +36,11 @@ module.exports.getBookById = function getBookById (req, res, next) {
     });
 };
 
-module.exports.getBooks = function getBooks (req, res, next) {
+module.exports.getAuthors = function getAuthors (req, res, next) {
   var offset = req.swagger.params['offset'].value;
   var limit = req.swagger.params['limit'].value;
   var authorId = req.swagger.params['authorId'].value;
-  Book.getBooks(offset,limit,authorId)
+  Author.getAuthors(offset,limit,authorId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -49,10 +49,10 @@ module.exports.getBooks = function getBooks (req, res, next) {
     });
 };
 
-module.exports.updateBook = function updateBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
+module.exports.updateAuthor = function updateAuthor (req, res, next) {
+  var authorId = req.swagger.params['authorId'].value;
   var body = req.swagger.params['body'].value;
-  Book.updateBook(bookId,body)
+  Author.updateAuthor(authorId,body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

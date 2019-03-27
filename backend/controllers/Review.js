@@ -1,11 +1,11 @@
 'use strict';
 
 var utils = require('../utils/writer.js');
-var Book = require('../service/BookService');
+var Review = require('../service/ReviewService');
 
-module.exports.addBook = function addBook (req, res, next) {
+module.exports.addReview = function addReview (req, res, next) {
   var body = req.swagger.params['body'].value;
-  Book.addBook(body)
+  Review.addReview(body)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -14,9 +14,9 @@ module.exports.addBook = function addBook (req, res, next) {
     });
 };
 
-module.exports.deleteBook = function deleteBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  Book.deleteBook(bookId)
+module.exports.deleteReview = function deleteReview (req, res, next) {
+  var reviewId = req.swagger.params['reviewId'].value;
+  Review.deleteReview(reviewId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -25,9 +25,9 @@ module.exports.deleteBook = function deleteBook (req, res, next) {
     });
 };
 
-module.exports.getBookById = function getBookById (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  Book.getBookById(bookId)
+module.exports.getReviewById = function getReviewById (req, res, next) {
+  var reviewId = req.swagger.params['reviewId'].value;
+  Review.getReviewById(reviewId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -36,11 +36,12 @@ module.exports.getBookById = function getBookById (req, res, next) {
     });
 };
 
-module.exports.getBooks = function getBooks (req, res, next) {
+module.exports.getReviews = function getReviews (req, res, next) {
   var offset = req.swagger.params['offset'].value;
   var limit = req.swagger.params['limit'].value;
-  var authorId = req.swagger.params['authorId'].value;
-  Book.getBooks(offset,limit,authorId)
+  var userId = req.swagger.params['userId'].value;
+  var bookId = req.swagger.params['bookId'].value;
+  Review.getReviews(offset,limit,userId,bookId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -49,10 +50,10 @@ module.exports.getBooks = function getBooks (req, res, next) {
     });
 };
 
-module.exports.updateBook = function updateBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
+module.exports.updateReview = function updateReview (req, res, next) {
+  var reviewId = req.swagger.params['reviewId'].value;
   var body = req.swagger.params['body'].value;
-  Book.updateBook(bookId,body)
+  Review.updateReview(reviewId,body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

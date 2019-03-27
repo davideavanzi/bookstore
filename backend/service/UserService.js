@@ -1,36 +1,14 @@
 'use strict';
 
-/*
- * Setup DB table for users, if not exists
- */
-exports.usersDbSetup = function(database) {
-  sqlDb = database;
-  console.log("Checking if users table exists");
-  return database.schema.hasTable("users").then(exists => {
-    if (!exists) {
-      console.log("no books table found, creating...");
-      return database.schema.createTable("books", table => {
-        table.increments();
-        table.text("title");
-        table.int("authorID");
-        table.text("photoUrl");
-        table.float("value");
-        table.text("currency");
-        table.int("stock");
-      });
-    }
-  });
-};
-
 
 /**
  * Delete user
  * This can only be done by the logged in user.
  *
- * username String The name that needs to be deleted
+ * userId Long The name that needs to be deleted
  * no response value expected for this operation
  **/
-exports.deleteUser = function(username) {
+exports.deleteUser = function(userId) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -38,23 +16,22 @@ exports.deleteUser = function(username) {
 
 
 /**
- * Get user by user name
+ * Get user by user id
  *
- * username String The name that needs to be fetched. Use user1 for testing.
+ * userId Long The id of the user that needs to be fetched.
  * returns User
  **/
-exports.getUserByName = function(username) {
+exports.getUserById = function(userId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
   "firstName" : "firstName",
   "lastName" : "lastName",
   "password" : "password",
-  "userStatus" : 6,
+  "role" : "USER",
   "phone" : "phone",
   "id" : 0,
-  "email" : "email",
-  "username" : "username"
+  "email" : "email"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -109,11 +86,11 @@ exports.registerUser = function(body) {
  * Updated user
  * This can only be done by the logged in user.
  *
- * username String name that need to be updated
+ * userId Long id of the user that need to be updated
  * body User Updated user object
  * no response value expected for this operation
  **/
-exports.updateUser = function(username,body) {
+exports.updateUser = function(userId,body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });

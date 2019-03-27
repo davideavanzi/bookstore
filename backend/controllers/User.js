@@ -4,8 +4,8 @@ var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
 
 module.exports.deleteUser = function deleteUser (req, res, next) {
-  var username = req.swagger.params['username'].value;
-  User.deleteUser(username)
+  var userId = req.swagger.params['userId'].value;
+  User.deleteUser(userId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -14,9 +14,9 @@ module.exports.deleteUser = function deleteUser (req, res, next) {
     });
 };
 
-module.exports.getUserByName = function getUserByName (req, res, next) {
-  var username = req.swagger.params['username'].value;
-  User.getUserByName(username)
+module.exports.getUserById = function getUserById (req, res, next) {
+  var userId = req.swagger.params['userId'].value;
+  User.getUserById(userId)
     .then(function (response) {
       utils.writeJson(res, response);
     })
@@ -28,12 +28,6 @@ module.exports.getUserByName = function getUserByName (req, res, next) {
 module.exports.loginUser = function loginUser (req, res, next) {
   var username = req.swagger.params['username'].value;
   var password = req.swagger.params['password'].value;
-  if (!req.session.loggedin) {
-    //TODO: check if credentials are correct
-    req.session.loggedin = true;
-  } else {
-    req.session.loggedin = !req.session.loggedin;
-  }
   User.loginUser(username,password)
     .then(function (response) {
       utils.writeJson(res, response);
@@ -65,9 +59,9 @@ module.exports.registerUser = function registerUser (req, res, next) {
 };
 
 module.exports.updateUser = function updateUser (req, res, next) {
-  var username = req.swagger.params['username'].value;
+  var userId = req.swagger.params['userId'].value;
   var body = req.swagger.params['body'].value;
-  User.updateUser(username,body)
+  User.updateUser(userId,body)
     .then(function (response) {
       utils.writeJson(res, response);
     })

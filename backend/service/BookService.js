@@ -1,30 +1,35 @@
 'use strict';
 
-let sqlDb;
 
-/*
- * Setup DB table for books, if not exists
- */
-exports.booksDbSetup = function(database) {
-  sqlDb = database;
-  console.log("Checking if books table exists");
-  return database.schema.hasTable("books").then(exists => {
-    if (!exists) {
-      console.log("no books table found, creating...");
-      return database.schema.createTable("books", table => {
-        table.increments();
-        table.text("title");
-        table.integer("authorID");
-        table.text("photoUrl");
-        table.float("value");
-        table.text("currency");
-        table.integer("stock");
-      });
-    }
+/**
+ * Add a new book
+ * Insert new book in the system - this can only be done by the logged in ADMIN.
+ *
+ * body Book The book object that needs to be added to the bookstore
+ * no response value expected for this operation
+ **/
+exports.addBook = function(body) {
+  return new Promise(function(resolve, reject) {
+    resolve();
   });
-};
+}
 
-/*
+
+/**
+ * Delete a specific book
+ * Delete a book - this can only be done by the logged in ADMIN.
+ *
+ * bookId Long The id of the book that needs to be deleted
+ * no response value expected for this operation
+ **/
+exports.deleteBook = function(bookId) {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
+
+/**
  * Find book by ID
  * Returns a book
  *
@@ -36,23 +41,19 @@ exports.getBookById = function(bookId) {
     var examples = {};
     examples['application/json'] = {
   "photoUrl" : "photoUrl",
+  "price" : {
+    "currency" : "EUR",
+    "value" : 65.7
+  },
   "author" : [ {
-    "books" : [ null, null ],
     "name" : "name",
-    "id" : 1
+    "id" : 6
   }, {
-    "books" : [ null, null ],
     "name" : "name",
-    "id" : 1
+    "id" : 6
   } ],
   "name" : "name",
-  "genre" : [ {
-    "name" : "name",
-    "id" : 6
-  }, {
-    "name" : "name",
-    "id" : 6
-  } ],
+  "genre" : [ "genre", "genre" ],
   "id" : 0,
   "abstract" : "abstract"
 };
@@ -66,15 +67,72 @@ exports.getBookById = function(bookId) {
 
 
 /**
- * All books
+ * All books, optionally filtered
  * List of books inserted books
  *
  * offset Integer Pagination offset. Default is 0 (optional)
  * limit Integer Maximum number of items per page. Default is 20, max is 500. (optional)
+ * authorId Long Id of the author to filter books (optional)
  * returns List
  **/
-exports.getBooks = function(offset,limit) {
-  return sqlDb('books')
-    .limit(limit)
-    .offset(offset)
+exports.getBooks = function(offset,limit,authorId) {
+  return new Promise(function(resolve, reject) {
+    var examples = {};
+    examples['application/json'] = [ {
+  "photoUrl" : "photoUrl",
+  "price" : {
+    "currency" : "EUR",
+    "value" : 65.7
+  },
+  "author" : [ {
+    "name" : "name",
+    "id" : 6
+  }, {
+    "name" : "name",
+    "id" : 6
+  } ],
+  "name" : "name",
+  "genre" : [ "genre", "genre" ],
+  "id" : 0,
+  "abstract" : "abstract"
+}, {
+  "photoUrl" : "photoUrl",
+  "price" : {
+    "currency" : "EUR",
+    "value" : 65.7
+  },
+  "author" : [ {
+    "name" : "name",
+    "id" : 6
+  }, {
+    "name" : "name",
+    "id" : 6
+  } ],
+  "name" : "name",
+  "genre" : [ "genre", "genre" ],
+  "id" : 0,
+  "abstract" : "abstract"
+} ];
+    if (Object.keys(examples).length > 0) {
+      resolve(examples[Object.keys(examples)[0]]);
+    } else {
+      resolve();
+    }
+  });
 }
+
+
+/**
+ * Update a specific book
+ * Update values of a book - this can only be done by the logged in ADMIN.
+ *
+ * bookId Long id of the book that needs to be updated
+ * body Book Updated book object
+ * no response value expected for this operation
+ **/
+exports.updateBook = function(bookId,body) {
+  return new Promise(function(resolve, reject) {
+    resolve();
+  });
+}
+
