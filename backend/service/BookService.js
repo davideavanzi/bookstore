@@ -1,5 +1,31 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Books table DB setup
+ *
+ * Creates a table in the DB to store books
+ **/
+exports.booksDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if books table exists");
+  return database.schema.hasTable("books").then(exists => {
+    if (!exists) {
+      console.log("It doesn't so we create it");
+      return database.schema.createTable("books", table => {
+        table.increments(); //id
+        table.text("title");
+        table.text("photoUrl");
+        table.float("value");
+        table.text("currency");
+        table.text("abstract");
+        table.integer("stock");
+      });
+    }
+  });
+};
 
 /**
  * Add a new book
