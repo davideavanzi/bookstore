@@ -798,9 +798,7 @@ paths:
           description: Reservation not found
         403:
           description: Unauthorized
-      
->>>>>>> reservations, api refactoring
-    
+          
 ## DEFINITIONS
 
 definitions:
