@@ -44,8 +44,12 @@ paths:
         schema:
           $ref: '#/definitions/Book'
       responses:
-        405:
+        200:
+          description: Books added
+        400:
           description: Invalid input
+        403:
+          description: Forbidden
 
     get:
       tags:
@@ -105,9 +109,9 @@ paths:
           schema:
             $ref: '#/definitions/Book'
         400:
-          description: Invalid ID
+          description: Invalid input
         404:
-          description: Book not found
+          description: Not found
       x-swagger-router-controller: Book
     put:
       tags:
@@ -130,10 +134,14 @@ paths:
         schema:
           $ref: '#/definitions/Book'
       responses:
+        200:
+          description: Book updated
         400:
-          description: Invalid bookId supplied
+          description: Invalid input
+        403:
+          description: Forbidden
         404:
-          description: Book not found
+          description: Not found
     delete:
       tags:
       - book
@@ -149,10 +157,14 @@ paths:
         required: true
         type: string
       responses:
+        200:
+          description: Book deleted
         400:
-          description: Invalid bookId supplied
+          description: Invalid input
+        403:
+          description: forbidden
         404:
-          description: Book not found
+          description: Not found
           
   /review:
     post:
@@ -173,10 +185,12 @@ paths:
         schema:
           $ref: '#/definitions/Review'
       responses:
+        200:
+          description: Review added
         404:
-          description: Book not found
+          description: Not found
         403:
-          description: Unauthorized
+          description: Forbidden
         405:
           description: Invalid input
     get:
@@ -242,9 +256,9 @@ paths:
           schema:
             $ref: '#/definitions/Review'
         400:
-          description: Invalid ID
+          description: Invalid input
         404:
-          description: Review not found
+          description: Not found
       x-swagger-router-controller: Review
     put:
       tags:
@@ -267,12 +281,14 @@ paths:
         schema:
           $ref: '#/definitions/Review'
       responses:
+        200:
+          description: Review updated
         400:
-          description: Invalid reviewId supplied
-        404:
-          description: Review not found
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
+        404:
+          description: Not found
     delete:
       tags:
       - review
@@ -288,12 +304,14 @@ paths:
         required: true
         type: string
       responses:
+        200:
+          description: Review deleted
         400:
-          description: Invalid reviewId supplied
-        404:
-          description: Review not found
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
+        404:
+          description: Not found
       
   /author:
     get:
@@ -349,8 +367,10 @@ paths:
         schema:
           $ref: '#/definitions/Author'
       responses:
+        200:
+          description: Author added
         403:
-          description: Unauthorized
+          description: Fobidden
         405:
           description: Invalid input
       
@@ -376,7 +396,7 @@ paths:
           schema:
             $ref: '#/definitions/Author'
         400:
-          description: Invalid ID
+          description: Invalid input
         404:
           description: Author not found
       x-swagger-router-controller: Author
@@ -401,10 +421,12 @@ paths:
         schema:
           $ref: '#/definitions/Author'
       responses:
+        200:
+          description: Author updated
         400:
-          description: Invalid author supplied
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
         404:
           description: Author not found
     delete:
@@ -422,12 +444,14 @@ paths:
         required: true
         type: string
       responses:
+        200:
+          description: Author deleted
         400:
-          description: Invalid author supplied
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
         404:
-          description: Author not found
+          description: Not found
       
   /user/register:
     post:
@@ -449,9 +473,11 @@ paths:
           $ref: '#/definitions/User'
       responses:
         200:
-          description: succesfull registration
+          description: User added
+        403:
+          description: Forbidden
         404:
-          description: unauthorized
+          description: Not found
       x-swagger-router-controller: User
   /user/login:
     post:
@@ -476,9 +502,11 @@ paths:
         type: string
       responses:
         200:
-          description: "succesfull login"
+          description: User logged in
+        403:
+          description: Forbidden
         404:
-          description: "unauthorized"
+          description: Not found
       x-swagger-router-controller: "User"
   /user/logout:
     get:
@@ -488,7 +516,6 @@ paths:
       operationId: logoutUser
       produces:
       - application/json
-      - application/xml
       parameters: []
       responses:
         default:
@@ -513,9 +540,9 @@ paths:
           schema:
             $ref: '#/definitions/User'
         400:
-          description: Invalid username supplied
+          description: Invalid input
         404:
-          description: User not found
+          description: Not found
     put:
       tags:
       - user
@@ -537,10 +564,14 @@ paths:
         schema:
           $ref: '#/definitions/User'
       responses:
+        200:
+          description: User updated
         400:
-          description: Invalid user supplied
+          description: Invalid input
+        403:
+          description: Forbidden
         404:
-          description: User not found
+          description: Not found
     delete:
       tags:
       - user
@@ -556,10 +587,14 @@ paths:
         required: true
         type: string
       responses:
+        200:
+          description: User deleted
         400:
-          description: Invalid username supplied
+          description: Invalid input
+        403:
+          description: Forbidden
         404:
-          description: User not found
+          description: Nt found
   /cart/{cartId}:
     get:
       tags:
@@ -580,9 +615,9 @@ paths:
           schema:
             $ref: "#/definitions/Cart"
         403:
-          description: unauthorized
+          description: Forbidden
         404:
-          description: not found
+          description: Not found
       x-swagger-router-controller: Cart
     put:
       tags:
@@ -606,11 +641,11 @@ paths:
           $ref: '#/definitions/Cart'
       responses:
         400:
-          description: Invalid cartId supplied
+          description: Invalid input
         403:
-          description: Unauthorized
+          description: Forbidden
         404:
-          description: Cart not found
+          description: Not found
     
 ## DEFINITIONS
 
