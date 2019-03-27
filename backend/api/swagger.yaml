@@ -179,7 +179,7 @@ paths:
       - "review"
       summary: "All reviews, optionally filtered"
       description: "List of reviews"
-      operationId: "GetReviews"
+      operationId: "getReviews"
       produces:
       - "application/json"
       parameters:
@@ -331,7 +331,7 @@ paths:
       - "author"
       summary: "All authors, optionally filtered"
       description: "List of authors"
-      operationId: "GetAuthors"
+      operationId: "getAuthors"
       produces:
       - "application/json"
       parameters:
