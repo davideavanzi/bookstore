@@ -9,7 +9,8 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "hyp.avanzi.dev"
+host: "localhost:8080"
+basePath: "/v2"
 tags:
 - name: "book"
   description: "Operations on books"
@@ -33,7 +34,7 @@ paths:
       - "book"
       summary: "All books, optionally filtered"
       description: "List of books inserted books"
-      operationId: "GetBooks"
+      operationId: "getBooks"
       produces:
       - "application/json"
       parameters:
