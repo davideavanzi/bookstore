@@ -17,11 +17,23 @@ let sqlDb = sqlDbFactory({
   debug: true
 });
 
+/**
+ * Syncronous setup of the data layer.
+ * This function waits for all tables to set up correctly before returning to its caller
+ */
 function setupDataLayer() {
   console.log("Setting up data layer");
-  booksDbSetup(sqlDb);
-  authorsDbSetup(sqlDb);
-  return;
+  return new Promise(resolve => {
+    Promise.all([
+      booksDbSetup(sqlDb),
+      authorsDbSetup(sqlDb)
+    ]).then(values => { 
+      resolve(values.every(Boolean));
+      console.log("Database setup complete with status: "+values.every(Boolean));
+    });
+  })
 }
+
+
 
 module.exports = { database: sqlDb, setupDataLayer };

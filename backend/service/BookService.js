@@ -11,21 +11,30 @@ let sqlDb;
 exports.booksDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if books table exists");
-  return database.schema.hasTable("books").then(exists => {
-    if (!exists) {
-      console.log("Table not found. Creating...");
-      return database.schema.createTable("books", table => {
-        table.increments(); //id
-        table.text("title");
-        table.text("photoUrl");
-        table.float("value");
-        table.text("currency");
-        table.text("abstract");
-        table.integer("stock");
-      });
-    }
+  return new Promise(resolve => {
+    database.schema.hasTable("books").then(exists => {
+      if (!exists) { 
+        console.log("Books table not found. Creating...");
+        database.schema.createTable("books", table => {
+          table.increments(); //id
+          table.text("title");
+          table.text("photoUrl");
+          table.float("value");
+          table.text("currency");
+          table.text("abstract");
+          table.integer("stock");
+        }).then(exists => {
+          console.log("Books table created");
+          resolve(exists);
+        }); 
+      } else {
+        console.log("Books table already present");
+        resolve(exists);
+      } 
+    });
   });
 };
+
 
 /**
  * Add a new book

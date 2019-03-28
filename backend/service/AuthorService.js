@@ -1,5 +1,8 @@
 'use strict';
 
+//Global database connection variable
+let sqlDb;
+
 /**
  * Authors table DB setup
  *
@@ -8,14 +11,25 @@
 exports.authorsDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if authors table exists");
-  return database.schema.hasTable("authors").then(exists => {
-    if (!exists) {
-      console.log("Table not found. Creating...");
-      return database.schema.createTable("authors", table => {
-        table.increments();
-        table.text("name");
-      });
-    }
+  return new Promise(resolve => {
+    
+    database.schema.hasTable("authors").then(exists => {
+      if (!exists) { 
+        console.log("Authors table not found. Creating...");
+        database.schema.createTable("authors", table => {
+          table.increments();
+          table.text("name");
+          table.text("photoUrl");
+          table.text("bio");
+        }).then(exists => {
+          console.log("Authors table created");
+          resolve(exists);
+        }); 
+      } else {
+        console.log("Authors table already present");
+        resolve(exists);
+      } 
+    });
   });
 };
 
