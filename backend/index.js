@@ -9,6 +9,9 @@ var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
 var serverPort = 8080;
 
+//timestamp to console logs
+require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss.l' });
+
 //cookie session modules
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
