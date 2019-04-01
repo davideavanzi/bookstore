@@ -26,11 +26,17 @@ exports.booksDbSetup = function(database) {
         }).then(exists => {
           console.log("Books table created");
           resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
         }); 
       } else {
         console.log("Books table already present");
         resolve(exists);
       } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
     });
   });
 };
