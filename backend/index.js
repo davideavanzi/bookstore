@@ -7,7 +7,8 @@ var fs = require('fs'),
 var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
-var serverPort = 8080;
+//support for heroku server port
+var serverPort = process.env.PORT || 8080;
 
 //timestamp to console logs
 require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss.l' });

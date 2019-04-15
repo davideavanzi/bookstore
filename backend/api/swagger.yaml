@@ -1436,7 +1436,7 @@ definitions:
   Event:
     type: "object"
     required:
-    - "book"
+    - "bookId"
     properties:
       id:
         type: "integer"
