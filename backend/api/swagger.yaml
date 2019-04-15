@@ -24,6 +24,13 @@ tags:
   description: "Operation on authors"
 - name: "reservation"
   description: "Operation on reservations"
+- name: "interview"
+  description: "Operation on interview"
+- name: "theme"
+  description: "Operation on theme"
+- name: "genre"
+  description: "Operation on genre"
+
 schemes:
 - "https"
 - "http"
@@ -974,6 +981,293 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Reservation"
+  /interview:
+    get:
+      tags:
+      - "interview"
+      summary: "All interviews, optionally filtered"
+      description: "List of interviews"
+      operationId: "getInterviews"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the book to get interviews"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of interviews"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Interview"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Interview"
+    post:
+      tags:
+      - "interview"
+      summary: "Add a new interview"
+      description: "Insert a new interview in the system - this can only be done\
+        \ by logged users."
+      operationId: "addInterview"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The interview object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Interview"
+      responses:
+        200:
+          description: "Interview added"
+        403:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Interview"
+  /interview/{interviewId}:
+    get:
+      tags:
+      - "interview"
+      summary: "Find interview by ID"
+      description: "Insert get a single reservation in the system - this can only\
+        \ be done by logged users or admin."
+      operationId: "getInterviewById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "interviewId"
+        in: "path"
+        description: "ID of the interview to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Interview"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Interview"
+    put:
+      tags:
+      - "interview"
+      summary: "Update a specific interview"
+      description: "Update values of a interview - this can only be done by the\
+        \ logged in ADMIN or the user that made it."
+      operationId: "updateInterview"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "interviewId"
+        in: "path"
+        description: "id of the interview that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Interview updated"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Interview"
+    delete:
+      tags:
+      - "interview"
+      summary: "Delete a specific interview"
+      description: "Delete a interview - this can only be done by the logged in\
+        \ ADMIN or the user that made it."
+      operationId: "deleteInterview"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "interviewId"
+        in: "path"
+        description: "The id of the interview that needs to be deleted"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Interview deleted"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Interview"
+  /theme:
+    get:
+      tags:
+      - "theme"
+      summary: "All themes, optionally filtered"
+      description: "List of thmes"
+      operationId: "getThemes"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of interviews"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Interview"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Interview"
+    post:
+      tags:
+      - "theme"
+      summary: "Add a new theme"
+      description: "Insert a new interview in the system - this can only be done\
+        \ by logged users."
+      operationId: "addTheme"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The name object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Theme"
+      responses:
+        200:
+          description: "Theme added"
+        403:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Theme"
+  /theme/{themeId}:
+    get:
+      tags:
+      - "theme"
+      summary: "Find theme by ID"
+      description: "Insert get a single reservation in the system - this can only\
+        \ be done by logged users or admin."
+      operationId: "getThemeById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "themeId"
+        in: "path"
+        description: "ID of the theme to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Theme"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Theme"
+    put:
+      tags:
+      - "theme"
+      summary: "Update a specific theme"
+      description: "Update values of a theme - this can only be done by the\
+        \ logged in ADMIN or the user that made it."
+      operationId: "updateTheme"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "themeId"
+        in: "path"
+        description: "id of the theme that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Theme updated"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Theme"
+    delete:
+      tags:
+      - "theme"
+      summary: "Delete a specific theme"
+      description: "Delete a theme - this can only be done by the logged in\
+        \ ADMIN or the user that made it."
+      operationId: "deleteTheme"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "themeId"
+        in: "path"
+        description: "The id of the theme that needs to be deleted"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Theme deleted"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Theme"
 definitions:
   Book:
     type: "object"
@@ -1095,7 +1389,7 @@ definitions:
       - photoUrl: "photoUrl"
         price:
           currency: "EUR"
-          value: 65.7000000000000028421709430404007434844970703125
+          value: 65.70
         author:
         - name: "name"
           id: 6
@@ -1110,7 +1404,7 @@ definitions:
       - photoUrl: "photoUrl"
         price:
           currency: "EUR"
-          value: 65.7000000000000028421709430404007434844970703125
+          value: 65.70
         author:
         - name: "name"
           id: 6
@@ -1181,7 +1475,7 @@ definitions:
         photoUrl: "photoUrl"
         price:
           currency: "EUR"
-          value: 65.7000000000000028421709430404007434844970703125
+          value: 65
         author:
         - name: "name"
           id: 6
@@ -1199,6 +1493,7 @@ definitions:
     required:
     - "bookId"
     - "userId"
+    - "id"
     properties:
       id:
         type: "integer"
@@ -1209,7 +1504,7 @@ definitions:
       bookId:
         type: "integer"
         format: "int64"
-      text:
+      content:
         type: "string"
         description: "message of the review"
       rate:
@@ -1227,6 +1522,51 @@ definitions:
     example:
       rate: 5
       id: 0
-      text: "text"
+      content: "content"
       userId: 6
       bookId: 1
+  Interview:
+    type: "object"
+    required:
+    - "id"
+    - "bookId"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      bookId:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+        description: "title of the interview"
+      content:
+        type: "string"
+        description: "message of the interview"
+      interviewer:
+        type: "string"
+        description: "name of the interviewer"
+    xml:
+      name: "Interview"
+    example:
+      id: 0
+      title: "title"
+      content: "content"
+      interviewr: "interviewer"
+      bookId: 1
+  Theme:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        description: "name of the theme"
+    xml:
+      name: "Interview"
+    example:
+      id: 0
+      name: "name"
