@@ -19,17 +19,17 @@ tags:
 - name: "user"
   description: "Operations on users"
 - name: "review"
-  description: "Operation on reviews"
+  description: "Operations on reviews"
 - name: "author"
-  description: "Operation on authors"
+  description: "Operations on authors"
 - name: "reservation"
-  description: "Operation on reservations"
+  description: "Operations on reservations"
 - name: "interview"
-  description: "Operation on interview"
+  description: "Operations on interviews"
 - name: "theme"
-  description: "Operation on theme"
+  description: "Operations on themes"
 - name: "genre"
-  description: "Operation on genre"
+  description: "Operations on genrer"
 
 schemes:
 - "https"
@@ -75,8 +75,7 @@ paths:
       tags:
       - "book"
       summary: "Add a new book"
-      description: "Insert new book in the system - this can only be done by the logged\
-        \ in ADMIN."
+      description: "Insert new book in the system - this can only be done by the logged in ADMIN."
       operationId: "addBook"
       consumes:
       - "application/json"
@@ -127,8 +126,7 @@ paths:
       tags:
       - "book"
       summary: "Update a specific book"
-      description: "Update values of a book - this can only be done by the logged\
-        \ in ADMIN."
+      description: "Update values of a book - this can only be done by the logged in ADMIN."
       operationId: "updateBook"
       produces:
       - "application/json"
@@ -224,8 +222,7 @@ paths:
       tags:
       - "review"
       summary: "Add a new review"
-      description: "Insert a new review in the system - this can only be done by logged\
-        \ users."
+      description: "Insert a new review in the system - this can only be done by logged users."
       operationId: "addReview"
       consumes:
       - "application/json"
@@ -278,8 +275,7 @@ paths:
       tags:
       - "review"
       summary: "Update a specific review"
-      description: "Update values of a review - this can only be done by the logged\
-        \ in ADMIN or the user that made it."
+      description: "Update values of a review - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "updateReview"
       produces:
       - "application/json"
@@ -310,8 +306,7 @@ paths:
       tags:
       - "review"
       summary: "Delete a specific review"
-      description: "Delete a review - this can only be done by the logged in ADMIN\
-        \ or the user that made it."
+      description: "Delete a review - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "deleteReview"
       produces:
       - "application/json"
@@ -372,7 +367,7 @@ paths:
       tags:
       - "event"
       summary: "Add a new event"
-      description: "Insert a new event in the system - this can only be done by logged users."
+      description: "Insert a new event in the system - this can only be done by logged in ADMIN."
       operationId: "addEvent"
       consumes:
       - "application/json"
@@ -425,7 +420,7 @@ paths:
       tags:
       - "event"
       summary: "Update a specific event"
-      description: "Update values of a review - this can only be done by the logged in ADMIN or the user that made it."
+      description: "Update values of a review - this can only be done by the logged in ADMIN."
       operationId: "updateEvent"
       produces:
       - "application/json"
@@ -456,7 +451,7 @@ paths:
       tags:
       - "event"
       summary: "Delete a specific event"
-      description: "Delete a event - this can only be done by the logged in ADMIN or the user that made it."
+      description: "Delete a event - this can only be done by the logged in ADMIN."
       operationId: "deleteEvent"
       produces:
       - "application/json"
@@ -517,8 +512,7 @@ paths:
       tags:
       - "author"
       summary: "Add a new author"
-      description: "Insert new author in the system - this can only be done by the\
-        \ logged in ADMIN."
+      description: "Insert new author in the system - this can only be done by the logged in ADMIN."
       operationId: "addAuthor"
       consumes:
       - "application/json"
@@ -798,8 +792,7 @@ paths:
       tags:
       - "cart"
       summary: "Update an user's cart"
-      description: "Update  - this can only be done by the logged in USER (proprietary\
-        \ of the cart or by an ADMIN)."
+      description: "Update  - this can only be done by the logged in USER (proprietary of the cart or by an ADMIN)."
       operationId: "updateCart"
       produces:
       - "application/json"
@@ -868,8 +861,7 @@ paths:
       tags:
       - "reservation"
       summary: "Add a new reservation"
-      description: "Insert a new reservation in the system - this can only be done\
-        \ by logged users."
+      description: "Insert a new reservation in the system - this can only be done by logged users."
       operationId: "addReservation"
       consumes:
       - "application/json"
@@ -897,8 +889,7 @@ paths:
       tags:
       - "reservation"
       summary: "Find reservation by ID"
-      description: "Insert get a single reservation in the system - this can only\
-        \ be done by logged users or admin."
+      description: "Insert get a single reservation in the system - this can only be done by logged users or admin."
       operationId: "getReservationById"
       produces:
       - "application/json"
@@ -925,8 +916,7 @@ paths:
       tags:
       - "reservation"
       summary: "Update a specific reservation"
-      description: "Update values of a reservation - this can only be done by the\
-        \ logged in ADMIN or the user that made it."
+      description: "Update values of a reservation - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "updateReservation"
       consumes:
       - "multipart/form-data"
@@ -959,8 +949,7 @@ paths:
       tags:
       - "reservation"
       summary: "Delete a specific reservation"
-      description: "Delete a reservation - this can only be done by the logged in\
-        \ ADMIN or the user that made it."
+      description: "Delete a reservation - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "deleteReservation"
       produces:
       - "application/json"
@@ -1049,8 +1038,7 @@ paths:
       tags:
       - "interview"
       summary: "Find interview by ID"
-      description: "Insert get a single reservation in the system - this can only\
-        \ be done by logged users or admin."
+      description: "Insert get a single reservation in the system - this can only be done by logged users or admin."
       operationId: "getInterviewById"
       produces:
       - "application/json"
@@ -1077,8 +1065,7 @@ paths:
       tags:
       - "interview"
       summary: "Update a specific interview"
-      description: "Update values of a interview - this can only be done by the\
-        \ logged in ADMIN or the user that made it."
+      description: "Update values of a interview - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "updateInterview"
       consumes:
       - "multipart/form-data"
@@ -1105,8 +1092,7 @@ paths:
       tags:
       - "interview"
       summary: "Delete a specific interview"
-      description: "Delete a interview - this can only be done by the logged in\
-        \ ADMIN or the user that made it."
+      description: "Delete a interview - this can only be done by the logged in ADMIN or the user that made it."
       operationId: "deleteInterview"
       produces:
       - "application/json"
@@ -1149,20 +1135,19 @@ paths:
         type: "integer"
       responses:
         200:
-          description: "List of interviews"
+          description: "List of themes"
           schema:
             type: "array"
             items:
-              $ref: "#/definitions/Interview"
+              $ref: "#/definitions/Theme"
         404:
           description: "Not found"
-      x-swagger-router-controller: "Interview"
+      x-swagger-router-controller: "Theme"
     post:
       tags:
       - "theme"
       summary: "Add a new theme"
-      description: "Insert a new interview in the system - this can only be done\
-        \ by logged users."
+      description: "Insert a new theme in the system - this can only be done by logged users."
       operationId: "addTheme"
       consumes:
       - "application/json"
@@ -1190,8 +1175,7 @@ paths:
       tags:
       - "theme"
       summary: "Find theme by ID"
-      description: "Insert get a single reservation in the system - this can only\
-        \ be done by logged users or admin."
+      description: "Insert get a single theme in the system"
       operationId: "getThemeById"
       produces:
       - "application/json"
@@ -1218,8 +1202,7 @@ paths:
       tags:
       - "theme"
       summary: "Update a specific theme"
-      description: "Update values of a theme - this can only be done by the\
-        \ logged in ADMIN or the user that made it."
+      description: "Update values of a theme - this can only be done by the logged in ADMIN."
       operationId: "updateTheme"
       consumes:
       - "multipart/form-data"
@@ -1246,8 +1229,7 @@ paths:
       tags:
       - "theme"
       summary: "Delete a specific theme"
-      description: "Delete a theme - this can only be done by the logged in\
-        \ ADMIN or the user that made it."
+      description: "Delete a theme - this can only be done by the logged in ADMIN."
       operationId: "deleteTheme"
       produces:
       - "application/json"
@@ -1268,6 +1250,143 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Theme"
+  /genre:
+    get:
+      tags:
+      - "genre"
+      summary: "All genres, optionally filtered"
+      description: "List of genres"
+      operationId: "getGenres"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of genres"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Genre"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Genre"
+    post:
+      tags:
+      - "genre"
+      summary: "Add a new genre"
+      description: "Insert a new genre in the system - this can only be done by logged users."
+      operationId: "addGenre"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The name object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Genre"
+      responses:
+        200:
+          description: "Genre added"
+        403:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        405:
+          description: "Invalid input"
+      x-swagger-router-controller: "Genre"
+  /genre/{genreId}:
+    get:
+      tags:
+      - "genre"
+      summary: "Find genre by ID"
+      description: "Insert get a single genre in the system"
+      operationId: "getGenreById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "genreId"
+        in: "path"
+        description: "ID of the genre to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Genre"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Genre"
+    put:
+      tags:
+      - "genre"
+      summary: "Update a specific genre"
+      description: "Update values of a genre - this can only be done by the logged in ADMIN."
+      operationId: "updateGenre"
+      consumes:
+      - "multipart/form-data"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "genreId"
+        in: "path"
+        description: "id of the genre that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Genre updated"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Genre"
+    delete:
+      tags:
+      - "genre"
+      summary: "Delete a specific genre"
+      description: "Delete a genre - this can only be done by the logged in ADMIN."
+      operationId: "deleteGenre"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "genreId"
+        in: "path"
+        description: "The id of the theme that needs to be deleted"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "Genre deleted"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "genre"
 definitions:
   Book:
     type: "object"
@@ -1567,6 +1686,22 @@ definitions:
         description: "name of the theme"
     xml:
       name: "Interview"
+    example:
+      id: 0
+      name: "Theme"
+  Genre:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+        description: "name of the genre"
+    xml:
+      name: "Genre"
     example:
       id: 0
       name: "name"
