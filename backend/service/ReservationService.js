@@ -1,5 +1,42 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Reservation table DB setup
+ *
+ * Creates a table in the DB to store reservations
+ **/
+exports.reservationDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if reservation table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("reservation").then(exists => {
+      if (!exists) { 
+        console.log("Reservation table not found. Creating...");
+        database.schema.createTable("reservation", table => {
+          table.increments(); //id
+          table.integer("amount");
+          table.integer("book_id");
+          table.integer("book_id");
+        }).then(exists => {
+          console.log("Reservation table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("Reservation table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Add a new reservation

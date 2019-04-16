@@ -1,5 +1,42 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Author table DB setup
+ *
+ * Creates a table in the DB to store authors
+ **/
+exports.authorDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if author table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("author").then(exists => {
+      if (!exists) { 
+        console.log("Author table not found. Creating...");
+        database.schema.createTable("auhtor", table => {
+          table.increments(); //id
+          table.string("name");
+          table.text("bio");
+          table.string("photo");
+        }).then(exists => {
+          console.log("Auhtor table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("Author table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Add a new author

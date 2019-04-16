@@ -1,5 +1,43 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Review table DB setup
+ *
+ * Creates a table in the DB to store Review
+ **/
+exports.ReviewDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if review table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("review").then(exists => {
+      if (!exists) { 
+        console.log("review table not found. Creating...");
+        database.schema.createTable("Review", table => {
+          table.increments(); //id
+          table.integer("star");
+          table.string("title");
+          table.text("content");
+          table.integer("id_user");
+        }).then(exists => {
+          console.log("Review table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("Review table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Add a new review

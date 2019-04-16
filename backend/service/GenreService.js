@@ -1,5 +1,40 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Genre table DB setup
+ *
+ * Creates a table in the DB to store genres
+ **/
+exports.genreDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if genre table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("genre").then(exists => {
+      if (!exists) { 
+        console.log("Genre table not found. Creating...");
+        database.schema.createTable("genre", table => {
+          table.increments(); //id
+          table.string("name");
+        }).then(exists => {
+          console.log("Genre table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("Genre table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Add a new genre

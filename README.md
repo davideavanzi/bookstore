@@ -2,3 +2,4 @@
 
 ## Book store E-commerce web site
 
+### Group Davide Avanzi, Francesca Bernecich and Fabrizio Carsenzuolas

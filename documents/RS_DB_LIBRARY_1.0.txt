@@ -1,7 +1,7 @@
 Table interview {
   id int [pk]
-  title varchar [not null]
-  content text [not null]
+  title varchar 
+  content text 
   interviewer varchar 
   book_id int [ref: > book.id]
 }
@@ -13,6 +13,8 @@ Table book {
   abstract text
   fact_sheet text
   genre_id int [ref: > genre.id]
+  value float
+  stock integer
 }
 
 

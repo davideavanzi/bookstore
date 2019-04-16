@@ -1,5 +1,43 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * Interview table DB setup
+ *
+ * Creates a table in the DB to store interviews
+ **/
+exports.interviewDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if interview table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("interview").then(exists => {
+      if (!exists) { 
+        console.log("Interview table not found. Creating...");
+        database.schema.createTable("interview", table => {
+          table.increments(); //id
+          table.string("title");
+          table.text("content");
+          table.string("interviewer");
+          table.interviewer("book_id");
+        }).then(exists => {
+          console.log("Interview table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("Interview table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Add a new interview
