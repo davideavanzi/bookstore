@@ -18,10 +18,11 @@ exports.booksDbSetup = function(database) {
         database.schema.createTable("books", table => {
           table.increments(); //id
           table.text("title");
-          table.text("photoUrl");
-          table.float("value");
-          table.text("currency");
+          table.text("cover");
           table.text("abstract");
+          table.text("fact_sheet");
+          table.integer("genre_id");
+          table.float("value");
           table.integer("stock");
         }).then(exists => {
           console.log("Books table created");
@@ -89,12 +90,9 @@ exports.getBookById = function(bookId) {
   "author" : [ {
     "name" : "name",
     "id" : 6
-  }, {
-    "name" : "name",
-    "id" : 6
   } ],
   "name" : "name",
-  "genre" : [ "genre", "genre" ],
+  "genre" : [ "genre" ],
   "id" : 0,
   "abstract" : "abstract"
 };
@@ -128,12 +126,9 @@ exports.getBooks = function(offset,limit,authorId) {
   "author" : [ {
     "name" : "name",
     "id" : 6
-  }, {
-    "name" : "name",
-    "id" : 6
   } ],
   "name" : "name",
-  "genre" : [ "genre", "genre" ],
+  "genre" : [ "genre" ],
   "id" : 0,
   "abstract" : "abstract"
 }, {
@@ -145,12 +140,9 @@ exports.getBooks = function(offset,limit,authorId) {
   "author" : [ {
     "name" : "name",
     "id" : 6
-  }, {
-    "name" : "name",
-    "id" : 6
   } ],
   "name" : "name",
-  "genre" : [ "genre", "genre" ],
+  "genre" : [ "genre" ],
   "id" : 0,
   "abstract" : "abstract"
 } ];

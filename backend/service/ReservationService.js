@@ -45,7 +45,7 @@ exports.getReservationById = function(reservationId) {
     "photoUrl" : "photoUrl",
     "price" : {
       "currency" : "EUR",
-      "value" : 65.7
+      "value" : 65
     },
     "author" : [ {
       "name" : "name",
@@ -89,7 +89,7 @@ exports.getReservations = function(offset,limit,userId,bookId) {
     "photoUrl" : "photoUrl",
     "price" : {
       "currency" : "EUR",
-      "value" : 65.7
+      "value" : 65
     },
     "author" : [ {
       "name" : "name",
@@ -110,7 +110,7 @@ exports.getReservations = function(offset,limit,userId,bookId) {
     "photoUrl" : "photoUrl",
     "price" : {
       "currency" : "EUR",
-      "value" : 65.7
+      "value" : 65
     },
     "author" : [ {
       "name" : "name",

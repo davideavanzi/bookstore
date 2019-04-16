@@ -2,13 +2,13 @@
 
 
 /**
- * Add a new author
- * Insert new author in the system - this can only be done by the logged in ADMIN.
+ * Add a new genre
+ * Insert a new genre in the system - this can only be done by logged ADMIN.
  *
- * body Author The author object that needs to be added to the bookstore
+ * body Genre The name object that needs to be added
  * no response value expected for this operation
  **/
-exports.addAuthor = function(body) {
+exports.addGenre = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -16,13 +16,13 @@ exports.addAuthor = function(body) {
 
 
 /**
- * Delete a specific author
- * Delete a author - this can only be done by the logged in ADMIN.
+ * Delete a specific genre
+ * Delete a genre - this can only be done by the logged in ADMIN.
  *
- * authorId Long The id of the author that needs to be deleted
+ * genreId Long The id of the theme that needs to be deleted
  * no response value expected for this operation
  **/
-exports.deleteAuthor = function(authorId) {
+exports.deleteGenre = function(genreId) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -30,18 +30,18 @@ exports.deleteAuthor = function(authorId) {
 
 
 /**
- * Find author by ID
- * Returns an author
+ * Find genre by ID
+ * Insert get a single genre in the system
  *
- * authorId Long ID of the author to retrieve
- * returns Author
+ * genreId Long ID of the genre to retrieve
+ * returns Genre
  **/
-exports.getAuthorById = function(authorId) {
+exports.getGenreById = function(genreId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "name" : "name",
-  "id" : 6
+  "id" : 0,
+  "name" : "name"
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -53,23 +53,22 @@ exports.getAuthorById = function(authorId) {
 
 
 /**
- * All authors, optionally filtered
- * List of authors
+ * All genres, optionally filtered
+ * List of genres
  *
  * offset Integer Pagination offset. Default is 0 (optional)
  * limit Integer Maximum number of items per page. Default is 20, max is 500. (optional)
- * authorId Long Id of the author to filter books (optional)
  * returns List
  **/
-exports.getAuthors = function(offset,limit,authorId) {
+exports.getGenres = function(offset,limit) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
-  "name" : "name",
-  "id" : 6
+  "id" : 0,
+  "name" : "name"
 }, {
-  "name" : "name",
-  "id" : 6
+  "id" : 0,
+  "name" : "name"
 } ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -81,14 +80,13 @@ exports.getAuthors = function(offset,limit,authorId) {
 
 
 /**
- * Update a specific author
- * Update values of an author - this can only be done by the logged in ADMIN.
+ * Update a specific genre
+ * Update values of a genre - this can only be done by the logged in ADMIN.
  *
- * authorId Long id of the author that needs to be updated
- * body Author Updated author object
+ * genreId Long id of the genre that needs to be updated
  * no response value expected for this operation
  **/
-exports.updateAuthor = function(authorId,body) {
+exports.updateGenre = function(genreId) {
   return new Promise(function(resolve, reject) {
     resolve();
   });

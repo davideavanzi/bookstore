@@ -2,13 +2,13 @@
 
 
 /**
- * Add a new review
- * Insert a new review in the system - this can only be done by logged users.
+ * Add a new event
+ * Insert a new event in the system - this can only be done by logged in ADMIN.
  *
- * body Review The review object that needs to be added
+ * body Event The review object that needs to be added
  * no response value expected for this operation
  **/
-exports.addReview = function(body) {
+exports.addEvent = function(body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -16,13 +16,13 @@ exports.addReview = function(body) {
 
 
 /**
- * Delete a specific review
- * Delete a review - this can only be done by the logged in ADMIN or the user that made it.
+ * Delete a specific event
+ * Delete a event - this can only be done by the logged in ADMIN.
  *
- * reviewId Long The id of the review that needs to be deleted
+ * eventId Long The id of the event that needs to be deleted
  * no response value expected for this operation
  **/
-exports.deleteReview = function(reviewId) {
+exports.deleteEvent = function(eventId) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
@@ -30,21 +30,21 @@ exports.deleteReview = function(reviewId) {
 
 
 /**
- * Find review by ID
- * Returns a review
+ * Find event by ID
+ * Returns a event
  *
- * reviewId Long ID of the review to retrieve
- * returns Review
+ * eventId Long ID of the event to retrieve
+ * returns Event
  **/
-exports.getReviewById = function(reviewId) {
+exports.getEventById = function(eventId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = {
-  "rate" : 5,
+  "location" : "location",
   "id" : 0,
+  "title" : "title",
   "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
+  "bookId" : 6
 };
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -56,30 +56,29 @@ exports.getReviewById = function(reviewId) {
 
 
 /**
- * All reviews, optionally filtered
- * List of reviews
+ * All events, optionally filtered
+ * List of events
  *
  * offset Integer Pagination offset. Default is 0 (optional)
  * limit Integer Maximum number of items per page. Default is 20, max is 500. (optional)
- * userId Integer Id of the user that made the review (optional)
- * bookId Integer Id of the book to get reviews (optional)
+ * bookId Integer Id of the presented book on the event (optional)
  * returns List
  **/
-exports.getReviews = function(offset,limit,userId,bookId) {
+exports.getEvents = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
     var examples = {};
     examples['application/json'] = [ {
-  "rate" : 5,
+  "location" : "location",
   "id" : 0,
+  "title" : "title",
   "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
+  "bookId" : 6
 }, {
-  "rate" : 5,
+  "location" : "location",
   "id" : 0,
+  "title" : "title",
   "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
+  "bookId" : 6
 } ];
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
@@ -91,14 +90,14 @@ exports.getReviews = function(offset,limit,userId,bookId) {
 
 
 /**
- * Update a specific review
- * Update values of a review - this can only be done by the logged in ADMIN or the user that made it.
+ * Update a specific event
+ * Update values of a review - this can only be done by the logged in ADMIN.
  *
- * reviewId Long id of the review that needs to be updated
- * body Review Updated review object
+ * eventId Long id of the event that needs to be updated
+ * body Event Updated event object
  * no response value expected for this operation
  **/
-exports.updateReview = function(reviewId,body) {
+exports.updateEvent = function(eventId,body) {
   return new Promise(function(resolve, reject) {
     resolve();
   });
