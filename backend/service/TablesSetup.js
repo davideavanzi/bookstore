@@ -82,7 +82,7 @@ exports.theme_bookDbSetup = function(database) {
 exports.cart_bookDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if cart_book table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("cart_book").then(exists => {
       if (!exists) { 
         console.log("cart_book table not found. Creating...");

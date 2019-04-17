@@ -1,7 +1,7 @@
 const sqlDbFactory = require("knex");
 
-let { booksDbSetup } = require("./BookService");
-let { authorsDbSetup } = require("./AuthorService");
+let { bookDbSetup } = require("./BookService");
+let { authorDbSetup } = require("./AuthorService");
 let { cartDbSetup } = require("./CartService");
 let { eventDbSetup } = require("./EventService");
 let { genreDbSetup } = require("./GenreService");
@@ -34,9 +34,8 @@ function setupDataLayer() {
   console.log("Setting up data layer");
   return new Promise(resolve => {
     Promise.all([
-      booksDbSetup(sqlDb),
-      authorsDbSetup(sqlDb),
-      cartDbSetup(sqlDb),
+      bookDbSetup(sqlDb),
+      authorDbSetup(sqlDb),
       cartDbSetup(sqlDb),
       eventDbSetup(sqlDb),
       genreDbSetup(sqlDb),
@@ -52,9 +51,9 @@ function setupDataLayer() {
       resolve(values.every(Boolean));
       console.log("Database setup complete with status: "+values.every(Boolean));
     }).catch(err => {
-      console.err("Error setting up database.");
-      console.err(err);
-      reject();
+      console.error("Error setting up database.");
+      console.error(err.message);
+      //reject();
     });
   })
 }

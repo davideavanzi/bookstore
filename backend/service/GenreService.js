@@ -11,7 +11,7 @@ let sqlDb;
 exports.genreDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if genre table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("genre").then(exists => {
       if (!exists) { 
         console.log("Genre table not found. Creating...");

@@ -11,7 +11,7 @@ let sqlDb;
 exports.userDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if user table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("user").then(exists => {
       if (!exists) { 
         console.log("User table not found. Creating...");

@@ -8,28 +8,28 @@ let sqlDb;
  *
  * Creates a table in the DB to store Review
  **/
-exports.ReviewDbSetup = function(database) {
+exports.reviewDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if review table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("review").then(exists => {
       if (!exists) { 
         console.log("review table not found. Creating...");
-        database.schema.createTable("Review", table => {
+        database.schema.createTable("review", table => {
           table.increments(); //id
           table.integer("star");
           table.string("title");
           table.text("content");
           table.integer("id_user");
         }).then(exists => {
-          console.log("Review table created");
+          console.log("review table created");
           resolve(exists);
         }).catch(error => {
           console.error(error); 
           reject(error);
         }); 
       } else {
-        console.log("Review table already present");
+        console.log("review table already present");
         resolve(exists);
       } 
     }).catch(error => {

@@ -11,11 +11,11 @@ let sqlDb;
 exports.authorDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if author table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("author").then(exists => {
       if (!exists) { 
         console.log("Author table not found. Creating...");
-        database.schema.createTable("auhtor", table => {
+        database.schema.createTable("author", table => {
           table.increments(); //id
           table.string("name");
           table.text("bio");

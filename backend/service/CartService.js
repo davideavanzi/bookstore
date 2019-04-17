@@ -11,7 +11,7 @@ let sqlDb;
 exports.cartDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if cart table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("cart").then(exists => {
       if (!exists) { 
         console.log("Cart table not found. Creating...");

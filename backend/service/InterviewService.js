@@ -11,7 +11,7 @@ let sqlDb;
 exports.interviewDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if interview table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("interview").then(exists => {
       if (!exists) { 
         console.log("Interview table not found. Creating...");
@@ -20,7 +20,7 @@ exports.interviewDbSetup = function(database) {
           table.string("title");
           table.text("content");
           table.string("interviewer");
-          table.interviewer("book_id");
+          table.integer("book_id");
         }).then(exists => {
           console.log("Interview table created");
           resolve(exists);

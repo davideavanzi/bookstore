@@ -11,7 +11,7 @@ let sqlDb;
 exports.reservationDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if reservation table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("reservation").then(exists => {
       if (!exists) { 
         console.log("Reservation table not found. Creating...");
@@ -19,7 +19,7 @@ exports.reservationDbSetup = function(database) {
           table.increments(); //id
           table.integer("amount");
           table.integer("book_id");
-          table.integer("book_id");
+          table.integer("user_id");
         }).then(exists => {
           console.log("Reservation table created");
           resolve(exists);

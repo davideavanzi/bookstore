@@ -11,7 +11,7 @@ let sqlDb;
 exports.eventDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if event table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("event").then(exists => {
       if (!exists) { 
         console.log("Event table not found. Creating...");

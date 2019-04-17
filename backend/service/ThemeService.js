@@ -11,7 +11,7 @@ let sqlDb;
 exports.themeDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if theme table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("theme").then(exists => {
       if (!exists) { 
         console.log("theme table not found. Creating...");

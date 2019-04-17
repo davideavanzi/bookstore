@@ -11,7 +11,7 @@ let sqlDb;
 exports.bookDbSetup = function(database) {
   sqlDb = database;
   console.log("Checking if book table exists");
-  return new Promise(resolve => {
+  return new Promise(function(resolve,reject) {
     database.schema.hasTable("book").then(exists => {
       if (!exists) { 
         console.log("Book table not found. Creating...");
