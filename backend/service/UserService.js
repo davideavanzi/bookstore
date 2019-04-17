@@ -106,7 +106,6 @@ exports.logoutUser = function() {
   });
 }
 
-
 /**
  * Register a new user
  * This registers a new user in the store.
@@ -116,6 +115,10 @@ exports.logoutUser = function() {
  **/
 exports.registerUser = function(body) {
   return new Promise(function(resolve, reject) {
+    console.log("New user registration received:");
+    console.log(body);
+    console.log(body.firstName+" "+body.lastName+" "+body.password+" "+body.email+" "+body.phone);
+    //check on data, hash password, insert in database, email confirmation?
     resolve();
   });
 }

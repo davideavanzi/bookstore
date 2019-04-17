@@ -630,7 +630,7 @@ paths:
       description: "This registers a new user in the store."
       operationId: "registerUser"
       consumes:
-      - "application/x-www-form-urlencoded"
+      - "application/json"
       produces:
       - "application/json"
       parameters:

@@ -52,6 +52,8 @@ exports.bookDbSetup = function(database) {
  **/
 exports.addBook = function(body) {
   return new Promise(function(resolve, reject) {
+    console.log("book creation request:");
+    console.log(body);
     resolve();
   });
 }
