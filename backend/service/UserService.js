@@ -1,5 +1,44 @@
 'use strict';
 
+//global db connection variable
+let sqlDb;
+
+/**
+ * user table DB setup
+ *
+ * Creates a table in the DB to store user
+ **/
+exports.userDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if user table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("user").then(exists => {
+      if (!exists) { 
+        console.log("User table not found. Creating...");
+        database.schema.createTable("user", table => {
+          table.increments(); //id
+          table.string("name");
+          table.string("email");
+          table.string("phone");
+          table.string("address");
+          table.string("password");
+        }).then(exists => {
+          console.log("user table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("user table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
+    });
+  });
+};
 
 /**
  * Delete user

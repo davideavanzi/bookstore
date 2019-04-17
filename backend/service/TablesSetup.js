@@ -4,61 +4,105 @@
  * 
  ****************************************************/
 
+//global db connection variable
+let sqlDb;
+
 /**
- * Books-Authors table DB setup
+ * book_author table DB setup
  *
  * Creates a table in the DB to store relations between authors and books
  **/
-exports.authorshipDbSetup = function(database) {
-    sqlDb = database;
-    console.log("Checking if authorship table exists");
-    return database.schema.hasTable("authorship").then(exists => {
-      if (!exists) {
-        console.log("Table not found. Creating...");
-        return database.schema.createTable("authorship", table => {
-          table.integer("bookId");
-          table.integer("authorId");
-        });
-      }
+exports.book_authorDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if book_author table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("book_author").then(exists => {
+      if (!exists) { 
+        console.log("book_author table not found. Creating...");
+        database.schema.createTable("book_author", table => {
+          table.integer("id_book");
+          table.integer("id_author");
+        }).then(exists => {
+          console.log("book_author table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("book_author table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
     });
-  };
+  });
+};
 
 
 /**
- * genres table DB setup
+ * theme_book table DB setup
  *
- * Creates a table in the DB to store relations between authors and books
+ * Creates a table in the DB to store relations between themes and books
  **/
-exports.genresDbSetup = function(database) {
-    sqlDb = database;
-    console.log("Checking if genres table exists");
-    return database.schema.hasTable("genres").then(exists => {
-      if (!exists) {
-        console.log("Table not found. Creating...");
-        return database.schema.createTable("genres", table => {
-          table.increments();
-          table.text("name");
-        });
-      }
+exports.theme_bookDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if theme_book table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("theme_book").then(exists => {
+      if (!exists) { 
+        console.log("theme_book table not found. Creating...");
+        database.schema.createTable("theme_book", table => {
+          table.integer("id_book");
+          table.integer("id_theme");
+        }).then(exists => {
+          console.log("theme_book table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("theme_book table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
     });
-  };
-
+  });
+};
 
 /**
- * book_genres table DB setup
+ * cart_book table DB setup
  *
- * Creates a table in the DB to store relations between genres and books
+ * Creates a table in the DB to store relations between carts and books
  **/
-exports.bookGenresDbSetup = function(database) {
-    sqlDb = database;
-    console.log("Checking if book_genres table exists");
-    return database.schema.hasTable("book_genres").then(exists => {
-      if (!exists) {
-        console.log("Table not found. Creating...");
-        return database.schema.createTable("book_genres", table => {
-          table.integer("bookId");
-          table.text("genreId");
-        });
-      }
+exports.cart_bookDbSetup = function(database) {
+  sqlDb = database;
+  console.log("Checking if cart_book table exists");
+  return new Promise(resolve => {
+    database.schema.hasTable("cart_book").then(exists => {
+      if (!exists) { 
+        console.log("cart_book table not found. Creating...");
+        database.schema.createTable("cart_book", table => {
+          table.integer("id_book");
+          table.integer("id_cart");
+        }).then(exists => {
+          console.log("cart_book table created");
+          resolve(exists);
+        }).catch(error => {
+          console.error(error); 
+          reject(error);
+        }); 
+      } else {
+        console.log("cart_book table already present");
+        resolve(exists);
+      } 
+    }).catch(error => {
+      console.error(error); 
+      reject(error);
     });
-  };
+  });
+};
