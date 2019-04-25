@@ -1,5 +1,49 @@
 'use strict';
 
+var express = require('express');
+require('dotenv').config();
+
+var flash = require('connect-flash');
+
+var passport = require("passport");
+var request = require('request');
+
+var session = require("express-session");
+
+var app = express();
+
+app.use(require('cookie-parser')());
+app.use(require('express-session')({ secret: 'keyboard cat', resave: false, saveUninitialized: false }));
+app.use(require('body-parser').urlencoded({ extended: true }));
+
+app.use(passport.initialize());
+//app.use(express.session());
+app.use(passport.session());
+
+var bodyParser = require('body-parser')
+
+var path = require('path');
+
+app.use('/public', express.static(__dirname + '/public'));
+
+app.use(flash());
+app.use(session({ 
+    secret: 'keyboard cat', 
+    cookie: { 
+        secure: false
+}}));
+app.use(bodyParser());
+
+require('./lib/routes.js')(app);
+
+
+
+
+
+
+
+
+
 var fs = require('fs'),
     path = require('path'),
     http = require('http');
@@ -12,10 +56,6 @@ var serverPort = process.env.PORT || 8080;
 
 //timestamp to console logs
 require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss.l' });
-
-//cookie session modules
-let cookieSession = require("cookie-session");
-let cookieParser = require("cookie-parser");
 
 let serveStatic = require("serve-static");
 
@@ -32,10 +72,6 @@ var options = {
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
 var spec = fs.readFileSync(path.join(__dirname,'api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
-
-// Add cookies to responses
-app.use(cookieParser());
-app.use(cookieSession({ name: "session", keys: ["abc", "def"] }));
 
 // Initialize the Swagger middleware
 swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {

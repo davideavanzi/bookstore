@@ -10,27 +10,28 @@ let sqlDb;
  **/
 exports.userDbSetup = function(database) {
   sqlDb = database;
-  console.log("Checking if user table exists");
+  console.log("Checking if users table exists");
   return new Promise(function(resolve,reject) {
-    database.schema.hasTable("user").then(exists => {
+    database.schema.hasTable("users").then(exists => {
       if (!exists) { 
-        console.log("User table not found. Creating...");
-        database.schema.createTable("user", table => {
+        console.log("Users table not found. Creating...");
+        database.schema.createTable("users", table => {
           table.increments(); //id
-          table.string("name");
+          table.string("firstName");
+          table.string("lastName");
           table.string("email");
-          table.string("phone");
-          table.string("address");
+          //table.string("phone");
+          //table.string("address");
           table.string("password");
         }).then(exists => {
-          console.log("user table created");
+          console.log("users table created");
           resolve(exists);
         }).catch(error => {
           console.error(error); 
           reject(error);
         }); 
       } else {
-        console.log("user table already present");
+        console.log("users table already present");
         resolve(exists);
       } 
     }).catch(error => {
