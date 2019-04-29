@@ -118,44 +118,18 @@ exports.getBookById = function(bookId) {
  **/
 exports.getBooks = function(offset,limit,authorId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "photoUrl" : "photoUrl",
-  "price" : {
-    "currency" : "EUR",
-    "value" : 65.7
-  },
-  "author" : [ {
-    "name" : "name",
-    "id" : 6
-  } ],
-  "name" : "name",
-  "genre" : [ "genre" ],
-  "id" : 0,
-  "abstract" : "abstract"
-}, {
-  "photoUrl" : "photoUrl",
-  "price" : {
-    "currency" : "EUR",
-    "value" : 65.7
-  },
-  "author" : [ {
-    "name" : "name",
-    "id" : 6
-  } ],
-  "name" : "name",
-  "genre" : [ "genre" ],
-  "id" : 0,
-  "abstract" : "abstract"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
+    var books = {};
+    books = sqlDb("book").limit(limit).offset(offset)
+    if(authorId) {
+      books.where('author', authorId)
+    }
+    if (Object.keys(books).length > 0) {
+      resolve(books);
     } else {
-      resolve();
+      reject();
     }
   });
 }
-
 
 /**
  * Update a specific book

@@ -7,6 +7,7 @@ var fs = require('fs'),
 var app = require('connect')();
 var swaggerTools = require('swagger-tools');
 var jsyaml = require('js-yaml');
+
 //support for heroku server port
 var serverPort = process.env.PORT || 8080;
 
@@ -17,6 +18,7 @@ require('console-stamp')(console, { pattern: 'dd/mm/yyyy HH:MM:ss.l' });
 let cookieSession = require("cookie-session");
 let cookieParser = require("cookie-parser");
 
+//serve static
 let serveStatic = require("serve-static");
 
 //data layer setup
