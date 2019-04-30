@@ -2,6 +2,7 @@
 
 //global db connection variable
 let sqlDb;
+const bcrypt= require('bcrypt')
 
 /**
  * user table DB setup
@@ -17,11 +18,13 @@ exports.userDbSetup = function(database) {
         console.log("User table not found. Creating...");
         database.schema.createTable("user", table => {
           table.increments(); //id
-          table.string("name");
+          table.string("firstName");
+          table.string("lastName");
           table.string("email");
           table.string("phone");
-          table.string("address");
+          table.string("role");
           table.string("password");
+          table.string("salt");
         }).then(exists => {
           console.log("user table created");
           resolve(exists);
@@ -81,6 +84,32 @@ exports.getUserById = function(userId) {
 }
 
 
+const findUser = (userReq) => {
+  return database.raw("SELECT * FROM users WHERE username = ?", [body.username])
+    .then((data) => data.rows[0])
+}
+
+const checkPassword = (reqPassword, foundUser) => {
+  return new Promise((resolve, reject) =>
+    bcrypt.compare(reqPassword, foundUser.password, (err, response) => {
+        if (err) {
+          reject(err)
+        }
+        else if (response) {
+          resolve(response)
+        } else {
+          reject(new Error('Passwords do not match.'))
+        }
+    })
+  )
+}
+
+const updateUserToken = (token, user) => {
+  return database.raw("UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token", [token, user.id])
+    .then((data) => data.rows[0])
+}
+
+
 /**
  * Logs user into the system
  *
@@ -90,9 +119,28 @@ exports.getUserById = function(userId) {
  **/
 exports.loginUser = function(username,password) {
   return new Promise(function(resolve, reject) {
-    resolve();
+    console.log(body);
+    const signin = (request, response) => {
+      const userReq = request.body
+      let user
+
+      findUser(userReq)
+        .then(foundUser => {
+          user = foundUser
+          return checkPassword(body.password, foundUser)
+        })
+        //.then((res) => createToken())
+        //.then(token => updateUserToken(token, user))
+        .then(() => {
+          //delete user.password
+          response.status(200).json(user)
+        })
+        .catch((err) => console.error(err))
+    }
   });
 }
+
+
 
 
 /**
@@ -114,14 +162,47 @@ exports.logoutUser = function() {
  * no response value expected for this operation
  **/
 exports.registerUser = function(body) {
-  return new Promise(function(resolve, reject) {
-    console.log("New user registration received:");
-    console.log(body);
-    console.log(body.firstName+" "+body.lastName+" "+body.password+" "+body.email+" "+body.phone);
-    //check on data, hash password, insert in database, email confirmation?
-    resolve();
-  });
-}
+    return new Promise(function(resolve, reject) {
+      console.log(body.email);
+      try {
+          sqlDb('users').where('email',body.email).select().then(result => {
+            if (result.length > 0) {
+              console.log("User already registered! Username: " + body.email);
+              resolve("User already registered! Username: " + body.email);
+            }
+            else {
+              if (body.password.length > 0) {
+                bcrypt.genSalt (10, (err, salt) => {
+                  if (err){ 
+                    console.log("error in salting");
+                    resolve("some errors occours");
+                    throw(err);
+                  }
+                  bcrypt.hash (body.password, salt, (err, hash) => {
+                    if (err) {
+                      console.log("error in hashing");
+                      resolve("some errors occours");
+                      throw (err);
+                    }
+                    console.log("hashed and salted passwd: "+ hash);
+                    let insert = sqlDb('users').insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role, salt: salt});
+                    resolve(insert);
+                    console.log("User registered! Username: " + body.email)
+                  })
+                })
+              }
+              else  
+                resolve("body.password empty");
+            }
+          });
+      } 
+      catch(err){
+        console.error(err);
+        throw(err)
+      }
+
+    });}
+
 
 
 /**
