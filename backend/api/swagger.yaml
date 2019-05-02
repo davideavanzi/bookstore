@@ -655,20 +655,16 @@ paths:
       summary: "Logs user into the system"
       operationId: "loginUser"
       consumes:
-      - "application/x-www-form-urlencoded"
+      - "application/json"
       produces:
       - "application/json"
       parameters:
-      - name: "username"
-        in: "query"
-        description: "The user name for login"
+      - in: "body"
+        name: "body"
+        description: "Created user object"
         required: true
-        type: "string"
-      - name: "password"
-        in: "query"
-        description: "The password for login in clear text"
-        required: true
-        type: "string"
+        schema:
+          $ref: "#/definitions/Login"
       responses:
         200:
           description: "User logged in"
@@ -1601,6 +1597,21 @@ definitions:
       role: "USER"
       phone: "phone"
       id: 0
+      email: "email"
+  Login:
+    type: "object"
+    required:
+    - "email"
+    - "password"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+    xml:
+      name: "Login"
+    example:
+      password: "password"
       email: "email"
   Reservation:
     type: "object"

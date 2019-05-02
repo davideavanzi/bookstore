@@ -11,12 +11,12 @@ const bcrypt= require('bcrypt')
  **/
 exports.userDbSetup = function(database) {
   sqlDb = database;
-  console.log("Checking if user table exists");
+  console.log("Checking if users table exists");
   return new Promise(function(resolve,reject) {
-    database.schema.hasTable("user").then(exists => {
+    database.schema.hasTable("users").then(exists => {
       if (!exists) { 
-        console.log("User table not found. Creating...");
-        database.schema.createTable("user", table => {
+        console.log("Users table not found. Creating...");
+        database.schema.createTable("users", table => {
           table.increments(); //id
           table.string("firstName");
           table.string("lastName");
@@ -26,7 +26,7 @@ exports.userDbSetup = function(database) {
           table.string("password");
           table.string("salt");
         }).then(exists => {
-          console.log("user table created");
+          console.log("users table created");
           resolve(exists);
         }).catch(error => {
           console.error(error); 
@@ -65,16 +65,6 @@ exports.deleteUser = function(userId) {
  **/
 exports.getUserById = function(userId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "firstName" : "firstName",
-  "lastName" : "lastName",
-  "password" : "password",
-  "role" : "USER",
-  "phone" : "phone",
-  "id" : 0,
-  "email" : "email"
-};
     if (Object.keys(examples).length > 0) {
       resolve(examples[Object.keys(examples)[0]]);
     } else {
@@ -85,29 +75,46 @@ exports.getUserById = function(userId) {
 
 
 const findUser = (userReq) => {
-  return database.raw("SELECT * FROM users WHERE username = ?", [body.username])
-    .then((data) => data.rows[0])
+  return new Promise(function(resolve, reject) {
+    try {
+      sqlDb('users').where('email',userReq).select().then(result => {
+        if (result.length > 0) {
+          resolve(result[0]);
+        }
+        else{
+          console.error("user " + userReq + " not found while login");
+          resolve(null);
+        }
+      });
+    }catch(err){
+        console.error(err);
+        throw(err)
+    }});
+
 }
 
 const checkPassword = (reqPassword, foundUser) => {
   return new Promise((resolve, reject) =>
     bcrypt.compare(reqPassword, foundUser.password, (err, response) => {
         if (err) {
+          console.error("error while checking password");
           reject(err)
         }
         else if (response) {
+          console.log("check password successful for user " + foundUser.email);
           resolve(response)
         } else {
-          reject(new Error('Passwords do not match.'))
+          console.error("wrong password for user " + foundUser.email);
+          resolve(null);
         }
     })
   )
 }
 
-const updateUserToken = (token, user) => {
+/*const updateUserToken = (token, user) => {
   return database.raw("UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token", [token, user.id])
     .then((data) => data.rows[0])
-}
+}*/
 
 
 /**
@@ -117,27 +124,31 @@ const updateUserToken = (token, user) => {
  * password String The password for login in clear text
  * no response value expected for this operation
  **/
-exports.loginUser = function(username,password) {
+exports.loginUser = function(body) {
   return new Promise(function(resolve, reject) {
-    console.log(body);
-    const signin = (request, response) => {
-      const userReq = request.body
-      let user
-
-      findUser(userReq)
-        .then(foundUser => {
-          user = foundUser
-          return checkPassword(body.password, foundUser)
+      let user;
+      findUser(body.email).then(foundUser => {
+          console.log(foundUser);
+          if(foundUser){
+            return checkPassword(body.password, foundUser);
+          }
+          else{
+            console.error("username " + body.email + " not found while login");
+            reject("username or password do not match");
+            //throw some error???
+          }
         })
         //.then((res) => createToken())
         //.then(token => updateUserToken(token, user))
-        .then(() => {
-          //delete user.password
-          response.status(200).json(user)
+        .then((success) => {
+          if(success){
+            resolve("login completed for user " + body.email);
+          }else{
+            reject("username or password do not match");
+          }
         })
-        .catch((err) => console.error(err))
-    }
-  });
+        .catch((err) => console.error(err));
+    });
 }
 
 
@@ -163,7 +174,6 @@ exports.logoutUser = function() {
  **/
 exports.registerUser = function(body) {
     return new Promise(function(resolve, reject) {
-      console.log(body.email);
       try {
           sqlDb('users').where('email',body.email).select().then(result => {
             if (result.length > 0) {
