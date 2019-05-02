@@ -4,13 +4,10 @@ module.exports = {
 
   development: {
     client: 'pg',
-    connection: {
-      host:     'localhost',
-      charset:  'utf8',
-      database: 'postgres',
-      user:     'postgres',
-      password: 'postgres'
-    },
+    client: "pg",
+    connection: 'postres://postgres:postgres@localhost/postgres',
+    ssl: true,
+    debug: true,
     pool: {
       min: 2,
       max: 10

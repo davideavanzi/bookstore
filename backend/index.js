@@ -58,7 +58,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
   app.use(serveStatic(__dirname + "/www"));
 
   setupDataLayer().then(() => {
-    // Start the server, only after setting up datalayer
+    // Start the server, only after having set up datalayer
     http.createServer(app).listen(serverPort, function() {
       console.log(
         "Your server is listening on port %d (http://localhost:%d)",
