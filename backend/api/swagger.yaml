@@ -1608,11 +1608,15 @@ definitions:
         type: "string"
       password:
         type: "string"
+      remember:
+        type: "boolean"
+        default: false
     xml:
       name: "Login"
     example:
       password: "password"
       email: "email"
+      remember: true
   Reservation:
     type: "object"
     required:
