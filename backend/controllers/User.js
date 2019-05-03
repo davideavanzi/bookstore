@@ -4,14 +4,7 @@ var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
 
 
-var express = require('express'),
-    app = express(),
-    session = require('express-session');
-app.use(session({
-    secret: '2C44-4D44-WppQ38S',
-    resave: true,
-    saveUninitialized: true
-}));
+
 
 
 module.exports.deleteUser = function deleteUser (req, res, next) {
@@ -39,8 +32,12 @@ module.exports.getUserById = function getUserById (req, res, next) {
 module.exports.loginUser = function loginUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   var session = req.session;
-  if(session && session.loggedin){
-    console.log('login cookie!')
+  console.log(session);
+  console.log(session.loggedin);
+  console.log(session.user);
+
+  if(session && session.loggedin && session.user == body.email){
+    console.log("login with cookie for user: "+body.email);
     utils.writeJson(res, '200');
     return next();
   }
@@ -49,6 +46,7 @@ module.exports.loginUser = function loginUser (req, res, next) {
       if (response == '200'){
         console.log("session set true for user "+body.email);
         session.loggedin = true;
+        session.user = body.email;
       } else {
         console.error("user not login "+body.email+" with cookie");
         session.loggedin = false;
@@ -63,6 +61,18 @@ module.exports.loginUser = function loginUser (req, res, next) {
 module.exports.logoutUser = function logoutUser (req, res, next) {
   User.logoutUser()
     .then(function (response) {
+      if (req.session.loggedin){
+        console.log("session was set "+req.session.loggedin+" for user "+req.session.user);
+        req.session.loggedin = false;         
+        //req.session.destroy(); //this now not work!
+        //which one of the two is better?
+        console.log("session is set "+req.session.loggedin+" for user "+req.session.user);
+        response='200';
+      } else {
+        console.error("user "+req.session.user+" was not logined in with cookie");
+        response='403';
+      }
+      console.log(req.session.loggedin);
       utils.writeJson(res, response);
     })
     .catch(function (response) {

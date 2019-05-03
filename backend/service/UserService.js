@@ -123,29 +123,21 @@ const checkPassword = (reqPassword, foundUser) => {
 exports.loginUser = function(body, session) {
   return new Promise(function(resolve, reject) {
     console.log(session.loggedin);
-    if(session.loggedin){
-      console.log("user login "+body.email+" with cookie");
-      resolve('200');
-    } else {
-      let user;
-      findUser(body.email).then(foundUser => {
-        console.log(foundUser);
-        if(foundUser){
-          return checkPassword(body.password, foundUser);
-        } else {
-          console.error("username " + body.email + " not found while login");
-          reject('403');
-          //throw some error???
-        }
-      }).then((success) => {
-        if(success){
-          resolve('200');
-        } else {
-          reject('403');
-        }
-        //else already logged in
-        }).catch((err) => console.error(err));
-    }
+    let user;
+    findUser(body.email).then(foundUser => {
+      console.log(foundUser);
+      if(foundUser){
+        return checkPassword(body.password, foundUser);
+      } else {
+        console.error("username " + body.email + " not found while login");
+        reject('403');
+      }
+    }).then((success) => {
+      if(success){
+        resolve('200');
+      } else {
+        reject('403');
+      }}).catch((err) => console.error(err));
   });
 }
 
