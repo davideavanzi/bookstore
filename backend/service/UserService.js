@@ -2,7 +2,9 @@
 
 //global db connection variable
 let sqlDb;
-const bcrypt= require('bcrypt')
+const bcrypt= require('bcrypt');
+
+
 
 /**
  * user table DB setup
@@ -24,7 +26,6 @@ exports.userDbSetup = function(database) {
           table.string("phone");
           table.string("role");
           table.string("password");
-          table.string("salt");
         }).then(exists => {
           console.log("users table created");
           resolve(exists);
@@ -111,11 +112,6 @@ const checkPassword = (reqPassword, foundUser) => {
   )
 }
 
-/*const updateUserToken = (token, user) => {
-  return database.raw("UPDATE users SET token = ? WHERE id = ? RETURNING id, username, token", [token, user.id])
-    .then((data) => data.rows[0])
-}*/
-
 
 /**
  * Logs user into the system
@@ -124,34 +120,34 @@ const checkPassword = (reqPassword, foundUser) => {
  * password String The password for login in clear text
  * no response value expected for this operation
  **/
-exports.loginUser = function(body) {
+exports.loginUser = function(body, session) {
   return new Promise(function(resolve, reject) {
+    console.log(session.loggedin);
+    if(session.loggedin){
+      console.log("user login "+body.email+" with cookie");
+      resolve('200');
+    } else {
       let user;
       findUser(body.email).then(foundUser => {
-          console.log(foundUser);
-          if(foundUser){
-            return checkPassword(body.password, foundUser);
-          }
-          else{
-            console.error("username " + body.email + " not found while login");
-            reject("username or password do not match");
-            //throw some error???
-          }
-        })
-        //.then((res) => createToken())
-        //.then(token => updateUserToken(token, user))
-        .then((success) => {
-          if(success){
-            resolve("login completed for user " + body.email);
-          }else{
-            reject("username or password do not match");
-          }
-        })
-        .catch((err) => console.error(err));
-    });
+        console.log(foundUser);
+        if(foundUser){
+          return checkPassword(body.password, foundUser);
+        } else {
+          console.error("username " + body.email + " not found while login");
+          reject('403');
+          //throw some error???
+        }
+      }).then((success) => {
+        if(success){
+          resolve('200');
+        } else {
+          reject('403');
+        }
+        //else already logged in
+        }).catch((err) => console.error(err));
+    }
+  });
 }
-
-
 
 
 /**
@@ -195,7 +191,7 @@ exports.registerUser = function(body) {
                       throw (err);
                     }
                     console.log("hashed and salted passwd: "+ hash);
-                    let insert = sqlDb('users').insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role, salt: salt});
+                    let insert = sqlDb('users').insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role});
                     resolve(insert);
                     console.log("User registered! Username: " + body.email)
                   })
