@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let sqlDb;
+let {db} = require('./db');
 
 /**
  * Review table DB setup
@@ -9,7 +9,7 @@ let sqlDb;
  * Creates a table in the DB to store Review
  **/
 exports.reviewDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if review table exists");
   return new Promise(function(resolve,reject) {
     database.schema.hasTable("review").then(exists => {

@@ -1,8 +1,9 @@
-const knex = require('knex');  
+const knex = require("knex");  
 const environment = 'development'  
 const config = require('../knexfile');
 
-let sqlDb = knex(config[environment]);
+let db = knex(config[environment]);
+
 
 //table names conversion
 exports.TABLES =  {  
@@ -21,16 +22,17 @@ exports.TABLES =  {
     BOOK_CART: 'cart_book'
 };
 
+
 //DB Setup to latest migration
 function setupDataLayer () {
     console.log("Setting up data layer");
     return new Promise(resolve => {
         //checking if migration is up to date
         console.log("(1/3) running [knex.migrate.latest()]");
-        sqlDb.migrate.latest().then(function () {
+        db.migrate.latest().then(function () {
             console.log("(2/3) running [knex.seed.run()]");
             //seed database TODO
-            //return sqlDb.seed.run();
+            //db.seed.run();
         }).then(function () {
             var s = "(3/3) database ready.";
             resolve();
@@ -42,5 +44,4 @@ function setupDataLayer () {
     })
   }
 
-
-module.exports = { database: sqlDb, setupDataLayer };
+module.exports = { db: db, setupDataLayer };

@@ -1,7 +1,8 @@
 'use strict';
 
 //global db connection variable
-let sqlDb;
+let {db} = require('./db');
+
 
 /**
  * Book table DB setup
@@ -9,7 +10,7 @@ let sqlDb;
  * Creates a table in the DB to store books
  **/
 exports.bookDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if book table exists");
   return new Promise(function(resolve,reject) {
     database.schema.hasTable("book").then(exists => {
@@ -119,7 +120,7 @@ exports.getBookById = function(bookId) {
 exports.getBooks = function(offset,limit,authorId) {
   return new Promise(function(resolve, reject) {
     var books = {};
-    books = sqlDb("book").limit(limit).offset(offset)
+    books = db("book").limit(limit).offset(offset)
     if(authorId) {
       books.where('author', authorId)
     }

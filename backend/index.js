@@ -22,7 +22,7 @@ let cookieParser = require("cookie-parser");
 let serveStatic = require("serve-static");
 
 //data layer setup
-let { setupDataLayer } = require("./service/DataLayer");
+let { setupDataLayer } = require("./service/db");
 
 // swaggerRouter configuration
 var options = {

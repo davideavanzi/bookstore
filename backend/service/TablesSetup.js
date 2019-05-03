@@ -5,7 +5,7 @@
  ****************************************************/
 
 //global db connection variable
-let sqlDb;
+let {db} = require('./db');
 
 /**
  * book_author table DB setup
@@ -13,7 +13,7 @@ let sqlDb;
  * Creates a table in the DB to store relations between authors and books
  **/
 exports.book_authorDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if book_author table exists");
   return new Promise(resolve => {
     database.schema.hasTable("book_author").then(exists => {
@@ -47,7 +47,7 @@ exports.book_authorDbSetup = function(database) {
  * Creates a table in the DB to store relations between themes and books
  **/
 exports.theme_bookDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if theme_book table exists");
   return new Promise(resolve => {
     database.schema.hasTable("theme_book").then(exists => {
@@ -80,7 +80,7 @@ exports.theme_bookDbSetup = function(database) {
  * Creates a table in the DB to store relations between carts and books
  **/
 exports.cart_bookDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if cart_book table exists");
   return new Promise(function(resolve,reject) {
     database.schema.hasTable("cart_book").then(exists => {

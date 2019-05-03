@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let sqlDb;
+let {db} = require('./db');
 
 /**
  * theme table DB setup
@@ -9,7 +9,7 @@ let sqlDb;
  * Creates a table in the DB to store theme
  **/
 exports.themeDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if theme table exists");
   return new Promise(function(resolve,reject) {
     database.schema.hasTable("theme").then(exists => {

@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let sqlDb;
+let {db} = require('./db');
 
 /**
  * Interview table DB setup
@@ -9,7 +9,7 @@ let sqlDb;
  * Creates a table in the DB to store interviews
  **/
 exports.interviewDbSetup = function(database) {
-  sqlDb = database;
+  db = database;
   console.log("Checking if interview table exists");
   return new Promise(function(resolve,reject) {
     database.schema.hasTable("interview").then(exists => {
