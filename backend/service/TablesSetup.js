@@ -5,7 +5,7 @@
  ****************************************************/
 
 //global db connection variable
-let {db} = require('./db');
+let {db, TABLES} = require('./db');
 
 /**
  * book_author table DB setup

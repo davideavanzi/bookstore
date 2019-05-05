@@ -1,8 +1,7 @@
 'use strict';
 
 //global db connection variable
-let {db} = require('./db');
-
+let {db, TABLES} = require('./db');
 
 /**
  * Author table DB setup
@@ -13,10 +12,10 @@ exports.authorDbSetup = function(database) {
   db = database;
   console.log("Checking if author table exists");
   return new Promise(function(resolve,reject) {
-    database.schema.hasTable("author").then(exists => {
+    database.schema.hasTable(TABLES.AUTHOR).then(exists => {
       if (!exists) { 
         console.log("Author table not found. Creating...");
-        database.schema.createTable("author", table => {
+        database.schema.createTable(TABLES.AUTHOR, table => {
           table.increments(); //id
           table.string("name");
           table.text("bio");
@@ -76,16 +75,17 @@ exports.deleteAuthor = function(authorId) {
  **/
 exports.getAuthorById = function(authorId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "name" : "name",
-  "id" : 6
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.AUTRHOD).where({id: authorId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(author) {
+      if (Object.keys(author).length > 0) {
+        resolve(author);
+      } else {
+        resolve();
+      }
+    });
   });
 }
 
@@ -96,24 +96,28 @@ exports.getAuthorById = function(authorId) {
  *
  * offset Integer Pagination offset. Default is 0 (optional)
  * limit Integer Maximum number of items per page. Default is 20, max is 500. (optional)
- * authorId Long Id of the author to filter books (optional)
+ * bookId Long Id of the book to filter authors (optional)
  * returns List
  **/
-exports.getAuthors = function(offset,limit,authorId) {
+exports.getAuthors = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "name" : "name",
-  "id" : 6
-}, {
-  "name" : "name",
-  "id" : 6
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.AUTHOR).limit(limit).offset(offset)
+    .modify(function(queryBuilder) {
+      if(authorId) {
+        //TODO: FILTER BY BOOK
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(authors) {
+      if (Object.keys(authors).length > 0) {
+        resolve(authors);
+      } else {
+        //No authors found
+        resolve();
+      }
+    });
   });
 }
 

@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let {db} = require('./db');
+let {db, TABLES} = require('./db');
 
 /**
  * Cart table DB setup
@@ -37,57 +37,27 @@ exports.cartDbSetup = function(database) {
   });
 };
 /**
- * Get the content of a cart
+ * Get the content of a cart from its id (corresponding to user id)
  *
  * cartId Long 
  * returns Cart
+ * 
+ * TODO: check that fetching user is the proper one
  **/
 exports.getCartById = function(cartId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "books" : [ {
-    "photoUrl" : "photoUrl",
-    "price" : {
-      "currency" : "EUR",
-      "value" : 65.7
-    },
-    "author" : [ {
-      "name" : "name",
-      "id" : 6
-    }, {
-      "name" : "name",
-      "id" : 6
-    } ],
-    "name" : "name",
-    "genre" : [ "genre", "genre" ],
-    "id" : 0,
-    "abstract" : "abstract"
-  }, {
-    "photoUrl" : "photoUrl",
-    "price" : {
-      "currency" : "EUR",
-      "value" : 65.7
-    },
-    "author" : [ {
-      "name" : "name",
-      "id" : 6
-    }, {
-      "name" : "name",
-      "id" : 6
-    } ],
-    "name" : "name",
-    "genre" : [ "genre", "genre" ],
-    "id" : 0,
-    "abstract" : "abstract"
-  } ],
-  "username" : "username"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.CART).where({id: cartId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(cart) {
+      if (Object.keys(cart).length > 0) {
+        resolve(cart);
+      } else {
+        //no cart found
+        resolve();
+      }
+    });
   });
 }
 

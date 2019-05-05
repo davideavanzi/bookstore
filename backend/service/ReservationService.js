@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let {db} = require('./db');
+let {db, TABLES} = require('./db');
 
 /**
  * Reservation table DB setup

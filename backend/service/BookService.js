@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let {db} = require('./db');
+let {db, TABLES} = require('./db');
 
 
 /**
@@ -13,10 +13,10 @@ exports.bookDbSetup = function(database) {
   db = database;
   console.log("Checking if book table exists");
   return new Promise(function(resolve,reject) {
-    database.schema.hasTable("book").then(exists => {
+    database.schema.hasTable(TABLES.BOOK).then(exists => {
       if (!exists) { 
         console.log("Book table not found. Creating...");
-        database.schema.createTable("book", table => {
+        database.schema.createTable(TABLES.BOOK, table => {
           table.increments(); //id
           table.string("title");
           table.string("cover");
@@ -83,27 +83,18 @@ exports.deleteBook = function(bookId) {
  **/
 exports.getBookById = function(bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "photoUrl" : "photoUrl",
-  "price" : {
-    "currency" : "EUR",
-    "value" : 65.7
-  },
-  "author" : [ {
-    "name" : "name",
-    "id" : 6
-  } ],
-  "name" : "name",
-  "genre" : [ "genre" ],
-  "id" : 0,
-  "abstract" : "abstract"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.BOOK).where({id: bookId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(book){
+      if (Object.keys(book).length > 0) {   
+        resolve(book);
+      } else {
+        //No book found
+        resolve();
+      }
+    });   
   });
 }
 
@@ -119,16 +110,23 @@ exports.getBookById = function(bookId) {
  **/
 exports.getBooks = function(offset,limit,authorId) {
   return new Promise(function(resolve, reject) {
-    var books = {};
-    books = db("book").limit(limit).offset(offset)
-    if(authorId) {
-      books.where('author', authorId)
-    }
-    if (Object.keys(books).length > 0) {
-      resolve(books);
-    } else {
-      reject();
-    }
+    db(TABLES.BOOK).limit(limit).offset(offset)
+    .modify(function(queryBuilder) {
+      if(authorId) {
+        //TODO: FILTER BY AUTHOR
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(books) {
+      if (Object.keys(books).length > 0) {
+        resolve(books);
+      } else {
+        //No books found
+        resolve();
+      }
+    });
   });
 }
 

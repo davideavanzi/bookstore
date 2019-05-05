@@ -1,7 +1,7 @@
 'use strict';
 
 //global db connection variable
-let {db} = require('./db');
+let {db, TABLES} = require('./db');
 
 /**
  * Event table DB setup
@@ -74,19 +74,17 @@ exports.deleteEvent = function(eventId) {
  **/
 exports.getEventById = function(eventId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "location" : "location",
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "bookId" : 6
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.EVENT).where({id: eventId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(events) {
+      if (Object.keys(events).length > 0) {
+        resolve(events);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -102,25 +100,23 @@ exports.getEventById = function(eventId) {
  **/
 exports.getEvents = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "location" : "location",
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "bookId" : 6
-}, {
-  "location" : "location",
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "bookId" : 6
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.BOOK).limit(limit).offset(offset)
+    .modify(function(queryBuilder) {
+      if (bookId) {
+        queryBuilder.where({'id_book': bookId});
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (events) {
+      if (Object.keys(events).length > 0) {
+        resolve(events);
+      } else {
+        //no events found
+        resolve();
+      }
+    }); 
   });
 }
 

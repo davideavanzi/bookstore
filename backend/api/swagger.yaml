@@ -497,9 +497,9 @@ paths:
         description: "Maximum number of items per page. Default is 20, max is 500."
         required: false
         type: "integer"
-      - name: "authorId"
+      - name: "bookId"
         in: "query"
-        description: "Id of the author to filter books"
+        description: "Id of the book to filter authors"
         required: false
         type: "integer"
         format: "int64"

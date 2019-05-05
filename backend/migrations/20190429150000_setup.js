@@ -37,7 +37,28 @@ exports.up = function(knex, Promise) {
                     .then(console.log('created book table'));
                 }
             }),
-        //Carts table
+
+        //Users table
+        knex.schema
+        .hasTable('users')
+            .then(function (exists) {
+                if (!exists) {
+                return knex
+                    .schema
+                    .createTable('users', function (table) {
+                        table.increments('id').primary();
+                        table.string("firstName");
+                        table.string("lastName");
+                        table.string("email");
+                        table.string("phone");
+                        table.string("role");
+                        table.string("password"); 
+                    })
+                    .then(console.log('created users table'));
+                }
+            }),
+
+        //Carts table ( must be created after users )
         knex.schema
         .hasTable('cart')
             .then(function (exists) {
@@ -45,9 +66,9 @@ exports.up = function(knex, Promise) {
                 return knex
                     .schema
                     .createTable('cart', function (table) {
-                        table.increments('id').primary();
+                        //id is foreign key from user's id, on user delete related cart is deleted too.
+                        table.foreign('id').references('id').inTable('users').notNull().onDelete('CASCADE');
                         table.date("date"); 
-                        table.integer("user_id");
                     })
                     .then(console.log('created cart table'));
                 }
@@ -150,26 +171,6 @@ exports.up = function(knex, Promise) {
                 }
             }),
 
-        //Users table
-        knex.schema
-        .hasTable('users')
-            .then(function (exists) {
-                if (!exists) {
-                return knex
-                    .schema
-                    .createTable('users', function (table) {
-                        table.increments('id').primary();
-                        table.string("firstName");
-                        table.string("lastName");
-                        table.string("email");
-                        table.string("phone");
-                        table.string("role");
-                        table.string("password"); 
-                    })
-                    .then(console.log('created users table'));
-                }
-            }),
-
         //Book-Author relation table
         knex.schema
         .hasTable('book_author')
@@ -221,7 +222,7 @@ exports.down = function(knex, Promise) {
     return Promise.all([
         knex.schema.dropTable('author').then(console.log('deleted author table')),
         knex.schema.dropTable('book').then(console.log('deleted book table')),
-        knex.schema.dropTable('cart').then(console.log('deleted cart table')),
+        knex.schema.dropTable('cart').then(console.log('deleted cart table')), //must be deleted before users
         knex.schema.dropTable('event').then(console.log('deleted event table')),
         knex.schema.dropTable('genre').then(console.log('deleted genre table')),
         knex.schema.dropTable('interview').then(console.log('deleted interview table')),
