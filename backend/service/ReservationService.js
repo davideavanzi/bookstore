@@ -75,34 +75,17 @@ exports.deleteReservation = function(reservationId) {
  **/
 exports.getReservationById = function(reservationId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "quantity" : 6,
-  "book" : {
-    "photoUrl" : "photoUrl",
-    "price" : {
-      "currency" : "EUR",
-      "value" : 65
-    },
-    "author" : [ {
-      "name" : "name",
-      "id" : 6
-    }, {
-      "name" : "name",
-      "id" : 6
-    } ],
-    "name" : "name",
-    "genre" : [ "genre", "genre" ],
-    "id" : 0,
-    "abstract" : "abstract"
-  },
-  "userId" : 0
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.RESERVATION).where({id: reservationId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(reservation) {
+      if (Object.keys(reservation).length > 0) {
+        resolve(reservation);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -119,55 +102,30 @@ exports.getReservationById = function(reservationId) {
  **/
 exports.getReservations = function(offset,limit,userId,bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "quantity" : 6,
-  "book" : {
-    "photoUrl" : "photoUrl",
-    "price" : {
-      "currency" : "EUR",
-      "value" : 65
-    },
-    "author" : [ {
-      "name" : "name",
-      "id" : 6
-    }, {
-      "name" : "name",
-      "id" : 6
-    } ],
-    "name" : "name",
-    "genre" : [ "genre", "genre" ],
-    "id" : 0,
-    "abstract" : "abstract"
-  },
-  "userId" : 0
-}, {
-  "quantity" : 6,
-  "book" : {
-    "photoUrl" : "photoUrl",
-    "price" : {
-      "currency" : "EUR",
-      "value" : 65
-    },
-    "author" : [ {
-      "name" : "name",
-      "id" : 6
-    }, {
-      "name" : "name",
-      "id" : 6
-    } ],
-    "name" : "name",
-    "genre" : [ "genre", "genre" ],
-    "id" : 0,
-    "abstract" : "abstract"
-  },
-  "userId" : 0
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.RESERVATION).limit(limit).offset(offset)
+    //TODO:
+    .modify(function(queryBuilder) {
+      if (bookId) {
+        queryBuilder.where({'id_book': bookId});
+      }
+    })
+    //TODO:
+    .modify(function(queryBuilder) {
+      if (userId) {
+        queryBuilder.where({'id_user': userId});
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (reservations) {
+      if (Object.keys(reservations).length > 0) {
+        resolve(reservations);
+      } else {
+        //no reservations found
+        resolve();
+      }
+    }); 
   });
 }
 

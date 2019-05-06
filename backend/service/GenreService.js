@@ -73,16 +73,17 @@ exports.deleteGenre = function(genreId) {
  **/
 exports.getGenreById = function(genreId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "name"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.GENRE).where({id: genreId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(genre) {
+      if (Object.keys(genre).length > 0) {
+        resolve(genre);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -97,19 +98,18 @@ exports.getGenreById = function(genreId) {
  **/
 exports.getGenres = function(offset,limit) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "name" : "name"
-}, {
-  "id" : 0,
-  "name" : "name"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.GENRE).limit(limit).offset(offset)
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (genres) {
+      if (Object.keys(genres).length > 0) {
+        resolve(genres);
+      } else {
+        //no events found
+        resolve();
+      }
+    }); 
   });
 }
 

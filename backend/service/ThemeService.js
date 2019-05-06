@@ -74,16 +74,17 @@ exports.deleteTheme = function(themeId) {
  **/
 exports.getThemeById = function(themeId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "name" : "Theme"
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.THEME).where({id: themeId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(theme) {
+      if (Object.keys(theme).length > 0) {
+        resolve(theme);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -98,19 +99,18 @@ exports.getThemeById = function(themeId) {
  **/
 exports.getThemes = function(offset,limit) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "name" : "Theme"
-}, {
-  "id" : 0,
-  "name" : "Theme"
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.THEME).limit(limit).offset(offset)
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (themes) {
+      if (Object.keys(themes).length > 0) {
+        resolve(themes);
+      } else {
+        //no themes found
+        resolve();
+      }
+    }); 
   });
 }
 

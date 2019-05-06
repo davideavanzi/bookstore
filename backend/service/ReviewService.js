@@ -76,19 +76,17 @@ exports.deleteReview = function(reviewId) {
  **/
 exports.getReviewById = function(reviewId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "rate" : 5,
-  "id" : 0,
-  "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.REVIEW).where({id: reviewId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(review) {
+      if (Object.keys(review).length > 0) {
+        resolve(review);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -105,25 +103,30 @@ exports.getReviewById = function(reviewId) {
  **/
 exports.getReviews = function(offset,limit,userId,bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "rate" : 5,
-  "id" : 0,
-  "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
-}, {
-  "rate" : 5,
-  "id" : 0,
-  "content" : "content",
-  "userId" : 6,
-  "bookId" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.REVIEW).limit(limit).offset(offset)
+    //TODO:
+    .modify(function(queryBuilder) {
+      if (bookId) {
+        queryBuilder.where({'id_book': bookId});
+      }
+    })
+    //TODO:
+    .modify(function(queryBuilder) {
+      if (userId) {
+        queryBuilder.where({'id_user': userId});
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (reviews) {
+      if (Object.keys(reviews).length > 0) {
+        resolve(reviews);
+      } else {
+        //no reviews found
+        resolve();
+      }
+    }); 
   });
 }
 

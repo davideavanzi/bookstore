@@ -76,19 +76,17 @@ exports.deleteInterview = function(interviewId) {
  **/
 exports.getInterviewById = function(interviewId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = {
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "interviewr" : "interviewer",
-  "bookId" : 1
-};
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.INTERVIEW).where({id: interviewId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(interview) {
+      if (Object.keys(interview).length > 0) {
+        resolve(interview);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
@@ -104,25 +102,23 @@ exports.getInterviewById = function(interviewId) {
  **/
 exports.getInterviews = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
-    var examples = {};
-    examples['application/json'] = [ {
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "interviewr" : "interviewer",
-  "bookId" : 1
-}, {
-  "id" : 0,
-  "title" : "title",
-  "content" : "content",
-  "interviewr" : "interviewer",
-  "bookId" : 1
-} ];
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.INTERVIEW).limit(limit).offset(offset)
+    .modify(function(queryBuilder) {
+      if (bookId) {
+        queryBuilder.where({'id_book': bookId});
+      }
+    })
+    .catch(error => {
+      reject(error);
+    })
+    .then(function (interviews) {
+      if (Object.keys(interviews).length > 0) {
+        resolve(interviews);
+      } else {
+        //no events found
+        resolve();
+      }
+    }); 
   });
 }
 

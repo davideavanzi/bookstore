@@ -66,11 +66,17 @@ exports.deleteUser = function(userId) {
  **/
 exports.getUserById = function(userId) {
   return new Promise(function(resolve, reject) {
-    if (Object.keys(examples).length > 0) {
-      resolve(examples[Object.keys(examples)[0]]);
-    } else {
-      resolve();
-    }
+    db(TABLES.USER).where({id: userId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(user) {
+      if (Object.keys(user).length > 0) {
+        resolve(user);
+      } else {
+        resolve();
+      }
+    });  
   });
 }
 
