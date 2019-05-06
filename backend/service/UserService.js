@@ -78,7 +78,7 @@ exports.getUserById = function(userId) {
 const findUser = (userReq) => {
   return new Promise(function(resolve, reject) {
     try {
-      db('users').where('email',userReq).select().then(result => {
+      db(TABLES.USER).where('email',userReq).select().then(result => {
         if (result.length > 0) {
           resolve(result[0]);
         }
@@ -163,7 +163,7 @@ exports.logoutUser = function() {
 exports.registerUser = function(body) {
     return new Promise(function(resolve, reject) {
       try {
-          db('users').where('email',body.email).select().then(result => {
+          db(TABLES.USER).where('email',body.email).select().then(result => {
             if (result.length > 0) {
               console.log("User already registered! Username: " + body.email);
               resolve("User already registered! Username: " + body.email);
@@ -183,7 +183,7 @@ exports.registerUser = function(body) {
                       throw (err);
                     }
                     console.log("hashed and salted passwd: "+ hash);
-                    let insert = db('users').insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role, salt: salt});
+                    let insert = db(TABLES.USER).insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role, salt: salt});
                     resolve(insert);
                     console.log("User registered! Username: " + body.email)
                   })

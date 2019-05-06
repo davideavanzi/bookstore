@@ -6,7 +6,7 @@ let db = knex(config[environment]);
 
 
 //table names conversion
-exports.TABLES =  {  
+let TABLES =  {  
     AUTHOR: 'author',
     BOOK: 'book',
     CART: 'cart',
@@ -22,7 +22,6 @@ exports.TABLES =  {
     BOOK_CART: 'cart_book'
 };
 
-
 //DB Setup to latest migration
 function setupDataLayer () {
     console.log("Setting up data layer");
@@ -32,7 +31,7 @@ function setupDataLayer () {
         db.migrate.latest().then(function () {
             console.log("(2/3) running [knex.seed.run()]");
             //seed database TODO
-            //db.seed.run();
+            //return db.seed.run();
         }).then(function () {
             var s = "(3/3) database ready.";
             resolve();
@@ -44,4 +43,4 @@ function setupDataLayer () {
     })
   }
 
-module.exports = { db: db, setupDataLayer };
+module.exports = { db: db, TABLES, setupDataLayer };

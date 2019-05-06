@@ -57,7 +57,7 @@ exports.up = function(knex, Promise) {
                     .then(console.log('created users table'));
                 }
             }),
-
+        
         //Carts table ( must be created after users )
         knex.schema
         .hasTable('cart')
@@ -67,13 +67,14 @@ exports.up = function(knex, Promise) {
                     .schema
                     .createTable('cart', function (table) {
                         //id is foreign key from user's id, on user delete related cart is deleted too.
-                        table.foreign('id').references('id').inTable('users').notNull().onDelete('CASCADE');
+                        table.integer('id').unsigned();
+                        table.foreign('id').references('id').inTable('users').onDelete('CASCADE');
                         table.date("date"); 
                     })
                     .then(console.log('created cart table'));
                 }
             }),
-
+ 
         //Events table
         knex.schema
         .hasTable('event')
