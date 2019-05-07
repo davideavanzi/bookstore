@@ -26,6 +26,7 @@ exports.userDbSetup = function(database) {
           table.string("phone");
           table.string("role");
           table.string("password");
+          table.string("token")
         }).then(exists => {
           console.log("users table created");
           resolve(exists);
@@ -128,21 +129,19 @@ const checkPassword = (reqPassword, foundUser) => {
  **/
 exports.loginUser = function(body, session) {
   return new Promise(function(resolve, reject) {
-    console.log(session.loggedin);
     let user;
     findUser(body.email).then(foundUser => {
-      console.log(foundUser);
       if(foundUser){
         return checkPassword(body.password, foundUser);
       } else {
         console.error("username " + body.email + " not found while login");
-        reject('403');
+        reject('401');
       }
     }).then((success) => {
       if(success){
         resolve('200');
       } else {
-        reject('403');
+        reject('401');
       }}).catch((err) => console.error(err));
   });
 }
@@ -167,45 +166,45 @@ exports.logoutUser = function() {
  * no response value expected for this operation
  **/
 exports.registerUser = function(body) {
-    return new Promise(function(resolve, reject) {
-      try {
-          db(TABLES.USER).where('email',body.email).select().then(result => {
-            if (result.length > 0) {
-              console.log("User already registered! Username: " + body.email);
-              resolve("User already registered! Username: " + body.email);
-            }
-            else {
-              if (body.password.length > 0) {
-                bcrypt.genSalt (10, (err, salt) => {
-                  if (err){ 
-                    console.log("error in salting");
-                    resolve("some errors occours");
-                    throw(err);
-                  }
-                  bcrypt.hash (body.password, salt, (err, hash) => {
-                    if (err) {
-                      console.log("error in hashing");
-                      resolve("some errors occours");
-                      throw (err);
-                    }
-                    console.log("hashed and salted passwd: "+ hash);
-                    let insert = db(TABLES.USER).insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash})//, phone: body.phone, role: body.role, salt: salt});
-                    resolve(insert);
-                    console.log("User registered! Username: " + body.email)
-                  })
-                })
+  return new Promise(function(resolve, reject) {
+    try {
+      db(TABLES.USER).where('email',body.email).select().then(result => {
+        if (result.length > 0) {
+          console.log("User already registered! Username: " + body.email);
+          resolve('403');
+        }
+        else {
+          if (body.password.length > 0) {
+            bcrypt.genSalt (10, (err, salt) => {
+              if (err){ 
+                console.log("error in salting");
+                resolve('500');
+                throw(err);
               }
-              else  
-                resolve("body.password empty");
-            }
-          });
-      } 
-      catch(err){
-        console.error(err);
-        throw(err)
-      }
-
-    });}
+              bcrypt.hash (body.password, salt, (err, hash) => {
+                if (err) {
+                  console.log("error in hashing");
+                  resolve('500');
+                  throw (err);
+                }
+                let insert = db(TABLES.USER).insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash, phone: body.phone});
+                resolve(insert);
+                //resolve('200');
+                console.log("User registered! Username: " + body.email)
+              })
+            })
+          }
+          else  
+            resolve('401');
+        }
+      });
+    } 
+    catch(err){
+      console.error(err);
+      throw(err)
+    }
+  });
+}
 
 
 
@@ -222,4 +221,3 @@ exports.updateUser = function(userId,body) {
     resolve();
   });
 }
-

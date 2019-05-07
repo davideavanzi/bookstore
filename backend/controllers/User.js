@@ -2,6 +2,9 @@
 
 var utils = require('../utils/writer.js');
 var User = require('../service/UserService');
+var crypto = require("crypto");
+
+let {db, TABLES} = require('../service/db');
 
 module.exports.deleteUser = function deleteUser (req, res, next) {
   var userId = req.swagger.params['userId'].value;
@@ -25,37 +28,113 @@ module.exports.getUserById = function getUserById (req, res, next) {
     });
 };
 
+const findUser = (userReq) => {
+  return new Promise(function(resolve, reject) {
+    try {
+      db(TABLES.USER).where('email',userReq).select().then(result => {
+        if (result.length > 0) {
+          resolve(result[0]);
+        }
+        else{
+          console.error("user " + userReq + " not found while login");
+          resolve(null);
+        }
+      });
+    }catch(err){
+        console.error(err);
+        throw(err)
+    }});
+}
+
+
+const updateToken = (token, userReq) => {
+  return new Promise(function(resolve, reject) {
+    try {
+      db(TABLES.USER).where({id: userReq.id}).update({token: token}).then(r => {
+        resolve(true);
+      })
+    }
+    catch(err){
+        console.error(err);
+        throw(err);
+    }});
+}
+
+const alreadyLoggedIn = (session) => {
+  return new Promise(function(resolve, reject){
+    if(session && session.loggedin){
+      findUser(session.user).then(foundUser => {
+        if(foundUser){
+          if(session.token){
+            resolve(foundUser.token == session.token);
+          }
+        }
+      });
+    } else
+      resolve(false);    
+  })
+}
+
+
+
+const newSession = (req, body) => {
+  return new Promise(function(resolve, reject){
+    try{
+      req.session.loggedin = true;
+      req.session.user = body.email;
+      if(body.remember){
+        req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
+        console.log("set one day expiration cookie for user "+body.email);
+      }
+      else{
+        req.sessionOptions.expires  = false;
+        console.log("set a standard session cookie for user "+body.email);
+      } 
+      let token = crypto.randomBytes(128).toString('hex');
+      req.session.token = token;
+      findUser(body.email).then(foundUser => {
+        if(foundUser){
+          updateToken(token, foundUser);
+        }
+      });
+      resolve(req.session);
+    } catch(e) {
+      console.error(e);
+      reject(null);
+      throw(e);
+    }
+  })
+}
+
+
 module.exports.loginUser = function loginUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   var session = req.session;
-  if(session && session.loggedin && session.user == body.email){
-    console.log("login with cookie for user: "+body.email);
-    utils.writeJson(res, '200');
-    return next();
-  }
-  User.loginUser(body, session)
-    .then(function (response) {
-      if (response == '200'){
-        console.log("session set true for user "+body.email);
-        session.loggedin = true;
-        session.user = body.email;
-        if(body.remember){
-          console.log("setting one day expiration cookie for user "+body.email);
-          req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
+  alreadyLoggedIn(session).then(result => {
+    if (result){
+      console.log("login with cookie for user: "+session.user);
+      utils.writeJson(res, '200');
+      return next();
+    }
+    else{
+      User.loginUser(body, session)
+      .then(function (response) {
+        if (response == '200'){
+          newSession(req, body).then(newSession => {
+            session=newSession;
+            console.log("session set up for user "+session.user);
+            utils.writeJson(res, response);
+          });
         }
-        else{
-          console.log("setting a standard session cookie for user "+body.email);
-          req.sessionOptions.expires  = false;          
+        else {
+          console.error("user not login "+body.email+" with cookie");
         }
-      } else {
-        console.error("user not login "+body.email+" with cookie");
-        session.loggedin = false;
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
       }
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+  });
 };
 
 module.exports.logoutUser = function logoutUser (req, res, next) {
@@ -63,7 +142,14 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
     .then(function (response) {
       if (req.session.loggedin){
         console.log("session was set "+req.session.loggedin+" for user "+req.session.user);
-        req.session.loggedin = false;         
+        req.session.loggedin = false;
+        let token = crypto.randomBytes(128).toString('hex');
+        findUser(req.session.user).then(foundUser => {
+          if(foundUser){
+            updateToken(token, foundUser);
+          }
+        });
+        req.session.token='';      
         //req.session.destroy(); //this now not work!
         //which one of the two is better?
         console.log("session is set "+req.session.loggedin+" for user "+req.session.user);
@@ -83,7 +169,8 @@ module.exports.registerUser = function registerUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   User.registerUser(body)
     .then(function (response) {
-      utils.writeJson(res, response);
+      console.log(response);
+      utils.writeJson(res, resonse);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
