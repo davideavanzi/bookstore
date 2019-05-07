@@ -187,9 +187,15 @@ exports.registerUser = function(body) {
                   resolve('500');
                   throw (err);
                 }
-                let insert = db(TABLES.USER).insert({email: body.email, firstName: body.firstName, lastName: body.lastName, password: hash, phone: body.phone});
-                resolve(insert);
-                //resolve('200');
+                db(TABLES.USER).insert({
+                  email: body.email, 
+                  firstName: body.firstName, 
+                  lastName: body.lastName, 
+                  password: hash, 
+                  phone: body.phone
+                }).then(result => {
+                  resolve('200');
+                });
                 console.log("User registered! Username: " + body.email)
               })
             })

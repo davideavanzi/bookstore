@@ -79,14 +79,13 @@ const alreadyLoggedIn = (session) => {
 
 const newSession = (req, body) => {
   return new Promise(function(resolve, reject){
-    try{
+    try {
       req.session.loggedin = true;
       req.session.user = body.email;
       if(body.remember){
         req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
         console.log("set one day expiration cookie for user "+body.email);
-      }
-      else{
+      }else {
         req.sessionOptions.expires  = false;
         console.log("set a standard session cookie for user "+body.email);
       } 
@@ -98,7 +97,7 @@ const newSession = (req, body) => {
         }
       });
       resolve(req.session);
-    } catch(e) {
+    }catch(e) {
       console.error(e);
       reject(null);
       throw(e);
@@ -111,12 +110,11 @@ module.exports.loginUser = function loginUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   var session = req.session;
   alreadyLoggedIn(session).then(result => {
-    if (result){
+    if (result) {
       console.log("login with cookie for user: "+session.user);
       utils.writeJson(res, '200');
       return next();
-    }
-    else{
+    }else {
       User.loginUser(body, session)
       .then(function (response) {
         if (response == '200'){
@@ -154,7 +152,7 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
         //which one of the two is better?
         console.log("session is set "+req.session.loggedin+" for user "+req.session.user);
         response='200';
-      } else {
+      }else {
         console.error("user "+req.session.user+" was not logined in with cookie");
         response='403';
       }
@@ -170,7 +168,7 @@ module.exports.registerUser = function registerUser (req, res, next) {
   User.registerUser(body)
     .then(function (response) {
       console.log(response);
-      utils.writeJson(res, resonse);
+      utils.writeJson(res, response);
     })
     .catch(function (response) {
       utils.writeJson(res, response);
