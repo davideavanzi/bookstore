@@ -76,22 +76,32 @@ exports.deleteBook = function(bookId) {
 
 /**
  * Find book by ID
- * Returns a book
+ * Returns a book with relative authors
  *
  * bookId Long ID of the book to retrieve
  * returns Book
  **/
 exports.getBookById = function(bookId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.BOOK).where({id: bookId})
+    db.select(`${TABLES.BOOK}.*`, `${TABLES.AUTHOR}.name as author_name`)
+      .from(TABLES.BOOK)
+      .leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
+      .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
+      .where(`${TABLES.BOOK}.id`, bookId)
     .catch(error => {
       reject(error);
     })
     .then(function(book){
       if (Object.keys(book).length > 0) {   
-        resolve(book);
-      } else {
         //No book found
+        resolve(book.reduce((book, authorEntry) => {
+          if (!book.authors) {
+              book.authors = [];
+          }
+          book.authors.push(authorEntry.author_name);
+          return book;
+        }, {}));
+      } else {
         resolve();
       }
     });   
@@ -113,7 +123,10 @@ exports.getBooks = function(offset,limit,authorId) {
     db(TABLES.BOOK).limit(limit).offset(offset)
     .modify(function(queryBuilder) {
       if(authorId) {
-        //TODO: FILTER BY AUTHOR
+        //FILTER BY AUTHOR (Authors are not extracted from query)
+        queryBuilder.leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
+        .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
+        .where(`${TABLES.AUTHOR}.id`, authorId)
       }
     })
     .catch(error => {

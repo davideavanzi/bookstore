@@ -7,6 +7,14 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
+
+// attach category to post
+exports.attachAuthorBook = (bookId, authorId) => {  
+  return db.insert({ id_book: bookId, id_author: authorId }).into(TABLES.BOOK_AUTHOR);//.returning('*');
+};
+
+
+
 /**
  * book_author table DB setup
  *
