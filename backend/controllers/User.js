@@ -89,7 +89,7 @@ const newSession = (req, body) => {
         req.sessionOptions.expires  = false;
         console.log("set a standard session cookie for user "+body.email);
       } 
-      let token = crypto.randomBytes(128).toString('hex');
+      let token = crypto.randomBytes(64).toString('hex');
       req.session.token = token;
       findUser(body.email).then(foundUser => {
         if(foundUser){
@@ -141,7 +141,7 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
       if (req.session.loggedin){
         console.log("session was set "+req.session.loggedin+" for user "+req.session.user);
         req.session.loggedin = false;
-        let token = crypto.randomBytes(128).toString('hex');
+        let token = crypto.randomBytes(64).toString('hex');
         findUser(req.session.user).then(foundUser => {
           if(foundUser){
             updateToken(token, foundUser);
@@ -167,7 +167,6 @@ module.exports.registerUser = function registerUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   User.registerUser(body)
     .then(function (response) {
-      console.log(response);
       utils.writeJson(res, response);
     })
     .catch(function (response) {
