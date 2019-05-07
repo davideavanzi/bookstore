@@ -83,6 +83,7 @@ exports.deleteBook = function(bookId) {
  **/
 exports.getBookById = function(bookId) {
   return new Promise(function(resolve, reject) {
+    //TODO: GET GENRE/THEMES
     db.select(`${TABLES.BOOK}.*`, `${TABLES.AUTHOR}.name as author_name`)
       .from(TABLES.BOOK)
       .leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
