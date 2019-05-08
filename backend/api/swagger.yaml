@@ -60,6 +60,18 @@ paths:
         required: false
         type: "integer"
         format: "int64"
+      - name: "themeId"
+        in: "query"
+        description: "Id of the theme to filter books"
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "genreId"
+        in: "query"
+        description: "Id of the genre to filter books"
+        required: false
+        type: "integer"
+        format: "int64"
       responses:
         200:
           description: "List of Books"

@@ -122,7 +122,6 @@ exports.getAuthors = function(offset,limit,bookId) {
   });
 }
 
-
 /**
  * Update a specific author
  * Update values of an author - this can only be done by the logged in ADMIN.

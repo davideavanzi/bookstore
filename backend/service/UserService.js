@@ -3,6 +3,8 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
+let { createCartForUser } = require("./CartService");
+
 //bcrypt
 const bcrypt= require('bcrypt')
 
@@ -193,7 +195,13 @@ exports.registerUser = function(body) {
                   lastName: body.lastName, 
                   password: hash, 
                   phone: body.phone
-                }).then(result => {
+                })
+                //get id of the inserted user and create a cart for it
+                .returning('id')
+                .then(function(insertedId) {
+                  createCartForUser(insertedId)
+                })
+                .then(() => {
                   resolve('200');
                 });
                 console.log("User registered! Username: " + body.email)

@@ -36,6 +36,8 @@ exports.cartDbSetup = function(database) {
     });
   });
 };
+
+
 /**
  * Get the content of a cart from its id (corresponding to user id)
  *
@@ -57,6 +59,27 @@ exports.getCartById = function(cartId) {
         //no cart found
         resolve();
       }
+    });
+  });
+}
+
+
+/**
+ * Create a cart from the user id
+ *
+ * userId Long 
+ * 
+ * TODO: check that fetching user is the proper one
+ **/
+exports.createCartForUser = function(userId) {
+  return new Promise(function(resolve, reject) {
+    db(TABLES.CART).insert({id: userId})
+    .catch(error => {
+      reject(error);
+    })
+    .then(() => {
+      console.log("created cart for user");
+      resolve();
     });
   });
 }
