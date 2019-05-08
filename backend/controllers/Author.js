@@ -39,8 +39,8 @@ module.exports.getAuthorById = function getAuthorById (req, res, next) {
 module.exports.getAuthors = function getAuthors (req, res, next) {
   var offset = req.swagger.params['offset'].value;
   var limit = req.swagger.params['limit'].value;
-  var authorId = req.swagger.params['authorId'].value;
-  Author.getAuthors(offset,limit,authorId)
+  var bookId = req.swagger.params['bookId'].value;
+  Author.getAuthors(offset,limit,bookId)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -5,7 +5,9 @@ exports.seed = function(knex, Promise) {
     .then(function () {
       // Inserts seed entries
       return knex('book').insert([
-        {title: 'book1', 
+        {
+        id: 1,
+        title: 'book1', 
         cover: 'cover_url_1',
         abstract: 'abstract1', 
         fact_sheet: 'factsheet1', 
@@ -13,15 +15,19 @@ exports.seed = function(knex, Promise) {
         value: '11',
         stock: '10'},
         
-        {title: 'book2', 
+        {
+        id: 2,
+        title: 'book2', 
         cover: 'cover_url_2',
         abstract: 'abstract2', 
         fact_sheet: 'factsheet2', 
         genre_id: '2',
         value: '22',
         stock: '20'},
-        
-        {title: 'book3', 
+
+        {
+        id: 3,
+        title: 'book3', 
         cover: 'cover_url_3',
         abstract: 'abstract3', 
         fact_sheet: 'factsheet3', 

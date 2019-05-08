@@ -94,15 +94,17 @@ exports.getBookById = function(bookId) {
     })
     .then(function(book){
       if (Object.keys(book).length > 0) {   
-        //No book found
-        resolve(book.reduce((book, authorEntry) => {
-          if (!book.authors) {
-              book.authors = [];
+        resolve(book.reduce((acc, val) => {
+          if (!acc.authors) {
+            acc = val;
+            acc.authors = [];
           }
-          book.authors.push(authorEntry.author_name);
-          return book;
+          acc.authors.push(val.author_name);
+          delete acc.author_name;
+          return acc;
         }, {}));
       } else {
+        //No book found
         resolve();
       }
     });   

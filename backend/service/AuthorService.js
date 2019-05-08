@@ -75,7 +75,7 @@ exports.deleteAuthor = function(authorId) {
  **/
 exports.getAuthorById = function(authorId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.AUTRHOD).where({id: authorId})
+    db(TABLES.AUTHOR).where({id: authorId})
     .catch(error => {
       reject(error);
     })
@@ -102,11 +102,12 @@ exports.getAuthorById = function(authorId) {
 exports.getAuthors = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.AUTHOR).limit(limit).offset(offset)
+    /*
     .modify(function(queryBuilder) {
       if(authorId) {
         //TODO: FILTER BY BOOK
       }
-    })
+    })*/
     .catch(error => {
       reject(error);
     })
