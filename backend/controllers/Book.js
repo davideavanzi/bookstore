@@ -40,7 +40,9 @@ module.exports.getBooks = function getBooks (req, res, next) {
   var offset = req.swagger.params['offset'].value;
   var limit = req.swagger.params['limit'].value;
   var authorId = req.swagger.params['authorId'].value;
-  Book.getBooks(offset,limit,authorId)
+  var themeId = req.swagger.params['themeId'].value;
+  var genreId = req.swagger.params['genreId'].value;
+  Book.getBooks(offset,limit,authorId,themeId,genreId)
     .then(function (response) {
       utils.writeJson(res, response);
     })

@@ -83,17 +83,19 @@ exports.deleteBook = function(bookId) {
  **/
 exports.getBookById = function(bookId) {
   return new Promise(function(resolve, reject) {
-    //TODO: GET GENRE/THEMES
-    db.select(`${TABLES.BOOK}.*`, `${TABLES.AUTHOR}.name as author_name`)
+    db.select(`${TABLES.BOOK}.*`, `${TABLES.GENRE}.* as genre`)
       .from(TABLES.BOOK)
-      .leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
-      .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
+      .innerJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
       .where(`${TABLES.BOOK}.id`, bookId)
     .catch(error => {
       reject(error);
     })
     .then(function(book){
-      if (Object.keys(book).length > 0) {   
+      if (Object.keys(book).length > 0) {  
+        book.authors = [];
+        book.authors.push(getAuthorsOfBookId(book.id));
+        book.themes = [];
+        book.themes.push(getThemesOfBookId(book.id));
         resolve(book.reduce((acc, val) => {
           if (!acc.authors) {
             acc = val;
@@ -121,15 +123,26 @@ exports.getBookById = function(bookId) {
  * authorId Long Id of the author to filter books (optional)
  * returns List
  **/
-exports.getBooks = function(offset,limit,authorId) {
+exports.getBooks = function(offset,limit,authorId,themeId,genreId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.BOOK).limit(limit).offset(offset)
     .modify(function(queryBuilder) {
       if(authorId) {
-        //FILTER BY AUTHOR (Authors are not extracted from query)
+        //FILTER BY AUTHOR (not extracted from query)
         queryBuilder.leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
         .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
         .where(`${TABLES.AUTHOR}.id`, authorId)
+      }
+      if(themeId) {
+        //FILTER BY THEME (not extracted from query)
+        queryBuilder.leftJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_book`, `${TABLES.BOOK}.id`)
+        .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.AUTHOR}.id`)
+        .where(`${TABLES.AUTHOR}.id`, authorId)
+      }
+      if(genreId) {
+        //FILTER BY GENRE (not extracted from query)
+        queryBuilder.innerJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
+        .where(`${TABLES.GENRE}.id`, genreId)
       }
     })
     .catch(error => {
@@ -160,3 +173,54 @@ exports.updateBook = function(bookId,body) {
   });
 }
 
+/**
+ * Find authors of a book by the book ID
+ * Returns a list of authors
+ *
+ * bookId Long ID of the book to retrieve authors
+ * returns List
+ **/
+exports.getAuthorsOfBookId = function(bookId) {
+  return new Promise(function(resolve, reject) {
+    db(TABLES.AUTHOR)
+      .innerJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
+      .where(`${TABLES.BOOK_AUTHOR}.id_book`, bookId)
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(authors){
+      if (Object.keys(authors).length > 0) {   
+        resolve(authors);
+      } else {
+        //No authors found
+        resolve();
+      }
+    });
+  });
+}
+
+/**
+ * Find themes of a book by the book ID
+ * Returns a list of themes
+ *
+ * bookId Long ID of the book to retrieve themes
+ * returns List
+ **/
+exports.getThemesOfBookId = function(bookId) {
+  return new Promise(function(resolve, reject) {
+    db(TABLES.THEME)
+      .innerJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.THEME}.id`)
+      .where(`${TABLES.BOOK_THEME}.id_book`, bookId)
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(themes){
+      if (Object.keys(themes).length > 0) {   
+        resolve(themes);
+      } else {
+        //No themes found
+        resolve();
+      }
+    });
+  });
+}
