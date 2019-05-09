@@ -63,7 +63,7 @@ exports.seed = function(knex, Promise) {
         stock: '32'},
         {
         id: 7,
-        title: 'Shining', 
+        title: 'The Shining', 
         cover: 'img/cover/shining.jpg',
         abstract: 'Signing a contract, Jack Torrance, a normal writer and former teacher agrees to take care of a hotel which has a long, violent past that puts everyone in the hotel in a nervous situation. While Jack slowly gets more violent and angry of his life, his son, Danny, tries to use a special talent, the "Shining", to inform the people outside about whatever that is going on in the hotel.', 
         fact_sheet: "The Shining is a horror novel by American author Stephen King. Published in 1977, it is King's third published novel and first hardback bestseller: the success of the book firmly established King as a preeminent author in the horror genre. The setting and characters are influenced by King's personal experiences, including both his visit to The Townplace Suites in Williamsport, PA in 1974 and his recovery from alcoholism. The novel was followed by a sequel, Doctor Sleep, published in 2013.", 
@@ -82,12 +82,21 @@ exports.seed = function(knex, Promise) {
         {
         id: 9,
         title: 'Harry Potter and the Chamber of Secrets', 
-        cover: 'img/cover/harry_potter_and_the_chamber_of_secrets',
+        cover: 'img/cover/harry_potter_and_the_chamber_of_secrets.jpg',
         abstract: "The Dursleys were so mean that hideous that summer that all Harry Potter wanted was to get back to the Hogwarts School for Witchcraft and Wizardry. But just as he's packing his bags, Harry receives a warning from a strange, impish creature named Dobby who says that if Harry Potter returns to Hogwarts, disaster will strike.", 
         fact_sheet: "Harry Potter and the Chamber of Secrets is a fantasy novel written by British author J. K. Rowling and the second novel in the Harry Potter series. The plot follows Harry's second year at Hogwarts School of Witchcraft and Wizardry, during which a series of messages on the walls of the school's corridors warn that the 'Chamber of Secrets' has been opened and that the 'heir of Slytherin' would kill all pupils who do not come from all-magical families. These threats are found after attacks which leave residents of the school petrified. Throughout the year, Harry and his friends Ron and Hermione investigate the attacks.", 
         genre_id: 10,
         value: '6.3',
         stock: '15'},
+        {
+        id: 10,
+        title: 'Son of time', 
+        cover: 'img/cover/son_of_time.jpg',
+        abstract: "Based on an Asimov short story, 'The Ugly Little Boy'. A children's nurse is hired as part of a scientific project aimed at bringing a living being from the past to the present. A four-year-old Neanderthal boy is snatched from his home and hurled 40,000 years into a terrifying future.",
+        fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
+        genre_id: 21,
+        value: '9.1',
+        stock: '5'}
       ]);
     });
 };
