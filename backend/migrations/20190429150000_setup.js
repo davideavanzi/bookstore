@@ -86,6 +86,8 @@ exports.up = function(knex, Promise) {
                         table.increments('id').primary();
                         table.string("title");
                         table.integer("id_book");
+                        table.string("location");
+                        table.text("content");
                     })
                     .then(console.log('created event table'));
                 }
