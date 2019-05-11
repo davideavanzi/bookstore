@@ -199,7 +199,7 @@ exports.registerUser = function(body) {
                 //get id of the inserted user and create a cart for it
                 .returning('id')
                 .then(function(insertedId) {
-                  createCartForUser(insertedId)
+                  createCartForUser(insertedId[0])
                 })
                 .then(() => {
                   resolve('200');

@@ -81,30 +81,28 @@ exports.deleteBook = function(bookId) {
  * bookId Long ID of the book to retrieve
  * returns Book
  **/
-exports.getBookById = function(bookId) {
+function getBookById(bookId) {
   return new Promise(function(resolve, reject) {
-    db.select(`${TABLES.BOOK}.*`, `${TABLES.GENRE}.* as genre`)
+    db.select(`${TABLES.BOOK}.*`, `${TABLES.GENRE}.name as genre_name`)
       .from(TABLES.BOOK)
-      .innerJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
+      .leftJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
       .where(`${TABLES.BOOK}.id`, bookId)
     .catch(error => {
       reject(error);
     })
-    .then(function(book){
-      if (Object.keys(book).length > 0) {  
-        book.authors = [];
-        book.authors.push(getAuthorsOfBookId(book.id));
-        book.themes = [];
-        book.themes.push(getThemesOfBookId(book.id));
-        resolve(book.reduce((acc, val) => {
-          if (!acc.authors) {
-            acc = val;
-            acc.authors = [];
-          }
-          acc.authors.push(val.author_name);
-          delete acc.author_name;
-          return acc;
-        }, {}));
+    .then(function(result){
+      if (Object.keys(result).length > 0) {  
+        var book = result[0];
+        var authors = getAuthorsOfBookId(bookId);
+        var themes = getThemesOfBookId(bookId);
+        Promise.all([authors, themes]).then(function(result) {
+          book.authors = [];
+          book.themes = [];
+          book.authors.push(result[0]);
+          book.themes.push();
+        }).then(() => {
+          resolve(book);
+        });
       } else {
         //No book found
         resolve();
@@ -122,12 +120,16 @@ exports.getBookById = function(bookId) {
  * limit Integer Maximum number of items per page. Default is 20, max is 500. (optional)
  * authorId Long Id of the author to filter books (optional)
  * returns List
+ * 
+ * TODO:
+ * genre filter overwrites book id!
  **/
-exports.getBooks = function(offset,limit,authorId,themeId,genreId) {
+function getBooks(offset,limit,authorId,themeId,genreId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.BOOK).limit(limit).offset(offset)
     .modify(function(queryBuilder) {
       if(authorId) {
+        //TODO: Do we really need to fetch author data in this query?
         //FILTER BY AUTHOR (not extracted from query)
         queryBuilder.leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
         .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
@@ -136,12 +138,13 @@ exports.getBooks = function(offset,limit,authorId,themeId,genreId) {
       if(themeId) {
         //FILTER BY THEME (not extracted from query)
         queryBuilder.leftJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_book`, `${TABLES.BOOK}.id`)
-        .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.AUTHOR}.id`)
-        .where(`${TABLES.AUTHOR}.id`, authorId)
+        .leftJoin(TABLES.THEME, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.THEME}.id`)
+        .where(`${TABLES.THEME}.id`, themeId)
       }
       if(genreId) {
         //FILTER BY GENRE (not extracted from query)
-        queryBuilder.innerJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
+        queryBuilder.select(`${TABLES.BOOK}.*`, `${TABLES.GENRE}.name as genre_name`)
+        .innerJoin(TABLES.GENRE, `${TABLES.GENRE}.id`, `${TABLES.BOOK}.genre_id`)
         .where(`${TABLES.GENRE}.id`, genreId)
       }
     })
@@ -180,7 +183,7 @@ exports.updateBook = function(bookId,body) {
  * bookId Long ID of the book to retrieve authors
  * returns List
  **/
-exports.getAuthorsOfBookId = function(bookId) {
+function getAuthorsOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.AUTHOR)
       .innerJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
@@ -189,7 +192,7 @@ exports.getAuthorsOfBookId = function(bookId) {
       reject(error);
     })
     .then(function(authors){
-      if (Object.keys(authors).length > 0) {   
+      if (Object.keys(authors).length > 0) {  
         resolve(authors);
       } else {
         //No authors found
@@ -206,7 +209,7 @@ exports.getAuthorsOfBookId = function(bookId) {
  * bookId Long ID of the book to retrieve themes
  * returns List
  **/
-exports.getThemesOfBookId = function(bookId) {
+function getThemesOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.THEME)
       .innerJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.THEME}.id`)
@@ -224,3 +227,5 @@ exports.getThemesOfBookId = function(bookId) {
     });
   });
 }
+
+module.exports = { getBookById, getBooks, getAuthorsOfBookId, getThemesOfBookId }

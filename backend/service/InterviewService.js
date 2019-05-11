@@ -135,4 +135,3 @@ exports.updateInterview = function(interviewId) {
     resolve();
   });
 }
-
