@@ -1423,7 +1423,7 @@ definitions:
       id:
         type: "integer"
         format: "int64"
-      name:
+      title:
         type: "string"
       genre:
         type: "array"
@@ -1432,10 +1432,10 @@ definitions:
           wrapped: true
         items:
           type: "string"
-      photoUrl:
+      cover:
         type: "string"
-      price:
-        $ref: "#/definitions/Amount"
+      value:
+        type: "number"
       abstract:
         type: "string"
       fact_sheet:
@@ -1453,14 +1453,12 @@ definitions:
     xml:
       name: "Book"
     example:
-      photoUrl: "photoUrl"
-      price:
-        currency: "EUR"
-        value: 65.70
+      cover: "coverUrl"
+      value: 65.70
       author:
       - name: "name"
         id: 6
-      name: "name"
+      title: "title"
       genre:
       - "genre"
       id: 0
@@ -1490,28 +1488,6 @@ definitions:
       title: "title"
       content: "content"
       bookId: 6
-  Amount:
-    type: "object"
-    required:
-    - "currency"
-    - "value"
-    properties:
-      value:
-        type: "number"
-        format: "double"
-        minimum: 0.01
-        maximum: 1000000000000000
-      currency:
-        $ref: "#/definitions/Currency"
-    description: "Price"
-    example:
-      currency: "EUR"
-      value: 65.70
-  Currency:
-    type: "string"
-    pattern: "^[A-Z]{3,3}$"
-    description: "currency identifier (3 letters)"
-    example: "EUR"
   Author:
     type: "object"
     properties:
@@ -1520,18 +1496,24 @@ definitions:
         format: "int64"
       name:
         type: "string"
+      bio:
+        type: "string"
+      photo:
+        type: "string"
     xml:
       name: "Author"
     example:
       name: "name"
       id: 6
+      bio: "bio"
+      photo: "photoUrl"
   Cart:
     type: "object"
     required:
-    - "username"
+    - "id"
     properties:
-      username:
-        type: "string"
+      id:
+        type: "integer"
       books:
         type: "array"
         xml:
@@ -1544,36 +1526,32 @@ definitions:
     example:
       books:
       - photoUrl: "photoUrl"
-        price:
-          currency: "EUR"
-          value: 65.70
+        value: 65.70
         author:
         - name: "name"
           id: 6
         - name: "name"
-          id: 6
-        name: "name"
+          id: 7
+        title: "name"
         genre:
         - "genre"
         - "genre"
-        id: 0
+        id: 1
         abstract: "abstract"
       - photoUrl: "photoUrl"
-        price:
-          currency: "EUR"
-          value: 65.70
+        value: 5.70
         author:
         - name: "name"
-          id: 6
+          id: 3
         - name: "name"
-          id: 6
-        name: "name"
+          id: 5
+        title: "name"
         genre:
         - "genre"
         - "genre"
-        id: 0
-        abstract: "abstract"
-      username: "username"
+        id: 2
+        abstact: "abstract"
+      id: 1
   User:
     type: "object"
     required:
@@ -1593,22 +1571,14 @@ definitions:
         type: "string"
       phone:
         type: "string"
-      role:
-        type: "string"
-        description: "User role"
-        default: "USER"
-        enum:
-        - "USER"
-        - "ADMIN"
     xml:
       name: "User"
     example:
       firstName: "firstName"
       lastName: "lastName"
       password: "password"
-      role: "USER"
       phone: "phone"
-      id: 0
+      id: 1
       email: "email"
   Login:
     type: "object"
@@ -1648,18 +1618,13 @@ definitions:
     example:
       quantity: 6
       book:
-        photoUrl: "photoUrl"
-        price:
-          currency: "EUR"
-          value: 65
+        cover: "coverUrl"
+        value: 65.70
         author:
         - name: "name"
           id: 6
-        - name: "name"
-          id: 6
-        name: "name"
+        title: "title"
         genre:
-        - "genre"
         - "genre"
         id: 0
         abstract: "abstract"
@@ -1682,11 +1647,9 @@ definitions:
         format: "int64"
       content:
         type: "string"
-        description: "message of the review"
-      rate:
+      star:
         type: "integer"
         format: "int64"
-        description: "Stars amount (1-5)"
         enum:
         - 1
         - 2
@@ -1696,7 +1659,7 @@ definitions:
     xml:
       name: "Review"
     example:
-      rate: 5
+      star: 5
       id: 0
       content: "content"
       userId: 6
@@ -1715,13 +1678,10 @@ definitions:
         format: "int64"
       title:
         type: "string"
-        description: "title of the interview"
       content:
         type: "string"
-        description: "message of the interview"
       interviewer:
         type: "string"
-        description: "name of the interviewer"
     xml:
       name: "Interview"
     example:
@@ -1740,7 +1700,6 @@ definitions:
         format: "int64"
       name:
         type: "string"
-        description: "name of the theme"
     xml:
       name: "Interview"
     example:
@@ -1756,7 +1715,6 @@ definitions:
         format: "int64"
       name:
         type: "string"
-        description: "name of the genre"
     xml:
       name: "Genre"
     example:
