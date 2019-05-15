@@ -2,6 +2,7 @@
 
 //global db connection variable
 let {db, TABLES} = require('./db');
+const upsert = require('knex-upsert')
 
 /**
  * Cart table DB setup
@@ -99,3 +100,55 @@ exports.updateCart = function(cartId,body) {
   });
 }
 
+/**
+ * Add a book to the cart of a user
+ * Update  - this can only be done by the logged in USER (proprietary of the cart or by an ADMIN).
+ *
+ * cartId Long id of the cart that needs to be updated
+ * bookId Id of the book to be added
+ * amount Long amount of books to add
+ * no response value expected for this operation
+ * 
+ * TODO: check user authentication. Or in the controller?
+ **/
+exports.addBookToCart = function(cartId,bookId,amount) {
+  return new Promise(function(resolve, reject) {
+    /*
+    upsert({
+      db,
+      table: TABLES.BOOK_CART,
+      object: { id_book: bookId, id_cart: cartId, amount: amount },
+      key: ['id_book','id_cart'],
+    })
+    */
+    db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart) VALUES (${bookId},${cartId}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount += ${amount} WHERE (id_book, id_cart) = (${bookId},${cartId});`)
+      .then(() => {
+        resolve();
+      })
+    //resolve();
+  });
+}
+
+
+/**
+ * Remove a book from the cart of a user
+ * Update  - this can only be done by the logged in USER (proprietary of the cart or by an ADMIN).
+ *
+ * cartId Long id of the cart that needs to be updated
+ * bookId Id of the book to be added
+ * amount Long amount of books to add
+ * no response value expected for this operation
+ * 
+ * TODO: check user authentication. Or in the controller?
+ **/
+exports.removeBookFromCart = function(cartId,bookId,amount) {
+  return new Promise(function(resolve, reject) {
+    upsert({
+      db,
+      table: TABLES.BOOK_CART,
+      object: { id_book: bookId, id_cart: cartId, amount: amount },
+      key: ['id_book','id_cart'],
+    })
+    resolve();
+  });
+}

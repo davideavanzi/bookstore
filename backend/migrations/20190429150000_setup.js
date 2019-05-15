@@ -215,8 +215,8 @@ exports.up = function(knex, Promise) {
                     .createTable('cart_book', function (table) {
                         table.integer("id_book");
                         table.integer("id_cart");
+                        table.unique(["id_book","id_cart"]);
                         table.integer("amount");
-                        table.date("date");
                     })
                     .then(console.log('created cart_book table'));
                 }

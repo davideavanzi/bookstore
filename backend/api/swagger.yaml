@@ -819,12 +819,55 @@ paths:
         required: true
         type: "integer"
         format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Updated cart object"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the book to be added"
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "amount"
+        in: "query"
+        description: "amount to be added"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Cart"
+  /cart/{cartId}/addBook:
+    put:
+      tags:
+      - "cart"
+      summary: "Add a book to an user's cart"
+      description: "Update  - this can only be done by the logged in USER (proprietary\
+        \ of the cart or by an ADMIN)."
+      operationId: "addBookToCart"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cartId"
+        in: "path"
+        description: "id of the cart that needs to be updated"
         required: true
-        schema:
-          $ref: "#/definitions/Cart"
+        type: "integer"
+        format: "int64"
+      - name: "bookId"
+        in: "query"
+        description: "id of the book that needs to be added"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "amount"
+        in: "query"
+        description: "id of the book that needs to be added"
+        required: true
+        type: "integer"
+        format: "int64"
       responses:
         400:
           description: "Invalid input"
