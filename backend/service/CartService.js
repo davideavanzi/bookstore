@@ -86,13 +86,25 @@ exports.addBookToCart = function(cartId,bookId,amount) {
       object: { id_book: bookId, id_cart: cartId, amount: amount },
       key: ['id_book','id_cart'],
     })
-    TODO: TEST
+    TODO: CHECK AND UPDATE BOOK AVAILABILITY
     */
-    db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart) VALUES (${bookId},${cartId}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`)
-      .then(() => {
+    db.from(TABLES.BOOK).select(amount).where(id, bookId)
+    .then(availability => {
+      if (availability < amount) {
+        //order as much as possible!
+        amount = availability;
+        //TODO: reject or resolve with 404? or continue? continuing.
+        //reject();
+      }
+    })
+    .then(() => {
+      Promise.all([
+        db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
+        db(TABLES.BOOK).where({ id: bookId }).decrement({ amount: amount })
+      ]).then(() => {  
         resolve();
       })
-    //resolve();
+    })
   });
 }
 
@@ -102,7 +114,7 @@ exports.addBookToCart = function(cartId,bookId,amount) {
  * Update  - this can only be done by the logged in USER (proprietary of the cart or by an ADMIN).
  *
  * cartId Long id of the cart that needs to be updated
- * bookId Id of the book to be added
+ * bookId Id of the book to be removed
  * amount Long amount of books to add
  * no response value expected for this operation
  * 
@@ -110,12 +122,7 @@ exports.addBookToCart = function(cartId,bookId,amount) {
  **/
 exports.removeBookFromCart = function(cartId,bookId,amount) {
   return new Promise(function(resolve, reject) {
-    upsert({
-      db,
-      table: TABLES.BOOK_CART,
-      object: { id_book: bookId, id_cart: cartId, amount: amount },
-      key: ['id_book','id_cart'],
-    })
+
     resolve();
   });
 }
