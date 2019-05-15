@@ -3,41 +3,6 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
-/**
- * Review table DB setup
- *
- * Creates a table in the DB to store Review
- **/
-exports.reviewDbSetup = function(database) {
-  db = database;
-  console.log("Checking if review table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable("review").then(exists => {
-      if (!exists) { 
-        console.log("review table not found. Creating...");
-        database.schema.createTable("review", table => {
-          table.increments(); //id
-          table.integer("star");
-          table.string("title");
-          table.text("content");
-          table.integer("id_user");
-        }).then(exists => {
-          console.log("review table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("review table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
 
 /**
  * Add a new review

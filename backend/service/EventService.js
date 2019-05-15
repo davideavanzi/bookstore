@@ -3,39 +3,6 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
-/**
- * Event table DB setup
- *
- * Creates a table in the DB to store events
- **/
-exports.eventDbSetup = function(database) {
-  db = database;
-  console.log("Checking if event table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable("event").then(exists => {
-      if (!exists) { 
-        console.log("Event table not found. Creating...");
-        database.schema.createTable("event", table => {
-          table.increments(); //id
-          table.string("title");
-          table.integer("id_book");
-        }).then(exists => {
-          console.log("Event table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("Event table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
 
 /**
  * Add a new event

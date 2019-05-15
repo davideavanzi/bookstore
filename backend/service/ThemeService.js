@@ -3,39 +3,6 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
-/**
- * theme table DB setup
- *
- * Creates a table in the DB to store theme
- **/
-exports.themeDbSetup = function(database) {
-  db = database;
-  console.log("Checking if theme table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable("theme").then(exists => {
-      if (!exists) { 
-        console.log("theme table not found. Creating...");
-        database.schema.createTable("theme", table => {
-          table.increments(); //id
-          table.string("name");
-        }).then(exists => {
-          console.log("theme table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("theme table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
-
 
 /**
  * Add a new theme

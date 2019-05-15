@@ -3,40 +3,6 @@
 //global db connection variable
 let {db, TABLES} = require('./db');
 
-/**
- * Reservation table DB setup
- *
- * Creates a table in the DB to store reservations
- **/
-exports.reservationDbSetup = function(database) {
-  db = database;
-  console.log("Checking if reservation table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable("reservation").then(exists => {
-      if (!exists) { 
-        console.log("Reservation table not found. Creating...");
-        database.schema.createTable("reservation", table => {
-          table.increments(); //id
-          table.integer("amount");
-          table.integer("book_id");
-          table.integer("user_id");
-        }).then(exists => {
-          console.log("Reservation table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("Reservation table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
 
 /**
  * Add a new reservation

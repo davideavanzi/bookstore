@@ -5,46 +5,6 @@ let {db, TABLES} = require('./db');
 
 
 /**
- * Book table DB setup
- *
- * Creates a table in the DB to store books
- **/
-exports.bookDbSetup = function(database) {
-  db = database;
-  console.log("Checking if book table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable(TABLES.BOOK).then(exists => {
-      if (!exists) { 
-        console.log("Book table not found. Creating...");
-        database.schema.createTable(TABLES.BOOK, table => {
-          table.increments(); //id
-          table.string("title");
-          table.string("cover");
-          table.text("abstract");
-          table.text("fact_sheet");
-          table.integer("genre_id");
-          table.float("value");
-          table.integer("stock");
-        }).then(exists => {
-          console.log("Book table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("Book table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
-
-
-/**
  * Add a new book
  * Insert new book in the system - this can only be done by the logged in ADMIN.
  *

@@ -8,44 +8,6 @@ let { createCartForUser } = require("./CartService");
 //bcrypt
 const bcrypt= require('bcrypt')
 
-/**
- * user table DB setup
- *
- * Creates a table in the DB to store user
- **/
-exports.userDbSetup = function(database) {
-  db = database;
-  console.log("Checking if users table exists");
-  return new Promise(function(resolve,reject) {
-    database.schema.hasTable("users").then(exists => {
-      if (!exists) { 
-        console.log("Users table not found. Creating...");
-        database.schema.createTable("users", table => {
-          table.increments(); //id
-          table.string("firstName");
-          table.string("lastName");
-          table.string("email");
-          table.string("phone");
-          table.string("role");
-          table.string("password");
-          table.string("token")
-        }).then(exists => {
-          console.log("users table created");
-          resolve(exists);
-        }).catch(error => {
-          console.error(error); 
-          reject(error);
-        }); 
-      } else {
-        console.log("user table already present");
-        resolve(exists);
-      } 
-    }).catch(error => {
-      console.error(error); 
-      reject(error);
-    });
-  });
-};
 
 /**
  * Delete user
