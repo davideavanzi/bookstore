@@ -199,6 +199,10 @@ exports.registerUser = function(body) {
                 //get id of the inserted user and create a cart for it
                 .returning('id')
                 .then(function(insertedId) {
+                  console.log("inserted:");
+                  console.log(insertedId);
+                  console.log("provided");
+                  console.log(body.id);
                   createCartForUser(insertedId[0])
                 })
                 .then(() => {

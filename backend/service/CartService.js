@@ -120,8 +120,9 @@ exports.addBookToCart = function(cartId,bookId,amount) {
       object: { id_book: bookId, id_cart: cartId, amount: amount },
       key: ['id_book','id_cart'],
     })
+    TODO: TEST
     */
-    db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart) VALUES (${bookId},${cartId}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount += ${amount} WHERE (id_book, id_cart) = (${bookId},${cartId});`)
+    db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart) VALUES (${bookId},${cartId}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`)
       .then(() => {
         resolve();
       })

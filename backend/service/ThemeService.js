@@ -98,16 +98,20 @@ exports.getThemeById = function(themeId) {
  * returns List
  **/
 exports.getThemes = function(offset,limit) {
+  console.log("service called");
   return new Promise(function(resolve, reject) {
+    console.log("Getting themes");
     db(TABLES.THEME).limit(limit).offset(offset)
     .catch(error => {
       reject(error);
     })
     .then(function (themes) {
       if (Object.keys(themes).length > 0) {
+        console.log(themes);
         resolve(themes);
       } else {
         //no themes found
+        console.log("No themes found");
         resolve();
       }
     }); 

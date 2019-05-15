@@ -99,7 +99,7 @@ function getBookById(bookId) {
           book.authors = [];
           book.themes = [];
           book.authors.push(result[0]);
-          book.themes.push();
+          book.themes.push(result[1]);
         }).then(() => {
           resolve(book);
         });
@@ -131,13 +131,15 @@ function getBooks(offset,limit,authorId,themeId,genreId) {
       if(authorId) {
         //TODO: Do we really need to fetch author data in this query?
         //FILTER BY AUTHOR (not extracted from query)
-        queryBuilder.leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
+        queryBuilder.select(`${TABLES.BOOK}.*`,`${TABLES.AUTHOR}.*`,`${TABLES.BOOK}.id as id`)
+        .leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
         .leftJoin(TABLES.AUTHOR, `${TABLES.BOOK_AUTHOR}.id_author`, `${TABLES.AUTHOR}.id`)
         .where(`${TABLES.AUTHOR}.id`, authorId)
       }
       if(themeId) {
         //FILTER BY THEME (not extracted from query)
-        queryBuilder.leftJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_book`, `${TABLES.BOOK}.id`)
+        queryBuilder.select(`${TABLES.BOOK}.*`,`${TABLES.THEME}.*`,`${TABLES.BOOK}.id as id`)
+        .leftJoin(TABLES.BOOK_THEME, `${TABLES.BOOK_THEME}.id_book`, `${TABLES.BOOK}.id`)
         .leftJoin(TABLES.THEME, `${TABLES.BOOK_THEME}.id_theme`, `${TABLES.THEME}.id`)
         .where(`${TABLES.THEME}.id`, themeId)
       }
@@ -182,6 +184,8 @@ exports.updateBook = function(bookId,body) {
  *
  * bookId Long ID of the book to retrieve authors
  * returns List
+ * 
+ * TODO: delete id duplicate?
  **/
 function getAuthorsOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
@@ -203,11 +207,42 @@ function getAuthorsOfBookId(bookId) {
 }
 
 /**
+ * Find all books of an author by its ID
+ * Returns a list of authors
+ *
+ * authorId Long ID of the author to retrieve books
+ * returns List
+ * 
+ * TODO: delete id duplicate?
+ * TODO: is this useless? (duplicate of getting books filtering by author)
+ **/
+function getBooksOfAuthorId(authorId) {
+  return new Promise(function(resolve, reject) {
+    db(TABLES.BOOK)
+      .innerJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
+      .where(`${TABLES.BOOK_AUTHOR}.id_author`, authorId)
+    .catch(error => {
+      reject(error);
+    })
+    .then(function(books){
+      if (Object.keys(books).length > 0) {  
+        resolve(books);
+      } else {
+        //No authors found
+        resolve();
+      }
+    });
+  });
+}
+
+/**
  * Find themes of a book by the book ID
  * Returns a list of themes
  *
  * bookId Long ID of the book to retrieve themes
  * returns List
+ * 
+ * TODO: delete id duplicate?
  **/
 function getThemesOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
@@ -228,4 +263,4 @@ function getThemesOfBookId(bookId) {
   });
 }
 
-module.exports = { getBookById, getBooks, getAuthorsOfBookId, getThemesOfBookId }
+module.exports = { getBookById, getBooks, getAuthorsOfBookId, getBooksOfAuthorId, getThemesOfBookId }

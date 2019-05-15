@@ -37,6 +37,7 @@ module.exports.getThemeById = function getThemeById (req, res, next) {
 };
 
 module.exports.getThemes = function getThemes (req, res, next) {
+  console.log("Controller called");
   var offset = req.swagger.params['offset'].value;
   var limit = req.swagger.params['limit'].value;
   Theme.getThemes(offset,limit)
