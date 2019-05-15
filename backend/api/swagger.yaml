@@ -1418,20 +1418,17 @@ definitions:
   Book:
     type: "object"
     required:
-    - "name"
+    - "title"
     properties:
       id:
         type: "integer"
         format: "int64"
       title:
         type: "string"
-      genre:
+      genres:
         type: "array"
-        xml:
-          name: "genre"
-          wrapped: true
         items:
-          type: "string"
+          $ref: "#/definitions/Genre"
       cover:
         type: "string"
       value:
@@ -1443,11 +1440,8 @@ definitions:
       stock:
         type: "integer"
         format: "int64"
-      author:
+      authors:
         type: "array"
-        xml:
-          name: "author"
-          wrapped: true
         items:
           $ref: "#/definitions/Author"
     xml:
@@ -1516,9 +1510,6 @@ definitions:
         type: "integer"
       books:
         type: "array"
-        xml:
-          name: "book"
-          wrapped: true
         items:
           $ref: "#/definitions/Book"
     xml:
@@ -1532,7 +1523,7 @@ definitions:
           id: 6
         - name: "name"
           id: 7
-        title: "name"
+        title: "title"
         genre:
         - "genre"
         - "genre"
@@ -1545,7 +1536,7 @@ definitions:
           id: 3
         - name: "name"
           id: 5
-        title: "name"
+        title: "title"
         genre:
         - "genre"
         - "genre"
