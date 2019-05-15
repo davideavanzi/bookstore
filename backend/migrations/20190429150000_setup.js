@@ -69,7 +69,6 @@ exports.up = function(knex, Promise) {
                         //id is foreign key from user's id, on user delete related cart is deleted too.
                         table.integer('id').unsigned();
                         table.foreign('id').references('id').inTable('users').onDelete('CASCADE');
-                        table.date("date"); 
                     })
                     .then(console.log('created cart table'));
                 }
@@ -118,7 +117,7 @@ exports.up = function(knex, Promise) {
                         table.string("title");
                         table.text("content");
                         table.string("interviewer");
-                        table.integer("book_id");
+                        table.integer("id_book");
                     })
                     .then(console.log('created interview table'));
                 }
@@ -134,8 +133,9 @@ exports.up = function(knex, Promise) {
                     .createTable('reservation', function (table) {
                         table.increments('id').primary();
                         table.integer("amount");
-                        table.integer("book_id");
-                        table.integer("user_id");
+                        table.integer("id_book");
+                        table.integer("id_user");
+                        table.date("date");
                     })
                     .then(console.log('created reservation table'));
                 }
@@ -153,6 +153,7 @@ exports.up = function(knex, Promise) {
                         table.integer("star");
                         table.string("title");
                         table.text("content");
+                        table.integer("id_book");
                         table.integer("id_user");
                     })
                     .then(console.log('created review table'));
@@ -214,6 +215,8 @@ exports.up = function(knex, Promise) {
                     .createTable('cart_book', function (table) {
                         table.integer("id_book");
                         table.integer("id_cart");
+                        table.integer("amount");
+                        table.date("date");
                     })
                     .then(console.log('created cart_book table'));
                 }
