@@ -2,7 +2,7 @@
 
 //global db connection variable
 let {db, TABLES} = require('./db');
-const upsert = require('knex-upsert')
+//const upsert = require('knex-upsert')
 
 
 /**
@@ -79,18 +79,11 @@ exports.updateCart = function(cartId,body) {
  **/
 exports.addBookToCart = function(cartId,bookId,amount) {
   return new Promise(function(resolve, reject) {
-    /*
-    upsert({
-      db,
-      table: TABLES.BOOK_CART,
-      object: { id_book: bookId, id_cart: cartId, amount: amount },
-      key: ['id_book','id_cart'],
-    })
-    TODO: CHECK AND UPDATE BOOK AVAILABILITY
-    */
-    db.from(TABLES.BOOK).select(amount).where(id, bookId)
-    .then(availability => {
-      if (availability < amount) {
+    db.from(TABLES.BOOK).select('stock').where('id', bookId)
+    .then(book => {
+      availability = book[0].stock;
+      //if book availability is <= 0, don't bother.
+      if (availability < amount && availability > 0) {
         //order as much as possible!
         amount = availability;
         //TODO: reject or resolve with 404? or continue? continuing.
@@ -100,7 +93,7 @@ exports.addBookToCart = function(cartId,bookId,amount) {
     .then(() => {
       Promise.all([
         db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
-        db(TABLES.BOOK).where({ id: bookId }).decrement({ amount: amount })
+        db(TABLES.BOOK).where({ id: bookId }).decrement({ stock: amount })
       ]).then(() => {  
         resolve();
       })
@@ -115,14 +108,23 @@ exports.addBookToCart = function(cartId,bookId,amount) {
  *
  * cartId Long id of the cart that needs to be updated
  * bookId Id of the book to be removed
- * amount Long amount of books to add
  * no response value expected for this operation
  * 
  * TODO: check user authentication. Or in the controller?
+ * TODO: Reject/handle errors
  **/
-exports.removeBookFromCart = function(cartId,bookId,amount) {
+exports.removeBookFromCart = function(cartId,bookId) {
   return new Promise(function(resolve, reject) {
-
-    resolve();
+    //remove book from cart, getting the amount
+    db(TABLES.BOOK_CART).where({ id_book: bookId, id_cart: cartId}).del().returning('amount')
+      .then(amount => {
+        console.log("retrieved amount:");
+        console.log(amount);
+        //restore book amount into stock
+        db(TABLES.BOOK).where({ id: bookId }).increment({ stock: amount })
+        .then(() => {
+          resolve();
+        })
+      })
   });
 }

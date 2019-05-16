@@ -876,6 +876,37 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Cart"
+  /cart/{cartId}/removeBook:
+    put:
+      tags:
+      - "cart"
+      summary: "Remove a book from an user's cart"
+      description: "Update  - this can only be done by the logged in USER (proprietary\
+        \ of the cart or by an ADMIN). The amount of the ordered book gets restored in the stock"
+      operationId: "removeBookFromCart"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "cartId"
+        in: "path"
+        description: "id of the cart that needs to be updated"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "bookId"
+        in: "query"
+        description: "id of the book that needs to be removed"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+      x-swagger-router-controller: "Cart"
   /reservation:
     get:
       tags:

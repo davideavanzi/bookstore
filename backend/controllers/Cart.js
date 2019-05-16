@@ -38,3 +38,15 @@ module.exports.addBookToCart = function addBookToCart (req, res, next) {
       utils.writeJson(res, response);
     });
 };
+
+module.exports.removeBookFromCart = function removeBookFromCart (req, res, next) {
+  var cartId = req.swagger.params['cartId'].value;
+  var bookId = req.swagger.params['bookId'].value;
+  Cart.removeBookFromCart(cartId, bookId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+};
