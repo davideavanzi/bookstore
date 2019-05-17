@@ -35,6 +35,8 @@ Table event {
   id int [pk]
   title varchar
   id_book int [ref: > book.id]
+  location text
+  content text
 }
 
 Table review {
@@ -42,36 +44,36 @@ Table review {
   star int
   title varchar
   content text
-  id_user int [ref: > user.id]
+  id_user int [ref: > users.id]
+  id_book int [ref: > book.id]
 }
 
-Table user {
+Table users {
   id int [pk]
-  name varchar
+  firstName varchar
+  lastName varchar
   email varchar
   phone varchar
-  address varchar
   password varchar
+  token varchar
 }
 
 Table cart {
-  id int [pk]
-  expiration_date date
-  user_id int [ref: > user.id]
+  id int [ref: > users.id]
 }
 
 Table cart_book {
-    cart_id int [ref: > cart.id]
-    book_id int [ref: > book.id]
-
+    id_cart int [ref: > cart.id]
+    id_book int [ref: > book.id]
+    amount integer
 }
 
 Table reservation {
   id int [pk]
   amount int
-  book_id int [ref: > book.id]
-  user_id int [ref: > user.id]
-
+  id_book int [ref: > book.id]
+  id_user int [ref: > users.id]
+  curDate date
 }
 
 Table  genre {
