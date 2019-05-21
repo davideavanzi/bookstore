@@ -13,12 +13,20 @@
     <link rel="stylesheet" href="css/jquery-ui.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/owl.theme.default.min.css">
-
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="css/aos.css">
 
     <link rel="stylesheet" href="css/style.css">
     
+     <style>
+       .checked {
+  color: orange;
+}
+      
+      </style> 
+     
+      
   </head>
   <body>
   
@@ -72,7 +80,7 @@
           </div>
            <div class="icons">
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="#" class="icons-btn d-inline-block"><span class="icon-user"></span></a>
+            <a href="register.html" class="icons-btn d-inline-block"><span class="icon-user"></span></a>
             <a href="cart.html" class="icons-btn d-inline-block bag">
               <span class="icon-shopping-bag"></span>
               <span class="number">1</span>
@@ -96,30 +104,25 @@
         <div class="row">
           <div class="col-md-6">
             <div class="border">
-              <img src="images/theo.jpg" style="align-content: bottom" alt="Image" class="img-fluid">
+              <img src="images/shoe.png" style="align-content: bottom" alt="Image" class="img-fluid">
             </div>
           </div>
           <div class="col-md-6">
             <h1 class="text-black">America</h1>
               <br>
-              <h4 class="text-back"> <a href="#">Theodore De Briè</a></h4>
+              <h4 class="text-back"> <a href="author.html">Theodore De Briè</a></h4>
             <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
             <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
             <p><strong class="text-primary h4">€50.00</strong></p>
             <div class="mb-1 d-flex">
-              <label for="option-sm" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-sm" name="shop-sizes"></span> 
-              </label>
-              <label for="option-md" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-md" name="shop-sizes"></span>
-              </label>
-              <label for="option-lg" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-lg" name="shop-sizes"></span> 
-              </label>
-              <label for="option-xl" class="d-flex mr-3 mb-3">
-                <span class="d-inline-block mr-2" style="top:-2px; position: relative;"><input type="radio" id="option-xl" name="shop-sizes"></span> 
-              </label>
+              <span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star checked"></span>
+<span class="fa fa-star"></span>
+<span class="fa fa-star"></span> 
             </div>
+              
+              <br>
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
               <div class="input-group-prepend">
@@ -132,7 +135,8 @@
             </div>
 
             </div>
-            <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a></p>
+            <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a>
+            <a href="thankyou.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Reserve</a></p>
  
           </div>
         </div>
@@ -150,13 +154,16 @@
           <div class="col-md-12 block-3 products-wrap">
             <div class="nonloop-block-3 owl-carousel">
               
-              <div class="product">
+
+                <div class="product">
                 <a href="shop-single.html" class="item">
-                  <img src="images/bauhaus.png" style="padding-bottom:  180px" alt="Image" class="img-fluid">
+                  <img src="images/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
+                    
                   <div class="item-info">
-                    <h3>Bauhaus</h3>
-                    <span class="collection d-block">Taschen</span>
-                    <strong class="price">€35,00</strong>
+                        <div class="row"> </div>
+                    <h3>The best of Bauhaus</h3>
+                  
+                    <strong class="price">€15,00</strong>
                   </div>
                 </a>
               </div>
@@ -164,59 +171,60 @@
               <div class="product">
                 <a href="shop-single.html" class="item">
                   <span class="tag">Sale</span>
-                  <img src="images/basquiat.png"style="padding-bottom:  180px" alt="Image" class="img-fluid">
+                  <img src="images/product_2.jpg" alt="Image" class="img-fluid">
                   <div class="item-info">
                     <h3>Basquiat</h3>
-                    <span class="collection d-block">Jean Michele Basquiat</span>
-                    <strong class="price">€9.50 <del>€30.00</del></strong>
+                    
+                    <strong class="price">€150<del>€199</del></strong>
+                  </div>
+                </a>
+              </div>
+
+                <div class="product">
+                <a href="shop-single.html#" class="item">
+                    <span class="tag">new</span>
+                  <img src="images/product_3.jpg" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The Gutemberg bible</h3>
+                   
+                    <strong class="price">€99,99</strong>
+                  </div>
+                </a>
+              </div>
+
+
+               <div class="product">
+                <a href="shop-single.html" class="item">
+                  <img src="images/product_4.jpg" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The Ultimate shoes book</h3>
+                   
+                    <strong class="price">€59,99</strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <span class="tag">Sale</span>
+                  <img src="images/product_2.jpg" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>Basquiat</h3>
+                    
+                    <strong class="price">€150<del>€199</del></strong>
                   </div>
                 </a>
               </div>
 
                <div class="product">
                 <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/basquiat.png"style="padding-bottom:  180px" alt="Image" class="img-fluid">
+                  <img src="images/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
+                    
                   <div class="item-info">
-                    <h3>Basquiat</h3>
-                    <span class="collection d-block">Jean Michele Basquiat</span>
-                    <strong class="price">€9.50 <del>€30.00</del></strong>
-                  </div>
-                </a>
-              </div>
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/basquiat.png"style="padding-bottom:  180px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    <span class="collection d-block">Jean Michele Basquiat</span>
-                    <strong class="price">€9.50 <del>€30.00</del></strong>
-                  </div>
-                </a>
-              </div>
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/basquiat.png"style="padding-bottom:  180px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    <span class="collection d-block">Jean Michele Basquiat</span>
-                    <strong class="price">€9.50 <del>€30.00</del></strong>
-                  </div>
-                </a>
-              </div>
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/basquiat.png"style="padding-bottom:  180px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    <span class="collection d-block">Jean Michele Basquiat</span>
-                    <strong class="price">€9.50 <del>€30.00</del></strong>
+                        <div class="row"> </div>
+                    <h3>The best of Bauhaus</h3>
+                  
+                    <strong class="price">€15,00</strong>
                   </div>
                 </a>
               </div>
