@@ -56,7 +56,9 @@ a {
   text-transform: uppercase;
   font-size: 13px; }
   .btn:hover, .btn:active, .btn:focus {
-    outline: none;
+      background-color: #8c00ff;
+       border-color: #8c00ff;
+      outline: none;
     -webkit-box-shadow: none;
     box-shadow: none; }
   .btn.btn-black {
@@ -64,12 +66,14 @@ a {
     background: #000;
     color: #fff; }
     .btn.btn-black:hover, .btn.btn-black:active, .btn.btn-black:focus {
-      background-color: #333333; }
+      background-color: #8c00ff;
+      border-color: #8c00ff;
+}
 
 .form-control {
   height: 43px; }
   .form-control:active, .form-control:focus {
-    border-color: #207dff; }
+    border-color: #de2d2d; }
   .form-control:hover, .form-control:active, .form-control:focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
@@ -94,7 +98,7 @@ a {
     position: absolute;
     width: 40px;
     height: 2px;
-    background: #207dff; }
+    background: #de2d2d; }
   .site-section-heading.text-center:before {
     display: none;
     content: "";
@@ -106,7 +110,7 @@ a {
     position: absolute;
     width: 40px;
     height: 2px;
-    background: #207dff; }
+    background: #de2d2d; }
 
 .border-top {
   border-top: 1px solid #edf0f5 !important; }
@@ -118,7 +122,7 @@ a {
     .site-footer ul li a {
       color: #5c626e; }
       .site-footer ul li a:hover {
-        color: #207dff; }
+        color: #de2d2d; }
   .site-footer .footer-heading {
     font-size: 1.2rem;
     color: #000;
@@ -216,7 +220,7 @@ height: 20%;
           border-radius: 50%;
           display: block;
           text-align: center;
-          background: #207dff;
+          background: #de2d2d;
           color: #fff;
           -webkit-transition: .2s all ease-in-out;
           -o-transition: .2s all ease-in-out;
@@ -234,7 +238,7 @@ height: 20%;
     padding-left: 0;
     margin-bottom: 0; }
     .site-navbar .site-navigation .site-menu .active > a {
-      color: #207dff; }
+      color: #de2d2d; }
     .site-navbar .site-navigation .site-menu a {
       text-decoration: none !important;
       font-size: 15px;
@@ -250,7 +254,7 @@ height: 20%;
         font-size: 15px;
         text-decoration: none !important; }
         .site-navbar .site-navigation .site-menu > li > a:hover {
-          color: #207dff; }
+          color: #de2d2d; }
     .site-navbar .site-navigation .site-menu .has-children {
       position: relative; }
       .site-navbar .site-navigation .site-menu .has-children > a {
@@ -272,7 +276,7 @@ height: 20%;
         top: 100%;
         position: absolute;
         text-align: left;
-        border-top: 2px solid #207dff;
+        border-top: 2px solid #de2d2d;
         -webkit-box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.05);
         box-shadow: 0 0px 4px 0px rgba(0, 0, 0, 0.05);
         border-left: 1px solid #edf0f5;
@@ -293,7 +297,7 @@ height: 20%;
           -o-transition: 0s all;
           transition: 0s all; }
         .site-navbar .site-navigation .site-menu .has-children .dropdown .active > a {
-          color: #207dff !important; }
+          color: #de2d2d !important; }
         .site-navbar .site-navigation .site-menu .has-children .dropdown > li {
           list-style: none;
           padding: 0;
@@ -317,7 +321,7 @@ height: 20%;
       .site-navbar .site-navigation .site-menu .has-children a {
         text-transform: uppercase; }
       .site-navbar .site-navigation .site-menu .has-children:hover > a, .site-navbar .site-navigation .site-menu .has-children:focus > a, .site-navbar .site-navigation .site-menu .has-children:active > a {
-        color: #207dff; }
+        color: #de2d2d; }
       .site-navbar .site-navigation .site-menu .has-children:hover, .site-navbar .site-navigation .site-menu .has-children:focus, .site-navbar .site-navigation .site-menu .has-children:active {
         cursor: pointer; }
         .site-navbar .site-navigation .site-menu .has-children:hover > .dropdown, .site-navbar .site-navigation .site-menu .has-children:focus > .dropdown, .site-navbar .site-navigation .site-menu .has-children:active > .dropdown {
@@ -400,12 +404,12 @@ height: 20%;
       position: relative;
       color: #212529; }
       .site-mobile-menu .site-nav-wrap a:hover {
-        color: #207dff; }
+        color: #de2d2d; }
     .site-mobile-menu .site-nav-wrap li {
       position: relative;
       display: block; }
       .site-mobile-menu .site-nav-wrap li.active > a {
-        color: #207dff; }
+        color: #de2d2d; }
     .site-mobile-menu .site-nav-wrap .arrow-collapse {
       position: absolute;
       right: 0px;
@@ -604,7 +608,7 @@ height: 20%;
         color: #000;
         font-size: 1.5rem; }
         .products .item .item-info .price del, .product .item .item-info .price del {
-          color: #adb5bd;
+          color: #000;
           margin-left: 2%; }
         @media (max-width: 991.98px) {
           .products .item .item-info .price, .product .item .item-info .price {
@@ -711,7 +715,7 @@ height: 20%;
       margin: 5px;
       background: #ccc; }
     .block-3 .owl-dots .owl-dot.active > span {
-      background: #207dff; }
+      background: #de2d2d; }
 
 .block-3 .product {
   border-right: none !important;
@@ -748,7 +752,7 @@ height: 20%;
     left: 0;
     font-size: 20px;
     line-height: 1;
-    color: #207dff; }
+    color: #de2d2d; }
   .block-5 ul li.address:before {
     content: "\e8b4"; }
   .block-5 ul li.email:before {
@@ -804,7 +808,7 @@ height: 20%;
     vertical-align: middle;
     color: #212529; }
   .site-blocks-table tbody tr:first-child td {
-    border-top: 1px solid #207dff !important; }
+    border-top: 1px solid #de2d2d !important; }
 
 .site-block-order-table th {
   border-top: none !important;
@@ -858,11 +862,11 @@ height: 20%;
     height: 16px;
     border-radius: 50%;
     border: none !important;
-    background: #207dff; }
+    background: #de2d2d; }
     #slider-range .ui-slider-handle:focus, #slider-range .ui-slider-handle:active {
       outline: none; }
   #slider-range .ui-slider-range {
-    background-color: #207dff; }
+    background-color: #de2d2d; }
 
 .color-item .color {
   width: 14px;
@@ -922,7 +926,7 @@ height: 20%;
     line-height: 20px;
     color: #fff;
     font-size: 12px;
-    background: #207dff;
+    background: #de2d2d;
     right: 0px; }
 
 .search-wrap {
@@ -971,7 +975,7 @@ height: 20%;
 
 .title-section h2 {
   padding-left: 30px;
-  border-left: 4px solid #207dff;
+  border-left: 4px solid #de2d2d;
   display: inline-block;
   color: #000; }
 
@@ -990,7 +994,7 @@ height: 20%;
     transform: translateX(-50%);
     width: 70px;
     height: 4px;
-    background: #207dff;
+    background: #de2d2d;
     content: ""; }
 
 .product-item {
