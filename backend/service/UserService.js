@@ -138,7 +138,7 @@ exports.registerUser = function(body) {
           resolve('403');
         }
         else {
-          if (body.password.length > 0) {
+          if (body.password.length > 0 && body.email.length > 0) {
             bcrypt.genSalt (10, (err, salt) => {
               if (err){ 
                 console.log("error in salting");
@@ -174,8 +174,10 @@ exports.registerUser = function(body) {
               })
             })
           }
-          else  
+          else{
+          	console.log("password or email empty while registering");  
             resolve('401');
+        	}
         }
       });
     } 

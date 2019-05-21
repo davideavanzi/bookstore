@@ -736,18 +736,18 @@ PROJECT THEME HYP2018-19 - FRONT END TECH - Till July 2019.pdf
 \begin_inset Quotes erd
 \end_inset
 
-: Frontend document specifications
+: Front-end document specifications
 \end_layout
 
 \begin_layout Itemize
 \begin_inset Quotes eld
 \end_inset
 
-project-manual .pdf
+project-manual.pdf
 \begin_inset Quotes erd
 \end_inset
 
-: Backend document specifications
+: Back-end document specifications
 \end_layout
 
 \begin_layout Standard
@@ -771,6 +771,14 @@ L-IDM schema
 
 \begin_layout Section
 Scenarios
+\end_layout
+
+\begin_layout Standard
+In this section we decided to provide these scenarios for three of the most
+ important feature of our website: user registration, user login and user
+ cart management.
+ All these feature have to deal with user authentication: for this reason
+ we decided to analyze these scenarios.
 \end_layout
 
 \begin_layout Subsection
@@ -1032,7 +1040,7 @@ User registration sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1320,7 +1328,7 @@ User login sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1654,6 +1662,30 @@ Design-in-the small
 DB Design
 \end_layout
 
+\begin_layout Standard
+Some note on the below diagrams:
+\end_layout
+
+\begin_layout Itemize
+We added some tables in blue color.
+ These tables are there to make the system scalable and for a possible future
+ implementation.
+ In particular the ORDER table will contain all the past orders made by
+ the users (each row represents one order with the date and the id of the
+ user that made it).
+ The GIFT CARD table should be implemented to manage the possibility to
+ have gift card (thought as promo code).
+\end_layout
+
+\begin_layout Itemize
+The CART table has only one column (the foreign key id_user).
+ At the moment it could be removed, but in the future, when the GIFT CARD
+ table will be added, a specific gift card will be linked to a specific
+ cart.
+ So we decided to keep it, to make the system scalable and and to make easy
+ to add further feature to it in future.for the future.
+\end_layout
+
 \begin_layout Subsection
 E-R diagram
 \end_layout
@@ -1669,13 +1701,13 @@ E-R diagram
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ER_DB_LIBRARY1.0.1.dia
-	width 85text%
+	filename img/ER_DB_LIBRARY_1.1.dia
+	width 75text%
 	rotateAngle 270
 
 \end_inset
@@ -1700,35 +1732,21 @@ E-R Diagram
 
 \end_layout
 
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Relational Tables
-\end_layout
-
-\begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/RS_DB_LIBRARY_1.0.svg
-	width 100text%
+	filename img/RS_DB_LIBRARY_1.1.svg
+	width 90text%
 	rotateAngle 270
 
 \end_inset
