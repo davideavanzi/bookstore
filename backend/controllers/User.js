@@ -112,16 +112,20 @@ module.exports.loginUser = function loginUser (req, res, next) {
   alreadyLoggedIn(session).then(result => {
     if (result) {
       console.log("login with cookie for user: "+session.user);
-      utils.writeJson(res, '200');
+      let response={};
+	  response.message = "ok"
+      utils.writeJson(res, response, 200);
       return next();
     }else {
       User.loginUser(body, session)
       .then(function (response) {
         if (response == '200'){
           newSession(req, body).then(newSession => {
-            session=newSession;
+            session = newSession;
             console.log("session set up for user "+session.user);
-            utils.writeJson(res, response);
+            response={};
+	  		response.message = "ok"
+            utils.writeJson(res, response, 200);
           });
         }
         else {
@@ -129,7 +133,15 @@ module.exports.loginUser = function loginUser (req, res, next) {
         }
       })
       .catch(function (response) {
-        utils.writeJson(res, response);
+      	if(response == '401') {
+      		response={};
+        	response.message = "Login failed"
+        	utils.writeJson(res, response, 401);
+        } else {
+        	response={};
+        	response.message = "Not allowed"
+        	utils.writeJson(res, response, 403);        	
+        }
       });
       }
   });
@@ -138,6 +150,7 @@ module.exports.loginUser = function loginUser (req, res, next) {
 module.exports.logoutUser = function logoutUser (req, res, next) {
   User.logoutUser()
     .then(function (response) {
+      var responseCode;
       if (req.session.loggedin){
         console.log("session was set "+req.session.loggedin+" for user "+req.session.user);
         req.session.loggedin = false;
@@ -151,15 +164,19 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
         //req.session.destroy(); //this now not work!
         //which one of the two is better?
         console.log("session is set "+req.session.loggedin+" for user "+req.session.user);
-        response='200';
-      }else {
+        response={};
+        response.message = "ok"
+        responseCode = 200;
+      } else {
         console.error("user "+req.session.user+" was not logined in with cookie");
-        response='403';
+		response={};
+        response.message = "not logged in"        
+        responseCode = 403;
       }
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, responseCode);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 500);
     });
 };
 
@@ -167,10 +184,24 @@ module.exports.registerUser = function registerUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   User.registerUser(body)
     .then(function (response) {
-      utils.writeJson(res, response);
+      if(response == '200'){
+        response={};
+		response.message = "ok"
+	    utils.writeJson(res, response, 200);
+	  } else if (response == '403'){
+	  	response={};
+		response.message = "Already registered"
+	    utils.writeJson(res, response, 403);
+	  } else if (response == '401'){
+	  	response={};
+		response.message = "Incorrect data"
+	    utils.writeJson(res, response, 401);
+	  }
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      response={};
+	  response.message = "some errors"
+      utils.writeJson(res, response, 500);
     });
 };
 
