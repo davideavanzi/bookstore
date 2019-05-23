@@ -27,7 +27,7 @@ module.exports.getUserById = function getUserById (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-
+/*
 const findUser = (userReq) => {
   return new Promise(function(resolve, reject) {
     try {
@@ -45,7 +45,7 @@ const findUser = (userReq) => {
         throw(err)
     }});
 }
-
+*/
 
 const updateToken = (token, userReq) => {
   return new Promise(function(resolve, reject) {
@@ -60,10 +60,22 @@ const updateToken = (token, userReq) => {
     }});
 }
 
-const alreadyLoggedIn = (session) => {
+module.exports.checkAuth = function (session, id) {
+  return new Promise(function(resolve, reject) {
+    module.exports.alreadyLoggedIn(session).then(result => {
+      if (result && session.userId == id) {
+        resolve(true);
+      } else {
+        resolve(false);
+      }
+    })
+  })
+}
+
+module.exports.alreadyLoggedIn = function(session) {
   return new Promise(function(resolve, reject){
     if(session && session.loggedin){
-      findUser(session.user).then(foundUser => {
+      User.findUser(session.user).then(foundUser => {
         if(foundUser){
           if(session.token){
             resolve(foundUser.token == session.token);
@@ -91,7 +103,7 @@ const newSession = (req, body) => {
       } 
       let token = crypto.randomBytes(64).toString('hex');
       req.session.token = token;
-      findUser(body.email).then(foundUser => {
+      User.findUser(body.email).then(foundUser => {
         if(foundUser){
           updateToken(token, foundUser);
         }
@@ -109,7 +121,7 @@ const newSession = (req, body) => {
 module.exports.loginUser = function loginUser (req, res, next) {
   var body = req.swagger.params['body'].value;
   var session = req.session;
-  alreadyLoggedIn(session).then(result => {
+  module.exports.alreadyLoggedIn(session).then(result => {
     if (result) {
       console.log("login with cookie for user: "+session.user);
       let response={};
@@ -121,11 +133,17 @@ module.exports.loginUser = function loginUser (req, res, next) {
       .then(function (response) {
         if (response == '200'){
           newSession(req, body).then(newSession => {
-            session = newSession;
-            console.log("session set up for user "+session.user);
-            response={};
-	  		response.message = "ok"
-            utils.writeJson(res, response, 200);
+            session=newSession;
+            //TODO: wtf use newsession method
+            User.findUser(body.email).then(foundUser => {
+              session.userId = foundUser.id;
+              console.log("session set up for user "+session.user);
+              body={};
+	  	      	body.message = "ok"
+              utils.writeJson(res, body, 200);
+
+            });
+            
           });
         }
         else {
@@ -155,7 +173,7 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
         console.log("session was set "+req.session.loggedin+" for user "+req.session.user);
         req.session.loggedin = false;
         let token = crypto.randomBytes(64).toString('hex');
-        findUser(req.session.user).then(foundUser => {
+        User.findUser(req.session.user).then(foundUser => {
           if(foundUser){
             updateToken(token, foundUser);
           }

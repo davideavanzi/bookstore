@@ -81,7 +81,7 @@ exports.addBookToCart = function(cartId,bookId,amount) {
   return new Promise(function(resolve, reject) {
     db.from(TABLES.BOOK).select('stock').where('id', bookId)
     .then(book => {
-      availability = book[0].stock;
+      let availability = book[0].stock;
       //if book availability is <= 0, don't bother.
       if (availability < amount && availability > 0) {
         //order as much as possible!

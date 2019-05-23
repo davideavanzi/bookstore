@@ -46,7 +46,7 @@ exports.getUserById = function(userId) {
 }
 
 
-const findUser = (userReq) => {
+exports.findUser = function(userReq) {
   return new Promise(function(resolve, reject) {
     try {
       db(TABLES.USER).where('email',userReq).select().then(result => {
@@ -94,7 +94,7 @@ const checkPassword = (reqPassword, foundUser) => {
 exports.loginUser = function(body, session) {
   return new Promise(function(resolve, reject) {
     let user;
-    findUser(body.email).then(foundUser => {
+    exports.findUser(body.email).then(foundUser => {
       if(foundUser){
         return checkPassword(body.password, foundUser);
       } else {
