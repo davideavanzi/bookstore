@@ -1,0 +1,103 @@
+<html>
+    <head>
+        <title>Bookstore</title>
+    </head>
+    <body>
+        <h1>Bookstore server</h1>
+        <ul></ul>
+    <script>
+        //get all books from api, and list them here
+        fetch('v2/books').then(function(response) {
+            return response.json();
+        }).then(function(json) {
+            for (let i = 0; i < json.length; i++) {
+                let listItem = document.createElement("li");
+                let { title, author, price } = json[i];
+                listItem.innerHTML = `${title} - ${author} - ${price.value}`;
+                document.querySelector("ul").append(listItem);
+            }
+        });
+    </script>
+
+    <form id="register" action="" method="">
+        First name:<br>
+        <input type="text" name="firstName" value="nome"><br>
+        Last name:<br>
+        <input type="text" name="lastName" value="cognome"><br>
+        Email:<br>
+        <input type="email" name="email" value="email@email.iz">
+        Password:
+        <input type="password" name="password" value="pippo"><br><br>
+        <input type="submit" value="Submit">
+    </form>
+    <hr>
+    <h1>inserimento libro</h1>
+        <form id="createBook" action="" method="">
+            name: <input type="text" name="name" id="name" /> <br />
+            <input type="submit" />
+        </form>
+
+        <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+        <script type="text/javascript">
+            $(function () {
+                $.fn.serializeObject = function()
+                {
+                    var o = {};
+                    var a = this.serializeArray();
+                    $.each(a, function() {
+                        if (o[this.name] !== undefined) {
+                            if (!o[this.name].push) {
+                                o[this.name] = [o[this.name]];
+                            }
+                            o[this.name].push(this.value || '');
+                        } else {
+                            o[this.name] = this.value || '';
+                        }
+                    });
+                    return o;
+                };          
+
+
+                $("#createBook").bind("submit", function(evt) {
+                    console.log(JSON.stringify($("#createBook").serializeObject()));
+
+                    $.ajax({
+                        url: "http://localhost:8080/v2/books",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify($("#createBook").serializeObject()),
+                        success: function (data, textStatus, jqXHR) {
+                            // do something with your data here.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            // likewise do something with your error here.
+                        }
+                    });
+
+                    return false;
+                });
+
+                $("#register").bind("submit", function(evt) {
+                    console.log(JSON.stringify($("#register").serializeObject()));
+
+                    $.ajax({
+                        url: "http://localhost:8080/v2/user/register",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify($("#register").serializeObject()),
+                        success: function (data, textStatus, jqXHR) {
+                            // do something with your data here.
+                        },
+                        error: function (jqXHR, textStatus, errorThrown) {
+                            // likewise do something with your error here.
+                        }
+                    });
+
+                    return false;
+                });
+
+            });
+        </script>
+    
+    </body>
+</html>
