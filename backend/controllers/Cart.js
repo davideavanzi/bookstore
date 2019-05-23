@@ -20,6 +20,9 @@ module.exports.getCartById = function getCartById (req, res, next) {
     } else {
       console.log("Operation on cart not authorized");
       //TODO: return user not authorized
+      let body = {}
+      body.message = "unauthorized"
+      utils.writeJson(res, body, 403);
     }
   }) 
 };
