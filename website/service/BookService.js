@@ -56,9 +56,9 @@ function getBookById(bookId) {
         var authors = getAuthorsOfBookId(bookId);
         var themes = getThemesOfBookId(bookId);
         Promise.all([authors, themes]).then(function(result) {
-          book.authors = [];
+          book.authors = result[0];
           book.themes = [];
-          book.authors.push(result[0]);
+          //book.authors.push(result[0]);
           book.themes.push(result[1]);
         }).then(() => {
           resolve(book);
