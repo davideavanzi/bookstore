@@ -156,7 +156,10 @@ exports.registerUser = function(body) {
                   firstName: body.firstName, 
                   lastName: body.lastName, 
                   password: hash, 
-                  phone: body.phone
+                  phone: body.phone, 
+                  address: body.address,
+                  country: body.country,
+                  zip: body.zip
                 })
                 //get id of the inserted user and create a cart for it
                 .returning('id')

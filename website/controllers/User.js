@@ -199,26 +199,27 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
 };
 
 module.exports.registerUser = function registerUser (req, res, next) {
+  console.log(req);
   var body = req.swagger.params['body'].value;
   User.registerUser(body)
     .then(function (response) {
-      if(response == '200'){
+      if(response== '200'){
         response={};
-		response.message = "ok"
-	    utils.writeJson(res, response, 200);
+		    response.message = "ok"
+	      utils.writeJson(res, response, 200);
 	  } else if (response == '403'){
-	  	response={};
-		response.message = "Already registered"
-	    utils.writeJson(res, response, 403);
+	  	  response={};
+		    response.message = "Already registered"
+	      utils.writeJson(res, response, 403);
 	  } else if (response == '401'){
-	  	response={};
-		response.message = "Incorrect data"
-	    utils.writeJson(res, response, 401);
+	  	  response={};
+		    response.message = "Incorrect data"
+	      utils.writeJson(res, response, 401);
 	  }
     })
     .catch(function (response) {
       response={};
-	  response.message = "some errors"
+	    response.message = "some errors"
       utils.writeJson(res, response, 500);
     });
 };

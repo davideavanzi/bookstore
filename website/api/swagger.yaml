@@ -1636,6 +1636,12 @@ definitions:
         type: "string"
       phone:
         type: "string"
+      address:
+        type: "string"
+      country:
+        type: "string"
+      zip:
+        type: "integer"
     xml:
       name: "User"
     example:
@@ -1645,6 +1651,9 @@ definitions:
       phone: "phone"
       id: 1
       email: "email"
+      address: "address"
+      country: "country"
+      zip: 20000
   Login:
     type: "object"
     required:
@@ -1785,3 +1794,4 @@ definitions:
     example:
       id: 0
       name: "name"
+
