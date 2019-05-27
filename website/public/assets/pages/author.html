@@ -37,8 +37,8 @@
   <div class="site-wrap">
     
 
+    <!-- navbar -->
     <div class="site-navbar bg-white py-2 position-relative">
-
       <div class="search-wrap">
         <div class="container">
           <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
@@ -47,53 +47,11 @@
           </form>  
         </div>
       </div>
-
-      <div class="container">
-        <div class="d-flex align-items-center justify-content-between">
-          <div class="logo">
-            <div class="site-logo">
-              <a href="index.html" class="js-logo-clone">Bookstore</a>
-            </div>
-          </div>
-          <div class="main-nav d-none d-lg-block">
-            <nav class="site-navigation text-right text-md-center" role="navigation">
-               <ul class="site-menu js-clone-nav d-none d-lg-block">
-                <li class="has-children active">
-                  <a href="shop.html">SHOP</a>
-                  <ul class="dropdown">
-                    <li><a href="#">New Arriavals</a></li>
-                    <li><a href="#">Sale</a></li>
-                    <li><a href="#">Author</a></li>
-                   
-                    <li class="has-children">
-                      <a href="#">Genre</a>
-                      <ul class="dropdown">
-                        <li><a href="#">Fantasy</a></li>
-                        <li><a href="#">Sci-fi</a></li>
-                        <li><a href="#">Drama</a></li>
-                      </ul>
-                    </li>
-                  </ul>
-                </li>
-                
-                <li><a href="shop.html">Events</a></li>
-                <li><a href="about.html">About</a></li>
-                <li><a href="contact.html">Contact</a></li>
-              </ul>
-            </nav>
-          </div>
-           <div class="icons">
-            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-            <a href="register.html" class="icons-btn d-inline-block"><span class="icon-user"></span></a>
-            <a href="cart.html" class="icons-btn d-inline-block bag">
-              <span class="icon-shopping-bag"></span>
-              <span class="number">1</span>
-            </a>
-            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
-          </div>
-        </div>
+      <div class="container" id="menu_container">
+      <!-- menu automatically loaded here -->
       </div>
     </div>
+    <!-- end navbar -->
     
     <div class="bg-light py-3">
       <div class="container">
@@ -304,8 +262,7 @@
   <script src="../js/owl.carousel.min.js"></script>
   <script src="../js/jquery.magnific-popup.min.js"></script>
   <script src="../js/aos.js"></script>
-
   <script src="../js/main.js"></script>
-    
+  <script>$("#menu_container").load("/assets/pages/menu.html");</script> 
   </body>
 </html>
