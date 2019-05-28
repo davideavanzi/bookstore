@@ -54,7 +54,7 @@ exports.up = function(knex, Promise) {
                         table.string("password");
                         table.string("address");
                         table.string("country");
-                        table.integer("zip"); 
+                        table.string("zip"); 
                         table.string("token");
                     })
                     .then(console.log('created users table'));

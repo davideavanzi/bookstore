@@ -187,9 +187,9 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
         responseCode = 200;
       } else {
         console.error("user "+req.session.user+" was not logined in with cookie");
-		response={};
+		    response={};
         response.message = "not logged in"        
-        responseCode = 403;
+        responseCode = 401;
       }
       utils.writeJson(res, response, responseCode);
     })

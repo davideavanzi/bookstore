@@ -1641,7 +1641,7 @@ definitions:
       country:
         type: "string"
       zip:
-        type: "integer"
+        type: "string"
     xml:
       name: "User"
     example:
