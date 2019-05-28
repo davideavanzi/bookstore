@@ -47,7 +47,7 @@ exports.getAuthorById = function(authorId) {
     })
     .then(function(author) {
       if (Object.keys(author).length > 0) {
-        resolve(author);
+        resolve(author[0]);
       } else {
         resolve();
       }

@@ -70,12 +70,7 @@
               <h4 class="text-back" id="authors"> <a href="author.html">Theodore De Briè</a></h4>
             <p id="abstract">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
             <p class="mb-4" id="factsheet">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-            <p><strong class="text-primary h4">€<span id="price" style="font-size: 60px">50.00</span></strong></p>
-           
-              
-              
-              
-              
+            <p><strong class="text-primary h4">€<span id="price" style="font-size: 60px">50.00</span></strong></p>              
               <br>
             <div class="mb-5">
               <div class="input-group mb-3" style="max-width: 120px;">
@@ -324,12 +319,10 @@
         </div>
         <div class="row">
           <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel">
-              
-
+            <div class="nonloop-block-3 owl-carousel" id="related">
                 <div class="product">
                 <a href="shop-single.html" class="item">
-                  <img src="../img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
                     
                   <div class="item-info">
                         <div class="row"> </div>
@@ -343,7 +336,7 @@
               <div class="product">
                 <a href="shop-single.html" class="item">
                   <span class="tag">Sale</span>
-                  <img src="../img/product_2.jpg" alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
                   <div class="item-info">
                     <h3>Basquiat</h3>
                     
@@ -355,7 +348,7 @@
                 <div class="product">
                 <a href="shop-single.html#" class="item">
                     <span class="tag">new</span>
-                  <img src="../img/product_3.jpg" alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_3.jpg" alt="Image" class="img-fluid">
                   <div class="item-info">
                     <h3>The Gutemberg bible</h3>
                    
@@ -367,7 +360,7 @@
 
                <div class="product">
                 <a href="shop-single.html" class="item">
-                  <img src="../img/product_4.jpg" alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_4.jpg" alt="Image" class="img-fluid">
                   <div class="item-info">
                     <h3>The Ultimate shoes book</h3>
                    
@@ -379,7 +372,7 @@
               <div class="product">
                 <a href="shop-single.html" class="item">
                   <span class="tag">Sale</span>
-                  <img src="../img/product_2.jpg" alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
                   <div class="item-info">
                     <h3>Basquiat</h3>
                     
@@ -390,7 +383,7 @@
 
                <div class="product">
                 <a href="shop-single.html" class="item">
-                  <img src="../img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
+                  <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
                     
                   <div class="item-info">
                         <div class="row"> </div>
@@ -411,20 +404,19 @@
     </footer>
   </div>
 
-  <script src="../js/jquery-3.3.1.min.js"></script>
-  <script src="../js/jquery-ui.js"></script>
-  <script src="../js/popper.min.js"></script>
-  <script src="../js/bootstrap.min.js"></script>
-  <script src="../js/owl.carousel.min.js"></script>
-  <script src="../js/jquery.magnific-popup.min.js"></script>
-  <script src="../js/aos.js"></script>
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/jquery-ui.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/owl.carousel.min.js"></script>
+  <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="/assets/js/aos.js"></script>
 
-  <script src="../js/main.js"></script>
-  <script src="../js/utils.js"></script>
-
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/utils.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
-      var bookid = getUrlParameter("bookid");
+      var bookid = getUrlParameter("id");
       if(bookid) {
         $.ajax({  
           url: 'http://localhost:8080/v2/books/'+bookid,  
@@ -437,13 +429,13 @@
               document.title = data.title;
               $('#price').html(data.value);
               $('#title').html(data.title);
-              $('#cover').attr("src","../"+data.cover);
+              $('#cover').attr("src","/assets/"+data.cover);
               $('#book_bc').text(data.title);
               $('#abstract').html(data.abstract);
               $('#factsheet').html(data.fact_sheet);
               $('#authors').empty();
               $.each(data.authors, function (index, author) {
-                $('#authors').append("<a href=\"#\">"+author.name+"</a>");
+                $('#authors').append("<a href=\"author.html?id="+author.id+"\">"+author.name+"</a>");
                 if (index < (data.authors.length - 1)) {
                   $('#authors').append(", ");
                 }
