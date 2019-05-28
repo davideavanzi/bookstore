@@ -13,7 +13,7 @@
     <link rel="stylesheet" href="/assets/css/jquery-ui.css">
     <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/assets/https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
     <link rel="stylesheet" href="/assets/css/aos.css">
 
@@ -64,19 +64,18 @@
     <div class="site-section">
       <div class="container">
         <div class="row">
-          <div class="col-md-6">
+          <div class="col-md-5">
             <div class="border ">
-              <img src="/assets/img/author.jpg"  style="border-radius: 50%"  alt="Image" class="img-fluid">
+              <img id="photo" src="/assets/img/author/author.jpg"  style="border-radius: 50%"  alt="Image" class="img-fluid">
             </div>
           </div>
-          <div class="col-md-6">
+          <div class="col-md-7">
               <br><br>              <br><br><br>
 
-            <h1 class="text-black">Thodore De Briè</h1>
+            <h1 class="text-black" id="name">Thodore De Briè</h1>
               <br>
-              
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Pariatur, vitae, explicabo? Incidunt facere, natus soluta dolores iusto! Molestiae expedita veritatis nesciunt doloremque sint asperiores fuga voluptas, distinctio, aperiam, ratione dolore.</p>
-            <p class="mb-4">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
+
+            <p class="mb-4" id="bio">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
             
            
               
@@ -96,9 +95,9 @@
         </div>
         <div class="row">
           <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel">
+            <div class="nonloop-block-3 owl-carousel" id="books">
               
-
+              <!-- placeholder items
                 <div class="product">
                 <a href="shop-single.html" class="item">
                   <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
@@ -172,7 +171,7 @@
                   </div>
                 </a>
               </div>
-
+            -->
             </div>
           </div>
         </div>
@@ -191,6 +190,70 @@
   <script src="/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="/assets/js/aos.js"></script>
   <script src="/assets/js/main.js"></script>
+  <script src="../js/utils.js"></script>
+  <script type="text/javascript">
+    $(document).ready(function(){
+      var authorId = getUrlParameter("id");
+      if(authorId) {
+        $.ajax({  
+          url: 'http://localhost:8080/v2/author/'+authorId,  
+          type: 'GET',  
+          dataType: 'json',  
+          success: function (data, textStatus, xhr) { 
+            //TODO: calc stars mean? (Ooof) 
+            //TODO: add shadow around book cover?
+            console.log(data);  
+            document.title = data.name;
+            $('#name').html(data.name);
+            $('#bio').html(data.bio);
+            $('#photo').attr("src","/assets/"+data.photo);
+            $('#authors').empty();
+            $.each(data.authors, function (index, author) {
+              $('#authors').append("<a href=\"#\">"+author.name+"</a>");
+              if (index < (data.authors.length - 1)) {
+                $('#authors').append(", ");
+              }
+            });
+          },  
+          error: function (xhr, textStatus, errorThrown) {  
+              console.log('Error in Operation');  
+          }  
+        });
+        //get books of the author
+        $.ajax({  
+          url: 'http://localhost:8080/v2/books?authorId='+authorId,  
+          type: 'GET',  
+          dataType: 'json',  
+          success: function (data, textStatus, xhr) { 
+            //to empty already populated carousel:
+            /*
+            var length = $('.item').length;
+            for (var i=0; i<length; i++) {
+              $(".edit-manage-carousel").trigger('remove.owl.carousel', [i])
+                                        .trigger('refresh.owl.carousel');
+            }
+            */
+            $.each(data, function (index, book) {
+              $('#books').trigger('add.owl.carousel', ['\
+              <div class="product">\
+                <a href="shop-single.html?id='+book.id+'" class="item">\
+                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">\
+                  <div class="item-info">\
+                    <h3>'+book.title+'</h3>\
+                    <strong class="price">€'+book.value+'</strong>\
+                  </div>\
+                </a>\
+              </div>\
+              ']).trigger('refresh.owl.carousel');
+              });
+          },  
+          error: function (xhr, textStatus, errorThrown) {  
+              console.log('Error in Operation');  
+          }
+        });   
+      }
+    });
+  </script>
   <script>$("#menu_container").load("/assets/pages/menu.html");</script> 
   <script>$("footer").load("/assets/pages/footer.html");</script>    
 </body>
