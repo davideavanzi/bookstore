@@ -94,10 +94,10 @@ const newSession = (req, body) => {
     try {
       req.session.loggedin = true;
       req.session.user = body.email;
-      if(body.remember){
+      if(body.remember == 'true'){
         req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
         console.log("set one day expiration cookie for user "+body.email);
-      }else {
+      } else {
         req.sessionOptions.expires  = false;
         console.log("set a standard session cookie for user "+body.email);
       } 
@@ -109,7 +109,7 @@ const newSession = (req, body) => {
         }
       });
       resolve(req.session);
-    }catch(e) {
+    } catch(e) {
       console.error(e);
       reject(null);
       throw(e);

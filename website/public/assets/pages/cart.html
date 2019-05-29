@@ -162,6 +162,7 @@
 		            error: function(jqXHR, textStatus, errorThrown) {
 		                if (jqXHR.status == 401) {
                             window.location.href = 'register.html';
+                            alert ("Please login first!");
 		                } else {
 		                   	alert('Whoops! Some error occours!');
 		                }

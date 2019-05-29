@@ -1665,14 +1665,14 @@ definitions:
       password:
         type: "string"
       remember:
-        type: "boolean"
+        type: "string"
         default: false
     xml:
       name: "Login"
     example:
       password: "password"
       email: "email"
-      remember: true
+      remember: "false"
   Reservation:
     type: "object"
     required:
