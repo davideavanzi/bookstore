@@ -18,7 +18,7 @@ exports.seed = function(knex, Promise) {
         {
         id: 2,
         title: 'The Lord of the Rings', 
-        cover: 'img/cover/the_lord_of_the_rigs.jpg',
+        cover: 'img/cover/the_lord_of_the_rings.jpg',
         abstract: "A young Hobbit known as Frodo has been thrown on an amazing adventure, when he is appointed the job of destroying the One Ring, which was created by the Dark Lord Sauron. He is assigned with three warriors including Gandelf, Aragorn, and Boromir. But it's not going to be an easy journey for the Fellowship of the Ring, on the ultimate quest to rid the Middle-earth of all evil.",
         fact_sheet: 'The Lord of the Rings, by J.R.R. Tolkien, tells the story of the War of the Ring in the fictional world of Middle-earth. The long novel--commonly published as three volumes and mistakenly called a trilogy centers around the magical One Ring, discovered by Bilbo Baggins in the earlier novel The Hobbit. Now, the free peoples of Middle-earth, such as Men, Elves, Dwarves, and Hobbits, must overcome the dark power of Sauron by destroying the Ring.', 
         genre_id: 10,
@@ -64,7 +64,7 @@ exports.seed = function(knex, Promise) {
         {
         id: 7,
         title: 'The Shining', 
-        cover: 'img/cover/shining.jpg',
+        cover: 'img/cover/the_sshining.jpg',
         abstract: 'Signing a contract, Jack Torrance, a normal writer and former teacher agrees to take care of a hotel which has a long, violent past that puts everyone in the hotel in a nervous situation. While Jack slowly gets more violent and angry of his life, his son, Danny, tries to use a special talent, the "Shining", to inform the people outside about whatever that is going on in the hotel.', 
         fact_sheet: "The Shining is a horror novel by American author Stephen King. Published in 1977, it is King's third published novel and first hardback bestseller: the success of the book firmly established King as a preeminent author in the horror genre. The setting and characters are influenced by King's personal experiences, including both his visit to The Townplace Suites in Williamsport, PA in 1974 and his recovery from alcoholism. The novel was followed by a sequel, Doctor Sleep, published in 2013.", 
         genre_id: 12,
@@ -90,8 +90,8 @@ exports.seed = function(knex, Promise) {
         stock: 45},
         {
         id: 10,
-        title: 'Son of time', 
-        cover: 'img/cover/son_of_time.jpg',
+        title: 'Child of time', 
+        cover: 'img/cover/child_of_time.jpg',
         abstract: "Based on an Asimov short story, 'The Ugly Little Boy'. A children's nurse is hired as part of a scientific project aimed at bringing a living being from the past to the present. A four-year-old Neanderthal boy is snatched from his home and hurled 40,000 years into a terrifying future.",
         fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
         genre_id: 21,
