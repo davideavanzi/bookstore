@@ -41,185 +41,203 @@
             </div>
         </div>
 
-        <body>
-            <div class="site-section">
+
+        
+        <div class="site-section">
+
+            <!-- SUCCESS / ERROR BAR -->
+            <div class="bg-white py-3">
                 <div class="container">
-                    <div class="2row mb-5">
-                        <div class="row">
-                            <div class="col-md-6 mb-5 mb-md-0">
-                                <h2 class="h3 mb-3 text-black">Register</h2>
-                                <div class="p-3 p-lg-5 border">
-                                    <form id="register" action="" method="">
-                                        <div class="form-group row">
-                                            <div class="col-md-12">
-                                                <label for="firstName" class="text-black">First Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="firstName" name="firstName">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="lastName" class="text-black">Last Name <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="lastName" name="lastName">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
-                                                <input type="password" class="form-control" id="password" name="password">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="address" class="text-black">Address <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="address" name="address">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="country" class="text-black">State / Country <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="country" name="country">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="zip" name="zip">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="email" class="text-black">Email Address <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" id="email" name="email">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="phone" class="text-black">Phone <span class="text-danger">*</span></label>
-                                                <input type="text" class="form-control" id="phone" name="phone">
-                                            </div>
+                    <div class="row">
+                        <div class="col-md-12 mb-0" id="messagebar">
+                        </div>
+                    </div>
+                </div>
+            </div>  
+
+            <div class="container">
+                <div class="2row mb-5">
+                    <div class="row">
+                        <div class="col-md-6 mb-5 mb-md-0">
+                            <h2 class="h3 mb-3 text-black">Register</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <form id="register" action="" method="">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="firstName" class="text-black">First Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="firstName" name="firstName">
                                         </div>
-                                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="regButt" value="Register">
-                                    </form>
-                                </div>
+                                        <div class="col-md-12">
+                                            <label for="lastName" class="text-black">Last Name <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="lastName" name="lastName">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="address" class="text-black">Address <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="address" name="address">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="country" class="text-black">State / Country <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="country" name="country">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="zip" name="zip">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="email" class="text-black">Email Address <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="email" name="email">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                            <input type="text" class="form-control" id="phone" name="phone">
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" id="regButt" value="Register">
+                                </form>
                             </div>
-                            <div class="col-md-6 mb-5 mb-md-0">
-                                <h2 class="h3 mb-3 text-black">Login</h2>
-                                <div class="p-3 p-lg-5 border">
-                                    <form id="login" action="" method="">
-                                        <div class="form-group row">
-                                            <div class="col-md-12">
-                                                <label for="email" class="text-black">Email Address <span class="text-danger">*</span></label>
-                                                <input type="email" class="form-control" id="email_login" name="email">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
-                                                <input type="password" class="form-control" id="password_login" name="password">
-                                            </div>
-                                            <div class="col-md-12">
-                                                <input type="checkbox" name="remember" value="true"> Remember me (24 hours)<br><br>
-                                            </div>
+                        </div>
+                        <div class="col-md-6 mb-5 mb-md-0">
+                            <h2 class="h3 mb-3 text-black">Login</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <form id="login" action="" method="">
+                                    <div class="form-group row">
+                                        <div class="col-md-12">
+                                            <label for="email" class="text-black">Email Address <span class="text-danger">*</span></label>
+                                            <input type="email" class="form-control" id="email_login" name="email">
                                         </div>
-                                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="logButt" value="Login">
-                                    </form>
-                                </div>
-                                <h2 class="h3 mb-3 text-black">Logout</h2>
-                                <div class="p-3 p-lg-5 border">
-                                    <form id="logout" action="" method="">
-                                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="logoutButt" value="Logout">
-                                    </form>
-                                </div>
+                                        <div class="col-md-12">
+                                            <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
+                                            <input type="password" class="form-control" id="password_login" name="password">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <input type="checkbox" name="remember" value="true"> Remember me (24 hours)<br><br>
+                                        </div>
+                                    </div>
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" id="logButt" value="Login">
+                                </form>
+                            </div>
+                            <h2 class="h3 mb-3 text-black">Logout</h2>
+                            <div class="p-3 p-lg-5 border">
+                                <form id="logout" action="" method="">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" id="logoutButt" value="Logout">
+                                </form>
                             </div>
                         </div>
                     </div>
-                    <footer class="site-footer custom-border-top">
-                    </footer>
                 </div>
+                <footer class="site-footer custom-border-top">
+                </footer>
             </div>
-            <script src="/assets/js/jquery-3.3.1.min.js"></script>
-            <script src="/assets/js/jquery-ui.js"></script>
-            <script src="/assets/js/popper.min.js"></script>
-            <script src="/assets/js/bootstrap.min.js"></script>
-            <script src="/assets/js/owl.carousel.min.js"></script>
-            <script src="/assets/js/jquery.magnific-popup.min.js"></script>
-            <script src="/assets/js/aos.js"></script>
-            <script src="/assets/js/main.js"></script>
-            <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
-            <script type="text/javascript">
-                $(document).ready(function() {
-                    $(function() {
-                        $.fn.serializeObject = function() {
-                            var o = {};
-                            var a = this.serializeArray();
-                            $.each(a, function() {
-                                if (o[this.name] !== undefined) {
-                                    if (!o[this.name].push) {
-                                        o[this.name] = [o[this.name]];
-                                    }
-                                    o[this.name].push(this.value || '');
-                                } else {
-                                    o[this.name] = this.value || '';
-                                }
-                            });
-                            return o;
-                        };
-                        $("#logout").bind("submit", function(evt) {
-                            $.ajax({
-                                url: "http://localhost:8080/v2/user/logout",
-                                type: "GET",
-                                contentType: "application/json",
-                                data: JSON.stringify($("#logout").serializeObject()),
-                                success: function(data, textStatus, jqXHR) {
-                                    alert("You successfully logout");
-                                    window.location.href = '../../index.html';
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    if (jqXHR.status == 401) {
-                                        alert("You are not loggedin, try login!");
-                                    } else {
-                                        alert("Whoops! Some error occours!");
-                                    }
-                                }
-                            });
-                            return false;
-                        });
-                        $("#register").bind("submit", function(evt) {
-                            $.ajax({
-                                url: "http://localhost:8080/v2/user/register",
-                                type: "POST",
-                                contentType: "application/json",
-                                data: JSON.stringify($("#register").serializeObject()),
-                                success: function(data, textStatus, jqXHR) {
-                                    alert("Thank you for your subscription! Now login!");
-                                    window.location.href = 'register.html';
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    if (jqXHR.status == 403) {
-                                        alert("You have already registered, try login!");
-                                    } else if (jqXHR.status == 401) {
-                                        alert("You inserted invalid data, try again!");
-                                    } else {
-                                        alert("Whoops! Some error occours!");
-                                    }
-                                }
-                            });
-                            return false;
-                        });
-                        $("#login").bind("submit", function(evt) {
-                            $.ajax({
-                                url: "http://localhost:8080/v2/user/login",
-                                type: "POST",
-                                contentType: "application/json",
-                                data: JSON.stringify($("#login").serializeObject()),
-                                success: function(data, textStatus, jqXHR) {
-                                    console.log(data.message);
-                                    window.location.href = '../../index.html';
-                                },
-                                error: function(jqXHR, textStatus, errorThrown) {
-                                    if (jqXHR.status == 401) {
-                                        alert("You inserted invalid data, try again!");
-                                        window.location.href = 'register.html';
-                                    } else {
-                                        alert("Whoops! Some error occours!");
-                                    }
-                                }
-                            });
-                            return false;
-                        });
+        </div>
+    </div>
+    <script src="/assets/js/jquery-3.3.1.min.js"></script>
+    <script src="/assets/js/jquery-ui.js"></script>
+    <script src="/assets/js/popper.min.js"></script>
+    <script src="/assets/js/bootstrap.min.js"></script>
+    <script src="/assets/js/owl.carousel.min.js"></script>
+    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+    <script src="/assets/js/aos.js"></script>
+    <script src="/assets/js/main.js"></script>
+    <script src="/assets/js/utils.js"></script>
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $(function() {
+                $.fn.serializeObject = function() {
+                    var o = {};
+                    var a = this.serializeArray();
+                    $.each(a, function() {
+                        if (o[this.name] !== undefined) {
+                            if (!o[this.name].push) {
+                                o[this.name] = [o[this.name]];
+                            }
+                            o[this.name].push(this.value || '');
+                        } else {
+                            o[this.name] = this.value || '';
+                        }
                     });
+                    return o;
+                };
+                $("#logout").bind("submit", function(evt) {
+                    $.ajax({
+                        url: "http://localhost:8080/v2/user/logout",
+                        type: "GET",
+                        contentType: "application/json",
+                        data: JSON.stringify($("#logout").serializeObject()),
+                        success: function(data, textStatus, jqXHR) {
+                            alert("You successfully logout");
+                            window.location.href = '../../index.html';
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (jqXHR.status == 401) {
+                                alert("You are not loggedin, try login!");
+                            } else {
+                                alert("Whoops! Some error occours!");
+                            }
+                        }
+                    });
+                    return false;
                 });
-            </script>
-            <script>
-                $("#menu_container").load("/assets/pages/menu.html");
-            </script>
-            <script>
-                $("footer").load("/assets/pages/footer.html");
-            </script>
-        </body>
+                $("#register").bind("submit", function(evt) {
+                    $.ajax({
+                        url: "http://localhost:8080/v2/user/register",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify($("#register").serializeObject()),
+                        success: function(data, textStatus, jqXHR) {
+                            //alert("Thank you for your subscription! Now login!");
+                            //window.location.href = 'register.html';
+                            successAlert("All Good!","Thank you for your subscription, you can now login!");
+                            $('#register').trigger("reset");
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (jqXHR.status == 403) {
+                                //alert("You have already registered, try login!");
+                                errorAlert("Whoops!", "You have already registered, try to login!")
+                            } else if (jqXHR.status == 401) {
+                                //alert("You inserted invalid data, try again!");
+                                errorAlert("Whoops!", "You inserted invalid data, try again!");
+                            } else {
+                                alertAlert("Whoops!", "An error occurred, pleasy try again!");
+                            }
+                        }
+                    });
+                    return false;
+                });
+                $("#login").bind("submit", function(evt) {
+                    $.ajax({
+                        url: "http://localhost:8080/v2/user/login",
+                        type: "POST",
+                        contentType: "application/json",
+                        data: JSON.stringify($("#login").serializeObject()),
+                        success: function(data, textStatus, jqXHR) {
+                            console.log(data.message);
+                            window.location.href = '../../index.html';
+                        },
+                        error: function(jqXHR, textStatus, errorThrown) {
+                            if (jqXHR.status == 401) {
+                                alert("You inserted invalid data, try again!");
+                                window.location.href = 'register.html';
+                            } else {
+                                alert("Whoops! Some error occours!");
+                            }
+                        }
+                    });
+                    return false;
+                });
+            });
+        });
+    </script>
+    <script>
+        $("#menu_container").load("/assets/pages/menu.html");
+    </script>
+    <script>
+        $("footer").load("/assets/pages/footer.html");
+    </script>
+</body>
 
 </html>
