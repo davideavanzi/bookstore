@@ -128,7 +128,6 @@ function getBooks(offset,limit,authorId,themeId,genreId) {
           }); 
         });
         Promise.all(fetched).then((bookList) => {
-          console.log(bookList);
           resolve(bookList);
         });
       } else {

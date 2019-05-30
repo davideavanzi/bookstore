@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Dealers &mdash; Colorlib e-Commerce Template</title>
+    <title>Books</title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -15,6 +15,19 @@
     <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
     <link rel="stylesheet" href="/assets/css/aos.css">
     <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+    /*TODO : this is temporary to fix book images - move it to css!*/
+    .resized {
+      max-width: 50% !important;
+      top: 2rem !important;
+    }
+    .res {
+      min-height: 35rem !important;
+    }
+    .book-title {
+      padding: 0rem 3rem 0rem 3rem;
+    }
+    </style>
     
   </head>
   <body>
@@ -206,26 +219,8 @@
                 <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
               </div>
 
-              <div class="mb-4">
+              <div class="mb-4" id="author_filter">
                 <h3 class="mb-3 h6 text-uppercase text-black d-block">Authors</h3>
-                <label for="s_sm" class="d-flex">
-                  <input type="checkbox" id="s_sm" class="mr-2 mt-1"> <span class="text-black">Stephen King (4)</span>
-                </label>
-                <label for="s_md" class="d-flex">
-                  <input type="checkbox" id="s_md" class="mr-2 mt-1"> <span class="text-black">Toni Morrison (12)</span>
-                </label>
-                <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">J.K.Rowling (7)</span>
-                </label>
-                  <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Zadie Smith (2)</span>
-                </label>
-                  <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Margaret Atwood (4)</span>
-                </label>
-                  <label for="s_lg" class="d-flex">
-                  <input type="checkbox" id="s_lg" class="mr-2 mt-1"> <span class="text-black">Lee Child (7)</span>
-                </label>
               </div>
 
               
@@ -336,6 +331,12 @@
   <script src="/assets/js/main.js"></script>
   <script src="/assets/js/utils.js"></script>
   <script type="text/javascript">
+  /*
+  *   TODO:
+  *   + funzione per mostrare quanti libri per ogni autore/genere
+  *   + spostare tutti i jquery in un singolo file e chiamare solo le funzioni qui?
+  * 
+  */
     $(document).ready(function(){
       //fetch all books
       $.ajax({  
@@ -354,10 +355,10 @@
             });
             $('#main_books').append('\
             <li class="col-md-6 col-lg-6">\
-              <a href="shop-single.html?id='+book.id+'" class="item">\
-                <img src="/assets/img/product_6.jpg" alt="Cover" class="img-fluid">\
+              <a href="shop-single.html?id='+book.id+'" class="item res">\
+                <img src="/assets/'+book.cover+'" alt="Cover" class="img-fluid resized">\
                 <div class="item-info">\
-                  <h3>'+book.title+'</h3>\
+                  <h3 class="book-title">'+book.title+'</h3>\
                   <span class="collection d-block">'+authors+'</span>\
                   <strong class="price">€'+book.value+'</strong>\
                 </div>\
@@ -369,10 +370,28 @@
         error: function (xhr, textStatus, errorThrown) {  
             console.log('Error in Operation');  
         }
-      });   
-    });
-    //FEATURED BOOKS
-    $(document).ready(function(){
+      }); 
+
+      //fetch all authors to filter
+      $.ajax({  
+        url: 'http://localhost:8080/v2/author',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          console.log(data);
+          $.each(data, function (index, author) {
+            $('#author_filter').append('\<label for="author'+author.id+'" class="d-flex">\
+                <input type="checkbox" id="author'+author.id+'" class="mr-2 mt-1"> <span class="text-black">'+author.name+'</span>\
+              </label>\
+            ');
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+      }); 
+      
+      //FEATURED BOOKS
       $.ajax({  
         url: 'http://localhost:8080/v2/books',  
         type: 'GET',  
@@ -386,7 +405,7 @@
                                       .trigger('refresh.owl.carousel');
           }
           */
-         //put all booka in the carousel
+          //put all books in the carousel
           $.each(data, function (index, book) {
             $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
