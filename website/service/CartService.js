@@ -95,7 +95,8 @@ exports.addBookToCart = function(cartId,bookId,amount) {
         db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
         db(TABLES.BOOK).where({ id: bookId }).decrement({ stock: amount })
       ]).then(() => {  
-        resolve();
+        //operation was successful:
+        resolve({"message":"Operation completed."});
       })
     })
   });

@@ -64,7 +64,7 @@ exports.seed = function(knex, Promise) {
         {
         id: 7,
         title: 'The Shining', 
-        cover: 'img/cover/the_sshining.jpg',
+        cover: 'img/cover/the_shining.jpg',
         abstract: 'Signing a contract, Jack Torrance, a normal writer and former teacher agrees to take care of a hotel which has a long, violent past that puts everyone in the hotel in a nervous situation. While Jack slowly gets more violent and angry of his life, his son, Danny, tries to use a special talent, the "Shining", to inform the people outside about whatever that is going on in the hotel.', 
         fact_sheet: "The Shining is a horror novel by American author Stephen King. Published in 1977, it is King's third published novel and first hardback bestseller: the success of the book firmly established King as a preeminent author in the horror genre. The setting and characters are influenced by King's personal experiences, including both his visit to The Townplace Suites in Williamsport, PA in 1974 and his recovery from alcoholism. The novel was followed by a sequel, Doctor Sleep, published in 2013.", 
         genre_id: 12,

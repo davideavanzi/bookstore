@@ -779,7 +779,7 @@ paths:
         404:
           description: "Nt found"
       x-swagger-router-controller: "User"
-  /cart/{cartId}:
+  /cart/:
     get:
       tags:
       - "cart"
@@ -787,12 +787,6 @@ paths:
       operationId: "getCartById"
       produces:
       - "application/json"
-      parameters:
-      - name: "cartId"
-        in: "path"
-        required: true
-        type: "integer"
-        format: "int64"
       responses:
         200:
           description: "success"
@@ -813,12 +807,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "cartId"
-        in: "path"
-        description: "id of the cart that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
       - name: "bookId"
         in: "query"
         description: "Id of the book to be added"
@@ -839,7 +827,7 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Cart"
-  /cart/{cartId}/addBook:
+  /cart/addBook:
     put:
       tags:
       - "cart"
@@ -850,12 +838,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "cartId"
-        in: "path"
-        description: "id of the cart that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
       - name: "bookId"
         in: "query"
         description: "id of the book that needs to be added"
@@ -876,7 +858,7 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Cart"
-  /cart/{cartId}/removeBook:
+  /cart/removeBook:
     put:
       tags:
       - "cart"
@@ -887,12 +869,6 @@ paths:
       produces:
       - "application/json"
       parameters:
-      - name: "cartId"
-        in: "path"
-        description: "id of the cart that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
       - name: "bookId"
         in: "query"
         description: "id of the book that needs to be removed"

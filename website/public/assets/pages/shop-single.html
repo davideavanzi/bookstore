@@ -100,7 +100,7 @@
             </div>
 
            
-      <p><a href="cart.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</a>
+          <p><button id="buy" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</button>
             <a href="thankyou.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Reserve</a></p>
               <div class="row">
               <div class="col-md-12">
@@ -122,7 +122,7 @@
 			<div class="col-sm-9">
       
                 <label class="text-black h4" for="coupon">Review</label>
-                <p>Live your review on this book.</p>
+                <p>Write your review on this book.</p>
               </div>
               <div class="col-md-12 mb- mb-md-3">
                 <input type="text" class="form-control py-3" id="coupon" placeholder=". . .">
@@ -501,10 +501,36 @@
           error: function (xhr, textStatus, errorThrown) {  
               console.log('Error in Operation');  
           }  
-      });  
+       });  
       }
+
+      $("#buy").click(function() {
+        $.ajax({
+            url: "http://localhost:8080/v2/cart/addBook?bookId=1&amount=1",
+            type: "PUT",
+            contentType: "application/json",
+            success: function() {
+              successAlert("All Good!","This book was added to your cart!");
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+              if (jqXHR.status == 403) {
+                  errorAlert("Whoops!", "You need to be logged in to buy books!");
+              } else if (jqXHR.status == 401) {
+                  //alert("You inserted invalid data, try again!");
+                  errorAlert("Whoops!", "Data provided are invalid, try again!");
+              } else {
+                  errorAlert("Whoops!", "An error occurred, pleasy try again!");
+              }
+            }
+        });
+        //scroll smoothly to the top
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
     });
-      </script>
+      
+  });
+    
+  </script>
   <script>$("#menu_container").load("/assets/pages/menu.html");</script>
   <script>$("footer").load("/assets/pages/footer.html");</script>  
 </body>

@@ -31,7 +31,7 @@ function setupDataLayer () {
         db.migrate.latest().then(function () {
             console.log("(2/3) running [knex.seed.run()]");
             //seed database TODO
-            //return db.seed.run();
+            return db.seed.run();
         }).then(function () {
             var s = "(3/3) database ready.";
             resolve();
