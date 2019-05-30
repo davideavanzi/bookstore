@@ -549,6 +549,8 @@ height: 20%;
     padding: 12px 30px; }
 
 .products, .product {
+  list-style: none;
+  padding-inline-start: 0px;
   border-left: 1px solid #eee; }
   .products > [class*="col-"], .product > [class*="col-"] {
     border-right: 1px solid #eee;
@@ -557,7 +559,8 @@ height: 20%;
     text-align: center;
     display: block;
     position: relative;
-    border-bottom: 1px solid #eee; }
+    border-bottom: 1px solid #eee;
+    border-top: 1px solid #eee; }
     .products .item .tag, .product .item .tag {
       position: absolute;
       background: #ffe5ae;
