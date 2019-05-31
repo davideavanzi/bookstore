@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-    <title>Dealers &mdash; Colorlib e-Commerce Template</title>
+    <title>Register &mdash; </title>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
@@ -64,35 +64,35 @@
                                 <form id="register" action="" method="">
                                     <div class="form-group row">
                                         <div class="col-md-12">
-                                            <label for="firstName" class="text-black">First Name <span class="text-danger">*</span></label>
+                                            <label for="firstName" class="text-black">First Name</label>
                                             <input type="text" class="form-control" id="firstName" name="firstName">
                                         </div>
                                         <div class="col-md-12">
-                                            <label for="lastName" class="text-black">Last Name <span class="text-danger">*</span></label>
+                                            <label for="lastName" class="text-black">Last Name</label>
                                             <input type="text" class="form-control" id="lastName" name="lastName">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
-                                            <input type="password" class="form-control" id="password" name="password">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="address" class="text-black">Address <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="address" name="address">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="country" class="text-black">State / Country <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="country" name="country">
-                                        </div>
-                                        <div class="col-md-12">
-                                            <label for="zip" class="text-black">Posta / Zip <span class="text-danger">*</span></label>
-                                            <input type="text" class="form-control" id="zip" name="zip">
                                         </div>
                                         <div class="col-md-12">
                                             <label for="email" class="text-black">Email Address <span class="text-danger">*</span></label>
                                             <input type="email" class="form-control" id="email" name="email">
                                         </div>
                                         <div class="col-md-12">
-                                            <label for="phone" class="text-black">Phone <span class="text-danger">*</span></label>
+                                            <label for="password" class="text-black">Password <span class="text-danger">*</span> </label>
+                                            <input type="password" class="form-control" id="password" name="password">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="address" class="text-black">Address</label>
+                                            <input type="text" class="form-control" id="address" name="address">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="country" class="text-black">State / Country</label>
+                                            <input type="text" class="form-control" id="country" name="country">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="zip" class="text-black">Posta / Zip</label>
+                                            <input type="text" class="form-control" id="zip" name="zip">
+                                        </div>
+                                        <div class="col-md-12">
+                                            <label for="phone" class="text-black">Phone</label>
                                             <input type="text" class="form-control" id="phone" name="phone">
                                         </div>
                                     </div>
@@ -169,14 +169,14 @@
                         contentType: "application/json",
                         data: JSON.stringify($("#logout").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
-                            alert("You successfully logout");
+                            successAlert("All Good!"," You successfully logout");
                             window.location.href = '../../index.html';
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             if (jqXHR.status == 401) {
-                                alert("You are not loggedin, try login!");
+                                errorAlert("Whoops!", "You are not loggedin, try login!");
                             } else {
-                                alert("Whoops! Some error occours!");
+                                alertAlert("Whoops!", "An error occurred, pleasy try again!");
                             }
                         }
                     });
@@ -189,20 +189,19 @@
                         contentType: "application/json",
                         data: JSON.stringify($("#register").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
-                            //alert("Thank you for your subscription! Now login!");
-                            //window.location.href = 'register.html';
                             successAlert("All Good!","Thank you for your subscription, you can now login!");
                             $('#register').trigger("reset");
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             if (jqXHR.status == 403) {
-                                //alert("You have already registered, try login!");
-                                errorAlert("Whoops!", "You have already registered, try to login!")
+                                errorAlert("Whoops!", "You have already registered, try to login!");
+                                $('#register').trigger("reset");
                             } else if (jqXHR.status == 401) {
-                                //alert("You inserted invalid data, try again!");
                                 errorAlert("Whoops!", "You inserted invalid data, try again!");
+                                $('#register').trigger("reset");
                             } else {
                                 alertAlert("Whoops!", "An error occurred, pleasy try again!");
+                                $('#register').trigger("reset");
                             }
                         }
                     });
@@ -215,15 +214,16 @@
                         contentType: "application/json",
                         data: JSON.stringify($("#login").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
-                            console.log(data.message);
+                            successAlert("All Good!","You are now loggedin");
                             window.location.href = '../../index.html';
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             if (jqXHR.status == 401) {
-                                alert("You inserted invalid data, try again!");
-                                window.location.href = 'register.html';
+                                errorAlert("Whoops!", "You inserted invalid data, try again!");
+                                $('#login').trigger("reset");
                             } else {
-                                alert("Whoops! Some error occours!");
+                                alertAlert("Whoops!", "An error occurred, pleasy try again!");
+                                $('#login').trigger("reset");
                             }
                         }
                     });

@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Events</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+    <link rel="stylesheet" href="/assets/css/aos.css">
+    <link rel="stylesheet" href="/assets/css/style.css">
+    <style>
+    /*TODO : this is temporary to fix book images - move it to css!*/
+    .resized {
+      max-width: 50% !important;
+      top: 2rem !important;
+    }
+    .res {
+      min-height: 35rem !important;
+    }
+    .book-title {
+      padding: 0rem 3rem 0rem 3rem;
+    }
+        
+        
+        
+        
+       #timeline {
+  list-style: none;
+  position: relative;
+  margin:50px auto;
+  width:90%;
+}
+#timeline:before {
+  top: 0;
+  bottom: 0;
+  position: absolute;
+  content: " ";
+  width: 2px;
+  background-color: #bfbfbf;
+  left: 50%;
+  margin-left: -1.5px;
+}
+#timeline .clearFix {
+  clear: both;
+  height: 0;
+}
+#timeline .timeline-badge {
+	color: #fff;
+	width: 25px;
+	height: 25px;
+	font-size: 1.2em;
+	text-align: center;
+	position: absolute;
+	top: 0;
+	left: 50%;
+	margin-left: -13px;
+	background-color: #fff;
+	z-index: 6;
+	border-radius: 50%;
+	border: 2px solid #bfbfbf;
+}
+#timeline .timeline-badge span.timeline-balloon-date-day {
+  font-size: 1.4em;
+}
+#timeline .timeline-badge span.timeline-balloon-date-month {
+  font-size: .7em;
+  position: relative;
+  top: -10px;
+}
+#timeline .timeline-badge.timeline-filter-movement {
+  background-color: #ffffff;
+  font-size: 1.7em;
+  height: 35px;
+  margin-left: -18px;
+  width: 35px;
+  top: 40px;
+}
+#timeline .timeline-badge.timeline-filter-movement a span {
+  color: #bfbfbf;
+  font-size: 1.3em;
+  top: -1px;
+}
+#timeline .timeline-badge.timeline-future-movement {
+	background-color: #ffffff;
+	height: 120px;
+	width: 120px;
+	font-size: 1.7em;
+	top: -16px;
+	margin-left: -60px;
+	border: 2px solid #bfbfbf;
+}
+#timeline .timeline-badge.timeline-future-movement p {
+	color:#bfbfbf;
+	position: absolute;
+	top: 38px;
+	left: 27px;
+}
+#timeline .timeline-badge.timeline-future-movement a span {
+  color: #bfbfbf;
+  font-size: .9em;
+  top: 0;
+  left: 1px;
+}
+#timeline .timeline-movement {
+/*   border-bottom: dashed 1px #4997cd; */
+  position: relative;
+  margin-bottom: 10rem;
+}
+#timeline .timeline-movement.timeline-movement-top {
+  height: 60px;
+}
+/* #timeline .timeline-movement .timeline-item {
+  padding: 20px 0;
+} */
+#timeline .timeline-movement .timeline-item .timeline-panel {
+  border: 1px solid #d4d4d4;
+  border-radius: 3px;
+  background-color: #FFFFFF;
+  color: #666;
+  padding: 10px;
+  position: relative;
+  -webkit-box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+  box-shadow: 0 1px 6px rgba(0, 0, 0, 0.175);
+}
+#timeline .timeline-movement .timeline-item .timeline-panel .timeline-panel-ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#timeline .timeline-movement .timeline-item .timeline-panel.credits  .timeline-panel-ul .lefting-wrap {
+	float: right;
+	width: 40%;
+	height: 130px;
+	background-color: floralwhite;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.credits  .timeline-panel-ul .righting-wrap {
+	float: left;
+	width: 70%;
+	height: 130px;
+	padding: 0 12px 0 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li {
+  color: #666;
+  width: 100%;
+}
+.clear {
+	clear:both;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits  .timeline-panel-ul .lefting-wrap {
+	float: left;
+	width: 30%;
+	height: 130px;
+	background-color: floralwhite;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits  .timeline-panel-ul .righting-wrap {
+	float: right;
+	width: 70%;
+	height: 130px;
+	padding: 0 0 0 12px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul li.img-wraping {
+	width: 100%;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul li.img-wraping a img, #timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li.img-wraping a img {
+    width: 100%;
+  
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul li {
+	color: #666;
+	width: 100%;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.credits .timeline-panel-ul li a.importo  {
+  
+  font-size: 1.3em;
+  font-weight: 600;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul {
+  text-align: left;
+}
+#timeline .timeline-movement .timeline-item .timeline-panel.debits .timeline-panel-ul a.importo {
+  color: #e2001a;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+ 
+        
+        
+        
+        
+    </style>
+    
+  </head>
+  <body>
+  
+  <div class="site-wrap">
+    
+
+    <!-- navbar -->
+    <div class="site-navbar bg-white py-2 position-relative">
+      <div class="search-wrap">
+        <div class="container">
+          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+          <form action="#" method="post">
+            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+          </form>  
+        </div>
+      </div>
+      <div class="container" id="menu_container">
+      <!-- menu automatically loaded here s-->
+      </div>
+    </div>
+    <!-- end navbar -->
+    
+    <!-- breadcrumbs -->
+    <div class="bg-light py-3">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12 mb-0"><a href="/index.html">Home</a><span class="mx-2 mb-0">/</span>
+          <strong class="text-black">Books</strong></div>
+        </div>
+      </div>
+    </div>
+    <!-- end breadcrumbs -->
+
+    <div class="site-section">
+      <!-- SUCCESS / ERROR BAR -->
+      <div class="bg-white py-3">
+          <div class="container">
+              <div class="row">
+                  <div class="col-md-12 mb-0" id="messagebar">
+                  </div>
+              </div>
+          </div>
+      </div>  
+      <div class="container">
+        <div class="row mb-5">
+          <div class="col-lg-9 order-2 order-lg-1">
+
+            <div class="row align">
+              <div class="col-md-12 mb-5">
+                <div class="float-md-left"><h2 class="text-black h5"></h2></div>
+                <div class="d-flex">
+                  <div class="dropdown mr-1 ml-md-auto">
+                    <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                      Latest
+                    </button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                      <a class="dropdown-item" href="#">Fantasy</a>
+                      <a class="dropdown-item" href="#">Sci-fi</a>
+                      <a class="dropdown-item" href="#">Western</a>
+                      <a class="dropdown-item" href="#">Romance</a>
+                      <a class="dropdown-item" href="#">Thriller</a>
+                      <a class="dropdown-item" href="#">Mistery</a>
+                      <a class="dropdown-item" href="#">Detective story</a>
+                    </div>
+                  </div>
+                  <div class="btn-group">
+                    <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
+                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
+                      <a class="dropdown-item" href="#">Relevance</a>
+                      <a class="dropdown-item" href="#">Author's name, A to Z</a>
+                      <a class="dropdown-item" href="#">Author's name, Z to A</a>
+                      <div class="dropdown-divider"></div>
+                      
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="row mb-5">
+              <div class="products-wrap border-top-0">
+  <div class="container-fluid">
+    <ul class="row no-gutters products" id="main_books">
+        
+        
+        <div class="container-fluid">
+	<div class="row">
+	    <div id="timeline">
+			<div class="row timeline-movement timeline-movement-top">
+				<div class="timeline-badge timeline-future-movement">
+						<p>May</p>
+				</div>
+			</div>
+             
+			<div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-right">
+				<div class="col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits  anim animate fadeInLeft">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Titolo</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a> </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+                 </div>
+            
+            <div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-left">
+				<div class="offset-sm-6 col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits  anim animate fadeInLeft">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Mussum ipsum cacilds</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a>  </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+                </div>
+
+			<div class="row timeline-movement timeline-movement-top">
+				<div class="timeline-badge timeline-future-movement">
+						<p>June</p>
+				</div>
+			</div>
+			
+            
+            <div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-right">
+				<div class="col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits ">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Titolo libro</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a> </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+                </div>
+            
+            <div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-left">
+				<div class="offset-sm-6 col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits  ">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Titolo</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a>  </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+                </div>
+
+			<div class="row timeline-movement timeline-movement-top">
+				<div class="timeline-badge timeline-future-movement">
+						<p>July</p>
+				</div>
+			</div>
+			
+            
+            
+            <div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-right">
+				<div class="col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits  ">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Titolo</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a> </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+                </div>
+            
+            <div class="row timeline-movement">
+				<div class="timeline-badge center-left">
+					
+				</div>
+                <div data-aos="fade-left">
+				<div class="offset-sm-6 col-sm-6  timeline-item">
+					<div class="row">
+						<div class="col-sm-11">
+							<div class="timeline-panel credits  ">
+								<ul class="timeline-panel-ul">
+									<div class="lefting-wrap">
+										<li class="img-wraping"><a href="event-single.html"><img src="/assets/img/shoe.png" class="img-responsive" alt="user-image" /></a></li>
+									</div>
+									<div >
+										<li><a href="shop-single.html" class="importo">Titolo</a></li>
+										<li><a href="author.html" style="color:#000; font-weight: 600;">Autore </a>  </li>
+										<li><span >Lorem ipsum dolor sit amet, consectetur adipiscing elit. </span> </li>
+                                        <br>
+										<li><p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., New York</small></p> </li>
+									</div>
+									<div class="clear"></div>
+								</ul>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+			
+			
+			
+			</div>
+			
+		</div>
+	</div>
+</div>
+        
+        
+        
+        
+        
+       <!--
+      <div class="col-6 col-md-6 col-lg-6 border-top">
+        <a href="shop-single.html" class="item">
+          <img src="/assets/img/product_1.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>The best of Bauhaus</h3>
+            <span class="collection d-block">Taschen</span>
+            <strong class="price">€15,00</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-6 col-lg-6 border-top">
+        <a href="shop-single.html" class="item">
+          <span class="tag">Sale</span>
+          <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>Basquiat</h3>
+            <span class="collection d-block">Jean-Michele Basqiat</span>
+            <strong class="price">€150,00 <del>€199</del></strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-6 col-lg-6">
+        <a href="shop-single.html" class="item">
+          <img src="/assets/img/product_3.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>The  Gutemberg bible</h3>
+            <span class="collection d-block">Gutemberg</span>
+            <strong class="price">€99,00</strong>
+          </div>
+        </a>
+      </div>
+
+       <div class="col-6 col-md-6 col-lg-6 border-top">
+        <a href="shop-single.html" class="item">
+          <img src="/assets/img/product_4.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>The ultimate shoes book</h3>
+            <span class="collection d-block">Nike</span>
+            <strong class="price">€59,99</strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-6 col-lg-6">
+        <a href="shop-single.html" class="item">
+          <span class="tag">Sale</span>
+          <img src="/assets/img/product_5.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>The New Yotk Times</h3>
+            <span class="collection d-block">Barbara Irelands</span>
+            <strong class="price">€45,00 <del>€70,00</del></strong>
+          </div>
+        </a>
+      </div>
+      <div class="col-6 col-md-6 col-lg-6">
+        <a href="shop-single.html" class="item">
+          <img src="/assets/img/product_6.jpg" alt="Image" class="img-fluid">
+          <div class="item-info">
+            <h3>David</h3>
+            <span class="collection d-block">David Bailey</span>
+            <strong class="price">€40,00</strong>
+          </div>
+        </a>
+      </div>
+    -->
+  </ul>
+  </div>
+</div>
+            </div>
+            <div class="row">
+              <div class="col-md-12 text-center">
+                <div class="site-block-27">
+                  <ul>
+                    <li><a href="#">&lt;</a></li>
+                    <li class="active"><span>1</span></li>
+                    <li><a href="#">2</a></li>
+                    <li><a href="#">3</a></li>
+                    <li><a href="#">4</a></li>
+                    <li><a href="#">5</a></li>
+                    <li><a href="#">&gt;</a></li>
+                  </ul>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-lg-3 order-1 order-lg-2 mb-5 mb-lg-0">
+            <div class="border p-4 mb-4">
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
+              <ul class="list-unstyled mb-0">
+                <li class="mb-1"><a href="#" class="d-flex"><span>Fantasy</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Sci-fi</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Western</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Romance</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Thriller</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Mistery</span> <span class="text-black ml-auto">(2,124)</span></a></li>  
+                <li class="mb-1"><a href="#" class="d-flex"><span>Detective story</span> <span class="text-black ml-auto">(2,124)</span></a></li>   
+              </ul>
+            </div>
+
+            <div class="border p-4 mb-4">
+              
+
+              <div class="mb-4" id="author_filter">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">Authors</h3>
+                  <ul class="list-unstyled mb-0">
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,124)</span></a></li>  
+                <li class="mb-1"><a href="#" class="d-flex"><span>Name</span> <span class="text-black ml-auto">(2,124)</span></a></li>   
+              </ul>
+              </div>
+
+              
+
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="site-section">
+      <div class="container">
+        <div class="row">
+          <div class="title-section text-center col-12">
+            <h2 class="text-uppercase">In evidence</h2>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-md-12 block-3 products-wrap">
+            <div class="nonloop-block-3 owl-carousel" id="featured_books">
+              <!--
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <img src="/assets/img/product_1.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The Shoe</h3>
+                    
+                    <strong class="price">$9.50</strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <span class="tag">Sale</span>
+                  <img src="/assets/img/product_2.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>Marc Jacobs Bag</h3>
+                    
+                    <strong class="price">$9.50 <del>$30.00</del></strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <img src="/assets/img/product_3.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The  Belt</h3>
+                    
+                    <strong class="price">$9.50</strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <img src="/assets/img/product_1.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The Shoe</h3>
+                   
+                    <strong class="price">$9.50</strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <span class="tag">Sale</span>
+                  <img src="/assets/img/product_2.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>Marc Jacobs Bag</h3>
+                    
+                    <strong class="price">$9.50 <del>$30.00</del></strong>
+                  </div>
+                </a>
+              </div>
+
+              <div class="product">
+                <a href="shop-single.html" class="item">
+                  <img src="/assets/img/product_3.jpg" style="padding: 20px" alt="Image" class="img-fluid">
+                  <div class="item-info">
+                    <h3>The  Belt</h3>
+                   
+                    <strong class="price">$9.50</strong>
+                  </div>
+                </a>
+              </div>
+            -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <footer class="site-footer custom-border-top">
+    </footer>
+  </div>
+
+  <script src="/assets/js/jquery-3.3.1.min.js"></script>
+  <script src="/assets/js/jquery-ui.js"></script>
+  <script src="/assets/js/popper.min.js"></script>
+  <script src="/assets/js/bootstrap.min.js"></script>
+  <script src="/assets/js/owl.carousel.min.js"></script>
+  <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+  <script src="/assets/js/aos.js"></script>
+  <script src="/assets/js/main.js"></script>
+  <script src="/assets/js/utils.js"></script>
+  <script type="text/javascript">
+  /*
+  *   TODO:
+  *   + funzione per mostrare quanti libri per ogni autore/genere
+  *   + spostare tutti i jquery in un singolo file e chiamare solo le funzioni qui?
+  * 
+  */
+    $(document).ready(function(){
+      fetchAllBooks();
+      fetchAuthorFilter();
+      fetchFeaturedBooks();
+    });
+  </script>
+  <script>$("#menu_container").load("/assets/pages/menu.html");</script>
+  <script>$("footer").load("/assets/pages/footer.html");</script>    
+</body>
+</html>
