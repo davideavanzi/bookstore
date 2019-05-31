@@ -76,11 +76,11 @@ module.exports.addBookToCart = function addBookToCart (req, res, next) {
 };
 
 module.exports.removeBookFromCart = function removeBookFromCart (req, res, next) {
-  var cartId = req.swagger.params['cartId'].value;
+  var cartId = req.session.userId;
   var bookId = req.swagger.params['bookId'].value;
   var session = req.session;
 
-  User.checkAuth(session, cartId).then(result => {
+  User.alreadyLoggedIn(session).then(result => {
     if(result) {
       Cart.removeBookFromCart(cartId, bookId)
       .then(function (response) {

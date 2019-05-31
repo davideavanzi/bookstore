@@ -15,7 +15,8 @@ let {db, TABLES} = require('./db');
  **/
 exports.getCartById = function(cartId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.CART).where({id: cartId})
+    db(TABLES.BOOK_CART).where({id_cart: cartId})
+    .innerJoin(TABLES.BOOK, `${TABLES.BOOK}.id`, `${TABLES.BOOK_CART}.id_book`)
     .catch(error => {
       reject(error);
     })
@@ -83,7 +84,10 @@ exports.addBookToCart = function(cartId,bookId,amount) {
     .then(book => {
       let availability = book[0].stock;
       //if book availability is <= 0, don't bother.
-      if (availability < amount && availability > 0) {
+      if (availability < 1) {
+        resolve({"message":"Book unavailable"});
+      }
+      if (availability < amount) {
         //order as much as possible!
         amount = availability;
         //TODO: reject or resolve with 404? or continue? continuing.
@@ -124,7 +128,7 @@ exports.removeBookFromCart = function(cartId,bookId) {
         //restore book amount into stock
         db(TABLES.BOOK).where({ id: bookId }).increment({ stock: amount })
         .then(() => {
-          resolve();
+          resolve({"message":"Operation completed."});
         })
       })
   });

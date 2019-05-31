@@ -779,7 +779,7 @@ paths:
         404:
           description: "Nt found"
       x-swagger-router-controller: "User"
-  /cart/:
+  /cart:
     get:
       tags:
       - "cart"
