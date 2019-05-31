@@ -6,6 +6,13 @@ let remoteURL = "https://hyp.avanzi.dev/v2";
 
 // ma se l'utente ha altri servizi attivi in localhost:8080?
 
+/**
+ * TODO: 
+ * + update book amounts in cart incon in the menu
+ * + edit live book stock after adding to cart
+ * + server is adding books to cart with 0 stock
+ */
+
 let apiURL = localURL;
 
 var getUrlParameter = function getUrlParameter(sParam) {
@@ -198,7 +205,7 @@ var updateTotals = function updateTotals() {
 
 var removeBookFromCart = function removeBookFromCart(bookId) {
     $.ajax({ 
-        url: "http://localhost:8080/v2/cart/removeBook?bookId="+bookId,
+        url: apiURL+"/cart/removeBook?bookId="+bookId,
         type: "PUT",
         contentType: "application/json",
         success: function() {
@@ -221,5 +228,57 @@ var removeBookFromCart = function removeBookFromCart(bookId) {
     //scroll smoothly to the top
     //$("html, body").animate({ scrollTop: 0 }, "slow");
     return false;
+}
 
+var addBookToCart = function addBookToCart(bookid, amount) {
+    $.ajax({ 
+        url: apiURL+"/cart/addBook?bookId="+bookid+"&amount="+amount,
+        type: "PUT",
+        contentType: "application/json",
+        success: function() {
+          successAlert("All Good!","This book was added to your cart!");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+          if (jqXHR.status == 403) {
+              errorAlert("Whoops!", "You need to be logged in to buy books!");
+          } else if (jqXHR.status == 401) {
+              //alert("You inserted invalid data, try again!");
+              errorAlert("Whoops!", "Data provided are invalid, try again!");
+          } else {
+              errorAlert("Whoops!", "An error occurred, pleasy try again!");
+          }
+        }
+    });
+    return false;
+}
+
+var fetchSingleBook = function fetchSingleBook(bookid) {
+    $.ajax({  
+        url: 'http://localhost:8080/v2/books/'+bookid,  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+            //TODO: calc stars mean? (Ooof) 
+            //TODO: add shadow around book cover?
+            console.log(data);  
+            document.title = data.title;
+            $('#price').html(data.value);
+            $('#title').html(data.title);
+            $('#stock').text(data.stock);
+            $('#cover').attr("src","/assets/"+data.cover);
+            $('#book_bc').text(data.title);
+            $('#abstract').html(data.abstract);
+            $('#factsheet').html(data.fact_sheet);
+            $('#authors').empty();
+            $.each(data.authors, function (index, author) {
+              $('#authors').append("<a href=\"author.html?id="+author.id+"\">"+author.name+"</a>");
+              if (index < (data.authors.length - 1)) {
+                $('#authors').append(", ");
+              }
+            });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }  
+    }); 
 }
