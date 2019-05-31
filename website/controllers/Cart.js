@@ -3,12 +3,13 @@
 var utils = require('../utils/writer.js');
 var Cart = require('../service/CartService');
 var User = require('./User');
+//TODO: remove useless userId
 
 module.exports.getCartById = function getCartById (req, res, next) {
-  var cartId = req.swagger.params['cartId'].value;
+  var cartId = req.session.userId;
   var session = req.session;
 
-  User.checkAuth(session, cartId).then(result => {
+  User.alreadyLoggedIn(session).then(result => {
     if(result) {
       Cart.getCartById(cartId)
     .then(function (response) {
@@ -28,11 +29,11 @@ module.exports.getCartById = function getCartById (req, res, next) {
 
 //TODO: Is this useless?
 module.exports.updateCart = function updateCart (req, res, next) {
-  var cartId = req.swagger.params['cartId'].value;
+  var cartId = req.session.userId;
   var body = req.swagger.params['body'].value;
   var session = req.session;
 
-  User.checkAuth(session, cartId).then(result => {
+  User.alreadyLoggedIn(session).then(result => {
     if(result) {
       Cart.updateCart(cartId,body)
       .then(function (response) {
@@ -51,12 +52,12 @@ module.exports.updateCart = function updateCart (req, res, next) {
 };
 
 module.exports.addBookToCart = function addBookToCart (req, res, next) {
-  var cartId = req.swagger.params['cartId'].value;
+  var cartId = req.session.userId;
   var bookId = req.swagger.params['bookId'].value;
   var amount = req.swagger.params['amount'].value;
   var session = req.session;
 
-  User.checkAuth(session, cartId).then(result => {
+  User.alreadyLoggedIn(session).then(result => {
     if(result) {
       Cart.addBookToCart(cartId, bookId, amount)
       .then(function (response) {

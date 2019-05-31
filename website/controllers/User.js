@@ -60,6 +60,7 @@ const updateToken = (token, userReq) => {
     }});
 }
 
+/*  TODO: USELESS
 module.exports.checkAuth = function (session, id) {
   return new Promise(function(resolve, reject) {
     module.exports.alreadyLoggedIn(session).then(result => {
@@ -71,6 +72,7 @@ module.exports.checkAuth = function (session, id) {
     })
   })
 }
+*/
 
 module.exports.alreadyLoggedIn = function(session) {
   return new Promise(function(resolve, reject){

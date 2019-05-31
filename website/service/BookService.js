@@ -114,10 +114,24 @@ function getBooks(offset,limit,authorId,themeId,genreId) {
       reject(error);
     })
     .then(function(books) {
-      if (Object.keys(books).length > 0) {
-        resolve(books);
+      if (Object.keys(books).length > 0) {      
+        let fetched = books.map(function (book) {
+          return new Promise(function(resolve, reject) {
+            var authors = getAuthorsOfBookId(book.id);
+            var themes = getThemesOfBookId(book.id);
+            Promise.all([authors, themes]).then(function(result) {
+              book.authors = result[0];
+              book.themes = result[1];
+            }).then(() => {
+              resolve(book);
+            });  
+          }); 
+        });
+        Promise.all(fetched).then((bookList) => {
+          resolve(bookList);
+        });
       } else {
-        //No books found
+        //No book found TODO
         resolve();
       }
     });
