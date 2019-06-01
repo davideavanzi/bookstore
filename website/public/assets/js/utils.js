@@ -316,3 +316,78 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
         }  
     }); 
 }
+
+var fetchAllEvents = function fetchAllEvents() {
+    //fetch all events
+    $.ajax({  
+        url: apiURL+'/event',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          var i = 0;  
+          $.each(data, function (index, event) {
+            $.ajax({
+                url: 'http://localhost:8080/v2/books/'+event.id_book,  
+                type: 'GET',  
+                dataType: 'json',
+                success : function(book, textStatus, xhr){
+                    if(i%2){
+                        var fadeDir = 'fade-right';
+                        var offset = 'offset-sm-6 ';
+                    }
+                    else {
+                        var fadeDir = 'fade-left';
+                        var offset = '';                    
+                    }
+                    var authors = '';
+                    var authRef = '';
+                    $.each(book.authors, function (index, author) {
+                      i++;
+                      authors += author.name;
+                      if (index < (book.authors.length - 1)) {
+                        authors += ", "    
+                      }
+                      authRef += '<a href=author.html?id='+author.id+'>'+author.name+'</a>'
+                    });
+                    $('#timeline').append('\
+                        <div class="row timeline-movement">\
+                            <div class="timeline-badge center-left">\
+                            </div>\
+                            <div data-aos="'+fadeDir+'"> <!-- se a sx: fade-right -->\
+                              <div class="'+offset+' col-sm-6 timeline-item"> <!-- se a sx: col-sm-6  timeline-item -->\
+                                <div class="row">\
+                                    <div class="col-sm-11">\
+                                        <div class="timeline-panel credits  anim animate fadeInLeft">\
+                                            <ul class="timeline-panel-ul">\
+                                                <div class="lefting-wrap">\
+                                                    <li class="img-wraping">\
+                                                        <a href="event-single.html?id='+event.id+'"><img src="/assets/'+book.cover+'" alt="Cover" class="img-responsive" alt="user-image" /></a>\
+                                                    </li>\
+                                                </div>\
+                                                <div>\
+                                                    <li><a href="shop-single.html?id='+event.id+'" class="importo">"'+event.title+'"</a></li>\
+                                                    <li>'+authRef+' </li>\
+                                                    <li><span>'+event.content+'</span> </li>\
+                                                    <br>\
+                                                    <li>\
+                                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., '+event.location+'</small></p>\
+                                                    </li>\
+                                                </div>\
+                                                <div class="clear"></div>\
+                                            </ul>\
+                                        </div>\
+                                    </div>\
+                                </div>\
+                              </div>\
+                            </div>\
+                        </div>\
+                    ');
+                }
+            });
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+    }); 
+}
