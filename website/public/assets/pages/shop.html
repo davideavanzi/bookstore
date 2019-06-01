@@ -46,7 +46,7 @@
         </div>
       </div>
       <div class="container" id="menu_container">
-      <!-- menu automatically loaded here s-->
+
       </div>
     </div>
     <!-- end navbar -->
@@ -335,12 +335,13 @@
   *   + funzione per mostrare quanti libri per ogni autore/genere
   *   + quando non ci sono libri, mostrare "no books found"
   *   + mostrare filtro attivo (es: si sta guardando libri per il genere x)
+  *   + limit alla query dei featured con un link "see all" alla pagina shop con filter
   */
     $(document).ready(function(){
       
       fetchAuthorFilter();
       fetchFeaturedBooks();
-      loadMenu();
+      //loadMenu();
 
       var genreid = getUrlParameter("genreid");
       var themeid = getUrlParameter("themeid");
@@ -348,10 +349,8 @@
       fetchAllBooks(authorid, genreid, themeid);
     });
   </script>
-  <script>/*
-    $("#menu_container").load("/assets/pages/menu.html", function() {
-      
-    });*/
+  <script>
+    $("#menu_container").load("/assets/pages/menu.html");
   </script>
   <script>$("footer").load("/assets/pages/footer.html");</script>    
 </body>
