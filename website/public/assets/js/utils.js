@@ -69,10 +69,21 @@ var fetchAuthorFilter = function fetchAuthorFilter() {
     }); 
 }
 
-var fetchAllBooks = function fetchAllBooks() {
-    //fetch all books
+var fetchAllBooks = function fetchAllBooks(authorId, genreId, themeId) {
+    //fetch all books, with optional filters
+    var params = {};
+    if(authorId) {
+        params.authorId = authorId;
+    }
+    if(genreId) {
+        params.genreId = genreId;
+    }
+    if(themeId) {
+        params.themeId = themeId;
+    }
+    var paramStr = jQuery.param(params);
     $.ajax({  
-        url: apiURL+'/books',  
+        url: apiURL+'/books?'+paramStr,  
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
@@ -141,19 +152,10 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
     });  
 }
 
-
-function loadRow(params, div){  
-    var $div = $(div);        
-
-    
-}
-
 var loadMenu = function loadMenu() {
     var $menu = $('#menu_container')
-
     $menu.load("menu.html", function(){
         var $genres = $menu.find("[id=genres_menu]");
-
         $.ajax({  
             url: apiURL+'/genre',  
             type: 'GET',  
@@ -162,7 +164,7 @@ var loadMenu = function loadMenu() {
                 console.log(data);
                 $.each(data, function (index, genre) {
                     $genres.append('\
-                    <li><a href="#">'+genre.name+'</a></li>');
+                    <li><a href="/assets/pages/shop.html?genreid='+genre.id+'">'+genre.name+'</a></li>');
                 });
             },  
             error: function (xhr, textStatus, errorThrown) {  
@@ -172,8 +174,6 @@ var loadMenu = function loadMenu() {
 
     });
 }
-
-
 
 
 var fetchCart = function fetchCart() {

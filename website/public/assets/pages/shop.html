@@ -333,20 +333,25 @@
   /*
   *   TODO:
   *   + funzione per mostrare quanti libri per ogni autore/genere
-  *   + spostare tutti i jquery in un singolo file e chiamare solo le funzioni qui?
-  * 
+  *   + quando non ci sono libri, mostrare "no books found"
+  *   + mostrare filtro attivo (es: si sta guardando libri per il genere x)
   */
     $(document).ready(function(){
-      fetchAllBooks();
+      
       fetchAuthorFilter();
       fetchFeaturedBooks();
       loadMenu();
+
+      var genreid = getUrlParameter("genreid");
+      var themeid = getUrlParameter("themeid");
+      var authorid = getUrlParameter("authorid");
+      fetchAllBooks(authorid, genreid, themeid);
     });
   </script>
   <script>/*
     $("#menu_container").load("/assets/pages/menu.html", function() {
       
-    });
+    });*/
   </script>
   <script>$("footer").load("/assets/pages/footer.html");</script>    
 </body>
