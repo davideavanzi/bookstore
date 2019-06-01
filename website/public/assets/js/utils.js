@@ -138,8 +138,42 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
         error: function (xhr, textStatus, errorThrown) {  
             console.log('Error in Operation');  
         }
-      });  
+    });  
 }
+
+
+function loadRow(params, div){  
+    var $div = $(div);        
+
+    
+}
+
+var loadMenu = function loadMenu() {
+    var $menu = $('#menu_container')
+
+    $menu.load("menu.html", function(){
+        var $genres = $menu.find("[id=genres_menu]");
+
+        $.ajax({  
+            url: apiURL+'/genre',  
+            type: 'GET',  
+            dataType: 'json',  
+            success: function (data, textStatus, xhr) { 
+                console.log(data);
+                $.each(data, function (index, genre) {
+                    $genres.append('\
+                    <li><a href="#">'+genre.name+'</a></li>');
+                });
+            },  
+            error: function (xhr, textStatus, errorThrown) {  
+                console.log('Error in Operation');  
+            }
+        });  
+
+    });
+}
+
+
 
 
 var fetchCart = function fetchCart() {

@@ -75,7 +75,6 @@
       <div class="container">
         <div class="row mb-5">
           <div class="col-lg-9 order-2 order-lg-1">
-
             <div class="row align">
               <div class="col-md-12 mb-5">
                 <div class="float-md-left"><h2 class="text-black h5">Shop All</h2></div>
@@ -110,8 +109,8 @@
             </div>
             <div class="row mb-5">
               <div class="products-wrap border-top-0">
-  <div class="container-fluid">
-    <ul class="row no-gutters products" id="main_books">
+  <div class="container-fluid" id="books-list">
+    <ul class="row no-gutters products list" id="main_books">
        <!--
       <div class="col-6 col-md-6 col-lg-6 border-top">
         <a href="shop-single.html" class="item">
@@ -341,9 +340,14 @@
       fetchAllBooks();
       fetchAuthorFilter();
       fetchFeaturedBooks();
+      loadMenu();
     });
   </script>
-  <script>$("#menu_container").load("/assets/pages/menu.html");</script>
+  <script>/*
+    $("#menu_container").load("/assets/pages/menu.html", function() {
+      
+    });
+  </script>
   <script>$("footer").load("/assets/pages/footer.html");</script>    
 </body>
 </html>
