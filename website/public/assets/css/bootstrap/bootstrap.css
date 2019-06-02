@@ -3901,7 +3901,7 @@ input[type="button"].btn-block {
   border: 1px solid #dee2e6; }
   .page-link:hover {
     z-index: 2;
-    color: #0058d3;
+    color: #000;
     text-decoration: none;
     background-color: #e9ecef;
     border-color: #dee2e6; }
