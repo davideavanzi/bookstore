@@ -74,7 +74,7 @@ a {
 .form-control {
   height: 43px; }
   .form-control:active, .form-control:focus {
-    border-color: #de2d2d; }
+    border-color: #fff; }
   .form-control:hover, .form-control:active, .form-control:focus {
     -webkit-box-shadow: none !important;
     box-shadow: none !important; }
@@ -123,7 +123,7 @@ a {
     .site-footer ul li a {
       color: #5c626e; }
       .site-footer ul li a:hover {
-        color: #de2d2d; }
+        color: #fff; }
   .site-footer .footer-heading {
     font-size: 1.2rem;
     color: #000;

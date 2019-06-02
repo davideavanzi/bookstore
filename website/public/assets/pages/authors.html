@@ -27,6 +27,9 @@
     .book-title {
       padding: 0rem 3rem 0rem 3rem;
     }
+         .rounded {
+  border-radius: 50% ;
+}
     </style>
     
   </head>
@@ -74,15 +77,14 @@
       </div>  
       <div class="container">
         <div class="row mb-5">
-          <div class="col-lg-9 order-2 order-lg-1">
+          <div class="col-lg-12 order-2 order-lg-1">
             <div class="row align">
               <div class="col-md-12 mb-5">
                 <div class="float-md-left"><h2 class="text-black h5">View all</h2></div>
                 <div class="d-flex">
                   <div class="dropdown mr-1 ml-md-auto">
                     <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Latest
-                    </button>
+                      Genre                    </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                       <a class="dropdown-item" href="#">Fantasy</a>
                       <a class="dropdown-item" href="#">Sci-fi</a>
@@ -93,17 +95,7 @@
                       <a class="dropdown-item" href="#">Detective story</a>
                     </div>
                   </div>
-                  <div class="btn-group">
-                    <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
-                      <a class="dropdown-item" href="#">Relevance</a>
-                      <a class="dropdown-item" href="#">Author's name, A to Z</a>
-                      <a class="dropdown-item" href="#">Author's name, Z to A</a>
-                      <div class="dropdown-divider"></div>
-                      <a class="dropdown-item" href="#">Price, low to high</a>
-                      <a class="dropdown-item" href="#">Price, high to low</a>
-                    </div>
-                  </div>
+                  
                 </div>
               </div>
             </div>
@@ -111,68 +103,60 @@
               <div class="products-wrap border-top-0">
   <div class="container-fluid" id="books-list">
     <ul class="row no-gutters products list" id="main_books">
-       <!--
-      <div class="col-6 col-md-6 col-lg-6 border-top">
-        <a href="shop-single.html" class="item">
-          <img src="/assets/img/product_1.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>The best of Bauhaus</h3>
-            <span class="collection d-block">Taschen</span>
-            <strong class="price">€15,00</strong>
-          </div>
+      
+      <div class="col-4 col-md-4 col-lg-4  ">
+          
+        <a href="author.html" class="item res">
+          <img src="/assets/img/author/asimov.jpg" style="padding:60px" alt="Image" class="img-fluid">
+         
+            <h3>Asimov</h3>
+            
+          
         </a>
       </div>
-      <div class="col-6 col-md-6 col-lg-6 border-top">
-        <a href="shop-single.html" class="item">
-          <span class="tag">Sale</span>
-          <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>Basquiat</h3>
-            <span class="collection d-block">Jean-Michele Basqiat</span>
-            <strong class="price">€150,00 <del>€199</del></strong>
-          </div>
+      <div class="col-4 col-md-4 col-lg-4 ">
+        <a href="author.html" class="item res">
+          <img src="/assets/img/author/king.jpg" style="padding:60px" alt="Image" class="img-fluid">
+        
+            <h3>King</h3>
+            
+         
         </a>
       </div>
-      <div class="col-6 col-md-6 col-lg-6">
-        <a href="shop-single.html" class="item">
-          <img src="/assets/img/product_3.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>The  Gutemberg bible</h3>
-            <span class="collection d-block">Gutemberg</span>
-            <strong class="price">€99,00</strong>
-          </div>
+      <div class="col-4 col-md-4 col-lg-4">
+         <a href="author.html" class="item res">
+          <img src="/assets/img/author/orwell.jpg" style="padding:60px" alt="Image" class="img-fluid">
+         
+            <h3>Orwell</h3>
+            
+       
         </a>
       </div>
 
-       <div class="col-6 col-md-6 col-lg-6 border-top">
-        <a href="shop-single.html" class="item">
-          <img src="/assets/img/product_4.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>The ultimate shoes book</h3>
-            <span class="collection d-block">Nike</span>
-            <strong class="price">€59,99</strong>
-          </div>
+       <div class="col-4 col-md-4 col-lg-4 ">
+         <a href="author.html" class="item res">
+          <img src="/assets/img/author/asimov.jpg" style="padding:60px" alt="Image" class="img-fluid">
+         
+            <h3>Asimov</h3>
+            
+        
         </a>
       </div>
-      <div class="col-6 col-md-6 col-lg-6">
-        <a href="shop-single.html" class="item">
-          <span class="tag">Sale</span>
-          <img src="/assets/img/product_5.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>The New Yotk Times</h3>
-            <span class="collection d-block">Barbara Irelands</span>
-            <strong class="price">€45,00 <del>€70,00</del></strong>
-          </div>
+      <div class="col-4 col-md-4 col-lg-4">
+         <a href="author.html" class="item res">
+          <img src="/assets/img/author/asimov.jpg" style="padding:60px" alt="Image" class="img-fluid">
+          
+            <h3>Asimov</h3>
+          
         </a>
       </div>
-      <div class="col-6 col-md-6 col-lg-6">
-        <a href="shop-single.html" class="item">
-          <img src="/assets/img/product_6.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>David</h3>
-            <span class="collection d-block">David Bailey</span>
-            <strong class="price">€40,00</strong>
-          </div>
+      <div class="col-4 col-md-4 col-lg-4">
+         <a href="author.html" class="item res">
+          <img src="/assets/img/author/asimov.jpg" style="padding:60px" alt="Image" class="img-fluid">
+         
+            <h3>Asimov</h3>
+            
+          
         </a>
       </div>
     -->
@@ -197,124 +181,13 @@
             </div>
           </div>
 
-          <div class="col-lg-3 order-1 order-lg-2 mb-5 mb-lg-0">
-            <div class="border p-4 mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Fantasy</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Sci-fi</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Western</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Romance</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Thriller</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mistery</span> <span class="text-black ml-auto">(2,124)</span></a></li>  
-                <li class="mb-1"><a href="#" class="d-flex"><span>Detective story</span> <span class="text-black ml-auto">(2,124)</span></a></li>   
-              </ul>
-            </div>
-
-            <div class="border p-4 mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
-
-              <div class="mb-4" id="author_filter">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Authors</h3>
-              </div>
-
-              
-
-            </div>
-          </div>
+          
         </div>
 
       </div>
     </div>
 
-    <div class="site-section">
-      <div class="container">
-        <div class="row">
-          <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">In evidence</h2>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel" id="featured_books">
-              <!--
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_1.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Shoe</h3>
-                    
-                    <strong class="price">$9.50</strong>
-                  </div>
-                </a>
-              </div>
 
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="/assets/img/product_2.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Marc Jacobs Bag</h3>
-                    
-                    <strong class="price">$9.50 <del>$30.00</del></strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_3.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The  Belt</h3>
-                    
-                    <strong class="price">$9.50</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_1.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Shoe</h3>
-                   
-                    <strong class="price">$9.50</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="/assets/img/product_2.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Marc Jacobs Bag</h3>
-                    
-                    <strong class="price">$9.50 <del>$30.00</del></strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_3.jpg" style="padding: 20px" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The  Belt</h3>
-                   
-                    <strong class="price">$9.50</strong>
-                  </div>
-                </a>
-              </div>
-            -->
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <footer class="site-footer custom-border-top">
     </footer>
