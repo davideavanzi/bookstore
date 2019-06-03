@@ -8,9 +8,10 @@ let remoteURL = "https://hyp.avanzi.dev/v2";
 
 /**
  * TODO: 
- * + update book amounts in cart incon in the menu
- * + edit live book stock after adding to cart
- * + server is adding books to cart with 0 stock
+ * + update book amounts in cart icon in the menu
+ * + edit live book stock after adding to cart?
+ * + server API is adding books to cart with 0 stock
+ * + show active filter in all books page
  */
 
 let apiURL = localURL;
@@ -57,9 +58,32 @@ var fetchAuthorFilter = function fetchAuthorFilter() {
         success: function (data, textStatus, xhr) { 
           console.log(data);
           $.each(data, function (index, author) {
-            $('#author_filter').append('\<label for="author'+author.id+'" class="d-flex">\
-                <input type="checkbox" id="author'+author.id+'" class="mr-2 mt-1"> <span class="text-black">'+author.name+'</span>\
-              </label>\
+            $('#author_filter').append('\
+            <li class="mb-1">\
+                <a href="shop.html?authorid='+author.id+'" class="d-flex"><span>'+author.name+'</span> \
+                <span class="text-black ml-auto">(5)</span></a></li>\
+            ');
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+    }); 
+}
+
+var fetchGenreFilter = function fetchGenreFilter() {
+    //fetch all genres to filter
+    $.ajax({  
+        url: apiURL+'/genre',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          console.log(data);
+          $.each(data, function (index, genre) {
+            $('#genre_filter').append('\
+            <li class="mb-1">\
+                <a href="shop.html?genreid='+genre.id+'" class="d-flex"><span>'+genre.name+'</span> \
+                <span class="text-black ml-auto">(5)</span></a></li>\
             ');
           });
         },  
@@ -88,6 +112,7 @@ var fetchAllBooks = function fetchAllBooks(authorId, genreId, themeId) {
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
           console.log(data);
+          $('#main_books').empty();
           $.each(data, function (index, book) {
             let authors = '';
             $.each(book.authors, function (index, author) {
@@ -136,8 +161,8 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
             $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
               <a href="shop-single.html?id='+book.id+'" class="item">\
-                <img src="/assets/img/product_2.jpg" style="padding: 20px" alt="Cover" class="img-fluid">\
-                <div class="item-info">\
+                <img src="/assets/'+book.cover+'" style="padding: 20px" alt="Cover" class="img-fluid resized">\
+                <div class="item-info carousel-caption">\
                   <h3>'+book.title+'</h3>\
                   <strong class="prince">€'+(book.value).toFixed(2)+'</strong>\
                 </div>\
@@ -390,4 +415,91 @@ var fetchAllEvents = function fetchAllEvents() {
             console.log('Error in Operation');  
         }
     }); 
+}
+
+var fetchAllAuthors = function fetchAllAuthors() {
+    //fetch all authors
+    $.ajax({  
+        url: apiURL+'/author?',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          console.log(data);
+          $.each(data, function (index, author) {
+            $('#main_authors').append('\
+            <div class="col-4 col-md-4 col-lg-4 ">\
+                <a href="author.html?id='+author.id+'" class="item res">\
+                    <img src="/assets/'+author.photo+'" style="padding:60px" alt="Image" class="img-fluid">\
+                    <h3>'+author.name+'</h3>\
+                </a>\
+            </div>\
+            ');
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+    }); 
+}
+
+var fetchSingleAuthor = function fetchSingleAuthor(authorId) {
+    $.ajax({  
+        url: apiURL+'/author/'+authorId,  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          //TODO: calc stars mean? (Ooof) 
+          //TODO: add shadow around book cover?
+          console.log(data);  
+          document.title = data.name;
+          $('#name').html(data.name);
+          $('#breadcrumbr').html(data.name);
+          $('#bio').html(data.bio);
+          $('#photo').attr("src","/assets/"+data.photo);
+          $('#authors').empty();
+          $.each(data.authors, function (index, author) {
+            $('#authors').append("<a href=\"#\">"+author.name+"</a>");
+            if (index < (data.authors.length - 1)) {
+              $('#authors').append(", ");
+            }
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }  
+    });
+}
+
+var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
+    $.ajax({  
+        url: apiURL+'/books?authorId='+authorId,  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          //to empty already populated carousel:
+          /*
+          var length = $('.item').length;
+          for (var i=0; i<length; i++) {
+            $(".edit-manage-carousel").trigger('remove.owl.carousel', [i])
+                                      .trigger('refresh.owl.carousel');
+          }
+          */
+          $.each(data, function (index, book) {
+            $('#books').trigger('add.owl.carousel', ['\
+            <div class="product">\
+              <a href="shop-single.html?id='+book.id+'" class="item">\
+                <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">\
+                <div class="item-info">\
+                  <h3>'+book.title+'</h3>\
+                  <strong class="prince">€'+book.value+'</strong>\
+                </div>\
+              </a>\
+            </div>\
+            ']).trigger('refresh.owl.carousel');
+            });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+      }); 
 }
