@@ -90,6 +90,7 @@ exports.up = function(knex, Promise) {
                         table.integer("id_book");
                         table.string("location");
                         table.text("content");
+                        table.string("date");
                     })
                     .then(console.log('created event table'));
                 }

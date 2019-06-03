@@ -1524,6 +1524,8 @@ definitions:
         type: "string"
       content:
         type: "string"
+      date:
+        type: "string"
     xml:
       name: "Event"
     example:
@@ -1531,6 +1533,7 @@ definitions:
       id: 0
       title: "title"
       content: "content"
+      date: "01/01/2000"
       bookId: 6
   Author:
     type: "object"
@@ -1770,4 +1773,5 @@ definitions:
     example:
       id: 0
       name: "name"
+
 

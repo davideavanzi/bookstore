@@ -339,13 +339,11 @@ var fetchAllEvents = function fetchAllEvents() {
                         var fadeDir = 'fade-left';
                         var offset = '';                    
                     }
-                    var authors = '';
                     var authRef = '';
                     $.each(book.authors, function (index, author) {
                       i++;
-                      authors += author.name;
                       if (index < (book.authors.length - 1)) {
-                        authors += ", "    
+                        authRef += ", "    
                       }
                       authRef += '<a href=author.html?id='+author.id+'>'+author.name+'</a>'
                     });
@@ -365,12 +363,12 @@ var fetchAllEvents = function fetchAllEvents() {
                                                     </li>\
                                                 </div>\
                                                 <div>\
-                                                    <li><a href="shop-single.html?id='+event.id+'" class="importo">"'+event.title+'"</a></li>\
+                                                    <li><a href="event-single.html?id='+event.id+'" class="importo">"'+event.title+'"</a></li>\
                                                     <li>'+authRef+' </li>\
                                                     <li><span>'+event.content+'</span> </li>\
                                                     <br>\
                                                     <li>\
-                                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., '+event.location+'</small></p>\
+                                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+event.date+', '+event.location+'</small></p>\
                                                     </li>\
                                                 </div>\
                                                 <div class="clear"></div>\
@@ -390,4 +388,75 @@ var fetchAllEvents = function fetchAllEvents() {
             console.log('Error in Operation');  
         }
     }); 
+}
+
+var fetchSingleEvent = function fetchSingleEvent(eventId){
+    $.ajax({
+        url: 'http://localhost:8080/v2/event/' + eventId,
+        type: 'GET',
+        dataType: 'json',
+        success: function(event, textStatus, xhr) {
+            $.ajax({
+              url: 'http://localhost:8080/v2/books/'+event[0].id_book,  //TODO: remove [0]
+              type: 'GET',  
+              dataType: 'json',
+              success : function(book, textStatus, xhr){
+                var authRef = '';
+                var authCover = '';
+                $.each(book.authors, function (index, author) {
+                  if (index < (book.authors.length - 1)) {
+                    authors += ", ";    
+                  }
+                  authRef += '<a href=author.html?id='+author.id+'>'+author.name+'</a>'
+                  authId = author.id;
+                  authCover = author.photo;
+                });
+                $('#event').append('\
+                    <div class="col-md-6">\
+                        <div class="border">\
+                            <img id="cover" src="/assets/'+book.cover+'" style="align-content: bottom" alt="Image" class="img-fluid">\
+                        </div>\
+                    </div>\
+                    <div class="col-md-6">\
+                        <h1 class="text-black" id="title">'+event[0].title+'</h1>\
+                        <br>\
+                        <br>\
+                        <br>\
+                        <h4 class="text-back" style="font-size: 20px" id="date">'+event[0].date+'</a></h4> <!-- TODO: implement event date -->\
+                        <p id="content">'+event[0].content+'</p>\
+                        <br>\
+                    </div>\
+                ');
+                $.ajax({
+                  url: 'http://localhost:8080/v2/interview',  
+                  type: 'GET',  
+                  dataType: 'json',
+                  success : function(interview, textStatus, xhr){
+                    for(i = 0; i< interview.length; i++){
+                      if(book.id == interview[i].id_book){
+                        $('#interview').append('\
+                          <div class="col-lg-8 ">\
+                                <h2><span  style="font-size: 60px">What the author says</span></h2>\
+                                <p class="lead my-3">'+interview[i].content+'</p>\
+                                <p class="lead mb-0">'+authRef+'</p>\
+                            </div>\
+                            <div class="col-md-4 ">\
+                                <a href=author.html?id='+authId+'><img id="photo" src="/assets/'+authCover+'" style="border-radius: 50%" alt="Image" class="img-fluid"></a>\
+                            </div>\
+                            <div class="row mb-2">\
+                                <div class="col-md-6">\
+                                </div>\
+                                <div class="col-md-6">\
+                        ')                             
+                      }
+                    }
+                  }
+                });
+              }
+            });
+        },
+        error: function(xhr, textStatus, errorThrown) {
+            console.log('Error in Operation');
+        }
+    });
 }
