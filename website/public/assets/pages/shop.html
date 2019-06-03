@@ -27,6 +27,24 @@
     .book-title {
       padding: 0rem 3rem 0rem 3rem;
     }
+    .products-wrap {
+      width: 100%;
+    }
+    .noborder {
+      border: 0px !important;
+    }
+    #featured_books .img-fluid  { 
+      max-width: 70% !important;
+    }
+    #featured_books .carousel-caption  { 
+      left: 0;
+      right: 0;
+      bottom: -3em;
+      position: relative;
+    }
+    #featured_books .owl-item img {
+      display: inline !important;
+    }
     </style>
     
   </head>
@@ -108,20 +126,17 @@
               </div>
             </div>
             <div class="row mb-5">
-              <div class="products-wrap border-top-0">
-  <div class="container-fluid" id="books-list">
-    <ul class="row no-gutters products list" id="main_books">
-       <!--
-      <div class="col-6 col-md-6 col-lg-6 border-top">
-        <a href="shop-single.html" class="item">
-          <img src="/assets/img/product_1.jpg" alt="Image" class="img-fluid">
-          <div class="item-info">
-            <h3>The best of Bauhaus</h3>
-            <span class="collection d-block">Taschen</span>
-            <strong class="price">€15,00</strong>
-          </div>
-        </a>
+    <div class="products-wrap border-top-0">
+      <div class="container-fluid" id="books-list">
+        <ul class="row no-gutters products list" id="main_books">
+       
+         <div class="col-12 col-md-12 col-lg-12 noborder">
+
+            <h3>No books found</h3>
+            <strong>Try looking for something else!</strong>
+
       </div>
+      <!--
       <div class="col-6 col-md-6 col-lg-6 border-top">
         <a href="shop-single.html" class="item">
           <span class="tag">Sale</span>
@@ -198,33 +213,37 @@
           </div>
 
           <div class="col-lg-3 order-1 order-lg-2 mb-5 mb-lg-0">
-            <div class="border p-4 mb-4">
-              <h3 class="mb-3 h6 text-uppercase text-black d-block">Categories</h3>
-              <ul class="list-unstyled mb-0">
-                <li class="mb-1"><a href="#" class="d-flex"><span>Fantasy</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Sci-fi</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Western</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Romance</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Thriller</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                <li class="mb-1"><a href="#" class="d-flex"><span>Mistery</span> <span class="text-black ml-auto">(2,124)</span></a></li>  
-                <li class="mb-1"><a href="#" class="d-flex"><span>Detective story</span> <span class="text-black ml-auto">(2,124)</span></a></li>   
-              </ul>
+            <div class="row align">
+              <div class="col-md-12 mb-5">
+                <h2 class="text-black h5">Quick filters</h2>
+              </div>
             </div>
-
-            <div class="border p-4 mb-4">
-              <div class="mb-4">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Filter by Price</h3>
-                <div id="slider-range" class="border-primary"></div>
-                <input type="text" name="text" id="amount" class="form-control border-0 pl-0 bg-white" disabled="" />
-              </div>
-
-              <div class="mb-4" id="author_filter">
-                <h3 class="mb-3 h6 text-uppercase text-black d-block">Authors</h3>
-              </div>
-
               
-
+            <div class="border p-4 mb-4">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">
+                    <a data-toggle="collapse" href="#collapseAuthors" role="button" aria-expanded="false" aria-controls="collapseAuthors">
+                      Authors
+                    </a>
+                  </h3>
+                <div class="collapse" id="collapseAuthors">
+                  <ul class="list-unstyled mb-0" id="author_filter"> 
+                  </ul>
+                </div>  
             </div>
+
+            <div class="border p-4 mb-4">
+              <h3 class="mb-3 h6 text-uppercase text-black d-block">
+                  <a data-toggle="collapse" href="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">
+                    Categories
+                  </a>
+                </h3>
+              <div class="collapse" id="collapseGenres">
+                <ul class="list-unstyled mb-0" id="genre_filter"> 
+                </ul>
+              </div>  
+            </div>
+
+            
           </div>
         </div>
 
@@ -336,10 +355,14 @@
   *   + quando non ci sono libri, mostrare "no books found"
   *   + mostrare filtro attivo (es: si sta guardando libri per il genere x)
   *   + limit alla query dei featured con un link "see all" alla pagina shop con filter
+  *   + errore rosso in caso di fail nelle query o nel prendere parametro nelle single page
+  *   + togliere bordino inutile quando non ci sono libri
+  *
   */
     $(document).ready(function(){
       
       fetchAuthorFilter();
+      fetchGenreFilter();
       fetchFeaturedBooks();
       //loadMenu();
 

@@ -56,7 +56,7 @@
     <div class="bg-light py-3">
       <div class="container">
         <div class="row">
-          <div class="col-md-12 mb-0"><a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span> <a href="shop.html">Shop</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Thodore De Briè</strong></div>
+          <div class="col-md-12 mb-0"><a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span> <a href="authors.html">Authors</a> <span class="mx-2 mb-0">/</span> <strong class="text-black" id="breadcrumbr">Thodore De Briè</strong></div>
         </div>
       </div>
     </div>  
@@ -77,22 +77,16 @@
       <div class="container">
         <div class="row">
           <div class="col-md-5">
-            <div class="border ">
+            <div> <!-- class="border"-->
               <img id="photo" src="/assets/img/author/author.jpg"  style="border-radius: 50%"  alt="Image" class="img-fluid">
             </div>
           </div>
           <div class="col-md-7">
-              <br><br>              <br><br><br>
-
+              <br><br><br><br><br>
             <h1 class="text-black" id="name">Thodore De Briè</h1>
               <br>
-
             <p class="mb-4" id="bio">Ex numquam veritatis debitis minima quo error quam eos dolorum quidem perferendis. Quos repellat dignissimos minus, eveniet nam voluptatibus molestias omnis reiciendis perspiciatis illum hic magni iste, velit aperiam quis.</p>
-            
-           
-              
-              <br>
-            
+          <br>  
           </div>
         </div>
       </div>
@@ -108,82 +102,7 @@
         <div class="row">
           <div class="col-md-12 block-3 products-wrap">
             <div class="nonloop-block-3 owl-carousel" id="books">
-              
-              <!-- placeholder items
-                <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
-                    
-                  <div class="item-info">
-                        <div class="row"> </div>
-                    <h3>The best of Bauhaus</h3>
-                  
-                    <strong class="price">€15,00</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    
-                    <strong class="price">€150<del>€199</del></strong>
-                  </div>
-                </a>
-              </div>
-
-                <div class="product">
-                <a href="shop-single.html#" class="item">
-                    <span class="tag">new</span>
-                  <img src="/assets/img/product_3.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Gutemberg bible</h3>
-                   
-                    <strong class="price">€99,99</strong>
-                  </div>
-                </a>
-              </div>
-
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_4.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Ultimate shoes book</h3>
-                   
-                    <strong class="price">€59,99</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    
-                    <strong class="price">€150<del>€199</del></strong>
-                  </div>
-                </a>
-              </div>
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
-                    
-                  <div class="item-info">
-                        <div class="row"> </div>
-                    <h3>The best of Bauhaus</h3>
-                  
-                    <strong class="price">€15,00</strong>
-                  </div>
-                </a>
-              </div>
-            -->
+            
             </div>
           </div>
         </div>
@@ -207,62 +126,9 @@
     $(document).ready(function(){
       var authorId = getUrlParameter("id");
       if(authorId) {
-        $.ajax({  
-          url: 'http://localhost:8080/v2/author/'+authorId,  
-          type: 'GET',  
-          dataType: 'json',  
-          success: function (data, textStatus, xhr) { 
-            //TODO: calc stars mean? (Ooof) 
-            //TODO: add shadow around book cover?
-            console.log(data);  
-            document.title = data.name;
-            $('#name').html(data.name);
-            $('#bio').html(data.bio);
-            $('#photo').attr("src","/assets/"+data.photo);
-            $('#authors').empty();
-            $.each(data.authors, function (index, author) {
-              $('#authors').append("<a href=\"#\">"+author.name+"</a>");
-              if (index < (data.authors.length - 1)) {
-                $('#authors').append(", ");
-              }
-            });
-          },  
-          error: function (xhr, textStatus, errorThrown) {  
-              console.log('Error in Operation');  
-          }  
-        });
+        fetchSingleAuthor(authorId);
         //get books of the author
-        $.ajax({  
-          url: 'http://localhost:8080/v2/books?authorId='+authorId,  
-          type: 'GET',  
-          dataType: 'json',  
-          success: function (data, textStatus, xhr) { 
-            //to empty already populated carousel:
-            /*
-            var length = $('.item').length;
-            for (var i=0; i<length; i++) {
-              $(".edit-manage-carousel").trigger('remove.owl.carousel', [i])
-                                        .trigger('refresh.owl.carousel');
-            }
-            */
-            $.each(data, function (index, book) {
-              $('#books').trigger('add.owl.carousel', ['\
-              <div class="product">\
-                <a href="shop-single.html?id='+book.id+'" class="item">\
-                  <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">\
-                  <div class="item-info">\
-                    <h3>'+book.title+'</h3>\
-                    <strong class="prince">€'+book.value+'</strong>\
-                  </div>\
-                </a>\
-              </div>\
-              ']).trigger('refresh.owl.carousel');
-              });
-          },  
-          error: function (xhr, textStatus, errorThrown) {  
-              console.log('Error in Operation');  
-          }
-        });   
+        fetchBooksOfAuthor(authorId);
       }
     });
   </script>
