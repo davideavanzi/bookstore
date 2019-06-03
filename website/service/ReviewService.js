@@ -68,14 +68,16 @@ exports.getReviewById = function(reviewId) {
  **/
 exports.getReviews = function(offset,limit,userId,bookId) {
   return new Promise(function(resolve, reject) {
+
+    //db.select(`${TABLES.REVIEW}.*`,`${TABLES.USER}.name`,`${TABLES.REVIEW}.id as id`)
+    //.leftJoin(TABLES.USER, `${TABLES.REVIEW}.id_user`, `${TABLES.USER}.id`)
+    //limit(limit).offset(offset)
     db(TABLES.REVIEW).limit(limit).offset(offset)
-    //TODO:
     .modify(function(queryBuilder) {
       if (bookId) {
-        queryBuilder.where({'id_book': bookId});
+        queryBuilder.where({'review.id_book': bookId});
       }
     })
-    //TODO:
     .modify(function(queryBuilder) {
       if (userId) {
         queryBuilder.where({'id_user': userId});

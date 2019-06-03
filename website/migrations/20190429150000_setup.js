@@ -157,6 +157,7 @@ exports.up = function(knex, Promise) {
                         table.integer("star");
                         table.string("title");
                         table.text("content");
+                        table.string("date");
                         table.integer("id_book");
                         table.integer("id_user");
                     })

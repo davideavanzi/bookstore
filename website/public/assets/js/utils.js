@@ -144,7 +144,7 @@ var fetchAllBooks = function fetchAllBooks(authorId, genreId, themeId) {
 var fetchFeaturedBooks = function fetchFeaturedBooks() {
     //FEATURED BOOKS
     $.ajax({  
-        url: apiURL+'/books',  
+        url: apiURL+'/books?limit=4',  
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
@@ -313,7 +313,7 @@ var addBookToCart = function addBookToCart(bookid, amount) {
 
 var fetchSingleBook = function fetchSingleBook(bookid) {
     $.ajax({  
-        url: 'http://localhost:8080/v2/books/'+bookid,  
+        url: apiURL+'/books/'+bookid,  
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
@@ -352,7 +352,7 @@ var fetchAllEvents = function fetchAllEvents() {
           var i = 0;  
           $.each(data, function (index, event) {
             $.ajax({
-                url: 'http://localhost:8080/v2/books/'+event.id_book,  
+                url: apiURL+'/books/'+event.id_book,  
                 type: 'GET',  
                 dataType: 'json',
                 success : function(book, textStatus, xhr){
@@ -364,11 +364,13 @@ var fetchAllEvents = function fetchAllEvents() {
                         var fadeDir = 'fade-left';
                         var offset = '';                    
                     }
+                    var authors = '';
                     var authRef = '';
                     $.each(book.authors, function (index, author) {
                       i++;
+                      authors += author.name;
                       if (index < (book.authors.length - 1)) {
-                        authRef += ", "    
+                        authors += ", "    
                       }
                       authRef += '<a href=author.html?id='+author.id+'>'+author.name+'</a>'
                     });
@@ -388,12 +390,12 @@ var fetchAllEvents = function fetchAllEvents() {
                                                     </li>\
                                                 </div>\
                                                 <div>\
-                                                    <li><a href="event-single.html?id='+event.id+'" class="importo">"'+event.title+'"</a></li>\
+                                                    <li><a href="shop-single.html?id='+event.id+'" class="importo">"'+event.title+'"</a></li>\
                                                     <li>'+authRef+' </li>\
                                                     <li><span>'+event.content+'</span> </li>\
                                                     <br>\
                                                     <li>\
-                                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+event.date+', '+event.location+'</small></p>\
+                                                        <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i> 05/05/19, 2 P.M., '+event.location+'</small></p>\
                                                     </li>\
                                                 </div>\
                                                 <div class="clear"></div>\
@@ -415,77 +417,6 @@ var fetchAllEvents = function fetchAllEvents() {
     }); 
 }
 
-var fetchSingleEvent = function fetchSingleEvent(eventId){
-    $.ajax({
-        url: 'http://localhost:8080/v2/event/' + eventId,
-        type: 'GET',
-        dataType: 'json',
-        success: function(event, textStatus, xhr) {
-            $.ajax({
-              url: 'http://localhost:8080/v2/books/'+event[0].id_book,  //TODO: remove [0]
-              type: 'GET',  
-              dataType: 'json',
-              success : function(book, textStatus, xhr){
-                var authRef = '';
-                var authCover = '';
-                $.each(book.authors, function (index, author) {
-                  if (index < (book.authors.length - 1)) {
-                    authors += ", ";    
-                  }
-                  authRef += '<a href=author.html?id='+author.id+'>'+author.name+'</a>'
-                  authId = author.id;
-                  authCover = author.photo;
-                });
-                $('#event').append('\
-                    <div class="col-md-6">\
-                        <div class="border">\
-                            <img id="cover" src="/assets/'+book.cover+'" style="align-content: bottom" alt="Image" class="img-fluid">\
-                        </div>\
-                    </div>\
-                    <div class="col-md-6">\
-                        <h1 class="text-black" id="title">'+event[0].title+'</h1>\
-                        <br>\
-                        <br>\
-                        <br>\
-                        <h4 class="text-back" style="font-size: 20px" id="date">'+event[0].date+'</a></h4> <!-- TODO: implement event date -->\
-                        <p id="content">'+event[0].content+'</p>\
-                        <br>\
-                    </div>\
-                ');
-                $.ajax({
-                  url: 'http://localhost:8080/v2/interview',  
-                  type: 'GET',  
-                  dataType: 'json',
-                  success : function(interview, textStatus, xhr){
-                    for(i = 0; i< interview.length; i++){
-                      if(book.id == interview[i].id_book){
-                        $('#interview').append('\
-                          <div class="col-lg-8 ">\
-                                <h2><span  style="font-size: 60px">What the author says</span></h2>\
-                                <p class="lead my-3">'+interview[i].content+'</p>\
-                                <p class="lead mb-0">'+authRef+'</p>\
-                            </div>\
-                            <div class="col-md-4 ">\
-                                <a href=author.html?id='+authId+'><img id="photo" src="/assets/'+authCover+'" style="border-radius: 50%" alt="Image" class="img-fluid"></a>\
-                            </div>\
-                            <div class="row mb-2">\
-                                <div class="col-md-6">\
-                                </div>\
-                                <div class="col-md-6">\
-                        ')                             
-                      }
-                    }
-                  }
-                });
-              }
-            });
-        },
-        error: function(xhr, textStatus, errorThrown) {
-            console.log('Error in Operation');
-        }
-    });
-}
-
 var fetchAllAuthors = function fetchAllAuthors() {
     //fetch all authors
     $.ajax({  
@@ -504,6 +435,95 @@ var fetchAllAuthors = function fetchAllAuthors() {
             </div>\
             ');
           });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+    }); 
+}
+
+var fetchReviews = function fetchReviews(bookId) {
+    //fetch all reviews of a book
+    $.ajax({  
+        url: apiURL+'/review?bookId='+bookId,  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+            var starsBreakdown = [0, 0, 0, 0, 0];
+            console.log(data);
+            $.each(data, function (index, review) {
+                var reviewElement = $('\
+                    <div class="row">\
+                        <div class="col-sm-3">\
+                            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">\
+                            <div class="review-block-name"><a href="#">Username</a></div>\
+                            <div class="review-block-date">'+review.date+'</div>\
+                        </div>\
+                        <div class="col-sm-9">\
+                            <div class="review-block-rate" id="rateBlock">\
+                            </div>\
+                            <div class="review-block-title">'+review.title+'</div>\
+                            <div class="review-block-description">'+review.content+'</div>\
+                        </div>\
+                    </div>\
+                ');
+                //render stars
+                $('#book_reviews').append(reviewElement);
+                for (var i = 0, acc = review.star; i < 5; i++) {
+                    if (acc > 0) {
+                        $(reviewElement).find('#rateBlock').append('\
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\
+                            <span class="fa fa-star checked"></span>\
+                        </button>\
+                    ');
+                    acc--;
+                    } else {
+                        $(reviewElement).find('#rateBlock').append('\
+                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">\
+                            <span class="fa fa-star checked"></span>\
+                        </button>\
+                    ');
+                    }
+                }
+                //statistics
+                starsBreakdown[review.star-1]++;
+                //add separation line between reviews
+                if (index < (data.length - 1)) {
+                    $('#book_reviews').append('<hr/>');   
+                }
+            });
+            if(data.length > 0) { 
+                //generate statistics (change bar# width and pull# text)
+                var starsPercentages = [];
+                var acc = 0;
+                for (var i = 0; i < 5; i++) {
+                    if(starsBreakdown[i] > 0) {
+                        acc += (i+1)*starsBreakdown[i];
+                        starsPercentages[i]=(starsBreakdown[i]/data.length)*100;
+                        star = i+1;
+                        $('#bar'+star).width(starsPercentages[i].toFixed(0)+'%');
+                        $('#pull'+star).text(starsBreakdown[i]);
+                    }
+                }
+                var average = (acc/data.length).toFixed(1);
+                $('#average').text(average);
+                for (var i = 0, acc = average; i < 5; i++) {
+                    if (acc > 0) {
+                        $('#average_container').append('\
+                        <button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">\
+                            <span class="fa fa-star checked"></span>\
+                        </button>\
+                    ');
+                    acc--;
+                    } else {
+                        $('#average_container').append('\
+                        <button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">\
+                            <span class="fa fa-star checked"></span>\
+                        </button>\
+                    ');
+                    }
+                }
+            }
         },  
         error: function (xhr, textStatus, errorThrown) {  
             console.log('Error in Operation');  
