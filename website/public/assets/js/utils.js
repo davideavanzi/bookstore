@@ -161,10 +161,10 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
             $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
               <a href="shop-single.html?id='+book.id+'" class="item">\
-                <img src="/assets/'+book.cover+'" style="padding: 20px" alt="Cover" class="img-fluid resized">\
+                <img src="/assets/'+book.cover+'" style="padding: 20px" alt="Cover" class="img-fluid">\
                 <div class="item-info carousel-caption">\
                   <h3>'+book.title+'</h3>\
-                  <strong class="prince">€'+(book.value).toFixed(2)+'</strong>\
+                  <strong class="price">€'+(book.value).toFixed(2)+'</strong>\
                 </div>\
               </a>\
             </div>\
