@@ -1,0 +1,39 @@
+This test is about Avanzi, Bernecich, Carsenzuola's hypermedia application project at Politecnico di Milano. 
+Before you will try to solve the following tasks, remember that this test will be used by us with statistical purpose. 
+We will record the screen of the pc you will use for solve the tasks (software we use).
+All the data will be shared with us (Davide AVANZI, Francesca BERNECICH, Fabrizio CARSENZUOLA) (we are the data controller) and with the teachers and tutors of the course. We won't share the data with third part. We will analyse the data using authomatic tools (like Google Form). You can write a mail to info@fcarsenzuola.it to receive all the data that we collected about you or to ask us to destroy them.
+You can leave this test in any time. All the tasks are optional.
+If you agree these terms, you can proceed in the test.
+
+Rules:
+Rule 1
+– You should continue to work on each task until you either
+complete it or reach the point at which you give up/wrong answer or seek assistance.
+
+Rule 2
+– You have three wrong paths, or three attempts from the start. You can also have one tip from the supervisor.
+
+Rule 3
+– You have at most 4 minutes to solve each task.
+
+Tasks: 
+1) Suppose you want to perform a registration, before buy some books. 
+(solution -> user should go in registration page and perform registration)
+
+2) Suppose you want to buy a book for your friend that likes a lot Tolkien and already owns TLOTR. Select the only book that can be added to your cart and add it to your cart. Suppose you are using your own pc.
+(solution -> user should try to put in his cart The Silmarillion, the user isn't logged in so he will be redirect to login page. He should perform login and then add the book to his cart and he can check the remebember me button)
+
+3) Before buying Child of Time, suppose you want to know more about one of the two writers of this book (Robert Silverberg).
+(solution -> user should go to Silverberg's page [through book page or author page])
+
+4) Suppose you want also to read about JK Rowling.
+(solution -> user should go to Roling's page through author page)
+
+5) Suppose you change your mind and you want to remove from your cart the previously added book. 
+(solution -> user shuold go to his cart and remove the book)
+
+6) Suppose you want to partecipate to an event. You like a lot wizards stories. Take all the info about the event you like.
+(solution -> user should go to events page and take some infos about The story about a wizard)
+
+7) After you do all this task you want to logout yourself from our system.
+(solution -> user shuold go to registration page and perform logout)
