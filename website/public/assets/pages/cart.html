@@ -20,10 +20,26 @@
 
 <body>
 
+    <!-- navbar -->
+        <div class="site-navbar bg-white py-2 position-relative">
+            <div class="search-wrap">
+                <div class="container">
+                    <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                    <form action="#" method="post">
+                        <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+                    </form>
+                </div>
+            </div>
+            <div class="container" id="menu_container">
+                <!-- menu automatically loaded here s-->
+            </div>
+        </div>
+        <!-- end navbar -->
+
     <div class="site-wrap">
         <div class="bg-light py-3">
             <div class="container">
-                <div class="row">
+                <div class="row" id="breadcrubs">
                     <div class="col-md-12 mb-0"><a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span> <strong class="text-black">Cart</strong></div>
                 </div>
             </div>
@@ -195,6 +211,9 @@
             updateTotals();
         });
         
+    </script>
+    <script>
+        $("#menu_container").load("/assets/pages/menu.html");
     </script>
     <script>
         $("footer").load("/assets/pages/footer.html");

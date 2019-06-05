@@ -420,7 +420,8 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
         url: 'http://localhost:8080/v2/event/' + eventId,	
         type: 'GET',	
         dataType: 'json',	
-        success: function(event, textStatus, xhr) {	
+        success: function(event, textStatus, xhr) {
+            $('#single-event').html(event[0].title);	
             $.ajax({	
               url: 'http://localhost:8080/v2/books/'+event[0].id_book,  //TODO: remove [0]	
               type: 'GET',  	
