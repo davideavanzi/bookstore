@@ -57,7 +57,7 @@
 
             <div class="container">
                 <div class="2row mb-5">
-                    <div class="row">
+                    <div class="row" id="loginregister">
                         <div class="col-md-6 mb-5 mb-md-0">
                             <h2 class="h3 mb-3 text-black">Register</h2>
                             <div class="p-3 p-lg-5 border">
@@ -120,6 +120,11 @@
                                     <input type="submit" class="btn btn-primary btn-lg btn-block" id="logButt" value="Login">
                                 </form>
                             </div>
+                        
+                        </div>
+                    </div>
+                    <div class="row" id="logoutform">
+                        <div class="col-md-6 col-md-offset-3 mb-5 mb-offset-3 mb-md-0">
                             <h2 class="h3 mb-3 text-black">Logout</h2>
                             <div class="p-3 p-lg-5 border">
                                 <form id="logout" action="" method="">
@@ -146,6 +151,26 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
+            apiURL = "http://localhost:8080/v2"
+            $(function() {
+                $.ajax({
+		            url: apiURL+"/user/login",
+		            type: "POST",
+		            contentType: "application/json",
+		            data: '{"email":"", "password":""}',
+		            success: function(data, textStatus, jqXHR) {
+                        $('div#loginregister').hide();
+		            },
+		            error: function(jqXHR, textStatus, errorThrown) {
+		                if (jqXHR.status == 401) {
+                            $('div#logoutform').hide();
+		                } else {
+		                   	errorAlert("Error","An error occurred, please contact system administrators.");
+		                }
+		            }
+                });
+            });
+
             $(function() {
                 $.fn.serializeObject = function() {
                     var o = {};
@@ -164,7 +189,7 @@
                 };
                 $("#logout").bind("submit", function(evt) {
                     $.ajax({
-                        url: "http://localhost:8080/v2/user/logout",
+                        url: apiURL+"/user/logout",
                         type: "GET",
                         contentType: "application/json",
                         data: JSON.stringify($("#logout").serializeObject()),
@@ -184,7 +209,7 @@
                 });
                 $("#register").bind("submit", function(evt) {
                     $.ajax({
-                        url: "http://localhost:8080/v2/user/register",
+                        url: apiURL+"/user/register",
                         type: "POST",
                         contentType: "application/json",
                         data: JSON.stringify($("#register").serializeObject()),
@@ -209,7 +234,7 @@
                 });
                 $("#login").bind("submit", function(evt) {
                     $.ajax({
-                        url: "http://localhost:8080/v2/user/login",
+                        url: apiURL+"/user/login",
                         type: "POST",
                         contentType: "application/json",
                         data: JSON.stringify($("#login").serializeObject()),

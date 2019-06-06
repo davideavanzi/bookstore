@@ -112,7 +112,7 @@
             <div class="row">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
-                  <ul>
+                  <ul id="pagination">
                     <li><a href="#">&lt;</a></li>
                     <li class="active"><span>1</span></li>
                     <li><a href="#">2</a></li>
@@ -125,10 +125,7 @@
               </div>
             </div>
           </div>
-
-          
         </div>
-
       </div>
     </div>
 
@@ -155,7 +152,18 @@
   */
     $(document).ready(function(){
       
-      fetchAllAuthors();
+      var page = getUrlParameter("p");
+      var page = (page && page > 0 ? page : 1 );
+      
+      //calculate offset based on page:
+      var limit = 6; // 6 authors per page
+      var offset = (page-1)*limit; 
+      
+      fetchAllAuthors(limit, offset);
+
+      getAuthorsTotal().then(totalElements => {
+        setPagination(page, limit, totalElements);
+      });
     });
   </script>
   <script>

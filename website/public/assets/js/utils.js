@@ -141,6 +141,26 @@ var getBooksTotal = function getBooksTotal(authorId, genreId, themeId) {
     });
 }
 
+var getAuthorsTotal = function getAuthorsTotal() {
+    //fetch all authors
+    return new Promise(function(resolve, reject) {
+        $.ajax({ 
+            url: apiURL+'/author?',  
+            type: 'GET',  
+            dataType: 'json',  
+            success: function (data, textStatus, xhr) { 
+                resolve(data.length);
+            },  
+            error: function (xhr, textStatus, errorThrown) {  
+                console.log('Error in Operation');  
+            }
+        }); 
+    });
+
+
+}
+
+
 
 var fetchAllBooks = function fetchAllBooks(limit, offset, authorId, genreId, themeId) {
     //fetch all books, with optional filters
@@ -472,13 +492,13 @@ var fetchAllEvents = function fetchAllEvents() {
 
 var fetchSingleEvent = function fetchSingleEvent(eventId){	
     $.ajax({	
-        url: 'http://localhost:8080/v2/event/' + eventId,	
+        url: apiURL+'/event/' + eventId,	
         type: 'GET',	
         dataType: 'json',	
         success: function(event, textStatus, xhr) {
             $('#single-event').html(event[0].title);	
             $.ajax({	
-              url: 'http://localhost:8080/v2/books/'+event[0].id_book,  //TODO: remove [0]	
+              url: apiURL+'/books/'+event[0].id_book,  //TODO: remove [0]	
               type: 'GET',  	
               dataType: 'json',	
               success : function(book, textStatus, xhr){	
@@ -509,7 +529,7 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
                     </div>\
                 ');	
                 $.ajax({	
-                  url: 'http://localhost:8080/v2/interview',  	
+                  url: apiURL+'/interview',  	
                   type: 'GET',  	
                   dataType: 'json',	
                   success : function(interview, textStatus, xhr){	
@@ -543,10 +563,18 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
 }	
 
 
-var fetchAllAuthors = function fetchAllAuthors() {
+var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
     //fetch all authors
+    var params = {};
+    if (limit) {
+        params.limit = limit;
+    }
+    if (offset) {
+        params.offset = offset;
+    }
+    var paramStr = jQuery.param(params);
     $.ajax({  
-        url: apiURL+'/author?',  
+        url: apiURL+'/author?'+paramStr,  
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
@@ -577,6 +605,7 @@ var fetchReviews = function fetchReviews(bookId) {
         success: function (data, textStatus, xhr) { 
             var starsBreakdown = [0, 0, 0, 0, 0];
             console.log(data);
+            $('#book_reviews').empty();
             $.each(data, function (index, review) {
                 var reviewElement = $('\
                     <div class="row">\

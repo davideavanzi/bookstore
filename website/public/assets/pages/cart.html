@@ -188,9 +188,10 @@
 
     <script type="text/javascript">
         $(document).ready(function() {
+            //if not logged in, redirect to homepage
             $(function() {
                 $.ajax({
-		            url: "http://localhost:8080/v2/user/login",
+		            url: apiUrl+"/user/login",
 		            type: "POST",
 		            contentType: "application/json",
 		            data: '{"email":"", "password":""}',
