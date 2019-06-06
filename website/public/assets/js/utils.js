@@ -467,6 +467,7 @@ var fetchAllEvents = function fetchAllEvents() {
                                                     <li>'+authRef+' </li>\
                                                     <li><span>'+event.content+'</span> </li>\
                                                     <br>\
+                                                    <br>\
                                                     <li>\
                                                         <p><small class="text-muted"><i class="glyphicon glyphicon-time"></i>'+event.date+' '+event.location+'</small></p>\
                                                     </li>\
