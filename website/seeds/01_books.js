@@ -96,7 +96,34 @@ exports.seed = function(knex, Promise) {
         fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
         genre_id: 21,
         value: 9.1,
-        stock: 0}
+        stock: 0},
+        {
+        id: 11,
+        title: 'Basquiat', 
+        cover: 'img/cover/basquiat.png',
+        abstract: "Based on an Asimov short story, 'The Ugly Little Boy'. A children's nurse is hired as part of a scientific project aimed at bringing a living being from the past to the present. A four-year-old Neanderthal boy is snatched from his home and hurled 40,000 years into a terrifying future.",
+        fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
+        genre_id: 21,
+        value: 150,
+        stock: 3},
+        {
+        id: 12,
+        title: 'Star Wars', 
+        cover: 'img/cover/starwars.png',
+        abstract: "Based on an Asimov short story, 'The Ugly Little Boy'. A children's nurse is hired as part of a scientific project aimed at bringing a living being from the past to the present. A four-year-old Neanderthal boy is snatched from his home and hurled 40,000 years into a terrifying future.",
+        fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
+        genre_id: 10,
+        value: 16,
+        stock: 30},
+        {
+        id: 13,
+        title: 'The Gutemberg Bible', 
+        cover: 'img/cover/gutenberg_bible.png',
+        abstract: "Based on an Asimov short story, 'The Ugly Little Boy'. A children's nurse is hired as part of a scientific project aimed at bringing a living being from the past to the present. A four-year-old Neanderthal boy is snatched from his home and hurled 40,000 years into a terrifying future.",
+        fact_sheet: "Snatching a child from the past, a four year old Neanderthal, posed a problem for his carers. At first his nurse thinks him an animal, an ugly sub-human. Then she grows to love him.",
+        genre_id: 3,
+        value: 99.9,
+        stock: 3}
       ]);
     });
 };

@@ -16,6 +16,9 @@ exports.seed = function(knex, Promise) {
         {id_book: 9, id_author: 5},
         {id_book: 10, id_author: 2},
         {id_book: 10, id_author: 6},
+        {id_book: 11, id_author: 7},
+        {id_book: 12, id_author: 9},
+        {id_book: 13, id_author: 8},
       ]);
     });
 };
