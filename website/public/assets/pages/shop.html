@@ -198,7 +198,7 @@
             <div class="row">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
-                  <ul>
+                  <ul id="pagination">
                     <li><a href="#">&lt;</a></li>
                     <li class="active"><span>1</span></li>
                     <li><a href="#">2</a></li>
@@ -361,15 +361,27 @@
   */
     $(document).ready(function(){
       
+      var page = getUrlParameter("p");
+      var page = (page && page > 0 ? page : 1 );
+      
+      var genreid = getUrlParameter("genreid");
+      var themeid = getUrlParameter("themeid");
+      var authorid = getUrlParameter("authorid");
+      //calculate offset based on page:
+      var limit = 6; // 9 books per page
+      var offset = (page-1)*limit; 
+      
+      fetchAllBooks(limit, offset, authorid, genreid, themeid);
+      getBooksTotal(authorid, genreid, themeid).then(totalElements => {
+        setPagination(page, limit, totalElements);
+      });
+  
       fetchAuthorFilter();
       fetchGenreFilter();
       fetchFeaturedBooks();
       //loadMenu();
 
-      var genreid = getUrlParameter("genreid");
-      var themeid = getUrlParameter("themeid");
-      var authorid = getUrlParameter("authorid");
-      fetchAllBooks(authorid, genreid, themeid);
+
     });
   </script>
   <script>

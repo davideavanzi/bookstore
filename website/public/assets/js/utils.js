@@ -93,9 +93,64 @@ var fetchGenreFilter = function fetchGenreFilter() {
     }); 
 }
 
-var fetchAllBooks = function fetchAllBooks(authorId, genreId, themeId) {
+var setPagination = function setPagination(page, limit, totalElements) {
+    var pagesAmount = Math.ceil(totalElements/limit);
+    $('#pagination').empty();
+    console.log("PAGESAMOUNT: "+pagesAmount);
+    if(page > 1){
+        $('#pagination').append('<li><a href="?p='+(parseInt(page)-1)+'">&lt;</a></li>');
+    }
+    for (var i = 1; i <= pagesAmount; i++) {
+        if (i == page) {
+            $('#pagination').append('<li class="active"><span>'+i+'</span></li>');
+        } else {
+            $('#pagination').append('<li><a href="?p='+i+'">'+i+'</a></li>');
+        }
+    }
+    if(page < pagesAmount){
+        $('#pagination').append('<li><a href="?p='+(parseInt(page)+1)+'">&gt;</a></li>');
+    }
+    
+}
+
+var getBooksTotal = function getBooksTotal(authorId, genreId, themeId) {
+    //fetch all books, with optional filters
+    return new Promise(function(resolve, reject) {
+        var params = {};
+        if(authorId) {
+            params.authorId = authorId;
+        }
+        if(genreId) {
+            params.genreId = genreId;
+        }
+        if(themeId) {
+            params.themeId = themeId;
+        }
+        var paramStr = jQuery.param(params);
+        $.ajax({ 
+            url: apiURL+'/books?'+paramStr,  
+            type: 'GET',  
+            dataType: 'json',  
+            success: function (data, textStatus, xhr) { 
+                resolve(data.length);
+            },  
+            error: function (xhr, textStatus, errorThrown) {  
+                console.log('Error in Operation');  
+            }
+        }); 
+    });
+}
+
+
+var fetchAllBooks = function fetchAllBooks(limit, offset, authorId, genreId, themeId) {
     //fetch all books, with optional filters
     var params = {};
+    if (limit) {
+        params.limit = limit;
+    }
+    if (offset) {
+        params.offset = offset;
+    }
     if(authorId) {
         params.authorId = authorId;
     }
