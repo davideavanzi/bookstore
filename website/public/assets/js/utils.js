@@ -409,7 +409,9 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
               if (index < (data.authors.length - 1)) {
                 $('#authors').append(", ");
               }
+              fetchInterview(bookid, "<a href=\"author.html?id="+author.id+"\">"+author.name+"</a>", author.id, author.photo);
             });
+             //id_book, authRef, authId, authCover
         },  
         error: function (xhr, textStatus, errorThrown) {  
             console.log('Error in Operation');  
@@ -499,10 +501,10 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
         success: function(event, textStatus, xhr) {
             $('#single-event').html(event[0].title);	
             $.ajax({	
-              url: apiURL+'/books/'+event[0].id_book,  //TODO: remove [0]	
-              type: 'GET',  	
-              dataType: 'json',	
-              success : function(book, textStatus, xhr){	
+                url: apiURL+'/books/'+event[0].id_book,  //TODO: remove [0]	
+                type: 'GET',  	
+                dataType: 'json',	
+                success : function(book, textStatus, xhr){	
                 var authRef = '';	
                 var authCover = '';	
                 $.each(book.authors, function (index, author) {	
@@ -521,27 +523,43 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
                     </div>\
                     <div class="col-md-6">\
                         <h1 class="text-black" id="title">'+event[0].title+'</h1>\
+                        <h2 class="text-back" style="font-size: 20px" id="date">'+event[0].date+'</a></h2>\
+                        <h2 class="text-back" style="font-size: 20px" id="location">'+event[0].location+'</a></h2>\
                         <br>\
                         <br>\
                         <br>\
-                        <h4 class="text-back" style="font-size: 20px" id="date">'+event[0].date+'</a></h4> <!-- TODO: implement event date -->\
                         <p id="content">'+event[0].content+'</p>\
                         <br>\
                     </div>\
-                ');	
-                $.ajax({	
-                  url: apiURL+'/interview',  	
-                  type: 'GET',  	
-                  dataType: 'json',	
-                  success : function(interview, textStatus, xhr){	
-                    for(i = 0; i< interview.length; i++){	
-                      if(book.id == interview[i].id_book){	
-                        $('#interview').append('\
-                          <div class="col-lg-8 ">\
-                                <h2><span  style="font-size: 60px">What the author says</span></h2>\
-                                <p class="lead my-3">'+interview[i].content+'</p>\
-                                <p class="lead mb-0">'+authRef+'</p>\
-                            </div>\
+                ');
+                fetchInterview(book.id, authRef, authId, authCover);
+	  
+              }	
+            });
+        },	
+        error: function(xhr, textStatus, errorThrown) {	
+            console.log('Error in Operation');	
+        }	
+    });	
+}
+
+var fetchInterview = function fetchInterview(id_book, authRef, authId, authCover){
+    $.ajax({    
+        url: apiURL+'/interview',     
+        type: 'GET',      
+        dataType: 'json', 
+        success : function(interview, textStatus, xhr){   
+        for(i = 0; i< interview.length; i++){   
+                if(id_book == interview[i].id_book){  
+                    $('#interview').append('\
+                        <section id="ABC">\
+                        <div class="container">\
+                            <div class="row" id="interview">\
+                                <div class="col-lg-8 ">\
+                                    <h2><span  style="font-size: 60px">What '+authRef+' says</span></h2>\
+                                    <p class="lead my-3">'+interview[i].content+'</p>\
+                                    <p class="lead mb-0">'+authRef+'</p>\
+                                </div>\
                             <div class="col-md-4 ">\
                                 <a href=author.html?id='+authId+'><img id="photo" src="/assets/'+authCover+'" style="border-radius: 50%" alt="Image" class="img-fluid"></a>\
                             </div>\
@@ -549,18 +567,14 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
                                 <div class="col-md-6">\
                                 </div>\
                                 <div class="col-md-6">\
-                        ')                             	
-                      }	
-                    }	
-                  }	
-                });	
-              }	
-            });	
-        },	
-        error: function(xhr, textStatus, errorThrown) {	
-            console.log('Error in Operation');	
-        }	
-    });	
+                                </div>\
+                            </div>\
+                        </section>\
+                    ');                              
+                } 
+            }   
+        } 
+    }); 
 }	
 
 
