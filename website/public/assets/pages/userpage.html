@@ -62,9 +62,8 @@
         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
         <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
         </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag">
+        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
         <span class="icon-shopping-bag"></span>
-        <span class="number">1</span>
         </a>
         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
     </div>
@@ -118,90 +117,17 @@
       <div class="container">
         <div class="row">
           <div class="title-section text-center col-12">
-            <h2 class="text-uppercase">Recently purchased</h2>
+            <h2 class="text-uppercase">Logout</h2>
           </div>
         </div>
-        <div class="row">
-          <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel">
-              
-
-                <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="images/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
-                    
-                  <div class="item-info">
-                        <div class="row"> </div>
-                    <h3>The best of Bauhaus</h3>
-                  
-                    <strong class="price">€15,00</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/product_2.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    
-                    <strong class="price">€150<del>€199</del></strong>
-                  </div>
-                </a>
-              </div>
-
-                <div class="product">
-                <a href="shop-single.html#" class="item">
-                    <span class="tag">new</span>
-                  <img src="images/product_3.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Gutemberg bible</h3>
-                   
-                    <strong class="price">€99,99</strong>
-                  </div>
-                </a>
-              </div>
-
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="images/product_4.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>The Ultimate shoes book</h3>
-                   
-                    <strong class="price">€59,99</strong>
-                  </div>
-                </a>
-              </div>
-
-              <div class="product">
-                <a href="shop-single.html" class="item">
-                  <span class="tag">Sale</span>
-                  <img src="images/product_2.jpg" alt="Image" class="img-fluid">
-                  <div class="item-info">
-                    <h3>Basquiat</h3>
-                    
-                    <strong class="price">€150<del>€199</del></strong>
-                  </div>
-                </a>
-              </div>
-
-               <div class="product">
-                <a href="shop-single.html" class="item">
-                  <img src="images/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
-                    
-                  <div class="item-info">
-                        <div class="row"> </div>
-                    <h3>The best of Bauhaus</h3>
-                  
-                    <strong class="price">€15,00</strong>
-                  </div>
-                </a>
-              </div>
-
+        <div class="row" id="logoutform">
+            <div class="col-md-12 mb-5 mb-md-0">
+                <div class="p-3 p-lg-5 border">
+                    <form id="logout" action="" method="">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" id="logoutButt" value="Logout">
+                    </form>
+                </div>
             </div>
-          </div>
         </div>
       </div>
     </div>
@@ -217,6 +143,11 @@
   <script src="/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="/assets/js/aos.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script>$("footer").load("/assets/pages/footer.html");</script>    
+  <script>$("footer").load("/assets/pages/footer.html");</script>   
+  <script type="text/javascript">
+    $(document).ready(function(){
+      displayCartBadge();
+    });
+  </script>  
 </body>
 </html>

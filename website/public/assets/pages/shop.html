@@ -53,9 +53,8 @@
         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
         <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
         </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag">
+        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
         <span class="icon-shopping-bag"></span>
-        <span class="number">1</span>
         </a>
         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
     </div>
@@ -229,7 +228,7 @@
             <div class="border p-4 mb-4">
               <h3 class="mb-3 h6 text-uppercase text-black d-block">
                   <a data-toggle="collapse" href="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">
-                    Categories
+                    Genres
                   </a>
                 </h3>
               <div class="collapse" id="collapseGenres">
@@ -237,6 +236,18 @@
                 </ul>
               </div>  
             </div>
+
+            <div class="border p-4 mb-4">
+                <h3 class="mb-3 h6 text-uppercase text-black d-block">
+                    <a data-toggle="collapse" href="#collapseThemes" role="button" aria-expanded="false" aria-controls="collapseThemes">
+                      Themes
+                    </a>
+                  </h3>
+                <div class="collapse" id="collapseThemes">
+                  <ul class="list-unstyled mb-0" id="theme_filter"> 
+                  </ul>
+                </div>  
+              </div>
 
             
           </div>
@@ -347,9 +358,7 @@
   /*
   *   TODO:
   *   + funzione per mostrare quanti libri per ogni autore/genere
-  *   + quando non ci sono libri, mostrare "no books found"
   *   + mostrare filtro attivo (es: si sta guardando libri per il genere x)
-  *   + limit alla query dei featured con un link "see all" alla pagina shop con filter
   *   + errore rosso in caso di fail nelle query o nel prendere parametro nelle single page
   *   + togliere bordino inutile quando non ci sono libri
   *
@@ -373,10 +382,9 @@
   
       fetchAuthorFilter();
       fetchGenreFilter();
+      fetchThemeFilter();
       fetchFeaturedBooks();
-      //loadMenu();
-
-
+      displayCartBadge();
     });
   </script>
   <script>$("footer").load("/assets/pages/footer.html");</script>    

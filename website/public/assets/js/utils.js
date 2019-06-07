@@ -93,6 +93,28 @@ var fetchGenreFilter = function fetchGenreFilter() {
     }); 
 }
 
+var fetchThemeFilter = function fetchThemeFilter() {
+    //fetch all themes to filter
+    $.ajax({  
+        url: apiURL+'/theme',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+          console.log(data);
+          $.each(data, function (index, theme) {
+            $('#theme_filter').append('\
+            <li class="mb-1">\
+                <a href="shop.html?themeid='+theme.id+'" class="d-flex"><span>'+theme.name+'</span> \
+                <span class="text-black ml-auto">(5)</span></a></li>\
+            ');
+          });
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            console.log('Error in Operation');  
+        }
+    }); 
+}
+
 var setPagination = function setPagination(page, limit, totalElements) {
     var pagesAmount = Math.ceil(totalElements/limit);
     $('#pagination').empty();
@@ -275,6 +297,23 @@ var loadMenu = function loadMenu() {
     });
 }
 
+var displayCartBadge = function displayCartBadge() {
+    $.ajax({  
+        url: apiURL+'/cart',  
+        type: 'GET',  
+        dataType: 'json',  
+        success: function (data, textStatus, xhr) { 
+            if(data.length > 0) {
+                $('#cartIcon').append('<span class="number">'+data.length+'</span>')
+            }
+        },  
+        error: function (xhr, textStatus, errorThrown) {  
+            //User may not be authenticated, in this case we do nothing
+            //TODO maybe check error codes?
+            //console.log('Error in fetching cart');  
+        }
+    }); 
+}
 
 var fetchCart = function fetchCart() {
     $.ajax({  
@@ -312,7 +351,7 @@ var fetchCart = function fetchCart() {
           });
         },  
         error: function (xhr, textStatus, errorThrown) {  
-            console.log('Error in fetching books');  
+            console.log('Error in fetching cart');  
         }
     }); 
 }
@@ -626,7 +665,7 @@ var fetchReviews = function fetchReviews(bookId) {
                     <div class="row">\
                         <div class="col-sm-3">\
                             <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">\
-                            <div class="review-block-name"><a href="#">Username</a></div>\
+                            <div class="review-block-name"><a href="#">'+review.username+'</a></div>\
                             <div class="review-block-date">'+review.date+'</div>\
                         </div>\
                         <div class="col-sm-9">\
@@ -744,13 +783,13 @@ var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
           }
           */
           $.each(data, function (index, book) {
-            $('#books').trigger('add.owl.carousel', ['\
+            $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
               <a href="shop-single.html?id='+book.id+'" class="item">\
-                <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">\
-                <div class="item-info">\
+                <img src="/assets/'+book.cover+'" style="padding: 20px" alt="Cover" class="img-fluid">\
+                <div class="item-info carousel-caption">\
                   <h3>'+book.title+'</h3>\
-                  <strong class="prince">€'+book.value+'</strong>\
+                  <strong class="price">€'+(book.value).toFixed(2)+'</strong>\
                 </div>\
               </a>\
             </div>\

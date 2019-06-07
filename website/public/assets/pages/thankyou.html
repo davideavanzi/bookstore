@@ -81,9 +81,8 @@
           <div class="icons">
             <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
             <a href="#" class="icons-btn d-inline-block"><span class="icon-user"></span></a>
-            <a href="cart.html" class="icons-btn d-inline-block bag">
+            <a href="cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
               <span class="icon-shopping-bag"></span>
-              <span class="number">1</span>
             </a>
             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
           </div>
@@ -116,6 +115,11 @@
   <script src="/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="/assets/js/aos.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script>$("footer").load("/assets/pages/footer.html");</script>   
+  <script>$("footer").load("/assets/pages/footer.html");</script> 
+  <script type="text/javascript">
+    $(document).ready(function(){
+      displayCartBadge();
+    });
+  </script>   
   </body>
 </html>

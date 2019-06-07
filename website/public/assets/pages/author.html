@@ -69,9 +69,8 @@
         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
         <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
         </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag">
+        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
         <span class="icon-shopping-bag"></span>
-        <span class="number">1</span>
         </a>
         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
     </div>
@@ -127,8 +126,7 @@
         </div>
         <div class="row">
           <div class="col-md-12 block-3 products-wrap">
-            <div class="nonloop-block-3 owl-carousel" id="books">
-            
+            <div class="nonloop-block-3 owl-carousel" id="featured_books">
             </div>
           </div>
         </div>
@@ -156,6 +154,7 @@
         //get books of the author
         fetchBooksOfAuthor(authorId);
       }
+      displayCartBadge();
     });
   </script> 
   <script>$("footer").load("/assets/pages/footer.html");</script>    

@@ -52,9 +52,8 @@
         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
         <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
         </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag">
+        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
         <span class="icon-shopping-bag"></span>
-        <span class="number">1</span>
         </a>
         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
     </div>
@@ -87,6 +86,38 @@
   <script src="/assets/js/jquery.magnific-popup.min.js"></script>
   <script src="/assets/js/aos.js"></script>
   <script src="/assets/js/main.js"></script>
-  <script>$("footer").load("/assets/pages/footer.html");</script>    
+  <script>$("footer").load("/assets/pages/footer.html");</script>  
+  <script type="text/javascript">
+
+    //redirect if user not logged in
+    $(document).ready(function(){
+      $(function() {
+        $.ajax({
+        url: apiURL+"/user/login",
+        type: "POST",
+        contentType: "application/json",
+        data: '{"email":"", "password":""}',
+        success: function(data, textStatus, jqXHR) {
+          //user is already logged in, retrieve data
+          /* 
+          * TODO:
+          * prendere dati utente dal db e mostrarli (no passw!)
+          * bindare bottone logout a funzione logout (fare una funzione in utils)
+          */
+                
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status == 401) {
+              //user is not logged in
+              window.location.href = '/assets/pages/register.html';
+            } else {
+                errorAlert("Error","An error occurred, please contact system administrators.");
+            }
+        }
+        });
+      });
+      displayCartBadge();
+    });
+  </script>   
 </body>
 </html>

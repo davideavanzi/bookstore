@@ -50,9 +50,8 @@
         <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
         <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
         </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag">
+        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
         <span class="icon-shopping-bag"></span>
-        <span class="number">1</span>
         </a>
         <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
     </div>
@@ -149,16 +148,6 @@
                         
                         </div>
                     </div>
-                    <div class="row" id="logoutform">
-                        <div class="col-md-6 col-md-offset-3 mb-5 mb-offset-3 mb-md-0">
-                            <h2 class="h3 mb-3 text-black">Logout</h2>
-                            <div class="p-3 p-lg-5 border">
-                                <form id="logout" action="" method="">
-                                    <input type="submit" class="btn btn-primary btn-lg btn-block" id="logoutButt" value="Logout">
-                                </form>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <footer class="site-footer custom-border-top">
                 </footer>
@@ -177,7 +166,6 @@
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.min.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            apiURL = "http://localhost:8080/v2"
             $(function() {
                 $.ajax({
 		            url: apiURL+"/user/login",
@@ -186,10 +174,11 @@
 		            data: '{"email":"", "password":""}',
 		            success: function(data, textStatus, jqXHR) {
                         $('div#loginregister').hide();
+                        window.location.href = '/assets/pages/userpage.html';
 		            },
 		            error: function(jqXHR, textStatus, errorThrown) {
 		                if (jqXHR.status == 401) {
-                            $('div#logoutform').hide();
+                            //user is not logged in
 		                } else {
 		                   	errorAlert("Error","An error occurred, please contact system administrators.");
 		                }
@@ -281,6 +270,7 @@
                     return false;
                 });
             });
+            displayCartBadge();
         });
     </script>
     <script>

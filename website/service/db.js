@@ -28,18 +28,20 @@ function setupDataLayer () {
     return new Promise(resolve => {
         //checking if migration is up to date
         console.log("(1/3) running [knex.migrate.latest()]");
-        db.migrate.latest().then(function () {
-            console.log("(2/3) running [knex.seed.run()]");
-            //seed database TODO
-            return db.seed.run();
-        }).then(function () {
-            var s = "(3/3) database ready.";
-            resolve();
-        }).catch(err => {
-            console.error("Error setting up database:");
-            console.error(err.message);
-            //reject(); TODO
-        });
+        db.migrate.rollback().then(function () {
+            db.migrate.latest().then(function () {
+                console.log("(2/3) running [knex.seed.run()]");
+                //seed database TODO
+                return db.seed.run();
+            }).then(function () {
+                var s = "(3/3) database ready.";
+                resolve();
+            }).catch(err => {
+                console.error("Error setting up database:");
+                console.error(err.message);
+                //reject(); TODO
+            });
+        });     
     })
   }
 

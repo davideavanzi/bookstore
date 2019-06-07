@@ -2,6 +2,7 @@
 
 //global db connection variable
 let {db, TABLES} = require('./db');
+let User = require('./UserService');
 
 
 /**
@@ -88,7 +89,19 @@ exports.getReviews = function(offset,limit,userId,bookId) {
     })
     .then(function (reviews) {
       if (Object.keys(reviews).length > 0) {
-        resolve(reviews);
+        let fetched = reviews.map(function (review) {
+          return new Promise(function(resolve, reject) {
+            var user = User.getUserById(review.id_user);
+            user.then(result => {
+              review.username = result[0].firstName;
+              resolve(review);
+            });  
+          }); 
+        });
+        Promise.all(fetched).then((reviewList) => {
+          console.log(reviewList);
+          resolve(reviewList);
+        });
       } else {
         //no reviews found
         resolve();
