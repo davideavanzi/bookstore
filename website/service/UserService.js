@@ -46,6 +46,12 @@ exports.getUserById = function(userId) {
 }
 
 
+exports.getUserByCookie = function() {
+  return new Promise(function(resolve, reject) {
+    resolve();  
+  });
+}
+
 exports.findUser = function(userReq) {
   return new Promise(function(resolve, reject) {
     try {

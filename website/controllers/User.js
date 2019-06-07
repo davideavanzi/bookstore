@@ -226,6 +226,28 @@ module.exports.registerUser = function registerUser (req, res, next) {
     });
 };
 
+module.exports.getUserByCookie = function getUserByCookie (req, res, next) {
+  var userId = req.session.userId;
+  var session = req.session;
+
+  module.exports.alreadyLoggedIn(session).then(result => {
+    if(result) {
+      User.getUserById(userId)
+    .then(function (response) {
+      utils.writeJson(res, response);
+    })
+    .catch(function (response) {
+      utils.writeJson(res, response);
+    });
+    } else {
+      console.log("Operation not authorized");
+      let body = {}
+      body.message = "user unauthorized"
+      utils.writeJson(res, body, 403);
+    }
+  }) 
+};
+
 module.exports.updateUser = function updateUser (req, res, next) {
   var userId = req.swagger.params['userId'].value;
   var body = req.swagger.params['body'].value;
