@@ -85,24 +85,25 @@ exports.addBookToCart = function(cartId,bookId,amount) {
       let availability = book[0].stock;
       //if book availability is <= 0, don't bother.
       if (availability < 1) {
-        resolve({"message":"Book unavailable"});
+        reject({"message":"Book unavailable"});
+      } else {
+        if (availability < amount) {
+          //order as much as possible!
+          amount = availability;
+          //TODO: reject or resolve with 404? or continue? continuing.
+          //reject();
+        }
+        Promise.all([
+          db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
+          db(TABLES.BOOK).where({ id: bookId }).decrement({ stock: amount })
+        ]).then(() => {  
+          //operation was successful:
+          resolve({"message":"Operation completed."});
+        }).catch(error => {
+          console.error(error);
+        });
       }
-      if (availability < amount) {
-        //order as much as possible!
-        amount = availability;
-        //TODO: reject or resolve with 404? or continue? continuing.
-        //reject();
-      }
-    })
-    .then(() => {
-      Promise.all([
-        db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
-        db(TABLES.BOOK).where({ id: bookId }).decrement({ stock: amount })
-      ]).then(() => {  
-        //operation was successful:
-        resolve({"message":"Operation completed."});
-      })
-    })
+    });
   });
 }
 

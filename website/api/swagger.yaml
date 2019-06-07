@@ -857,6 +857,8 @@ paths:
           description: "Forbidden"
         404:
           description: "Not found"
+        406:
+          description: "Not Acceptable"
       x-swagger-router-controller: "Cart"
   /cart/removeBook:
     put:

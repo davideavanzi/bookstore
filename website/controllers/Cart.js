@@ -64,7 +64,7 @@ module.exports.addBookToCart = function addBookToCart (req, res, next) {
         utils.writeJson(res, response);
       })
       .catch(function (response) {
-        utils.writeJson(res, response);
+        utils.writeJson(res, response, 406);
       });
     } else {
       console.log("Operation on cart not authorized");

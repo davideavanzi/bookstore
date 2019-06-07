@@ -32,7 +32,7 @@ var getUrlParameter = function getUrlParameter(sParam) {
 };
 
 var successAlert = function success(title, message) {
-    $('#messagebar').html('\
+    $('#messagebar').append('\
         <div class="alert alert-success" role="alert">\
             <h4 class="alert-heading">'+title+'</h4>\
             <p>'+message+'</p>\
@@ -40,10 +40,26 @@ var successAlert = function success(title, message) {
     ');
 }
 
-var errorAlert = function error(title, message) {
-    $('#messagebar').html('\
-        <div class="alert alert-danger" role="alert">\
+var warningAlert = function warning(title, message) {
+    $('#messagebar').append('\
+        <div class="alert alert-warning alert-dismissible fade show" role="alert">\
             <h4 class="alert-heading">'+title+'</h4>\
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                <span aria-hidden="true">&times;</span>\
+            </button>\
+            <p>'+message+'</p>\
+        </div>\
+    ');
+}
+
+
+var errorAlert = function error(title, message) {
+    $('#messagebar').append('\
+        <div class="alert alert-danger alert-dismissible fade show" role="alert">\
+            <h4 class="alert-heading">'+title+'</h4>\
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+                <span aria-hidden="true">&times;</span>\
+            </button>\
             <p>'+message+'</p>\
         </div>\
     ');
@@ -409,14 +425,19 @@ var addBookToCart = function addBookToCart(bookid, amount) {
         type: "PUT",
         contentType: "application/json",
         success: function() {
-          successAlert("All Good!","This book was added to your cart!");
+            if(amount > bookStock) {
+                warningAlert("Attention!",'You tried to buy more books than available, we added the maximum quantity we have in stock! <a href="/assets/pages/cart.html" class="alert-link">Check your cart</a>');
+            } else {
+                successAlert("All Good!",'This book was added to your cart! <a href="/assets/pages/cart.html" class="alert-link">Go to your cart</a>');
+            }
         },
         error: function(jqXHR, textStatus, errorThrown) {
           if (jqXHR.status == 403) {
               errorAlert("Whoops!", "You need to be logged in to buy books!");
-          } else if (jqXHR.status == 401) {
-              //alert("You inserted invalid data, try again!");
+          } else if (jqXHR.status == 401) {;
               errorAlert("Whoops!", "Data provided are invalid, try again!");
+          } else if (jqXHR.status == 406) {;
+            errorAlert("Whoops!", "You are trying to buy a book which is out of stock!");
           } else {
               errorAlert("Whoops!", "An error occurred, pleasy try again!");
           }
@@ -435,7 +456,11 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
             //TODO: add shadow around book cover?
             console.log(data);  
             document.title = data.title;
-            $('#price').html(data.value);
+            bookStock = data.stock;
+            if (bookStock > 0) {
+                $( "#reserve" ).prop( "disabled", true );
+            }
+            $('#price').html(data.value.toFixed(2));
             $('#title').html(data.title);
             $('#stock').text(data.stock);
             $('#cover').attr("src","/assets/"+data.cover);
@@ -652,6 +677,7 @@ var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
 
 var fetchReviews = function fetchReviews(bookId) {
     //fetch all reviews of a book
+    $('#book_reviews').empty();
     $.ajax({  
         url: apiURL+'/review?bookId='+bookId,  
         type: 'GET',  
@@ -659,7 +685,6 @@ var fetchReviews = function fetchReviews(bookId) {
         success: function (data, textStatus, xhr) { 
             var starsBreakdown = [0, 0, 0, 0, 0];
             console.log(data);
-            $('#book_reviews').empty();
             $.each(data, function (index, review) {
                 var reviewElement = $('\
                     <div class="row">\

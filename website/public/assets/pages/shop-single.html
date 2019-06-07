@@ -118,12 +118,10 @@
 
            
           <p><button id="buy" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Add To Cart</button>
-            <a href="thankyou.html" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Reserve</a></p>
+            <button onclick="location.href = '/assets/pages/reservation.html';" id="reserve" class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary">Reserve</button>
               <div class="row">
               <div class="col-md-12">
-           
-          </div>
- 
+              </div>
           </div>
         </div>
       </div>
@@ -482,6 +480,7 @@
   <script type="text/javascript">
     $(document).ready(function(){
       var bookid = getUrlParameter("id");
+      var bookStock;
       if(bookid) {
         fetchSingleBook(bookid);
         fetchReviews(bookid); 
