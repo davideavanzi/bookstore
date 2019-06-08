@@ -82,32 +82,32 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Book"
-    post:
-      tags:
-      - "book"
-      summary: "Add a new book"
-      description: "Insert new book in the system - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "addBook"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The book object that needs to be added to the bookstore"
-        required: true
-        schema:
-          $ref: "#/definitions/Book"
-      responses:
-        200:
-          description: "Books added"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-      x-swagger-router-controller: "Book"
+#    post:
+#      tags:
+#      - "book"
+#      summary: "Add a new book"
+#      description: "Insert new book in the system - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "addBook"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The book object that needs to be added to the bookstore"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Book"
+#      responses:
+#        200:
+#          description: "Books added"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#      x-swagger-router-controller: "Book"
   /books/{bookId}:
     get:
       tags:
@@ -134,63 +134,63 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Book"
-    put:
-      tags:
-      - "book"
-      summary: "Update a specific book"
-      description: "Update values of a book - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "updateBook"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "bookId"
-        in: "path"
-        description: "id of the book that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Updated book object"
-        required: true
-        schema:
-          $ref: "#/definitions/Book"
-      responses:
-        200:
-          description: "Book updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Book"
-    delete:
-      tags:
-      - "book"
-      summary: "Delete a specific book"
-      description: "Delete a book - this can only be done by the logged in ADMIN."
-      operationId: "deleteBook"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "bookId"
-        in: "path"
-        description: "The id of the book that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Book deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Book"
+#    put:
+#      tags:
+#      - "book"
+#      summary: "Update a specific book"
+#      description: "Update values of a book - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "updateBook"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "bookId"
+#        in: "path"
+#        description: "id of the book that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      - in: "body"
+#        name: "body"
+#        description: "Updated book object"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Book"
+#      responses:
+#        200:
+#          description: "Book updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Book"
+#    delete:
+#      tags:
+#      - "book"
+#      summary: "Delete a specific book"
+#      description: "Delete a book - this can only be done by the logged in ADMIN."
+#      operationId: "deleteBook"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "bookId"
+#        in: "path"
+#        description: "The id of the book that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Book deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Book"
   /review:
     get:
       tags:
@@ -259,90 +259,90 @@ paths:
         405:
           description: "Invalid input"
       x-swagger-router-controller: "Review"
-  /review/{reviewId}:
-    get:
-      tags:
-      - "review"
-      summary: "Find review by ID"
-      description: "Returns a review"
-      operationId: "getReviewById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "reviewId"
-        in: "path"
-        description: "ID of the review to retrieve"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Review"
-        400:
-          description: "Invalid input"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Review"
-    put:
-      tags:
-      - "review"
-      summary: "Update a specific review"
-      description: "Update values of a review - this can only be done by the logged\
-        \ in ADMIN or the user that made it."
-      operationId: "updateReview"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "reviewId"
-        in: "path"
-        description: "id of the review that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Updated review object"
-        required: true
-        schema:
-          $ref: "#/definitions/Review"
-      responses:
-        200:
-          description: "Review updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Review"
-    delete:
-      tags:
-      - "review"
-      summary: "Delete a specific review"
-      description: "Delete a review - this can only be done by the logged in ADMIN\
-        \ or the user that made it."
-      operationId: "deleteReview"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "reviewId"
-        in: "path"
-        description: "The id of the review that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Review deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Review"
+#  /review/{reviewId}:
+#    get:
+#      tags:
+#      - "review"
+#      summary: "Find review by ID"
+#      description: "Returns a review"
+#      operationId: "getReviewById"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "reviewId"
+#        in: "path"
+#        description: "ID of the review to retrieve"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "successful operation"
+#          schema:
+#            $ref: "#/definitions/Review"
+#        400:
+#          description: "Invalid input"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Review"
+#    put:
+#      tags:
+#      - "review"
+#      summary: "Update a specific review"
+#      description: "Update values of a review - this can only be done by the logged\
+#        \ in ADMIN or the user that made it."
+#      operationId: "updateReview"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "reviewId"
+#        in: "path"
+#        description: "id of the review that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      - in: "body"
+#        name: "body"
+#        description: "Updated review object"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Review"
+#      responses:
+#        200:
+#          description: "Review updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Review"
+#    delete:
+#      tags:
+#      - "review"
+#      summary: "Delete a specific review"
+#      description: "Delete a review - this can only be done by the logged in ADMIN\
+#        \ or the user that made it."
+#      operationId: "deleteReview"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "reviewId"
+#        in: "path"
+#        description: "The id of the review that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Review deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Review"
   /event:
     get:
       tags:
@@ -378,34 +378,34 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Event"
-    post:
-      tags:
-      - "event"
-      summary: "Add a new event"
-      description: "Insert a new event in the system - this can only be done by logged\
-        \ in ADMIN."
-      operationId: "addEvent"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The review object that needs to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      responses:
-        200:
-          description: "Event added"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Event"
+#    post:
+#      tags:
+#      - "event"
+#      summary: "Add a new event"
+#      description: "Insert a new event in the system - this can only be done by logged\
+#        \ in ADMIN."
+#      operationId: "addEvent"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The review object that needs to be added"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Event"
+#      responses:
+#        200:
+#          description: "Event added"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#        405:
+#          description: "Invalid input"
+#      x-swagger-router-controller: "Event"
   /event/{eventId}:
     get:
       tags:
@@ -432,63 +432,63 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Event"
-    put:
-      tags:
-      - "event"
-      summary: "Update a specific event"
-      description: "Update values of a review - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "updateEvent"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        description: "id of the event that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Updated event object"
-        required: true
-        schema:
-          $ref: "#/definitions/Event"
-      responses:
-        200:
-          description: "Event updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Event"
-    delete:
-      tags:
-      - "event"
-      summary: "Delete a specific event"
-      description: "Delete a event - this can only be done by the logged in ADMIN."
-      operationId: "deleteEvent"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "eventId"
-        in: "path"
-        description: "The id of the event that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Event deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Event"
+#    put:
+#      tags:
+#      - "event"
+#      summary: "Update a specific event"
+#      description: "Update values of a review - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "updateEvent"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "eventId"
+#        in: "path"
+#        description: "id of the event that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      - in: "body"
+#        name: "body"
+#        description: "Updated event object"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Event"
+#      responses:
+#        200:
+#          description: "Event updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Event"
+#    delete:
+#      tags:
+#      - "event"
+#      summary: "Delete a specific event"
+#      description: "Delete a event - this can only be done by the logged in ADMIN."
+#      operationId: "deleteEvent"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "eventId"
+#        in: "path"
+#        description: "The id of the event that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Event deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Event"
   /author:
     get:
       tags:
@@ -525,32 +525,32 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Author"
-    post:
-      tags:
-      - "author"
-      summary: "Add a new author"
-      description: "Insert new author in the system - this can only be done by the\
-        \ logged in ADMIN."
-      operationId: "addAuthor"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The author object that needs to be added to the bookstore"
-        required: true
-        schema:
-          $ref: "#/definitions/Author"
-      responses:
-        200:
-          description: "Author added"
-        403:
-          description: "Fobidden"
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Author"
+#    post:
+#      tags:
+#      - "author"
+#      summary: "Add a new author"
+#      description: "Insert new author in the system - this can only be done by the\
+#        \ logged in ADMIN."
+#      operationId: "addAuthor"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The author object that needs to be added to the bookstore"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Author"
+#      responses:
+#        200:
+#          description: "Author added"
+#        403:
+#          description: "Fobidden"
+#        405:
+#          description: "Invalid input"
+#      x-swagger-router-controller: "Author"
   /author/{authorId}:
     get:
       tags:
@@ -577,63 +577,63 @@ paths:
         404:
           description: "Author not found"
       x-swagger-router-controller: "Author"
-    put:
-      tags:
-      - "author"
-      summary: "Update a specific author"
-      description: "Update values of an author - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "updateAuthor"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "authorId"
-        in: "path"
-        description: "id of the author that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      - in: "body"
-        name: "body"
-        description: "Updated author object"
-        required: true
-        schema:
-          $ref: "#/definitions/Author"
-      responses:
-        200:
-          description: "Author updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Author not found"
-      x-swagger-router-controller: "Author"
-    delete:
-      tags:
-      - "author"
-      summary: "Delete a specific author"
-      description: "Delete a author - this can only be done by the logged in ADMIN."
-      operationId: "deleteAuthor"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "authorId"
-        in: "path"
-        description: "The id of the author that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Author deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Author"
+#    put:
+#      tags:
+#      - "author"
+#      summary: "Update a specific author"
+#      description: "Update values of an author - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "updateAuthor"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "authorId"
+#        in: "path"
+#        description: "id of the author that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      - in: "body"
+#        name: "body"
+#        description: "Updated author object"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Author"
+#      responses:
+#        200:
+#          description: "Author updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Author not found"
+#      x-swagger-router-controller: "Author"
+#    delete:
+#      tags:
+#      - "author"
+#      summary: "Delete a specific author"
+#      description: "Delete a author - this can only be done by the logged in ADMIN."
+#      operationId: "deleteAuthor"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "authorId"
+#        in: "path"
+#        description: "The id of the author that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Author deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Author"
   /user/register:
     post:
       tags:
@@ -698,31 +698,31 @@ paths:
         default:
           description: "successful operation"
       x-swagger-router-controller: "User"
-  /user/{userId}:
-    get:
-      tags:
-      - "user"
-      summary: "Get user by user id"
-      operationId: "getUserById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "userId"
-        in: "path"
-        description: "The id of the user that needs to be fetched."
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/User"
-        400:
-          description: "Invalid input"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "User"
+#  /user/{userId}:
+#    get:
+#      tags:
+#      - "user"
+#      summary: "Get user by user id"
+#      operationId: "getUserById"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "userId"
+#        in: "path"
+#        description: "The id of the user that needs to be fetched."
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "successful operation"
+#          schema:
+#            $ref: "#/definitions/User"
+#        400:
+#          description: "Invalid input"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "User"
   /user:
     get:
       tags:
@@ -759,36 +759,36 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Cart"
-    put:
-      tags:
-      - "cart"
-      summary: "Update an user's cart"
-      description: "Update  - this can only be done by the logged in USER (proprietary\
-        \ of the cart or by an ADMIN)."
-      operationId: "updateCart"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "bookId"
-        in: "query"
-        description: "Id of the book to be added"
-        required: false
-        type: "integer"
-        format: "int64"
-      - name: "amount"
-        in: "query"
-        description: "amount to be added"
-        required: false
-        type: "integer"
-        format: "int64"
-      responses:
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Cart"
+#    put:
+#      tags:
+#      - "cart"
+#      summary: "Update an user's cart"
+#      description: "Update  - this can only be done by the logged in USER (proprietary\
+#        \ of the cart or by an ADMIN)."
+#      operationId: "updateCart"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "bookId"
+#        in: "query"
+#        description: "Id of the book to be added"
+#        required: false
+#        type: "integer"
+#        format: "int64"
+#      - name: "amount"
+#        in: "query"
+#        description: "amount to be added"
+#        required: false
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Cart"
   /cart/addBook:
     put:
       tags:
@@ -915,69 +915,69 @@ paths:
         405:
           description: "Invalid input"
       x-swagger-router-controller: "Reservation"
-  /reservation/{reservationId}:
-    get:
-      tags:
-      - "reservation"
-      summary: "Find reservation by ID"
-      description: "Insert get a single reservation in the system - this can only\
-        \ be done by logged users or admin."
-      operationId: "getReservationById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "reservationId"
-        in: "path"
-        description: "ID of the reservation to retrieve"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Reservation"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Reservation"
-    put:
-      tags:
-      - "reservation"
-      summary: "Update a specific reservation"
-      description: "Update values of a reservation - this can only be done by the\
-        \ logged in ADMIN or the user that made it."
-      operationId: "updateReservation"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "reservationId"
-        in: "path"
-        description: "id of the reservation that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      - name: "reservationAmount"
-        in: "formData"
-        description: "Updated reserved book amount"
-        required: false
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Reservation updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Reservation"
+#  /reservation/{reservationId}:
+#    get:
+#      tags:
+#      - "reservation"
+#      summary: "Find reservation by ID"
+#      description: "Insert get a single reservation in the system - this can only\
+#        \ be done by logged users or admin."
+#      operationId: "getReservationById"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "reservationId"
+#        in: "path"
+#        description: "ID of the reservation to retrieve"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "successful operation"
+#          schema:
+#            $ref: "#/definitions/Reservation"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Reservation"
+#    put:
+#      tags:
+#      - "reservation"
+#      summary: "Update a specific reservation"
+#      description: "Update values of a reservation - this can only be done by the\
+#        \ logged in ADMIN or the user that made it."
+#      operationId: "updateReservation"
+#      consumes:
+#      - "multipart/form-data"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "reservationId"
+#        in: "path"
+#        description: "id of the reservation that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      - name: "reservationAmount"
+#        in: "formData"
+#        description: "Updated reserved book amount"
+#        required: false
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Reservation updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Reservation"
     delete:
       tags:
       - "reservation"
@@ -1039,117 +1039,117 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Interview"
-    post:
-      tags:
-      - "interview"
-      summary: "Add a new interview"
-      description: "Insert a new interview in the system - this can only be done by\
-        \ logged users."
-      operationId: "addInterview"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The interview object that needs to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Interview"
-      responses:
-        200:
-          description: "Interview added"
-        403:
-          description: "Unauthorized"
-        404:
-          description: "Not found"
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Interview"
-  /interview/{interviewId}:
-    get:
-      tags:
-      - "interview"
-      summary: "Find interview by ID"
-      description: "Insert get a single reservation in the system - this can only\
-        \ be done by logged users or admin."
-      operationId: "getInterviewById"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "interviewId"
-        in: "path"
-        description: "ID of the interview to retrieve"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "successful operation"
-          schema:
-            $ref: "#/definitions/Interview"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Interview"
-    put:
-      tags:
-      - "interview"
-      summary: "Update a specific interview"
-      description: "Update values of a interview - this can only be done by the logged\
-        \ in ADMIN or the user that made it."
-      operationId: "updateInterview"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "interviewId"
-        in: "path"
-        description: "id of the interview that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Interview updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Interview"
-    delete:
-      tags:
-      - "interview"
-      summary: "Delete a specific interview"
-      description: "Delete a interview - this can only be done by the logged in ADMIN\
-        \ or the user that made it."
-      operationId: "deleteInterview"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "interviewId"
-        in: "path"
-        description: "The id of the interview that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Interview deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Interview"
+#    post:
+#      tags:
+#      - "interview"
+#      summary: "Add a new interview"
+#      description: "Insert a new interview in the system - this can only be done by\
+#        \ logged users."
+#      operationId: "addInterview"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The interview object that needs to be added"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Interview"
+#      responses:
+#        200:
+#          description: "Interview added"
+#        403:
+#          description: "Unauthorized"
+#        404:
+#          description: "Not found"
+#        405:
+#          description: "Invalid input"
+#      x-swagger-router-controller: "Interview"
+#  /interview/{interviewId}:
+#    get:
+#      tags:
+#      - "interview"
+#      summary: "Find interview by ID"
+#      description: "Insert get a single reservation in the system - this can only\
+#        \ be done by logged users or admin."
+#      operationId: "getInterviewById"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "interviewId"
+#        in: "path"
+#        description: "ID of the interview to retrieve"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "successful operation"
+#          schema:
+#            $ref: "#/definitions/Interview"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Interview"
+#    put:
+#      tags:
+#      - "interview"
+#      summary: "Update a specific interview"
+#      description: "Update values of a interview - this can only be done by the logged\
+#        \ in ADMIN or the user that made it."
+#      operationId: "updateInterview"
+#      consumes:
+#      - "multipart/form-data"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "interviewId"
+#        in: "path"
+#        description: "id of the interview that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Interview updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Interview"
+#    delete:
+#      tags:
+#      - "interview"
+#      summary: "Delete a specific interview"
+#      description: "Delete a interview - this can only be done by the logged in ADMIN\
+#        \ or the user that made it."
+#      operationId: "deleteInterview"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "interviewId"
+#        in: "path"
+#        description: "The id of the interview that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Interview deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Interview"
   /theme:
     get:
       tags:
@@ -1180,34 +1180,34 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Theme"
-    post:
-      tags:
-      - "theme"
-      summary: "Add a new theme"
-      description: "Insert a new theme in the system - this can only be done by logged\
-        \ users."
-      operationId: "addTheme"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The name object that needs to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Theme"
-      responses:
-        200:
-          description: "Theme added"
-        403:
-          description: "Unauthorized"
-        404:
-          description: "Not found"
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Theme"
+#    post:
+#      tags:
+#      - "theme"
+#      summary: "Add a new theme"
+#      description: "Insert a new theme in the system - this can only be done by logged\
+#        \ users."
+#      operationId: "addTheme"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The name object that needs to be added"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Theme"
+#      responses:
+#        200:
+#          description: "Theme added"
+#        403:
+#          description: "Unauthorized"
+#        404:
+#          description: "Not found"
+#        405:
+#          description: "Invalid input"
+#      x-swagger-router-controller: "Theme"
   /theme/{themeId}:
     get:
       tags:
@@ -1236,59 +1236,59 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Theme"
-    put:
-      tags:
-      - "theme"
-      summary: "Update a specific theme"
-      description: "Update values of a theme - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "updateTheme"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "themeId"
-        in: "path"
-        description: "id of the theme that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Theme updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Theme"
-    delete:
-      tags:
-      - "theme"
-      summary: "Delete a specific theme"
-      description: "Delete a theme - this can only be done by the logged in ADMIN."
-      operationId: "deleteTheme"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "themeId"
-        in: "path"
-        description: "The id of the theme that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Theme deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Theme"
+#    put:
+#      tags:
+#      - "theme"
+#      summary: "Update a specific theme"
+#      description: "Update values of a theme - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "updateTheme"
+#      consumes:
+#      - "multipart/form-data"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "themeId"
+#        in: "path"
+#        description: "id of the theme that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Theme updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Theme"
+#    delete:
+#      tags:
+#      - "theme"
+#      summary: "Delete a specific theme"
+#      description: "Delete a theme - this can only be done by the logged in ADMIN."
+#      operationId: "deleteTheme"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "themeId"
+#        in: "path"
+#        description: "The id of the theme that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Theme deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Theme"
   /genre:
     get:
       tags:
@@ -1319,34 +1319,34 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Genre"
-    post:
-      tags:
-      - "genre"
-      summary: "Add a new genre"
-      description: "Insert a new genre in the system - this can only be done by logged\
-        \ ADMIN."
-      operationId: "addGenre"
-      consumes:
-      - "application/json"
-      produces:
-      - "application/json"
-      parameters:
-      - in: "body"
-        name: "body"
-        description: "The name object that needs to be added"
-        required: true
-        schema:
-          $ref: "#/definitions/Genre"
-      responses:
-        200:
-          description: "Genre added"
-        403:
-          description: "Unauthorized"
-        404:
-          description: "Not found"
-        405:
-          description: "Invalid input"
-      x-swagger-router-controller: "Genre"
+#    post:
+#      tags:
+#      - "genre"
+#      summary: "Add a new genre"
+#      description: "Insert a new genre in the system - this can only be done by logged\
+#        \ ADMIN."
+#      operationId: "addGenre"
+#      consumes:
+#      - "application/json"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - in: "body"
+#        name: "body"
+#        description: "The name object that needs to be added"
+#        required: true
+#        schema:
+#          $ref: "#/definitions/Genre"
+#      responses:
+#        200:
+#          description: "Genre added"
+#        403:
+#          description: "Unauthorized"
+#        404:
+#          description: "Not found"
+#        405:
+#          description: "Invalid input"
+#      x-swagger-router-controller: "Genre"
   /genre/{genreId}:
     get:
       tags:
@@ -1375,59 +1375,59 @@ paths:
         404:
           description: "Not found"
       x-swagger-router-controller: "Genre"
-    put:
-      tags:
-      - "genre"
-      summary: "Update a specific genre"
-      description: "Update values of a genre - this can only be done by the logged\
-        \ in ADMIN."
-      operationId: "updateGenre"
-      consumes:
-      - "multipart/form-data"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "genreId"
-        in: "path"
-        description: "id of the genre that needs to be updated"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Genre updated"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "Genre"
-    delete:
-      tags:
-      - "genre"
-      summary: "Delete a specific genre"
-      description: "Delete a genre - this can only be done by the logged in ADMIN."
-      operationId: "deleteGenre"
-      produces:
-      - "application/json"
-      parameters:
-      - name: "genreId"
-        in: "path"
-        description: "The id of the theme that needs to be deleted"
-        required: true
-        type: "integer"
-        format: "int64"
-      responses:
-        200:
-          description: "Genre deleted"
-        400:
-          description: "Invalid input"
-        403:
-          description: "Forbidden"
-        404:
-          description: "Not found"
-      x-swagger-router-controller: "genre"
+#    put:
+#      tags:
+#      - "genre"
+#      summary: "Update a specific genre"
+#      description: "Update values of a genre - this can only be done by the logged\
+#        \ in ADMIN."
+#      operationId: "updateGenre"
+#      consumes:
+#      - "multipart/form-data"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "genreId"
+#        in: "path"
+#        description: "id of the genre that needs to be updated"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Genre updated"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "Genre"
+#    delete:
+#      tags:
+#      - "genre"
+#      summary: "Delete a specific genre"
+#      description: "Delete a genre - this can only be done by the logged in ADMIN."
+#      operationId: "deleteGenre"
+#      produces:
+#      - "application/json"
+#      parameters:
+#      - name: "genreId"
+#        in: "path"
+#        description: "The id of the theme that needs to be deleted"
+#        required: true
+#        type: "integer"
+#        format: "int64"
+#      responses:
+#        200:
+#          description: "Genre deleted"
+#        400:
+#          description: "Invalid input"
+#        403:
+#          description: "Forbidden"
+#        404:
+#          description: "Not found"
+#      x-swagger-router-controller: "genre"
 definitions:
   Book:
     type: "object"
