@@ -202,26 +202,6 @@
                     });
                     return o;
                 };
-                $("#logout").bind("submit", function(evt) {
-                    $.ajax({
-                        url: apiURL+"/user/logout",
-                        type: "GET",
-                        contentType: "application/json",
-                        data: JSON.stringify($("#logout").serializeObject()),
-                        success: function(data, textStatus, jqXHR) {
-                            successAlert("All Good!"," You successfully logout");
-                            window.location.href = '../../index.html';
-                        },
-                        error: function(jqXHR, textStatus, errorThrown) {
-                            if (jqXHR.status == 401) {
-                                errorAlert("Whoops!", "You are not loggedin, try login!");
-                            } else {
-                                alertAlert("Whoops!", "An error occurred, pleasy try again!");
-                            }
-                        }
-                    });
-                    return false;
-                });
                 $("#register").bind("submit", function(evt) {
                     $.ajax({
                         url: apiURL+"/user/register",
@@ -255,7 +235,8 @@
                         data: JSON.stringify($("#login").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
                             successAlert("All Good!","You are now loggedin");
-                            window.location.href = '../../index.html';
+                            setCookie("loggedin","true");
+                            window.location.href = '/index.html';
                         },
                         error: function(jqXHR, textStatus, errorThrown) {
                             if (jqXHR.status == 401) {
@@ -270,7 +251,9 @@
                     return false;
                 });
             });
-            displayCartBadge();
+            if(getCookie("loggedin") == "true") {
+                displayCartBadge();
+            } 
         });
     </script>
     <script>

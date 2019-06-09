@@ -199,6 +199,7 @@
                       data: JSON.stringify($("#logout").serializeObject()),
                       success: function(data, textStatus, jqXHR) {
                           successAlert("All Good!", " You successfully logout");
+                          eraseCookie("loggedin");
                           window.location.href = '/index.html';
                       },
                       error: function(jqXHR, textStatus, errorThrown) {
@@ -212,7 +213,9 @@
                   return false;
               });
             });
-            displayCartBadge();
+            if(getCookie("loggedin") == "true") {
+                displayCartBadge();
+            } 
         });
     </script>
 

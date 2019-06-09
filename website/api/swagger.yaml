@@ -9,7 +9,7 @@ info:
   license:
     name: "Apache 2.0"
     url: "http://www.apache.org/licenses/LICENSE-2.0.html"
-host: "localhost:8080"
+#host: "localhost:8080"
 basePath: "/v2"
 tags:
 - name: "book"
@@ -915,7 +915,7 @@ paths:
         405:
           description: "Invalid input"
       x-swagger-router-controller: "Reservation"
-#  /reservation/{reservationId}:
+  /reservation/{reservationId}:
 #    get:
 #      tags:
 #      - "reservation"
@@ -1649,20 +1649,25 @@ definitions:
   Review:
     type: "object"
     required:
-    - "bookId"
-    - "id"
-    - "userId"
+    - "id_book"
+    - "star"
+    - "title"
+    - "content"
     properties:
       id:
         type: "integer"
         format: "int64"
-      userId:
+      id_user:
         type: "integer"
         format: "int64"
-      bookId:
+      id_book:
         type: "integer"
         format: "int64"
       content:
+        type: "string"
+      title:
+        type: "string"
+      username:
         type: "string"
       star:
         type: "integer"
@@ -1678,9 +1683,11 @@ definitions:
     example:
       star: 5
       id: 0
-      content: "content"
+      title: "title of the review"
+      content: "content of the review"
       userId: 6
       bookId: 1
+      username: "Mark"
   Interview:
     type: "object"
     required:

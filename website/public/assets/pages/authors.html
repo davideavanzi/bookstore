@@ -190,7 +190,9 @@
       getAuthorsTotal().then(totalElements => {
         setPagination(page, limit, totalElements);
       });
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
   </script>
   <script>$("footer").load("/assets/pages/footer.html");</script>    

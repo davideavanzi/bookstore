@@ -178,7 +178,9 @@
   <script>$("footer").load("/assets/pages/footer.html");</script>    
   <script type="text/javascript">
     $(document).ready(function(){
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
   </script> 
 </body>

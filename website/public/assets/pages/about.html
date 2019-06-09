@@ -252,7 +252,9 @@
   <script src="/assets/js/main.js"></script>
   <script type="text/javascript">
     $(document).ready(function(){
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
   </script> 
   <script>$("footer").load("/assets/pages/footer.html");</script>    

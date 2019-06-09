@@ -134,36 +134,37 @@
           
     			
 		<div class="row">
-			<div class="col-sm-9">
+
+
       
-                <label class="text-black h4" for="coupon">Review</label>
+			<div class="col-sm-9">
+            <label class="text-black h4" for="coupon">Review</label>
                 <p>Write your review on this book.</p>
               </div>
-            <div class="rate">
-    <input type="radio" id="star5" name="rate" value="5" />
-    <label for="star5" >5 stars</label>
-    
+            <div class="rate" id="rateDiv">
+                <input type="radio" id="star5" name="rate" value="5" />
+                <label for="star5" >5 stars</label>
                 <input type="radio" id="star4" name="rate" value="4" />
-    <label for="star4" >4 stars</label>
-    <input type="radio" id="star3" name="rate" value="3" />
-    <label for="star3">3 stars</label>
-    <input type="radio" id="star2" name="rate" value="2" />
-    <label for="star2" >2 stars</label>
-    <input type="radio" id="star1" name="rate" value="1" />
-    <label for="star1" >1 star</label>
-  </div>
+                <label for="star4" >4 stars</label>
+                <input type="radio" id="star3" name="rate" value="3" />
+                <label for="star3">3 stars</label>
+                <input type="radio" id="star2" name="rate" value="2" />
+                <label for="star2" >2 stars</label>
+                <input type="radio" id="star1" name="rate" value="1" />
+                <label for="star1" >1 star</label>
+              </div>
               <div class="col-md-12 mb- mb-md-3">
-                <input type="text" class="form-control py-3" id="coupon" placeholder="Review title">
+                <input type="text" class="form-control py-3" id="reviewTitle" placeholder="Review title">
               </div>
              <div class="col-md-12 mb- mb-md-3" rows="20" cols="25">
                  
-                <input type="text" class="form-control py-3 textarea"   placeholder="Write your review here" >
+                <input type="text" class="form-control py-3 textarea" id="reviewContent" placeholder="Write your review here" >
               </div>
               <div class="col-md-4">
-                <button class="btn btn-primary btn-sm px-4">review</button>
+                <button class="btn btn-primary btn-sm px-4" id="addReview">review</button>
               </div>
-            
-            </div>   </div>
+    </div>   
+          </div>
               
             </div></div>
         
@@ -249,93 +250,7 @@
 			<div class="col-sm-12">
 				<hr/>
 				<div class="review-block" id="book_reviews">
-          
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div>
-					<hr/>
-					<div class="row">
-						<div class="col-sm-3">
-							<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">
-							<div class="review-block-name"><a href="#">nktailor</a></div>
-							<div class="review-block-date">January 29, 2016<br/>1 day ago</div>
-						</div>
-						<div class="col-sm-9">
-							<div class="review-block-rate">
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-warning btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								  <span class="fa fa-star checked"></span>
-								</button>
-								<button type="button" class="btn btn-default btn-grey btn-xs" aria-label="Left Align">
-								   <span class="fa fa-star checked"></span>
-								</button>
-							</div>
-							<div class="review-block-title">this was nice in buy</div>
-							<div class="review-block-description">this was nice in buy. this was nice in buy. this was nice in buy. this was nice in buy this was nice in buy this was nice in buy this was nice in buy this was nice in buy</div>
-						</div>
-					</div> 
+          <!-- REVIEWS LOADED HERE -->
 				</div>
 			</div>
 		</div>
@@ -493,8 +408,21 @@
         $("html, body").animate({ scrollTop: 0 }, "slow");
         return false;
       });
+
+      $("#addReview").click(function() {
+        var star = jQuery('#rateDiv input[name="rate"]:checked').val();
+        var content = $("#reviewContent").val();
+        var title = $("#reviewTitle").val();
+        addBookReview(bookid, title, content, star);
+        //scroll smoothly to the top
+        $("html, body").animate({ scrollTop: 0 }, "slow");
+        return false;
+      });
+
       fetchFeaturedBooks();
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
   });
     
   </script>

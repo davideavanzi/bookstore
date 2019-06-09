@@ -371,8 +371,10 @@
     <script src="/assets/js/utils.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-          fetchAllEvents();
-          displayCartBadge();
+            fetchAllEvents();
+            if(getCookie("loggedin") == "true") {
+                displayCartBadge();
+            } 
         });
     </script>
     <script>

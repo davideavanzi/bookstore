@@ -2,16 +2,37 @@
 
 var utils = require('../utils/writer.js');
 var Review = require('../service/ReviewService');
+var User = require('./User');
 
 module.exports.addReview = function addReview (req, res, next) {
   var body = req.swagger.params['body'].value;
-  Review.addReview(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
+  var session = req.session;
+  let resBody = {}
+  if (body.star > 5 || body.star < 1) {
+    resBody.message = "invalid input";
+    utils.writeJson(res, resBody, 405);
+  }
+  User.alreadyLoggedIn(session).then(result => {
+    if(result) {
+      body.id_user = session.userId;
+      Review.addReview(body)
+      .then(function (response) {
+        response.message = "Review inserted";
+        utils.writeJson(res, response, 200);
+      })
+      .catch(function (response) {
+        utils.writeJson(res, response);
+      });
+    } else {
+      console.log("Operation on review insert not authorized");
+      resBody.message = "User not logged in"
+      utils.writeJson(res, body, 403);
+    }
+  }) 
+
+
+
+  
 };
 
 module.exports.deleteReview = function deleteReview (req, res, next) {

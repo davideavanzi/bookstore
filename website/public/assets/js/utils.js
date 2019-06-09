@@ -824,5 +824,56 @@ var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
         error: function (xhr, textStatus, errorThrown) {  
             console.log('Error in Operation');  
         }
-      }); 
+    }); 
+}
+
+var addBookReview = function addBookReview(bookId, title, content, star) {
+    var review = {};
+    review.id_book = parseInt(bookId);
+    review.title = title;
+    review.content = content;
+    review.star = parseInt(star);
+    $.ajax({
+        url: apiURL+"/review",
+        type: "POST",
+        contentType: "application/json",
+        data: JSON.stringify(review),
+        success: function(data, textStatus, jqXHR) {
+            successAlert("All Good!",'Your review was inserted! <a href="javascript:window.location.reload(true)">Reload</a> the page to see it.');
+            $('#review').trigger("reset");
+        },
+        error: function(jqXHR, textStatus, errorThrown) {
+            if (jqXHR.status == 403) {
+                errorAlert("Whoops!", "You need to login to post reviews!");
+                $('#review').trigger("reset");
+            } else if (jqXHR.status == 401) {
+                errorAlert("Whoops!", "You inserted invalid data, try again!");
+                $('#review').trigger("reset");
+            } else {
+                errorAlert("Whoops!", "An error occurred, pleasy try again!");
+                $('#review').trigger("reset");
+            }
+        }
+    });
+    return false;
+}
+
+// COOKIE UTILITIES
+
+function setCookie(name,value) {
+
+    document.cookie = name + "=" + (value || "")  + "; path=/";
+}
+function getCookie(name) {
+    var nameEQ = name + "=";
+    var ca = document.cookie.split(';');
+    for(var i=0;i < ca.length;i++) {
+        var c = ca[i];
+        while (c.charAt(0)==' ') c = c.substring(1,c.length);
+        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length,c.length);
+    }
+    return null;
+}
+function eraseCookie(name) {   
+    document.cookie = name+'=; Max-Age=-99999999;';  
 }

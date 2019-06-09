@@ -154,7 +154,9 @@
         //get books of the author
         fetchBooksOfAuthor(authorId);
       }
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
   </script> 
   <script>$("footer").load("/assets/pages/footer.html");</script>    

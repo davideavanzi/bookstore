@@ -83,7 +83,7 @@
                 </div>
             </div>  
 
-            <div class="container">
+            <div class="container hidden" id="cartSection">
                 <div class="row mb-5">
                     <form class="col-md-12">
                         <div class="site-blocks-table">
@@ -222,21 +222,24 @@
 		            contentType: "application/json",
 		            data: '{"email":"", "password":""}',
 		            success: function(data, textStatus, jqXHR) {
-		            	//show cart
+                        //show cart page
+                        $("#cartSection").toggle();
 		            },
 		            error: function(jqXHR, textStatus, errorThrown) {
 		                if (jqXHR.status == 401) {
-                            window.location.href = 'register.html';
-                            alert ("Please login first!");
+                            //window.location.href = 'register.html';
+                            errorAlert("Whoops!", 'you need to be logged in to access your cart. <a href="/assets/pages/register.html" class="alert-link">Login here.</a>');
 		                } else {
 		                   	alert('Whoops! Some error occours!');
 		                }
 		            }
                 });
             });
+            if(getCookie("loggedin") == "true") {
+                displayCartBadge();
+            } 
             fetchCart();
             updateTotals();
-            displayCartBadge();
         });
         
     </script>

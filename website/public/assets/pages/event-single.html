@@ -179,7 +179,9 @@
           if(eventId) {
             fetchSingleEvent(eventId); 
           }
-          displayCartBadge();
+        if(getCookie("loggedin") == "true") {
+            displayCartBadge();
+        } 
         });
     </script>
         <script>

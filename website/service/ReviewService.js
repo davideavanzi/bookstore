@@ -13,8 +13,23 @@ let User = require('./UserService');
  * no response value expected for this operation
  **/
 exports.addReview = function(body) {
+  //TODO: sanitize for XSS
   return new Promise(function(resolve, reject) {
-    resolve();
+
+    const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
+    let current_datetime = new Date()
+    let formatted_date = months[current_datetime.getMonth()] + " " + current_datetime.getDate() + ", " + current_datetime.getFullYear();
+
+    db(TABLES.REVIEW).insert({
+      id_user: body.id_user, 
+      id_book: body.id_book, 
+      title: body.title, 
+      content: body.content, 
+      star: body.star,
+      date: formatted_date
+    }).then(() => {
+      resolve();
+    });
   });
 }
 
