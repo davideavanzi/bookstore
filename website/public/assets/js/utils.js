@@ -327,6 +327,7 @@ var displayCartBadge = function displayCartBadge() {
             //User may not be authenticated, in this case we do nothing
             //TODO maybe check error codes?
             //console.log('Error in fetching cart');  
+            setCookie("loggedin","false","1");
         }
     }); 
 }
@@ -860,9 +861,14 @@ var addBookReview = function addBookReview(bookId, title, content, star) {
 
 // COOKIE UTILITIES
 
-function setCookie(name,value) {
-
-    document.cookie = name + "=" + (value || "")  + "; path=/";
+function setCookie(name,value,days) {
+    var expires = "";
+    if (days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days*24*60*60*1000));
+        expires = "; expires=" + date.toUTCString();
+    }
+    document.cookie = name + "=" + (value || "")  + expires + "; path=/";
 }
 function getCookie(name) {
     var nameEQ = name + "=";

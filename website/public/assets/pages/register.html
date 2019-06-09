@@ -139,7 +139,7 @@
                                             <input type="password" class="form-control" id="password_login" name="password">
                                         </div>
                                         <div class="col-md-12">
-                                            <input type="checkbox" name="remember" value="true"> Remember me (24 hours)<br><br>
+                                            <input type="checkbox" name="remember" id="remember_login" value="true"> Remember me (24 hours)<br><br>
                                         </div>
                                     </div>
                                     <input type="submit" class="btn btn-primary btn-lg btn-block" id="logButt" value="Login">
@@ -228,6 +228,7 @@
                     return false;
                 });
                 $("#login").bind("submit", function(evt) {
+                    var cookieDays = ($('#remember_login').is(":checked")) ? 31 : 1;
                     $.ajax({
                         url: apiURL+"/user/login",
                         type: "POST",
@@ -235,7 +236,7 @@
                         data: JSON.stringify($("#login").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
                             successAlert("All Good!","You are now loggedin");
-                            setCookie("loggedin","true");
+                            setCookie("loggedin","true", cookieDays);
                             window.location.href = '/index.html';
                         },
                         error: function(jqXHR, textStatus, errorThrown) {

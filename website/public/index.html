@@ -237,12 +237,13 @@
     <script>
     $(document).ready(function(){
       fetchFeaturedBooks();
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
     </script>
     <script>
         $("footer").load("/assets/pages/footer.html");
     </script>
 </body>
-
 </html>
