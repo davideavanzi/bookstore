@@ -97,10 +97,10 @@ const newSession = (req, body) => {
       req.session.loggedin = true;
       req.session.user = body.email;
       if(body.remember == 'true'){
-        req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
+        req.sessionOptions.maxAge  =  30 * 24 * 60 * 60 * 1000; //30 days
         console.log("set one day expiration cookie for user "+body.email);
       } else {
-        req.sessionOptions.expires  = false;
+        req.sessionOptions.maxAge  =  24 * 60 * 60 * 1000; //one day
         console.log("set a standard session cookie for user "+body.email);
       } 
       let token = crypto.randomBytes(64).toString('hex');
@@ -181,9 +181,8 @@ module.exports.logoutUser = function logoutUser (req, res, next) {
           }
         });
         req.session.token='';      
-        //req.session.destroy(); //this now not work!
-        //which one of the two is better?
         console.log("session is set "+req.session.loggedin+" for user "+req.session.user);
+        req.session = {};
         response={};
         response.message = "ok"
         responseCode = 200;
