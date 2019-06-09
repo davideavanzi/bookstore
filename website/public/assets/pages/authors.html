@@ -129,8 +129,13 @@
               <div class="products-wrap border-top-0">
   <div class="container-fluid" id="books-list">
     <div class="row no-gutters products list" id="main_authors">
-      
-  
+      <!-- authors here -->
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
+        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
     </div>
   </div>
 </div>
@@ -185,7 +190,7 @@
       var limit = 6; // 6 authors per page
       var offset = (page-1)*limit; 
       
-      fetchAllAuthors(limit, offset);
+      //fetchAllAuthors(limit, offset);
 
       getAuthorsTotal().then(totalElements => {
         setPagination(page, limit, totalElements);
