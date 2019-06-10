@@ -67,7 +67,7 @@ exports.getEventById = function(eventId) {
  **/
 exports.getEvents = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.EVENT).limit(limit).offset(offset)
+    db(TABLES.EVENT).limit(limit).offset(offset).orderBy('datetime')
     .modify(function(queryBuilder) {
       if (bookId) {
         queryBuilder.where({'id_book': bookId});
