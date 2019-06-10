@@ -32,7 +32,7 @@
 <div class="d-flex align-items-center justify-content-between">
     <div class="logo">
         <div class="site-logo">
-        <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
+        <a href="/index.html" style="font-size: 18px"  class="js-logo-clone">BOOKSTORE</a>
         </div>
     </div>
     <div class="main-nav d-none d-lg-block">
@@ -228,6 +228,7 @@
                     return false;
                 });
                 $("#login").bind("submit", function(evt) {
+                    var cookieDays = ($('#remember_login').is(":checked")) ? 31 : 1;
                     $.ajax({
                         url: apiURL+"/user/login",
                         type: "POST",
@@ -235,7 +236,7 @@
                         data: JSON.stringify($("#login").serializeObject()),
                         success: function(data, textStatus, jqXHR) {
                             successAlert("All Good!","You are now loggedin");
-                            setCookie("loggedin","true");
+                            setCookie("loggedin","true", cookieDays);
                             window.location.href = '/index.html';
                         },
                         error: function(jqXHR, textStatus, errorThrown) {

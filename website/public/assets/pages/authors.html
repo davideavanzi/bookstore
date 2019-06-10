@@ -3,6 +3,12 @@
   <head>
     <title>Books</title>
     <meta charset="utf-8">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
@@ -24,12 +30,71 @@
     .res {
       min-height: 35rem !important;
     }
+        .h9 {
+      align-content: center
+    }
     .book-title {
       padding: 0rem 3rem 0rem 3rem;
     }
          .rounded {
   border-radius: 50% ;
 }
+        
+        
+        * {
+  box-sizing: border-box;
+}
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%; 
+  display: grid;
+  /* Define Auto Row size */
+  grid-auto-rows: 100px; 
+  /*Define our columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  grid-gap: 1em;
+}
+
+article {
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+}
+
+article:nth-child(odd) {
+  background-color: #55BBE9;
+}
+
+article:nth-child(even) {
+  background-color: #afbe29;
+}
+        
+        
+     /* Create three equal columns that floats next to each other */
+.column {
+  float: center;
+  width: 33.33%;
+  padding: 10px;
+  height: 600px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 420px) {
+  .column {
+    width: 100%;
+  }
+}       
+            
+            
     </style>
     
   </head>
@@ -52,7 +117,7 @@
 <div class="d-flex align-items-center justify-content-between">
     <div class="logo">
         <div class="site-logo">
-        <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
+        <a href="/index.html" style="font-size: 18px"  class="js-logo-clone">BOOKSTORE</a>
         </div>
     </div>
     <div class="main-nav d-none d-lg-block">
@@ -125,16 +190,38 @@
                 </div>
               </div>
             </div>
-            <div class="row mb-5">
-              <div class="products-wrap border-top-0">
-  <div class="container-fluid" id="books-list">
-    <div class="row no-gutters products list" id="main_authors">
-      
-  
-    </div>
+            
+              
+              <div class="container">
+              <div class="row">
+                  <div class="products-wrap border-top-0" >
+                    
+    <div class="row  products list">
+  <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
   </div>
-</div>
-            </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+  
+</div></div>
+              </div></div>
+              
+              
+              
+              
             <div class="row">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
@@ -185,7 +272,7 @@
       var limit = 6; // 6 authors per page
       var offset = (page-1)*limit; 
       
-      fetchAllAuthors(limit, offset);
+      //fetchAllAuthors(limit, offset);
 
       getAuthorsTotal().then(totalElements => {
         setPagination(page, limit, totalElements);

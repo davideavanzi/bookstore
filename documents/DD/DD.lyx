@@ -249,6 +249,7 @@ End
 \html_css_as_file 0
 \html_be_strict false
 \author -1730310665 "fabcars"
+\author 629914139 "Davide Avanzi"
 \end_header
 
 \begin_body
@@ -289,6 +290,8 @@ center
 
 \begin_layout Plain Layout
 
+\change_deleted 629914139 1560176804
+
 
 \backslash
 textsc{
@@ -298,6 +301,25 @@ LARGE Politecnico di Milano}
 
 \backslash
 [1.5cm] 
+\change_inserted 629914139 1560176816
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560176865
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+textwidth]{img/polimilogo1.png}
+\backslash
+
+\backslash
+[0.05cm]
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -306,7 +328,11 @@ LARGE Politecnico di Milano}
 \backslash
 textsc{
 \backslash
-Large Hypermedia Application}
+Large Hypermedia Application
+\change_inserted 629914139 1560176909
+:
+\change_unchanged
+}
 \backslash
 
 \backslash
@@ -332,7 +358,13 @@ Large Web and Multimedia}
 \backslash
 textsc{
 \backslash
-LARGE Bookstore}
+LARGE 
+\change_deleted 629914139 1560176902
+Bookstore
+\change_inserted 629914139 1560176906
+Bookstore Project
+\change_unchanged
+}
 \backslash
 
 \backslash
@@ -490,6 +522,8 @@ end{minipage}
 
 \begin_layout Plain Layout
 
+\change_deleted 629914139 1560176812
+
 
 \backslash
 includegraphics[width=0.22
@@ -499,6 +533,8 @@ textwidth]{img/logopm}
 
 \backslash
 [0.05cm]
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout

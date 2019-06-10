@@ -37,7 +37,7 @@
                 <div class="d-flex align-items-center justify-content-between">
                     <div class="logo">
                         <div class="site-logo">
-                            <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
+                            <a href="/index.html" style="font-size: 18px" class="js-logo-clone">BOOKSTORE</a>
                         </div>
                     </div>
                     <div class="main-nav d-none d-lg-block">
@@ -69,14 +69,17 @@
                 <div class="row align-items-center">
                     <div class="col-lg-5 text-center">
                         <div class="featured-hero-product w-100">
+                            <h2 class="sub-title">Our favourite reading:</h2>
                             <a href="/assets/pages/shop-single.html?id=11"><h1 class="mb-2">Basquiat</h1></a>
                             <a href="/assets/pages/author.html?id=6"><h4>Jean-Michele Basquiat</h4></a>
                             <div class="price mt-3 mb-5"><strong>150 €</strong> </div>
                             <p><a href="/assets/pages/shop-single.html?id=11" class="btn btn-black rounded-0">Shop Now</a>
                         </div>
                     </div>
+                    <br><br><br>
                     <div class="col-lg-7  text-center text-lg-right">
-                        <a href="/assets/pages/shop-single.html?id=11"><img src="/assets/img/cover/basquiat.png" style="width: 60%" alt="Image" class="img-fluid img-1"></a>
+                        <br><br><br><br><br><br><br>
+                        <a href="/assets/pages/shop-single.html?id=11"><img src="/assets/img/product_2.png" style="width: 80%" "padding-left: 660px" alt="Image" class="img-fluid img-1"></a>
                     </div>
 
                 </div>
@@ -133,87 +136,12 @@
             <div class="container">
                 <div class="row">
                     <div class="title-section text-center col-12">
-                        <h2 class="text-uppercase">In evidence</h2>
+                        <h2 class="text-uppercase">Best sellers this month:</h2>
                     </div>
                 </div>
                 <div class="row">
                     <div class="col-md-12 block-3 products-wrap">
                         <div class="nonloop-block-3 owl-carousel" id="featured_books">
-                          <!--
-                            <div class="product">
-                                <a href="/assets/pages/shop-single.html" class="item">
-                                    <img src="/assets/img/product_1.jpg" style="padding-bottom:20px " alt="Image" class="img-fluid">
-
-                                    <div class="item-info">
-                                        <div class="row"> </div>
-                                        <h3>The best of Bauhaus</h3>
-
-                                        <strong class="price">€15,00</strong>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product">
-                                <a href="/assets/pages/shop-single.html" class="item">
-                                    <span class="tag">Sale</span>
-                                    <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
-                                    <div class="item-info">
-                                        <h3>Basquiat</h3>
-
-                                        <strong class="price">€150<del>€199</del></strong>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product">
-                                <a href="/assets/pages/shop-single.html#" class="item">
-                                    <span class="tag">new</span>
-                                    <img src="/assets/img/product_3.jpg" alt="Image" class="img-fluid">
-                                    <div class="item-info">
-                                        <h3>The Gutemberg bible</h3>
-
-                                        <strong class="price">€99,99</strong>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product">
-                                <a href="/assets/pages/shop-single.html" class="item">
-                                    <img src="/assets/img/product_4.jpg" alt="Image" class="img-fluid">
-                                    <div class="item-info">
-                                        <h3>The Ultimate shoes book</h3>
-
-                                        <strong class="price">€59,99</strong>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product">
-
-                                <a href="/assets/pages/shop-single.html" class="item">
-                                    <span class="tag">Sale</span>
-                                    <img src="/assets/img/product_2.jpg" alt="Image" class="img-fluid">
-                                    <div class="item-info">
-                                        <h3>Basquiat</h3>
-
-                                        <strong class="price">€150<del>€199</del></strong>
-                                    </div>
-                                </a>
-                            </div>
-
-                            <div class="product">
-                                <a href="/assets/pages/shop-single.html" class="item">
-                                    <img src="/assets/img/product_1.jpg" alt="Image" class="img-fluid">
-
-                                    <div class="item-info">
-                                        <div class="row"> </div>
-                                        <h3>The best of Bauhaus</h3>
-
-                                        <strong class="price">€15,00</strong>
-                                    </div>
-                                </a>
-                            </div>
-                          -->
                         </div>
                     </div>
                 </div>
@@ -237,12 +165,13 @@
     <script>
     $(document).ready(function(){
       fetchFeaturedBooks();
-      displayCartBadge();
+      if(getCookie("loggedin") == "true") {
+        displayCartBadge();
+      } 
     });
     </script>
     <script>
         $("footer").load("/assets/pages/footer.html");
     </script>
 </body>
-
 </html>
