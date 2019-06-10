@@ -3,7 +3,13 @@
   <head>
     <title>Books</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
+      <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/> <!--320-->
+    <meta name="viewport" content="width=device-width, user-scalable=no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
@@ -34,6 +40,38 @@
   border-radius: 50% ;
 }
         
+        
+        * {
+  box-sizing: border-box;
+}
+main {
+  max-width: 1200px;
+  margin: 30px auto;
+  padding: 0 20px;
+  width: 100%; 
+  display: grid;
+  /* Define Auto Row size */
+  grid-auto-rows: 100px; 
+  /*Define our columns */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); 
+  grid-gap: 1em;
+}
+
+article {
+  border-radius: 10px;
+  padding: 20px;
+  color: #fff;
+}
+
+article:nth-child(odd) {
+  background-color: #55BBE9;
+}
+
+article:nth-child(even) {
+  background-color: #afbe29;
+}
+        
+        
      /* Create three equal columns that floats next to each other */
 .column {
   float: center;
@@ -50,7 +88,7 @@
 }
 
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
-@media screen and (max-width: 600px) {
+@media screen and (max-width: 420px) {
   .column {
     width: 100%;
   }
@@ -154,11 +192,11 @@
             </div>
             
               
-              
+              <div class="container">
               <div class="row">
                   <div class="products-wrap border-top-0" >
                     
-    <div class="row no-gutters products list">
+    <div class="row  products list">
   <div class="column" id="main_authors">
      <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
   </div>
@@ -179,7 +217,9 @@
   </div>
   
 </div></div>
-              </div>
+              </div></div>
+              
+              
               
               
             <div class="row">
