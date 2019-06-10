@@ -3,7 +3,7 @@
   <head>
     <title>Books</title>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=yes">
 
     <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
     <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
@@ -24,12 +24,39 @@
     .res {
       min-height: 35rem !important;
     }
+        .h9 {
+      align-content: center
+    }
     .book-title {
       padding: 0rem 3rem 0rem 3rem;
     }
          .rounded {
   border-radius: 50% ;
 }
+        
+     /* Create three equal columns that floats next to each other */
+.column {
+  float: center;
+  width: 33.33%;
+  padding: 10px;
+  height: 600px; /* Should be removed. Only for demonstration */
+}
+
+/* Clear floats after the columns */
+.row:after {
+  content: "";
+  display: table;
+  clear: both;
+}
+
+/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+@media screen and (max-width: 600px) {
+  .column {
+    width: 100%;
+  }
+}       
+            
+            
     </style>
     
   </head>
@@ -52,7 +79,7 @@
 <div class="d-flex align-items-center justify-content-between">
     <div class="logo">
         <div class="site-logo">
-        <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
+        <a href="/index.html" style="font-size: 18px"  class="js-logo-clone">BOOKSTORE</a>
         </div>
     </div>
     <div class="main-nav d-none d-lg-block">
@@ -125,21 +152,36 @@
                 </div>
               </div>
             </div>
-            <div class="row mb-5">
-              <div class="products-wrap border-top-0">
-  <div class="container-fluid" id="books-list">
-    <div class="row no-gutters products list" id="main_authors">
-      <!-- authors here -->
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-        <div class="col-4 col-md-4 col-lg-4 ">                <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:60px" alt="Image" class="img-fluid">                    <h3>J.R.R. Tolkien</h3>                </a>            </div>
-    </div>
+            
+              
+              
+              <div class="row">
+                  <div class="products-wrap border-top-0" >
+                    
+    <div class="row no-gutters products list">
+  <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
   </div>
-</div>
-            </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+         <div class="column" id="main_authors">
+     <a href="author.html?id=1" class="item res">                    <img src="/assets/img/author/tolkien.jpg" style="padding:30px" alt="Image" class="img-fluid ">                    <h3>J.R.R. Tolkien</h3>                </a>  
+  </div>
+  
+</div></div>
+              </div>
+              
+              
             <div class="row">
               <div class="col-md-12 text-center">
                 <div class="site-block-27">
