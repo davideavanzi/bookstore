@@ -34,7 +34,11 @@ exports.seed = function(knex, Promise) {
         {id_book: 9, id_theme: 8},
         {id_book: 9, id_theme: 11},
         {id_book: 10, id_theme: 9},
-        {id_book: 10, id_theme: 12}
+        {id_book: 10, id_theme: 12},
+        {id_book: 11, id_theme: 14},
+        {id_book: 12, id_theme: 3},
+        {id_book: 12, id_theme: 8},
+        {id_book: 13, id_theme: 15}
       ]);
     });
 };

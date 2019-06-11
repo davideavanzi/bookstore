@@ -17,7 +17,9 @@ exports.seed = function(knex, Promise) {
         {id: 10, name: 'science'},
         {id: 11, name: 'magic'},
         {id: 12, name: 'future'},
-        {id: 13, name: 'fear'}
+        {id: 13, name: 'fear'},
+        {id: 14, name: 'art'},
+        {id: 15, name: 'history'}
       ]);
     });
 };
