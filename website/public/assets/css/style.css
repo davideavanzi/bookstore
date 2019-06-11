@@ -4,7 +4,13 @@
   display:none;
 }
 
-/* Shop */
+/* Authors */
+
+.rounded {
+  border-radius: 50% ;
+}
+
+/* Shop */ 
 
 .resized {
   max-width: 50% !important;
@@ -107,7 +113,7 @@ color: #c59b08;
 .book-title {
   padding: 0rem 3rem 0rem 3rem;
 }
-/* TODO: move timeline CSS to separate file */
+/* Timeline CSS for events page */
 
 #timeline {
   list-style: none;
@@ -299,7 +305,7 @@ padding: 20px 0;
   font-weight: 600;
 }
 
-/* Base - template */
+/* Base - from free bootstrap template */
 
 body {
   line-height: 1.7;
