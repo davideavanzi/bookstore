@@ -248,7 +248,6 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
-\author -1730310665 "fabcars"
 \end_header
 
 \begin_body
@@ -289,15 +288,19 @@ center
 
 \begin_layout Plain Layout
 
+\end_layout
+
+\begin_layout Plain Layout
+
 
 \backslash
-textsc{
+includegraphics[width=0.8
 \backslash
-LARGE Politecnico di Milano}
+textwidth]{img/polimilogo1.png}
 \backslash
 
 \backslash
-[1.5cm] 
+[0.05cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -306,7 +309,7 @@ LARGE Politecnico di Milano}
 \backslash
 textsc{
 \backslash
-Large Hypermedia Application}
+Large Hypermedia Application:}
 \backslash
 
 \backslash
@@ -332,7 +335,7 @@ Large Web and Multimedia}
 \backslash
 textsc{
 \backslash
-LARGE Bookstore}
+LARGE Bookstore Project}
 \backslash
 
 \backslash
@@ -490,15 +493,6 @@ end{minipage}
 
 \begin_layout Plain Layout
 
-
-\backslash
-includegraphics[width=0.22
-\backslash
-textwidth]{img/logopm}
-\backslash
-
-\backslash
-[0.05cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -752,7 +746,7 @@ project-manual.pdf
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -764,6 +758,45 @@ Graphical representations
 
 \begin_layout Subsection
 C-IDM schema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/C-IDM.svg
+	width 60text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C-IDM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1027,7 +1060,7 @@ vspace{0.15cm}
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1041,12 +1074,12 @@ User registration sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename sequence_diagrams/sequence_diagram_signup.plantuml
+	filename img/sequence_diagrams/sequence_diagram_signup.svg
 	width 100text%
 	height 85theight%
 	keepAspectRatio
@@ -1071,7 +1104,110 @@ User registration sequence diagram
 \end_inset
 
 
-\begin_inset Newpage newpage
+\end_layout
+
+\begin_layout Subsubsection
+User registration screenshots
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/register1.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Select user page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/register2.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Insert register informations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/register3.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Click on register button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1315,7 +1451,7 @@ vspace{0.15cm}
 \end_inset
 
 
-\begin_inset Newpage newpage
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1329,14 +1465,15 @@ User login sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename sequence_diagrams/sequence_diagram_login.plantuml
+	filename img/sequence_diagrams/sequence_diagram_login.svg
 	width 70text%
 	height 85theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -1358,11 +1495,110 @@ User login sequence diagram
 \end_inset
 
 
-\begin_inset VSpace medskip
+\end_layout
+
+\begin_layout Subsubsection
+User login screenshots
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/login1.jpg
+	height 40theight%
+
 \end_inset
 
 
-\begin_inset Newpage newpage
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Select user page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/login2.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Insert login informations
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/login3.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Click on login button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1615,12 +1851,12 @@ Add book to cart sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename sequence_diagrams/sequence_diagram_add_book_to_cart.plantuml
+	filename img/sequence_diagrams/sequence_diagram_add_book_to_cart.svg
 	width 60text%
 	height 70theight%
 	keepAspectRatio
@@ -1645,11 +1881,110 @@ Login Sequence Diagram
 \end_inset
 
 
-\begin_inset VSpace medskip
+\end_layout
+
+\begin_layout Subsubsection
+Add book to cart screenshots
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/cart1.jpg
+	height 40theight%
+
 \end_inset
 
 
-\begin_inset Newpage newpage
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Select books page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/cart2.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Select one book
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/screenshots/cart3.jpg
+	height 40theight%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Select the desired amount and press add to cart button
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1657,6 +1992,144 @@ Login Sequence Diagram
 
 \begin_layout Section
 Design-in-the small
+\end_layout
+
+\begin_layout Subsection
+Sketches
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sketches/homepage_books.jpeg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Home/Books Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sketches/authors_events.jpeg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Authors/Events Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sketches/single book_user page.jpeg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Single Book/User Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/sketches/about_contact_cart_payment.jpeg
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+About/Contact/Cart/Payment Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1676,12 +2149,8 @@ We added some tables in blue color.
  user that made it).
  The GIFT CARD table should be implemented to manage the possibility to
  have gift card (thought as promo code).
-
-\change_inserted -1730310665 1560096112
  The RESERVATION table is thought to contain the orders of books that are
  not availabe (out of stock).
-\change_unchanged
-
 \end_layout
 
 \begin_layout Itemize
@@ -1689,8 +2158,15 @@ The CART table has only one column (the foreign key id_user).
  At the moment it could be removed, but in the future, when the GIFT CARD
  table will be added, a specific gift card will be linked to a specific
  cart.
- So we decided to keep it, to make the system scalable and and to make easy
- to add further feature to it in future.for the future.
+ So we decided to keep it, to make the system scalable and and to make easier
+ to add further feature to it in future.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsection
@@ -1698,23 +2174,16 @@ E-R diagram
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/ER_DB_LIBRARY_1.1.dia
-	width 75text%
+	filename img/diagrams/ER_DB_LIBRARY_1.1.dia
+	width 70text%
 	rotateAngle 270
 
 \end_inset
@@ -1752,7 +2221,7 @@ status open
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
-	filename img/RS_DB_LIBRARY_1.1.svg
+	filename img/diagrams/RS_DB_LIBRARY_1.1.svg
 	width 90text%
 	rotateAngle 270
 
@@ -1779,7 +2248,7 @@ Relational Table Diagram
 \end_layout
 
 \begin_layout Standard
-\begin_inset Newpage newpage
+\begin_inset Newpage pagebreak
 \end_inset
 
 

@@ -1,0 +1,22 @@
+@startuml
+
+actor User
+participant System
+
+activate User #FFBBBB
+User -> System: SpecificBook
+activate System #FFBBBB
+System --> User: ShowBook
+deactivate System #FFBBBB
+User -> System: SetAmount
+activate System #FFBBBB
+System -> System: VerifyAvailability
+deactivate System #FFBBBB
+
+alt available
+    System --> User: NotifySuccesfully
+else not available
+    System --> User: NotifyMaxNumber
+end
+
+@enduml
