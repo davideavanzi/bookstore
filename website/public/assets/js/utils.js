@@ -708,7 +708,7 @@ var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
           console.log(data);
           $.each(data, function (index, author) {
             $('#main_authors').append('\
-            <div class="col-4 col-md-4 col-lg-4 ">\
+            <div class="col-12 col-md-6 col-lg-4 col-sm-12">\
                 <a href="author.html?id='+author.id+'" class="item res">\
                     <img src="/assets/'+author.photo+'" style="padding:60px" alt="Image" class="img-fluid">\
                     <h3>'+author.name+'</h3>\
