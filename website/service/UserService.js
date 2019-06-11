@@ -8,6 +8,9 @@ let { createCartForUser } = require("./CartService");
 //bcrypt
 const bcrypt= require('bcrypt')
 
+//xss sanitizer
+var xss = require("xss");
+
 
 /**
  * Delete user
@@ -158,14 +161,14 @@ exports.registerUser = function(body) {
                   throw (err);
                 }
                 db(TABLES.USER).insert({
-                  email: body.email, 
-                  firstName: body.firstName, 
-                  lastName: body.lastName, 
+                  email: xss(body.email), 
+                  firstName: xss(body.firstName), 
+                  lastName: xss(body.lastName), 
                   password: hash, 
-                  phone: body.phone, 
-                  address: body.address,
-                  country: body.country,
-                  zip: body.zip
+                  phone: xss(body.phone), 
+                  address: xss(body.address),
+                  country: xss(body.country),
+                  zip: xss(body.zip)
                 })
                 //get id of the inserted user and create a cart for it
                 .returning('id')

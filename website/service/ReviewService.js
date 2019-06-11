@@ -4,6 +4,9 @@
 let {db, TABLES} = require('./db');
 let User = require('./UserService');
 
+//xss sanitizer
+var xss = require("xss");
+
 
 /**
  * Add a new review
@@ -23,10 +26,10 @@ exports.addReview = function(body) {
     db(TABLES.REVIEW).insert({
       id_user: body.id_user, 
       id_book: body.id_book, 
-      title: body.title, 
-      content: body.content, 
-      star: body.star,
-      date: formatted_date
+      title: xss(body.title), 
+      content: xss(body.content), 
+      star: xss(body.star),
+      date: xss(formatted_date)
     }).then(() => {
       resolve();
     });
