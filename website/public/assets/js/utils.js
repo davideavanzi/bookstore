@@ -487,12 +487,13 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
 var fetchAllEvents = function fetchAllEvents(month, authorId) {
     //fetch all events
     var filled=false;
+    var i;
         $.ajax({  
             url: apiURL+'/event',  
             type: 'GET',  
             dataType: 'json',  
             success: function (data, textStatus, xhr) {
-                var i = 0;
+                i = 0;
                 curMonth = new Date(data[0].datetime+1);
                 $.each(data, function (index, event) {
                     $.ajax({
@@ -550,13 +551,14 @@ var fetchAllEvents = function fetchAllEvents(month, authorId) {
                                         </div>\
                                       </div>\
                                     </div>\
-                                </div>\
-                            '
-                            var htmlMonth = '<a href events.html?month='+date.getMonth()+1+'><div class="row timeline-movement timeline-movement-top id="event-month">\
-                                                <div class="timeline-badge timeline-future-movement">\
-                                                    <p>'+months[date.getMonth()]+'</p>\
-                                                </div>\
-                                            </div></a>'
+                                </div>';
+                            var htmlMonth = '<div class="row timeline-movement timeline-movement-top id="asd">\
+                            					<a href="events.html?month='+eval(date.getMonth()+1)+'">\
+	                                                <div class="timeline-badge timeline-future-movement">\
+	                                                    <p>'+months[date.getMonth()]+'</p>\
+	                                                </div>\
+	                                            </a>\
+                                            </div>';
                             if(month){
                                 if(month == date.getMonth()+1){
                                     i++;
