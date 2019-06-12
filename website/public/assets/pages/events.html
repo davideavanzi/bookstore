@@ -171,29 +171,45 @@
 
                     <div class="col-lg-3 order-1 order-lg-2 mb-5 mb-lg-0">
                         <div class="border p-4 mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Months</h3>
-                            <ul class="list-unstyled mb-0">
-                                <li class="mb-1"><a href="events.html?month=1" class="d-flex"><span>January</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=2" class="d-flex"><span>February</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=3" class="d-flex"><span>March</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=4" class="d-flex"><span>April</span> <span class="text-black ml-auto">(2,220)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=5" class="d-flex"><span>May</span> <span class="text-black ml-auto">(2,550)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=6" class="d-flex"><span>June</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=7" class="d-flex"><span>July</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=8" class="d-flex"><span>August</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=9" class="d-flex"><span>September</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=10" class="d-flex"><span>October</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=11" class="d-flex"><span>November</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                                <li class="mb-1"><a href="events.html?month=12" class="d-flex"><span>December</span> <span class="text-black ml-auto">(2,124)</span></a></li>
-                            </ul>  
+                            <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html?current=1">This Month</a></h3>
                         </div>
                         <div class="border p-4 mb-4">
-                            <h3 class="mb-3 h6 text-uppercase text-black d-block">Authors</h3>
-                            <ul class="list-unstyled mb-0" id="authors-list">
+                          <a data-toggle="collapse" href="#collapseMonths" role="button" aria-expanded="false" aria-controls="collapseMonths">
+                            Months
+                          </a>
+                          <div class="collapse" id="collapseMonths">
+                            <ul class="list-unstyled mb-0" id="month_filter">
+                              <li class="mb-1"><a href="events.html?current=1" class="d-flex"><span>This month</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=1" class="d-flex"><span>January</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=2" class="d-flex"><span>February</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=3" class="d-flex"><span>March</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=4" class="d-flex"><span>April</span> <span class="text-black ml-auto">(2,220)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=5" class="d-flex"><span>May</span> <span class="text-black ml-auto">(2,550)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=6" class="d-flex"><span>June</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=7" class="d-flex"><span>July</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=8" class="d-flex"><span>August</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=9" class="d-flex"><span>September</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=10" class="d-flex"><span>October</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=11" class="d-flex"><span>November</span> <span class="text-black ml-auto">(2,124)</span></a></li>
+                              <li class="mb-1"><a href="events.html?month=12" class="d-flex"><span>December</span> <span class="text-black ml-auto">(2,124)</span></a></li>
                             </ul>
+                          </div>    
+                        </div>
+                        <div class="border p-4 mb-4">
+                          <a data-toggle="collapse" href="#collapseAuthors" role="button" aria-expanded="false" aria-controls="collapseAuthros">
+                            Authrors
+                          </a>
+                          <div class="collapse" id="collapseAuthors">
+                            <ul class="list-unstyled mb-0" id="author_filter">
+                              
+                            </ul>
+                          </div>
                         </div>
                         <div class="border p-4 mb-4">
                             <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html">All Events</a></h3>
+                        </div>
+                        <div class="border p-4 mb-4">
+                            <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html?past=1">Past events</a></h3>
                         </div>
                     </div>
                 </div>
@@ -285,7 +301,7 @@
     <script src="/assets/js/utils.js"></script>
     <script type="text/javascript">
        $(document).ready(function() {
-            fetchAllEvents(getUrlParameter("month"), getUrlParameter("author"));
+            fetchAllEvents(getUrlParameter("month"), getUrlParameter("author"), getUrlParameter("past"), getUrlParameter("current"));
             if (getCookie("loggedin") == "true") {
                 displayCartBadge();
             }
