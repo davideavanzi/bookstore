@@ -770,7 +770,7 @@ status collapsed
 \align center
 \begin_inset Graphics
 	filename img/diagrams/C-IDM.svg
-	width 60text%
+	width 70text%
 	rotateAngle 270
 
 \end_inset
@@ -801,6 +801,45 @@ C-IDM
 
 \begin_layout Subsection
 L-IDM schema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/L-IDM.svg
+	width 80text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C-IDM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -2113,6 +2152,92 @@ status collapsed
 
 \begin_layout Plain Layout
 About/Contact/Cart/Payment Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Wireframes
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/wireframe.svg
+	width 75text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Wireframe whole website
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Navigation map
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/Navigation map.svg
+	width 75text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Navigation Map
 \end_layout
 
 \end_inset

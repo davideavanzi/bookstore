@@ -248,6 +248,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author -1730310665 "fabcars"
 \end_header
 
 \begin_body
@@ -764,13 +765,13 @@ C-IDM schema
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename img/diagrams/C-IDM.svg
-	width 60text%
+	width 70text%
 	rotateAngle 270
 
 \end_inset
@@ -801,6 +802,45 @@ C-IDM
 
 \begin_layout Subsection
 L-IDM schema
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/L-IDM.svg
+	width 80text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C-IDM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
 \end_layout
 
 \begin_layout Section
@@ -1074,7 +1114,7 @@ User registration sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1114,7 +1154,7 @@ User registration screenshots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1145,7 +1185,7 @@ Select user page
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1176,7 +1216,7 @@ Insert register informations
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1465,7 +1505,7 @@ User login sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1505,7 +1545,7 @@ User login screenshots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1536,7 +1576,7 @@ Select user page
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1567,7 +1607,7 @@ Insert login informations
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1851,7 +1891,7 @@ Add book to cart sequence diagram
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1891,7 +1931,7 @@ Add book to cart screenshots
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1922,7 +1962,7 @@ Select books page
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -1953,7 +1993,7 @@ Select one book
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2002,7 +2042,7 @@ Sketches
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2033,7 +2073,7 @@ Home/Books Pages
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
 \align center
@@ -2113,6 +2153,118 @@ status collapsed
 
 \begin_layout Plain Layout
 About/Contact/Cart/Payment Pages
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted -1730310665 1560419131
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1730310665 1560418930
+Wireframes
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1730310665 1560419132
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted -1730310665 1560418930
+\begin_inset Graphics
+	filename img/diagrams/wireframe.svg
+	width 75text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1730310665 1560418930
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted -1730310665 1560419231
+Wireframe whole website
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted -1730310665 1560419085
+Navigation map
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted -1730310665 1560419086
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted -1730310665 1560419086
+\begin_inset Graphics
+	filename img/diagrams/Navigation map.svg
+	width 75text%
+	rotateAngle 270
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted -1730310665 1560419086
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted -1730310665 1560419240
+Navigation Map
 \end_layout
 
 \end_inset
