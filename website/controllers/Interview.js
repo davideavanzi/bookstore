@@ -3,28 +3,6 @@
 var utils = require('../utils/writer.js');
 var Interview = require('../service/InterviewService');
 
-module.exports.addInterview = function addInterview (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Interview.addInterview(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteInterview = function deleteInterview (req, res, next) {
-  var interviewId = req.swagger.params['interviewId'].value;
-  Interview.deleteInterview(interviewId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getInterviewById = function getInterviewById (req, res, next) {
   var interviewId = req.swagger.params['interviewId'].value;
   Interview.getInterviewById(interviewId)
@@ -32,7 +10,9 @@ module.exports.getInterviewById = function getInterviewById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -45,17 +25,8 @@ module.exports.getInterviews = function getInterviews (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateInterview = function updateInterview (req, res, next) {
-  var interviewId = req.swagger.params['interviewId'].value;
-  Interview.updateInterview(interviewId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

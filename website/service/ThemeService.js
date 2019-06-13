@@ -5,34 +5,6 @@ let {db, TABLES} = require('./db');
 
 
 /**
- * Add a new theme
- * Insert a new theme in the system - this can only be done by logged users.
- *
- * body Theme The name object that needs to be added
- * no response value expected for this operation
- **/
-exports.addTheme = function(body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
- * Delete a specific theme
- * Delete a theme - this can only be done by the logged in ADMIN.
- *
- * themeId Long The id of the theme that needs to be deleted
- * no response value expected for this operation
- **/
-exports.deleteTheme = function(themeId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
  * Find theme by ID
  * Insert get a single theme in the system
  *
@@ -49,7 +21,7 @@ exports.getThemeById = function(themeId) {
       if (Object.keys(theme).length > 0) {
         resolve(theme);
       } else {
-        resolve();
+        reject("404");
       }
     });  
   });
@@ -79,23 +51,8 @@ exports.getThemes = function(offset,limit) {
       } else {
         //no themes found
         console.log("No themes found");
-        resolve();
+        reject("404");
       }
     }); 
   });
 }
-
-
-/**
- * Update a specific theme
- * Update values of a theme - this can only be done by the logged in ADMIN.
- *
- * themeId Long id of the theme that needs to be updated
- * no response value expected for this operation
- **/
-exports.updateTheme = function(themeId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-

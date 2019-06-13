@@ -27,25 +27,6 @@ module.exports.getUserById = function getUserById (req, res, next) {
       utils.writeJson(res, response);
     });
 };
-/*
-const findUser = (userReq) => {
-  return new Promise(function(resolve, reject) {
-    try {
-      db(TABLES.USER).where('email',userReq).select().then(result => {
-        if (result.length > 0) {
-          resolve(result[0]);
-        }
-        else{
-          console.error("user " + userReq + " not found while login");
-          resolve(null);
-        }
-      });
-    }catch(err){
-        console.error(err);
-        throw(err)
-    }});
-}
-*/
 
 const updateToken = (token, userReq) => {
   return new Promise(function(resolve, reject) {
@@ -59,20 +40,6 @@ const updateToken = (token, userReq) => {
         throw(err);
     }});
 }
-
-/*  TODO: USELESS
-module.exports.checkAuth = function (session, id) {
-  return new Promise(function(resolve, reject) {
-    module.exports.alreadyLoggedIn(session).then(result => {
-      if (result && session.userId == id) {
-        resolve(true);
-      } else {
-        resolve(false);
-      }
-    })
-  })
-}
-*/
 
 module.exports.alreadyLoggedIn = function(session) {
   return new Promise(function(resolve, reject){
@@ -88,7 +55,6 @@ module.exports.alreadyLoggedIn = function(session) {
       resolve(false);    
   })
 }
-
 
 
 const newSession = (req, body) => {
@@ -136,7 +102,6 @@ module.exports.loginUser = function loginUser (req, res, next) {
         if (response == '200'){
           newSession(req, body).then(newSession => {
             session=newSession;
-            //TODO: wtf use newsession method
             User.findUser(body.email).then(foundUser => {
               session.userId = foundUser.id;
               console.log("session set up for user "+session.user);

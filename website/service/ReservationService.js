@@ -69,13 +69,11 @@ exports.getReservationById = function(reservationId) {
 exports.getReservations = function(offset,limit,userId,bookId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.RESERVATION).limit(limit).offset(offset)
-    //TODO:
     .modify(function(queryBuilder) {
       if (bookId) {
         queryBuilder.where({'id_book': bookId});
       }
     })
-    //TODO:
     .modify(function(queryBuilder) {
       if (userId) {
         queryBuilder.where({'id_user': userId});

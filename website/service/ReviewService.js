@@ -16,7 +16,6 @@ var xss = require("xss");
  * no response value expected for this operation
  **/
 exports.addReview = function(body) {
-  //TODO: sanitize for XSS
   return new Promise(function(resolve, reject) {
 
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
@@ -36,21 +35,6 @@ exports.addReview = function(body) {
   });
 }
 
-
-/**
- * Delete a specific review
- * Delete a review - this can only be done by the logged in ADMIN or the user that made it.
- *
- * reviewId Long The id of the review that needs to be deleted
- * no response value expected for this operation
- **/
-exports.deleteReview = function(reviewId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
 /**
  * Find review by ID
  * Returns a review
@@ -68,7 +52,7 @@ exports.getReviewById = function(reviewId) {
       if (Object.keys(review).length > 0) {
         resolve(review);
       } else {
-        resolve();
+        reject("404");
       }
     });  
   });
@@ -121,8 +105,7 @@ exports.getReviews = function(offset,limit,userId,bookId) {
           resolve(reviewList);
         });
       } else {
-        //no reviews found
-        resolve();
+        reject("404");
       }
     }); 
   });

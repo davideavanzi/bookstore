@@ -4,7 +4,6 @@ const config = require('../knexfile');
 
 let db = knex(config[environment]);
 
-
 //table names conversion
 let TABLES =  {  
     AUTHOR: 'author',
@@ -27,11 +26,11 @@ function setupDataLayer () {
     console.log("Setting up data layer");
     return new Promise(resolve => {
         //checking if migration is up to date
-        console.log("(1/3) running [knex.migrate.latest()]");
+        console.log("(1/3) running knex migration");
         db.migrate.rollback().then(function () {
             db.migrate.latest().then(function () {
-                console.log("(2/3) running [knex.seed.run()]");
-                //seed database TODO
+                console.log("(2/3) running knex seed");
+                //seed database with values
                 return db.seed.run();
             }).then(function () {
                 var s = "(3/3) database ready.";
@@ -39,7 +38,7 @@ function setupDataLayer () {
             }).catch(err => {
                 console.error("Error setting up database:");
                 console.error(err.message);
-                //reject(); TODO
+                reject(err);
             });
         });     
     })

@@ -3,28 +3,6 @@
 var utils = require('../utils/writer.js');
 var Reservation = require('../service/ReservationService');
 
-module.exports.addReservation = function addReservation (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Reservation.addReservation(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteReservation = function deleteReservation (req, res, next) {
-  var reservationId = req.swagger.params['reservationId'].value;
-  Reservation.deleteReservation(reservationId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getReservationById = function getReservationById (req, res, next) {
   var reservationId = req.swagger.params['reservationId'].value;
   Reservation.getReservationById(reservationId)
@@ -32,7 +10,9 @@ module.exports.getReservationById = function getReservationById (req, res, next)
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -46,18 +26,8 @@ module.exports.getReservations = function getReservations (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateReservation = function updateReservation (req, res, next) {
-  var reservationId = req.swagger.params['reservationId'].value;
-  var reservationAmount = req.swagger.params['reservationAmount'].value;
-  Reservation.updateReservation(reservationId,reservationAmount)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

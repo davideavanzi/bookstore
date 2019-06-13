@@ -13,20 +13,6 @@ var xss = require("xss");
 
 
 /**
- * Delete user
- * This can only be done by the logged in user.
- *
- * userId Long The name that needs to be deleted
- * no response value expected for this operation
- **/
-exports.deleteUser = function(userId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
  * Get user by user id
  *
  * userId Long The id of the user that needs to be fetched.
@@ -70,8 +56,8 @@ exports.findUser = function(userReq) {
     }catch(err){
         console.error(err);
         throw(err)
-    }});
-
+    }
+  });
 }
 
 const checkPassword = (reqPassword, foundUser) => {
@@ -108,7 +94,7 @@ exports.loginUser = function(body, session) {
         return checkPassword(body.password, foundUser);
       } else {
         console.error("username " + body.email + " not found while login");
-        reject('401');
+        reject('404');
       }
     }).then((success) => {
       if(success){
@@ -198,21 +184,5 @@ exports.registerUser = function(body) {
       console.error(err);
       throw(err)
     }
-  });
-}
-
-
-
-/**
- * Updated user
- * This can only be done by the logged in user.
- *
- * userId Long id of the user that need to be updated
- * body User Updated user object
- * no response value expected for this operation
- **/
-exports.updateUser = function(userId,body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
   });
 }

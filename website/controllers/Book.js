@@ -3,28 +3,6 @@
 var utils = require('../utils/writer.js');
 var Book = require('../service/BookService');
 
-module.exports.addBook = function addBook (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Book.addBook(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteBook = function deleteBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  Book.deleteBook(bookId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getBookById = function getBookById (req, res, next) {
   var bookId = req.swagger.params['bookId'].value;
   Book.getBookById(bookId)
@@ -32,7 +10,9 @@ module.exports.getBookById = function getBookById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -47,18 +27,8 @@ module.exports.getBooks = function getBooks (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateBook = function updateBook (req, res, next) {
-  var bookId = req.swagger.params['bookId'].value;
-  var body = req.swagger.params['body'].value;
-  Book.updateBook(bookId,body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

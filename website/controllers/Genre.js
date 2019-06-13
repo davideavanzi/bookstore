@@ -3,28 +3,6 @@
 var utils = require('../utils/writer.js');
 var Genre = require('../service/GenreService');
 
-module.exports.addGenre = function addGenre (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Genre.addGenre(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteGenre = function deleteGenre (req, res, next) {
-  var genreId = req.swagger.params['genreId'].value;
-  Genre.deleteGenre(genreId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getGenreById = function getGenreById (req, res, next) {
   var genreId = req.swagger.params['genreId'].value;
   Genre.getGenreById(genreId)
@@ -32,7 +10,9 @@ module.exports.getGenreById = function getGenreById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -44,17 +24,8 @@ module.exports.getGenres = function getGenres (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateGenre = function updateGenre (req, res, next) {
-  var genreId = req.swagger.params['genreId'].value;
-  Genre.updateGenre(genreId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

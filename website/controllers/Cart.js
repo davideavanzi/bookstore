@@ -27,30 +27,6 @@ module.exports.getCartById = function getCartById (req, res, next) {
   }) 
 };
 
-//TODO: Is this useless?
-module.exports.updateCart = function updateCart (req, res, next) {
-  var cartId = req.session.userId;
-  var body = req.swagger.params['body'].value;
-  var session = req.session;
-
-  User.alreadyLoggedIn(session).then(result => {
-    if(result) {
-      Cart.updateCart(cartId,body)
-      .then(function (response) {
-        utils.writeJson(res, response);
-      })
-      .catch(function (response) {
-        utils.writeJson(res, response);
-      });
-    } else {
-      console.log("Operation on cart not authorized");
-      let body = {}
-      body.message = "user unauthorized for specified cart"
-      utils.writeJson(res, body, 401);
-    }
-  }) 
-};
-
 module.exports.addBookToCart = function addBookToCart (req, res, next) {
   var cartId = req.session.userId;
   var bookId = req.swagger.params['bookId'].value;
@@ -87,7 +63,9 @@ module.exports.removeBookFromCart = function removeBookFromCart (req, res, next)
         utils.writeJson(res, response);
       })
       .catch(function (response) {
-        utils.writeJson(res, response);
+        var responseCode = 500;
+        if(response == "404") responseCode = 404;
+        utils.writeJson(res, response, responseCode);
       });
     } else {
       console.log("Operation on cart not authorized");

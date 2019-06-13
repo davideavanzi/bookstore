@@ -5,34 +5,6 @@ let {db, TABLES} = require('./db');
 
 
 /**
- * Add a new event
- * Insert a new event in the system - this can only be done by logged in ADMIN.
- *
- * body Event The review object that needs to be added
- * no response value expected for this operation
- **/
-exports.addEvent = function(body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
- * Delete a specific event
- * Delete a event - this can only be done by the logged in ADMIN.
- *
- * eventId Long The id of the event that needs to be deleted
- * no response value expected for this operation
- **/
-exports.deleteEvent = function(eventId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
  * Find event by ID
  * Returns a event
  *
@@ -49,7 +21,7 @@ exports.getEventById = function(eventId) {
       if (Object.keys(events).length > 0) {
         resolve(events);
       } else {
-        resolve();
+        reject("404");
       }
     });  
   });
@@ -80,25 +52,8 @@ exports.getEvents = function(offset,limit,bookId) {
       if (Object.keys(events).length > 0) {
         resolve(events);
       } else {
-        //no events found
-        resolve();
+        reject("404");
       }
     }); 
   });
 }
-
-
-/**
- * Update a specific event
- * Update values of a review - this can only be done by the logged in ADMIN.
- *
- * eventId Long id of the event that needs to be updated
- * body Event Updated event object
- * no response value expected for this operation
- **/
-exports.updateEvent = function(eventId,body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-

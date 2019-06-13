@@ -65,7 +65,7 @@ function getBookById(bookId) {
         });
       } else {
         //No book found
-        resolve();
+        reject("404");
       }
     });   
   });
@@ -81,15 +81,12 @@ function getBookById(bookId) {
  * authorId Long Id of the author to filter books (optional)
  * returns List
  * 
- * TODO:
- * genre filter overwrites book id!
  **/
 function getBooks(offset,limit,authorId,themeId,genreId) {
   return new Promise(function(resolve, reject) {
     db(TABLES.BOOK).limit(limit).offset(offset).orderBy("title")
     .modify(function(queryBuilder) {
       if(authorId) {
-        //TODO: Do we really need to fetch author data in this query?
         //FILTER BY AUTHOR (not extracted from query)
         queryBuilder.select(`${TABLES.BOOK}.*`,`${TABLES.AUTHOR}.*`,`${TABLES.BOOK}.id as id`)
         .leftJoin(TABLES.BOOK_AUTHOR, `${TABLES.BOOK_AUTHOR}.id_book`, `${TABLES.BOOK}.id`)
@@ -131,8 +128,7 @@ function getBooks(offset,limit,authorId,themeId,genreId) {
           resolve(bookList);
         });
       } else {
-        //No book found TODO
-        resolve();
+        reject("404");
       }
     });
   });
@@ -173,8 +169,7 @@ function getAuthorsOfBookId(bookId) {
       if (Object.keys(authors).length > 0) {  
         resolve(authors);
       } else {
-        //No authors found
-        resolve();
+        reject("404");
       }
     });
   });
@@ -187,8 +182,6 @@ function getAuthorsOfBookId(bookId) {
  * authorId Long ID of the author to retrieve books
  * returns List
  * 
- * TODO: delete id duplicate?
- * TODO: is this useless? (duplicate of getting books filtering by author)
  **/
 function getBooksOfAuthorId(authorId) {
   return new Promise(function(resolve, reject) {
@@ -202,8 +195,7 @@ function getBooksOfAuthorId(authorId) {
       if (Object.keys(books).length > 0) {  
         resolve(books);
       } else {
-        //No authors found
-        resolve();
+        reject("404");
       }
     });
   });
@@ -216,7 +208,6 @@ function getBooksOfAuthorId(authorId) {
  * bookId Long ID of the book to retrieve themes
  * returns List
  * 
- * TODO: delete id duplicate?
  **/
 function getThemesOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
@@ -230,8 +221,7 @@ function getThemesOfBookId(bookId) {
       if (Object.keys(themes).length > 0) {   
         resolve(themes);
       } else {
-        //No themes found
-        resolve();
+        reject("404");
       }
     });
   });

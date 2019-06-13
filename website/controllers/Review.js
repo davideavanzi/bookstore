@@ -21,7 +21,9 @@ module.exports.addReview = function addReview (req, res, next) {
         utils.writeJson(res, response, 200);
       })
       .catch(function (response) {
-        utils.writeJson(res, response);
+        var responseCode = 500;
+        if(response == "404") responseCode = 404;
+        utils.writeJson(res, response, responseCode);
       });
     } else {
       console.log("Operation on review insert not authorized");
@@ -29,21 +31,6 @@ module.exports.addReview = function addReview (req, res, next) {
       utils.writeJson(res, body, 403);
     }
   }) 
-
-
-
-  
-};
-
-module.exports.deleteReview = function deleteReview (req, res, next) {
-  var reviewId = req.swagger.params['reviewId'].value;
-  Review.deleteReview(reviewId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
 };
 
 module.exports.getReviewById = function getReviewById (req, res, next) {
@@ -53,7 +40,9 @@ module.exports.getReviewById = function getReviewById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -67,18 +56,8 @@ module.exports.getReviews = function getReviews (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateReview = function updateReview (req, res, next) {
-  var reviewId = req.swagger.params['reviewId'].value;
-  var body = req.swagger.params['body'].value;
-  Review.updateReview(reviewId,body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

@@ -8,9 +8,6 @@ let remoteURL = "https://hyp.avanzi.dev/v2";
 
 /**
  * TODO: 
- * + update book amounts in cart icon in the menu
- * + edit live book stock after adding to cart?
- * + server API is adding books to cart with 0 stock
  * + show active filter in all books page
  */
 
@@ -325,8 +322,6 @@ var displayCartBadge = function displayCartBadge() {
         },  
         error: function (xhr, textStatus, errorThrown) {  
             //User may not be authenticated, in this case we do nothing
-            //TODO maybe check error codes?
-            //console.log('Error in fetching cart');  
             setCookie("loggedin","false","1");
         }
     }); 
@@ -453,8 +448,6 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
-            //TODO: calc stars mean? (Ooof) 
-            //TODO: add shadow around book cover?
             console.log(data);  
             document.title = data.title;
             bookStock = data.stock;
@@ -633,7 +626,7 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
         success: function(event, textStatus, xhr) {
             $('#single-event').html(event[0].title);	
             $.ajax({	
-                url: apiURL+'/books/'+event[0].id_book,  //TODO: remove [0]	
+                url: apiURL+'/books/'+event[0].id_book,
                 type: 'GET',  	
                 dataType: 'json',	
                 success : function(book, textStatus, xhr){	
@@ -839,8 +832,6 @@ var fetchSingleAuthor = function fetchSingleAuthor(authorId) {
         type: 'GET',  
         dataType: 'json',  
         success: function (data, textStatus, xhr) { 
-          //TODO: calc stars mean? (Ooof) 
-          //TODO: add shadow around book cover?
           console.log(data);  
           document.title = data.name;
           $('#name').html(data.name);

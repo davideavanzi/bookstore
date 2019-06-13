@@ -11,7 +11,6 @@ let {db, TABLES} = require('./db');
  * cartId Long 
  * returns Cart
  * 
- * TODO: check that fetching user is the proper one
  **/
 exports.getCartById = function(cartId) {
   return new Promise(function(resolve, reject) {
@@ -24,8 +23,7 @@ exports.getCartById = function(cartId) {
       if (Object.keys(cart).length > 0) {
         resolve(cart);
       } else {
-        //no cart found
-        resolve();
+        reject("404");
       }
     });
   });
@@ -37,7 +35,6 @@ exports.getCartById = function(cartId) {
  *
  * userId Long 
  * 
- * TODO: check that fetching user is the proper one
  **/
 exports.createCartForUser = function(userId) {
   return new Promise(function(resolve, reject) {
@@ -90,8 +87,6 @@ exports.addBookToCart = function(cartId,bookId,amount) {
         if (availability < amount) {
           //order as much as possible!
           amount = availability;
-          //TODO: reject or resolve with 404? or continue? continuing.
-          //reject();
         }
         Promise.all([
           db.raw(`INSERT INTO ${TABLES.BOOK_CART} (id_book, id_cart, amount) VALUES (${bookId},${cartId},${amount}) ON CONFLICT (id_book, id_cart) DO UPDATE SET amount = ${TABLES.BOOK_CART}.amount + ${amount} WHERE (${TABLES.BOOK_CART}.id_book, ${TABLES.BOOK_CART}.id_cart) = (${bookId},${cartId});`),
@@ -116,21 +111,37 @@ exports.addBookToCart = function(cartId,bookId,amount) {
  * bookId Id of the book to be removed
  * no response value expected for this operation
  * 
- * TODO: check user authentication. Or in the controller?
- * TODO: Reject/handle errors
  **/
 exports.removeBookFromCart = function(cartId,bookId) {
   return new Promise(function(resolve, reject) {
     //remove book from cart, getting the amount
-    db(TABLES.BOOK_CART).where({ id_book: bookId, id_cart: cartId}).del().returning('amount')
-      .then(amount => {
-        console.log("retrieved amount:");
-        console.log(amount);
+    checkIfPresent(cartId, bookId).then(result => {
+      if(result) {
+        db(TABLES.BOOK_CART).where({ id_book: bookId, id_cart: cartId}).del().returning('amount')
+        .then(amount => {
         //restore book amount into stock
         db(TABLES.BOOK).where({ id: bookId }).increment({ stock: amount })
         .then(() => {
           resolve({"message":"Operation completed."});
         })
+      })
+      } else {
+        reject("404");
+      }
+    });
+  });
+}
+
+var checkIfPresent = function checkIfPresent (cartId, bookId) {
+  return new Promise(function(resolve, reject) {
+    //remove book from cart, getting the amount
+    db(TABLES.BOOK_CART).where({ id_book: bookId, id_cart: cartId})
+      .then(book => {
+        if (Object.keys(book).length > 0) {
+          resolve(true);
+        } else {
+          resolve(false);
+        }
       })
   });
 }

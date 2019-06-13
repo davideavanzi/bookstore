@@ -3,28 +3,6 @@
 var utils = require('../utils/writer.js');
 var Author = require('../service/AuthorService');
 
-module.exports.addAuthor = function addAuthor (req, res, next) {
-  var body = req.swagger.params['body'].value;
-  Author.addAuthor(body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.deleteAuthor = function deleteAuthor (req, res, next) {
-  var authorId = req.swagger.params['authorId'].value;
-  Author.deleteAuthor(authorId)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
 module.exports.getAuthorById = function getAuthorById (req, res, next) {
   var authorId = req.swagger.params['authorId'].value;
   Author.getAuthorById(authorId)
@@ -32,7 +10,9 @@ module.exports.getAuthorById = function getAuthorById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };
 
@@ -45,18 +25,8 @@ module.exports.getAuthors = function getAuthors (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
-    });
-};
-
-module.exports.updateAuthor = function updateAuthor (req, res, next) {
-  var authorId = req.swagger.params['authorId'].value;
-  var body = req.swagger.params['body'].value;
-  Author.updateAuthor(authorId,body)
-    .then(function (response) {
-      utils.writeJson(res, response);
-    })
-    .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
 };

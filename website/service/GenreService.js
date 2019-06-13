@@ -5,34 +5,6 @@ let {db, TABLES} = require('./db');
 
 
 /**
- * Add a new genre
- * Insert a new genre in the system - this can only be done by logged ADMIN.
- *
- * body Genre The name object that needs to be added
- * no response value expected for this operation
- **/
-exports.addGenre = function(body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
- * Delete a specific genre
- * Delete a genre - this can only be done by the logged in ADMIN.
- *
- * genreId Long The id of the theme that needs to be deleted
- * no response value expected for this operation
- **/
-exports.deleteGenre = function(genreId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
-
-/**
  * Find genre by ID
  * Insert get a single genre in the system
  *
@@ -49,7 +21,7 @@ exports.getGenreById = function(genreId) {
       if (Object.keys(genre).length > 0) {
         resolve(genre);
       } else {
-        resolve();
+        reject("404");
       }
     });  
   });
@@ -75,23 +47,8 @@ exports.getGenres = function(offset,limit) {
         resolve(genres);
       } else {
         //no events found
-        resolve();
+        reject("404");
       }
     }); 
   });
 }
-
-
-/**
- * Update a specific genre
- * Update values of a genre - this can only be done by the logged in ADMIN.
- *
- * genreId Long id of the genre that needs to be updated
- * no response value expected for this operation
- **/
-exports.updateGenre = function(genreId) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-
