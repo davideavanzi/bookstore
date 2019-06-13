@@ -22,7 +22,7 @@ module.exports.getCartById = function getCartById (req, res, next) {
       console.log("Operation on cart not authorized");
       let body = {}
       body.message = "user unauthorized for specified cart"
-      utils.writeJson(res, body, 403);
+      utils.writeJson(res, body, 401);
     }
   }) 
 };
@@ -46,7 +46,7 @@ module.exports.updateCart = function updateCart (req, res, next) {
       console.log("Operation on cart not authorized");
       let body = {}
       body.message = "user unauthorized for specified cart"
-      utils.writeJson(res, body, 403);
+      utils.writeJson(res, body, 401);
     }
   }) 
 };
@@ -70,7 +70,7 @@ module.exports.addBookToCart = function addBookToCart (req, res, next) {
       console.log("Operation on cart not authorized");
       let body = {}
       body.message = "user unauthorized for specified cart"
-      utils.writeJson(res, body, 403);
+      utils.writeJson(res, body, 401);
     }
   }) 
 };
@@ -93,7 +93,7 @@ module.exports.removeBookFromCart = function removeBookFromCart (req, res, next)
       console.log("Operation on cart not authorized");
       let body = {}
       body.message = "user unauthorized for specified cart"
-      utils.writeJson(res, body, 403);
+      utils.writeJson(res, body, 401);
     }
   }) 
 };

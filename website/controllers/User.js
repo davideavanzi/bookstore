@@ -160,7 +160,7 @@ module.exports.loginUser = function loginUser (req, res, next) {
         } else {
         	response={};
         	response.message = "Not allowed"
-        	utils.writeJson(res, response, 403);        	
+        	utils.writeJson(res, response, 401);        	
         }
       });
       }
@@ -242,7 +242,7 @@ module.exports.getUserByCookie = function getUserByCookie (req, res, next) {
       console.log("Operation not authorized");
       let body = {}
       body.message = "user unauthorized"
-      utils.writeJson(res, body, 403);
+      utils.writeJson(res, body, 401);
     }
   }) 
 };
