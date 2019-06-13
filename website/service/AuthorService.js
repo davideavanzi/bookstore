@@ -67,7 +67,7 @@ exports.getAuthorById = function(authorId) {
  **/
 exports.getAuthors = function(offset,limit,bookId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.AUTHOR).limit(limit).offset(offset)
+    db(TABLES.AUTHOR).limit(limit).offset(offset).orderBy("name")
     /*
     .modify(function(queryBuilder) {
       if(authorId) {

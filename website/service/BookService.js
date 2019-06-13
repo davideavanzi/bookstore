@@ -86,7 +86,7 @@ function getBookById(bookId) {
  **/
 function getBooks(offset,limit,authorId,themeId,genreId) {
   return new Promise(function(resolve, reject) {
-    db(TABLES.BOOK).limit(limit).offset(offset)
+    db(TABLES.BOOK).limit(limit).offset(offset).orderBy("title")
     .modify(function(queryBuilder) {
       if(authorId) {
         //TODO: Do we really need to fetch author data in this query?
