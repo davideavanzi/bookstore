@@ -616,7 +616,7 @@ var fetchAllEvents = function fetchAllEvents(month, authorId, past, current) {
             }); 
             if(!filled){
                 $('#timeline').remove();
-                warningAlert('Attention!','No events found in this month, try another one!')
+                warningAlert('Whoops!','No events planned in this month, try another one!')
             }
         },  
         error: function (xhr, textStatus, errorThrown) {  
