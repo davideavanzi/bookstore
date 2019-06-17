@@ -228,7 +228,11 @@
     <script src="/assets/js/utils.js"></script>
     <script type="text/javascript">
         $(document).ready(function() {
-            fetchAllEvents(getUrlParameter("month"), getUrlParameter("author"), getUrlParameter("past"), getUrlParameter("current"));
+            fetchAllEvents(getUrlParameter("month"), 
+                getUrlParameter("author"), 
+                getUrlParameter("past"), 
+                getUrlParameter("current"),
+                getUrlParameter("book_id"));
             if (getCookie("loggedin") == "true") {
                 displayCartBadge();
             }

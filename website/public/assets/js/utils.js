@@ -469,6 +469,22 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
               }
               fetchInterview(bookid, "<a href=\"author.html?id="+author.id+"\">"+author.name+"</a>", author.id, author.photo);
             });
+            $.ajax({
+                url: apiURL+'/event?bookId='+data.id,
+                type: 'GET',  
+                dataType: 'json',  
+                success: function (event, textStatus, evXHR) {
+                    var oneInFuture = false;
+                    for(i=0; i<event.length; i++){ 
+                        if(new Date(event[i].datetime).getTime() > (new Date()).getTime()){
+                            oneInFuture = true;
+                        }
+                    }
+                    if(oneInFuture){
+                        $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id='+data.id+'">See the events</a>');
+                    }
+                }
+            })
              //id_book, authRef, authId, authCover
         },  
         error: function (xhr, textStatus, errorThrown) {  
@@ -477,7 +493,7 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
     }); 
 }
 
-var fetchAllEvents = function fetchAllEvents(month, authorId, past, current) {
+var fetchAllEvents = function fetchAllEvents(month, authorId, past, current, bookId) {
     //fetch all events
     var filled=false;
     var i = 0;
@@ -563,7 +579,17 @@ var fetchAllEvents = function fetchAllEvents(month, authorId, past, current) {
 	                                $('#timeline').append(html);
 	                                filled = true;
 	                            }
-	                        } else if(authorId){
+	                        } else if(bookId){
+                                if(bookId == book.id){
+                                    i++;
+                                    if(date.getMonth()+1 != curMonth){
+                                        curMonth = date.getMonth()+1;
+                                        $('#timeline').append(htmlMonth);
+                                    }
+                                    $('#timeline').append(html);
+                                    filled = true;
+                                }
+                            } else if(authorId){
 	                            for(var a = 0; a < book.authors.length; a++){
 	                                if(authorId == book.authors[a].id){
 	                                    i++;
