@@ -22,8 +22,6 @@ tags:
   description: "Operations on reviews"
 - name: "author"
   description: "Operations on authors"
-- name: "reservation"
-  description: "Operations on reservations"
 - name: "interview"
   description: "Operations on interviews"
 - name: "theme"
@@ -807,14 +805,14 @@ definitions:
     xml:
       name: "User"
     example:
-      firstName: "firstName"
-      lastName: "lastName"
-      password: "password"
-      phone: "phone"
-      email: "email"
-      address: "address"
-      country: "country"
-      zip: "20000"
+      firstName: "Paolo"
+      lastName: "Garrone"
+      password: "test1234"
+      phone: "3344343443"
+      email: "paolo@garrone.com"
+      address: "Via martiri del Poli, Milano"
+      country: "Italy"
+      zip: "21050"
   Login:
     type: "object"
     required:
@@ -831,8 +829,8 @@ definitions:
     xml:
       name: "Login"
     example:
-      password: "password"
-      email: "email"
+      password: "test1234"
+      email: "mymail.vario@gmail.com"
       remember: "false"
   Review:
     type: "object"

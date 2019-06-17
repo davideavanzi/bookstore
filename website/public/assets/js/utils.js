@@ -643,7 +643,7 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
                 $('#event').append('\
                     <div class="col-md-6">\
                         <div class="border">\
-                            <img id="cover" src="/assets/'+book.cover+'" style="align-content: bottom" alt="Image" class="img-fluid">\
+                            <a href="/assets/pages/shop-single.html?id='+event[0].id_book+'"><img id="cover" src="/assets/'+book.cover+'" style="align-content: bottom" alt="Image" class="img-fluid"></a>\
                         </div>\
                     </div>\
                     <div class="col-md-6">\
@@ -655,6 +655,9 @@ var fetchSingleEvent = function fetchSingleEvent(eventId){
                         <br>\
                         <p id="content">'+event[0].content+'</p>\
                         <br>\
+                        <br>\
+                        <br>\
+                        <a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/shop-single.html?id='+event[0].id_book+'">See the book</a>\
                     </div>\
                 ');
                 fetchInterview(book.id, authRef, authId, authCover);
