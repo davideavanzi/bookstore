@@ -1,0 +1,95 @@
+Table interview {
+  id int [pk]
+  title varchar 
+  content text 
+  interviewer varchar 
+  book_id int [ref: > book.id]
+}
+
+Table book {
+  id int [pk]
+  title varchar
+  cover varchar
+  abstract text
+  fact_sheet text
+  genre_id int [ref: > genre.id]
+  value float
+  stock integer
+}
+
+
+Table author {
+  id int [pk]
+  name varchar
+  bio text
+  photo varchar
+}
+
+Table book_author{
+  id_book int [ref: > book.id]
+  id_author int [ref: > author.id]
+
+}
+
+Table event {
+  id int [pk]
+  title varchar
+  id_book int [ref: > book.id]
+  location text
+  content text
+}
+
+Table review {
+  id int [pk]
+  star int
+  title varchar
+  content text
+  id_user int [ref: > users.id]
+  id_book int [ref: > book.id]
+}
+
+Table users {
+  id int [pk]
+  firstName varchar
+  lastName varchar
+  email varchar
+  phone varchar
+  password varchar
+  token varchar
+}
+
+Table cart {
+  id int [ref: > users.id]
+}
+
+Table cart_book {
+    id_cart int [ref: > cart.id]
+    id_book int [ref: > book.id]
+    amount integer
+}
+
+Table reservation {
+  id int [pk]
+  amount int
+  id_book int [ref: > book.id]
+  id_user int [ref: > users.id]
+  curDate date
+}
+
+Table  genre {
+  id int [pk]
+  name varchar
+  
+}
+
+Table theme_book {
+  book_id int [ref: > book.id]
+  theme_id int [ref: > theme.id]
+
+}
+
+Table theme {
+  id int [pk]
+  name varchar
+}
+
