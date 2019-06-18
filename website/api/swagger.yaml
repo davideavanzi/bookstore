@@ -79,6 +79,8 @@ paths:
               $ref: "#/definitions/Book"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Book"
   /books/{bookId}:
     get:
@@ -105,6 +107,8 @@ paths:
           description: "Invalid input"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Book"
   /review:
     get:
@@ -145,6 +149,8 @@ paths:
               $ref: "#/definitions/Review"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Review"
     post:
       tags:
@@ -167,12 +173,14 @@ paths:
       responses:
         200:
           description: "Review added"
-        401:
-          description: "Unauthorized"
+        403:
+          description: "Forbidden"
         404:
           description: "Not found"
         405:
           description: "Invalid input"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Review"
   /event:
     get:
@@ -208,6 +216,8 @@ paths:
               $ref: "#/definitions/Event"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Event"
   /event/{eventId}:
     get:
@@ -234,6 +244,8 @@ paths:
           description: "Invalid input"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Event"
   /author:
     get:
@@ -270,6 +282,8 @@ paths:
               $ref: "#/definitions/Author"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Author"
   /author/{authorId}:
     get:
@@ -296,6 +310,8 @@ paths:
           description: "Invalid input"
         404:
           description: "Author not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Author"
   /user/register:
     post:
@@ -322,6 +338,8 @@ paths:
           description: "Unauthorized"
         403:
           description: "Forbidden"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "User"
   /user/login:
     post:
@@ -347,6 +365,8 @@ paths:
           description: "Unauthorized"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "User"
   /user/logout:
     get:
@@ -362,6 +382,8 @@ paths:
           description: "successful operation"
         401:
           description: "Unauthorized"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "User"
 
   /user:
@@ -381,6 +403,8 @@ paths:
           description: "Unauthorize"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "User"
   /cart:
     get:
@@ -399,6 +423,8 @@ paths:
           description: "Unauthorized"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Cart"
   /cart/addBook:
     put:
@@ -432,6 +458,8 @@ paths:
           description: "Not found"
         406:
           description: "Not Acceptable"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Cart"
   /cart/removeBook:
     put:
@@ -457,6 +485,8 @@ paths:
           description: "Unauthorized"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Cart"
   /interview:
     get:
@@ -492,6 +522,8 @@ paths:
               $ref: "#/definitions/Interview"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Interview"
   /theme:
     get:
@@ -522,6 +554,8 @@ paths:
               $ref: "#/definitions/Theme"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Theme"
   /theme/{themeId}:
     get:
@@ -550,6 +584,8 @@ paths:
           description: "Forbidden"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Theme"
   /genre:
     get:
@@ -580,6 +616,8 @@ paths:
               $ref: "#/definitions/Genre"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Genre"
   /genre/{genreId}:
     get:
@@ -608,6 +646,8 @@ paths:
           description: "Forbidden"
         404:
           description: "Not found"
+        500:
+          description: "Internal server error"
       x-swagger-router-controller: "Genre"
 definitions:
   Book:
@@ -765,14 +805,14 @@ definitions:
     xml:
       name: "User"
     example:
-      firstName: "firstName"
-      lastName: "lastName"
-      password: "password"
-      phone: "phone"
-      email: "email"
-      address: "address"
-      country: "country"
-      zip: "20000"
+      firstName: "Paolo"
+      lastName: "Garrone"
+      password: "test1234"
+      phone: "3344343443"
+      email: "paolo@garrone.com"
+      address: "Via martiri del Poli, Milano"
+      country: "Italy"
+      zip: "21050"
   Login:
     type: "object"
     required:
@@ -789,8 +829,8 @@ definitions:
     xml:
       name: "Login"
     example:
-      password: "password"
-      email: "email"
+      password: "test1234"
+      email: "mymail.vario@gmail.com"
       remember: "false"
   Review:
     type: "object"

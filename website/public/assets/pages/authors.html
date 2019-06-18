@@ -1,179 +1,166 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Books</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
-
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="/assets/css/aos.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-    
-  </head>
-  <body>
-  
-  <div class="site-wrap">
-    
-
-    <!-- navbar -->
-    <div class="site-navbar bg-white py-2 position-relative">
-      <div class="search-wrap">
-        <div class="container">
-          <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-          <form action="#" method="post">
-            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
-          </form>  
-        </div>
-      </div>
-      <div class="container" id="menu_container">
-<div class="d-flex align-items-center justify-content-between">
-    <div class="logo">
-        <div class="site-logo">
-        <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
-        </div>
-    </div>
-    <div class="main-nav d-none d-lg-block">
-        <nav class="site-navigation text-right text-md-center" role="navigation">
-        <ul class="site-menu js-clone-nav d-none d-lg-block">
-            <li><a href="/assets/pages/shop.html">Books</a></li>
-            <li><a href="/assets/pages/authors.html">Authors</a></li>
-            <li><a href="/assets/pages/events.html">Events</a></li>
-            <li><a href="/assets/pages/about.html">About</a></li>
-            <li><a href="/assets/pages/contact.html">Contact</a></li>
-        </ul>
-        </nav>
-    </div>
-    <div class="icons">
-        <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-        <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
-        </a>
-        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
-        <span class="icon-shopping-bag"></span>
-        </a>
-        <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
-    </div>
-</div>
-      </div>
-    </div>
-    <!-- end navbar -->
-    
-    <!-- breadcrumbs -->
-    <div class="bg-light py-3">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12 mb-0"><a href="/index.html">Home</a><span class="mx-2 mb-0">/</span>
-          <strong class="text-black">Authors</strong></div>
-        </div>
-      </div>
-    </div>
-    <!-- end breadcrumbs -->
-
-    <div class="site-section">
-      <!-- SUCCESS / ERROR BAR -->
-      <div class="bg-white py-3">
-          <div class="container">
-              <div class="row">
-                  <div class="col-md-12 mb-0" id="messagebar">
-                  </div>
-              </div>
-          </div>
-      </div>  
-      <div class="container">
-        <div class="row mb-5">
-          <div class="col-lg-12 order-2 order-lg-1">
-            <div class="row align">
-              <div class="col-md-12 mb-5">
-                <div class="float-md-left"><h2 class="text-black h5">Discover all authors</h2></div>
-                <div class="d-flex">
-                  <div class="dropdown mr-1 ml-md-auto">
-                    <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                      Genre                    </button>
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                      <a class="dropdown-item" href="#">Fantasy</a>
-                      <a class="dropdown-item" href="#">Sci-fi</a>
-                      <a class="dropdown-item" href="#">Western</a>
-                      <a class="dropdown-item" href="#">Romance</a>
-                      <a class="dropdown-item" href="#">Thriller</a>
-                      <a class="dropdown-item" href="#">Mistery</a>
-                      <a class="dropdown-item" href="#">Detective story</a>
+    <head>
+        <title>Books</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="/assets/css/aos.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+        <div class="site-wrap">
+            <!-- navbar -->
+            <div class="site-navbar bg-white py-2 position-relative">
+                <div class="search-wrap">
+                    <div class="container">
+                        <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                        <form action="#" method="post">
+                            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
+                        </form>
                     </div>
-                  </div>
-                  
                 </div>
-              </div>
-            </div>
-            <div class="row mb-5">
-              <div class="products-wrap border-top-0">
-  <div class="container-fluid" id="books-list">
-    <div class="row no-gutters products list" id="main_authors">
-      
-  
-    </div>
-  </div>
-</div>
-            </div>
-            <div class="row">
-              <div class="col-md-12 text-center">
-                <div class="site-block-27">
-                  <ul id="pagination">
-                    <li><a href="#">&lt;</a></li>
-                    <li class="active"><span>1</span></li>
-                    <li><a href="#">2</a></li>
-                    <li><a href="#">3</a></li>
-                    <li><a href="#">4</a></li>
-                    <li><a href="#">5</a></li>
-                    <li><a href="#">&gt;</a></li>
-                  </ul>
+                <div class="container" id="menu_container">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="logo">
+                            <div class="site-logo">
+                                <a href="/index.html" class="js-logo-clone">BOOKSTORE</a>
+                            </div>
+                        </div>
+                        <div class="main-nav d-none d-lg-block">
+                            <nav class="site-navigation text-right text-md-center" role="navigation">
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                    <li><a href="/assets/pages/shop.html">Books</a></li>
+                                    <li><a href="/assets/pages/authors.html">Authors</a></li>
+                                    <li><a href="/assets/pages/events.html">Events</a></li>
+                                    <li><a href="/assets/pages/about.html">About</a></li>
+                                    <li><a href="/assets/pages/contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="icons">
+                            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                            <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>        
+                            </a>
+                            <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
+                            <span class="icon-shopping-bag"></span>
+                            </a>
+                            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+                        </div>
+                    </div>
                 </div>
-              </div>
             </div>
-          </div>
+            <!-- end navbar -->
+            <!-- breadcrumbs -->
+            <div class="bg-light py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mb-0"><a href="/index.html">Home</a><span class="mx-2 mb-0">/</span>
+                            <strong class="text-black">Authors</strong>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- end breadcrumbs -->
+            <div class="site-section">
+                <!-- SUCCESS / ERROR BAR -->
+                <div class="bg-white py-3">
+                    <div class="container">
+                        <div class="row">
+                            <div class="col-md-12 mb-0" id="messagebar">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="container">
+                    <div class="row mb-5">
+                        <div class="col-lg-12 order-2 order-lg-1">
+                            <div class="row align">
+                                <div class="col-md-12 mb-5">
+                                    <div class="float-md-left">
+                                        <h2 class="text-black h5">Discover all authors</h2>
+                                    </div>
+                                    <div class="d-flex">
+                                        <div class="dropdown mr-1 ml-md-auto">
+                                            <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            Genre                    </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                                <a class="dropdown-item" href="#">Fantasy</a>
+                                                <a class="dropdown-item" href="#">Sci-fi</a>
+                                                <a class="dropdown-item" href="#">Western</a>
+                                                <a class="dropdown-item" href="#">Romance</a>
+                                                <a class="dropdown-item" href="#">Thriller</a>
+                                                <a class="dropdown-item" href="#">Mistery</a>
+                                                <a class="dropdown-item" href="#">Detective story</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row mb-5">
+                                <div class="products-wrap border-top-0">
+                                    <div class="container-fluid" id="books-list">
+                                        <div class="row no-gutters products list" id="main_authors">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12 text-center">
+                                    <div class="site-block-27">
+                                        <ul id="pagination">
+                                            <li><a href="#">&lt;</a></li>
+                                            <li class="active"><span>1</span></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">4</a></li>
+                                            <li><a href="#">5</a></li>
+                                            <li><a href="#">&gt;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="site-footer custom-border-top">
+            </footer>
         </div>
-      </div>
-    </div>
-
-
-
-    <footer class="site-footer custom-border-top">
-    </footer>
-  </div>
-
-  <script src="/assets/js/jquery-3.3.1.min.js"></script>
-  <script src="/assets/js/jquery-ui.js"></script>
-  <script src="/assets/js/popper.min.js"></script>
-  <script src="/assets/js/bootstrap.min.js"></script>
-  <script src="/assets/js/owl.carousel.min.js"></script>
-  <script src="/assets/js/jquery.magnific-popup.min.js"></script>
-  <script src="/assets/js/aos.js"></script>
-  <script src="/assets/js/main.js"></script>
-  <script src="/assets/js/script.js"></script>
-  <script type="text/javascript">
-
-    $(document).ready(function(){
-      
-      var page = getUrlParameter("p");
-      var page = (page && page > 0 ? page : 1 );
-      
-      //calculate offset based on page:
-      var limit = 6; // 6 authors per page
-      var offset = (page-1)*limit; 
-      
-      fetchAllAuthors(limit, offset);
-      getAuthorsTotal().then(totalElements => {
-        setPagination(page, limit, totalElements);
-      });
-      if(getCookie("loggedin") == "true") {
-        displayCartBadge();
-      } 
-    });
-  </script>
-  <script>$("footer").load("/assets/pages/footer.html");</script>    
-</body>
+        <script src="/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="/assets/js/jquery-ui.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/js/aos.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/utils.js"></script>
+        <script type="text/javascript">
+            $(document).ready(function(){
+              
+              var page = getUrlParameter("p");
+              var page = (page && page > 0 ? page : 1 );
+              
+              //calculate offset based on page:
+              var limit = 6; // 6 authors per page
+              var offset = (page-1)*limit; 
+              
+              fetchAllAuthors(limit, offset);
+              getAuthorsTotal().then(totalElements => {
+                setPagination(page, limit, totalElements);
+              });
+              if(getCookie("loggedin") == "true") {
+                displayCartBadge();
+              } 
+            });
+        </script>
+        <script>$("footer").load("/assets/pages/footer.html");</script>    
+    </body>
 </html>

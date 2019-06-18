@@ -13,7 +13,7 @@ module.exports.deleteUser = function deleteUser (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 500);
     });
 };
 
@@ -24,7 +24,7 @@ module.exports.getUserById = function getUserById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 500);
     });
 };
 
@@ -201,7 +201,7 @@ module.exports.getUserByCookie = function getUserByCookie (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 500);
     });
     } else {
       console.log("Operation not authorized");
@@ -220,6 +220,6 @@ module.exports.updateUser = function updateUser (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      utils.writeJson(res, response, 500);
     });
 };

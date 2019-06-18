@@ -52,8 +52,7 @@ jQuery(document).ready(function($) {
 
 		$('.js-logo-clone').clone().appendTo('.site-mobile-menu-logo');
 
-		$('<span class="ion-ios-close js-menu-toggle"></div>').prependTo('.site-mobile-menu-close');
-		
+		$('<span class="js-menu-toggle"><font color="red">×</font></div>').prependTo('.site-mobile-menu-close');
 
 		$('.js-clone-nav').each(function() {
 			var $this = $(this);

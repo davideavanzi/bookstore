@@ -126,24 +126,6 @@ exports.up = function(knex, Promise) {
                     .then(console.log('created interview table'));
                 }
             }),
-            
-        //Reservations table
-        knex.schema
-        .hasTable('reservation')
-            .then(function (exists) {
-                if (!exists) {
-                return knex
-                    .schema
-                    .createTable('reservation', function (table) {
-                        table.increments('id').primary();
-                        table.integer("amount");
-                        table.integer("id_book");
-                        table.integer("id_user");
-                        table.date("date");
-                    })
-                    .then(console.log('created reservation table'));
-                }
-            }),
 
         //Reviews table
         knex.schema
@@ -237,7 +219,6 @@ exports.down = function(knex, Promise) {
         knex.schema.dropTable('event').then(console.log('deleted event table')),
         knex.schema.dropTable('genre').then(console.log('deleted genre table')),
         knex.schema.dropTable('interview').then(console.log('deleted interview table')),
-        knex.schema.dropTable('reservation').then(console.log('deleted reservation table')),
         knex.schema.dropTable('review').then(console.log('deleted review table')),
         knex.schema.dropTable('theme').then(console.log('deleted theme table')),
         knex.schema.dropTable('users').then(console.log('deleted users table')),

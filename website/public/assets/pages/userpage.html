@@ -1,227 +1,207 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <title>My page &mdash; </title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-
-    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
-    <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
-    <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/assets/css/magnific-popup.css">
-    <link rel="stylesheet" href="/assets/css/jquery-ui.css">
-    <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
-    <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
-    <link rel="stylesheet" href="/assets/css/aos.css">
-    <link rel="stylesheet" href="/assets/css/style.css">
-
-    <style>
-        .checked {
-            color: orange;
-        }
-    </style>
-
-</head>
-
-<body>
-
-    <div class="site-wrap">
-
-        <!-- navbar -->
-        <div class="site-navbar bg-white py-2 position-relative">
-            <div class="search-wrap">
-                <div class="container">
-                    <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
-                    <form action="#" method="post">
-                        <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
-                    </form>
-                </div>
-            </div>
-            <div class="container" id="menu_container">
-                <div class="d-flex align-items-center justify-content-between">
-                    <div class="logo">
-                        <div class="site-logo">
-                            <a href="/index.html" style="font-size: 18px"  class="js-logo-clone">BOOKSTORE</a>
-                        </div>
-                    </div>
-                    <div class="main-nav d-none d-lg-block">
-                        <nav class="site-navigation text-right text-md-center" role="navigation">
-                            <ul class="site-menu js-clone-nav d-none d-lg-block">
-                                <li><a href="/assets/pages/shop.html">Books</a></li>
-                                <li><a href="/assets/pages/authors.html">Authors</a></li>
-                                <li><a href="/assets/pages/events.html">Events</a></li>
-                                <li><a href="/assets/pages/about.html">About</a></li>
-                                <li><a href="/assets/pages/contact.html">Contact</a></li>
-                            </ul>
-                        </nav>
-                    </div>
-                    <div class="icons">
-                        <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                        <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
-                        </a>
-                        <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
-                            <span class="icon-shopping-bag"></span>
-                        </a>
-                        <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- end navbar -->
-
-        <div class="bg-light py-3">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-12 mb-0"><a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span>Account</div>
-                </div>
-            </div>
-        </div>
-
-        <div class="site-section">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6">
-                      
-                        <!-- img here -->
-
-                    </div>
-                    <div class="col-md-12">
-                        <div class="title-section text-center col-12">
-                        <h1 class="text-black"  id="name"></h1>
-                        <br>
-                        <h2>Contact Info</h2>
-                        <br>
-                        <h4 id="email"></h4>
-                        <h4 id="phone"></h4>
-                        <h4 id="country"></h4>
-                        <h4 id="address"></h4>
-                        <h4 id="zip"></h4>
-                    </div>
-                          </div>
-                    <br>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="site-section">
-        <div class="container">
-            <div class="row">
-                <div class="title-section text-center col-12">
-                    <h2 class="text-uppercase">Logout</h2>
-                </div>
-            </div>
-            <div class="row" id="logoutform">
-                <div class="col-md-12 mb-5 mb-md-0">
-                    <div class="p-3 p-lg-5 border">
-                        <form id="logout" action="" method="">
-                            <input type="submit" class="btn btn-primary btn-lg btn-block" id="logout" value="Logout">
+    <head>
+        <title>My page &mdash; </title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+        <link rel="stylesheet" href="/assets/fonts/icomoon/style.css">
+        <link rel="stylesheet" href="/assets/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/assets/css/magnific-popup.css">
+        <link rel="stylesheet" href="/assets/css/jquery-ui.css">
+        <link rel="stylesheet" href="/assets/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="/assets/css/owl.theme.default.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+        <link rel="stylesheet" href="/assets/css/aos.css">
+        <link rel="stylesheet" href="/assets/css/style.css">
+    </head>
+    <body>
+        <div class="site-wrap">
+            <!-- navbar -->
+            <div class="site-navbar bg-white py-2 position-relative">
+                <div class="search-wrap">
+                    <div class="container">
+                        <a href="#" class="search-close js-search-close"><span class="icon-close2"></span></a>
+                        <form action="#" method="post">
+                            <input type="text" class="form-control" placeholder="Search keyword and hit enter...">
                         </form>
                     </div>
                 </div>
+                <div class="container" id="menu_container">
+                    <div class="d-flex align-items-center justify-content-between">
+                        <div class="logo">
+                            <div class="site-logo">
+                                <a href="/index.html" style="font-size: 18px" class="js-logo-clone">BOOKSTORE</a>
+                            </div>
+                        </div>
+                        <div class="main-nav d-none d-lg-block">
+                            <nav class="site-navigation text-right text-md-center" role="navigation">
+                                <ul class="site-menu js-clone-nav d-none d-lg-block">
+                                    <li><a href="/assets/pages/shop.html">Books</a></li>
+                                    <li><a href="/assets/pages/authors.html">Authors</a></li>
+                                    <li><a href="/assets/pages/events.html">Events</a></li>
+                                    <li><a href="/assets/pages/about.html">About</a></li>
+                                    <li><a href="/assets/pages/contact.html">Contact</a></li>
+                                </ul>
+                            </nav>
+                        </div>
+                        <div class="icons">
+                            <a href="#" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                            <a href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
+                            </a>
+                            <a href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
+                            <span class="icon-shopping-bag"></span>
+                            </a>
+                            <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
+                        </div>
+                    </div>
+                </div>
             </div>
+            <!-- end navbar -->
+            <div class="bg-light py-3">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-12 mb-0"><a href="/index.html">Home</a> <span class="mx-2 mb-0">/</span>Account</div>
+                    </div>
+                </div>
+            </div>
+            <div class="site-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <img src="/assets/img/user.png" class="center" height="200" alt="user">
+                            <!-- img here -->
+                        </div>
+                        <div class="col-md-6">
+                            <div class="title-section text-center col-12">
+                                <h1 class="text-black" id="name"></h1>
+                                <br>
+                                <h2>Contact Info</h2>
+                                <br>
+                                <h4 id="email"></h4>
+                                <h4 id="phone"></h4>
+                                <h4 id="country"></h4>
+                                <h4 id="address"></h4>
+                                <h4 id="zip"></h4>
+                            </div>
+                        </div>
+                        <br>
+                    </div>
+                </div>
+            </div>
+            <div class="site-section">
+                <div class="container">
+                    <div class="row">
+                        <div class="title-section text-center col-12">
+                            <h2 class="text-uppercase">Logout</h2>
+                        </div>
+                    </div>
+                    <div class="row" id="logoutform">
+                        <div class="col-md-12 mb-5 mb-md-0">
+                            <div class="p-3 p-lg-5 border">
+                                <form id="logout">
+                                    <input type="submit" class="btn btn-primary btn-lg btn-block" id="logoutBtn" value="Logout">
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <footer class="site-footer custom-border-top">
+            </footer>
         </div>
-    </div>
-
-    <footer class="site-footer custom-border-top">
-    </footer>
-    
-    <script src="/assets/js/jquery-3.3.1.min.js"></script>
-    <script src="/assets/js/jquery-ui.js"></script>
-    <script src="/assets/js/popper.min.js"></script>
-    <script src="/assets/js/bootstrap.min.js"></script>
-    <script src="/assets/js/owl.carousel.min.js"></script>
-    <script src="/assets/js/jquery.magnific-popup.min.js"></script>
-    <script src="/assets/js/aos.js"></script>
-    <script src="/assets/js/main.js"></script>
-    <script src="/assets/js/script.js"></script>
-    <script>
-        $("footer").load("/assets/pages/footer.html");
-    </script>
-    <script type="text/javascript">
-        $(document).ready(function() {
-            $(function() {
-                $.fn.serializeObject = function() {
-                    var o = {};
-                    var a = this.serializeArray();
-                    $.each(a, function() {
-                        if (o[this.name] !== undefined) {
-                            if (!o[this.name].push) {
-                                o[this.name] = [o[this.name]];
+        <script src="/assets/js/jquery-3.3.1.min.js"></script>
+        <script src="/assets/js/jquery-ui.js"></script>
+        <script src="/assets/js/popper.min.js"></script>
+        <script src="/assets/js/bootstrap.min.js"></script>
+        <script src="/assets/js/owl.carousel.min.js"></script>
+        <script src="/assets/js/jquery.magnific-popup.min.js"></script>
+        <script src="/assets/js/aos.js"></script>
+        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/utils.js"></script>
+        <script>
+            $("footer").load("/assets/pages/footer.html");
+        </script>
+        <script type="text/javascript">
+            $(document).ready(function() {
+                $(function() {
+                    $.fn.serializeObject = function() {
+                        var o = {};
+                        var a = this.serializeArray();
+                        $.each(a, function() {
+                            if (o[this.name] !== undefined) {
+                                if (!o[this.name].push) {
+                                    o[this.name] = [o[this.name]];
+                                }
+                                o[this.name].push(this.value || '');
+                            } else {
+                                o[this.name] = this.value || '';
                             }
-                            o[this.name].push(this.value || '');
-                        } else {
-                            o[this.name] = this.value || '';
+                        });
+                        return o;
+                    };
+                    $.ajax({
+                        url: apiURL + '/user/',
+                        type: 'GET',
+                        dataType: 'json',
+                        success: function(data, textStatus, xhr) {
+                            if (data[0].firstName) {
+                                $('#name').append(data[0].firstName + ' ');
+                                if (data[0].lastName) {
+                                    $('#name').append(data[0].lastName);
+                                } else {
+                                    $('#name').append('<br>');
+                                }
+                            } else if (data[0].lastName) {
+                                $('#name').append(data[0].lastName);
+                                $('#name').append('<br>');
+                            }
+                            if (data[0].phone) {
+                                $('#phone').append('Phone: ' + data[0].phone + '<br>');
+                            }
+                            if (data[0].country) {
+                                $('#country').append('Country: ' + data[0].country + '<br>');
+                            }
+                            if (data[0].address) {
+                                $('#address').append('Address: ' + data[0].address + '<br>');
+                            }
+                            if (data[0].zip) {
+                                $('#zip').append('Zip: ' + data[0].zip + '<br>');
+                            }
+                            $('#email').append('Email: ' + data[0].email + '<br>');
+                        },
+                        error: function(xhr, textStatus, errorThrown) {
+                            console.log('Error in Operation');
                         }
                     });
-                    return o;
-                };
-                $.ajax({  
-                  url: apiURL+'/user/',
-                  type: 'GET',
-                  dataType: 'json',  
-                  success: function (data, textStatus, xhr) {
-                    if(data[0].firstName){
-                      $('#name').append(data[0].firstName+' ');
-                      if(data[0].lastName){
-                        $('#name').append(data[0].lastName);
-                      } else{
-                        $('#name').append('<br>');
-                      }
-                    } else if (data[0].lastName){
-                        $('#name').append(data[0].lastName);
-                        $('#name').append('<br>');
-                    }                    
-                    if(data[0].phone){
-                      $('#phone').append('Phone: '+data[0].phone+'<br>');
-                    }
-                    if(data[0].country){
-                      $('#country').append('Country: '+data[0].country+'<br>');
-                    }
-                    if(data[0].address){
-                      $('#address').append('Address: '+data[0].address+'<br>');
-                    }
-                    if(data[0].zip){
-                      $('#zip').append('Zip: '+data[0].zip+'<br>');
-                    }
-                    $('#email').append('Email: '+data[0].email+'<br>');
-                  },  
-                  error: function (xhr, textStatus, errorThrown) {  
-                      console.log('Error in Operation');  
-                  }  
-              });
-              $("#logout").bind("submit", function(evt) {
-                  $.ajax({
-                      url: apiURL + "/user/logout",
-                      type: "GET",
-                      contentType: "application/json",
-                      data: JSON.stringify($("#logout").serializeObject()),
-                      success: function(data, textStatus, jqXHR) {
-                          successAlert("All Good!", " You successfully logout");
-                          //eraseCookie("loggedin");
-                          setCookie("loggedin","false","1");
-                          window.location.href = '/index.html';
-                      },
-                      error: function(jqXHR, textStatus, errorThrown) {
-                          if (jqXHR.status == 401) {
-                              errorAlert("Whoops!", "You are not loggedin, try login!");
-                          } else {
-                              alertAlert("Whoops!", "An error occurred, pleasy try again!");
-                          }
-                      }
-                  });
-                  return false;
-              });
+                    $("#logout").bind("submit", function(evt) {
+                        $.ajax({
+                            url: apiURL + "/user/logout",
+                            type: "GET",
+                            contentType: "application/json",
+                            data: JSON.stringify($("#logout").serializeObject()),
+                            success: function(data, textStatus, jqXHR) {
+                                successAlert("All Good!", " You successfully logout");
+                                //eraseCookie("loggedin");
+                                setCookie("loggedin", "false", "1");
+                                window.location.href = '/index.html';
+                            },
+                            error: function(jqXHR, textStatus, errorThrown) {
+                                if (jqXHR.status == 401) {
+                                    errorAlert("Whoops!", "You are not loggedin, try login!");
+                                } else {
+                                    alertAlert("Whoops!", "An error occurred, pleasy try again!");
+                                }
+                            }
+                        });
+                        return false;
+                    });
+                });
+                if (getCookie("loggedin") == "true") {
+                    displayCartBadge();
+                }
             });
-            if(getCookie("loggedin") == "true") {
-                displayCartBadge();
-            } 
-        });
-    </script>
-
-</body>
-
+        </script>
+    </body>
 </html>
