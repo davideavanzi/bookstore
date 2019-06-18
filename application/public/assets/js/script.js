@@ -513,7 +513,7 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
                 type: 'GET',
                 dataType: 'json',
                 success: function(event, textStatus, evXHR) {
-                    $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id=' + data.id + '">See the events</a>');
+                    $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id=' + data.id + '">Discover events with this book</a>');
                 }
             })
             //id_book, authRef, authId, authCover
@@ -721,7 +721,7 @@ var fetchSingleEvent = function fetchSingleEvent(eventId) {
                         <br>\
                         <br>\
                         <br>\
-                        <a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/shop-single.html?id=' + event[0].id_book + '">See the book</a>\
+                        <a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/shop-single.html?id=' + event[0].id_book + '">Discover the book</a>\
                     </div>\
                 ');
                     fetchInterview(book.id, authRef, authId, authCover);
