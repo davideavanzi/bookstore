@@ -13,7 +13,11 @@ module.exports = {
       max: 10
     },
     migrations: {
+      directory: __dirname+'/../migrations',
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: __dirname+'/../seeds'
     }
   },
 
@@ -32,7 +36,11 @@ module.exports = {
       max: 10
     },
     migrations: {
+      directory: __dirname+'/../migrations',
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: __dirname+'/../seeds'
     }
   },
 
@@ -50,7 +58,11 @@ module.exports = {
       max: 10
     },
     migrations: {
+      directory: __dirname+'/../migrations',
       tableName: 'knex_migrations'
+    },
+    seeds: {
+      directory: __dirname+'/../seeds'
     }
   }
 

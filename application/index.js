@@ -22,12 +22,12 @@ let cookieParser = require("cookie-parser");
 let serveStatic = require("serve-static");
 
 //data layer setup
-let { setupDataLayer } = require("./service/db");
+let { setupDataLayer } = require("./other/service/db");
 
 // swaggerRouter configuration
 var options = {
   swaggerUi: path.join(__dirname, '/swagger.json'),
-  controllers: path.join(__dirname, './controllers'),
+  controllers: path.join(__dirname, './other/controllers'),
   useStubs: process.env.NODE_ENV === 'development' // Conditionally turn on stubs (mock mode)
 };
 
@@ -38,7 +38,7 @@ var uiOptions = {
 };
 
 // The Swagger document (require it, build it programmatically, fetch it from a URL, ...)
-var spec = fs.readFileSync(path.join(__dirname,'api/swagger.yaml'), 'utf8');
+var spec = fs.readFileSync(path.join(__dirname,'other/api/swagger.yaml'), 'utf8');
 var swaggerDoc = jsyaml.safeLoad(spec);
 
 // Add cookies to responses
@@ -72,7 +72,7 @@ swaggerTools.initializeMiddleware(swaggerDoc, function (middleware) {
         serverPort
       );
       console.log(
-        "Swagger-ui is available on http://localhost:%d/docs",
+        "Swagger-ui is available on http://localhost:%d/backend/swaggerui",
         serverPort
       );
     });

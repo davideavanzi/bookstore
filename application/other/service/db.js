@@ -1,6 +1,6 @@
 const knex = require("knex");  
 const environment = 'development'  
-const config = require('../knexfile');
+const config = require('./knexfile');
 
 let db = knex(config[environment]);
 
