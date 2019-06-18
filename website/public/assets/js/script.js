@@ -1,18 +1,14 @@
 let localURL = "http://localhost:8080/v2";
 let remoteURL = "https://hyp.avanzi.dev/v2";
 
-// se localhost:8080 è raggiungibile, allora usa quella (per noi dev) 
-// altrimenti usa l'url del server remoto
-
-// ma se l'utente ha altri servizi attivi in localhost:8080?
-
-/**
- * TODO: 
- * + show active filter in all books page
- */
-
+/* Define url to send AJAX requests to */
 let apiURL = localURL;
 
+/*
+ * getUrlParameter
+ * This function is used to fetch parameters from the url
+ * of a loaded page
+ */
 var getUrlParameter = function getUrlParameter(sParam) {
     var sPageURL = window.location.search.substring(1),
         sURLVariables = sPageURL.split('&'),
@@ -28,15 +24,26 @@ var getUrlParameter = function getUrlParameter(sParam) {
     }
 };
 
+/*
+ * successAlert
+ * Display a green dismissable alert in the specific div at the top of the page
+ */
 var successAlert = function success(title, message) {
     $('#messagebar').append('\
-        <div class="alert alert-success" role="alert">\
-            <h4 class="alert-heading">' + title + '</h4>\
-            <p>' + message + '</p>\
-        </div>\
+    <div class="alert alert-success alert-dismissible fade show" role="alert">\
+        <h4 class="alert-heading">' + title + '</h4>\
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">\
+            <span aria-hidden="true">&times;</span>\
+        </button>\
+        <p>' + message + '</p>\
+    </div>\
     ');
 }
 
+/*
+ * warningAlert
+ * Display a yellow dismissable alert in the specific div at the top of the page
+ */
 var warningAlert = function warning(title, message) {
     $('#messagebar').append('\
         <div class="alert alert-warning alert-dismissible fade show" role="alert">\
@@ -49,6 +56,10 @@ var warningAlert = function warning(title, message) {
     ');
 }
 
+/*
+ * warningAlert
+ * Display a red dismissable alert in the specific div at the top of the page
+ */
 var errorAlert = function error(title, message) {
     $('#messagebar').append('\
         <div class="alert alert-danger alert-dismissible fade show" role="alert">\
@@ -61,6 +72,10 @@ var errorAlert = function error(title, message) {
     ');
 }
 
+/*
+ *  fetchAuthorFilter
+ *  fetches authors from the api and lists them in the filter in the books page.
+ */
 var fetchAuthorFilter = function fetchAuthorFilter() {
     //fetch all authors to filter
     $.ajax({
@@ -83,6 +98,10 @@ var fetchAuthorFilter = function fetchAuthorFilter() {
     });
 }
 
+/*
+ *  fetchGenreFilter
+ *  fetches genres from the api and lists them in the filter in the books page.
+ */
 var fetchGenreFilter = function fetchGenreFilter() {
     //fetch all genres to filter
     $.ajax({
@@ -105,6 +124,10 @@ var fetchGenreFilter = function fetchGenreFilter() {
     });
 }
 
+/*
+ *  fetchThemeFilter
+ *  fetches themes from the api and lists them in the filter in the books page.
+ */
 var fetchThemeFilter = function fetchThemeFilter() {
     //fetch all themes to filter
     $.ajax({
@@ -127,6 +150,11 @@ var fetchThemeFilter = function fetchThemeFilter() {
     });
 }
 
+/*
+ * setPagination
+ * this function handles pagination for multi-page tables of elements
+ * such as: books page, authors page
+ */
 var setPagination = function setPagination(page, limit, totalElements) {
     var pagesAmount = Math.ceil(totalElements / limit);
     $('#pagination').empty();
@@ -147,8 +175,13 @@ var setPagination = function setPagination(page, limit, totalElements) {
 
 }
 
+/*
+ * getBooksTotal
+ * This function gets the amount of books present in the system,
+ * with the provided filter
+ * (used for pagination)
+ */
 var getBooksTotal = function getBooksTotal(authorId, genreId, themeId) {
-    //fetch all books, with optional filters
     return new Promise(function(resolve, reject) {
         var params = {};
         if (authorId) {
@@ -175,6 +208,12 @@ var getBooksTotal = function getBooksTotal(authorId, genreId, themeId) {
     });
 }
 
+/*
+ * getAuthorsTotal
+ * This function gets the amount of authors present in the system,
+ * with the provided filter
+ * (used for pagination)
+ */
 var getAuthorsTotal = function getAuthorsTotal() {
     //fetch all authors
     return new Promise(function(resolve, reject) {
@@ -193,6 +232,11 @@ var getAuthorsTotal = function getAuthorsTotal() {
 
 }
 
+/*
+ *  fetchAllBooks
+ *  gets all books using an AJAX query, then displays them in the books page
+ *  optionally filtered
+ */
 var fetchAllBooks = function fetchAllBooks(limit, offset, authorId, genreId, themeId) {
     //fetch all books, with optional filters
     var params = {};
@@ -247,22 +291,17 @@ var fetchAllBooks = function fetchAllBooks(limit, offset, authorId, genreId, the
     });
 }
 
+/*
+ * fetchFeaturedBooks
+ * gets the featured books from the server and displays them in the carousel
+ */
 var fetchFeaturedBooks = function fetchFeaturedBooks() {
-    //FEATURED BOOKS
     $.ajax({
         url: apiURL + '/books?limit=4',
         type: 'GET',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
-            //to empty already populated carousel:
-            /*
-            var length = $('.item').length;
-            for (var i=0; i<length; i++) {
-              $(".edit-manage-carousel").trigger('remove.owl.carousel', [i])
-                                        .trigger('refresh.owl.carousel');
-            }
-            */
-            //put all books in the carousel
+            //put the books in the carousel
             $.each(data, function(index, book) {
                 $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
@@ -283,29 +322,10 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
     });
 }
 
-var loadMenu = function loadMenu() {
-    var $menu = $('#menu_container')
-    $menu.load("menu.html", function() {
-        var $genres = $menu.find("[id=genres_menu]");
-        $.ajax({
-            url: apiURL + '/genre',
-            type: 'GET',
-            dataType: 'json',
-            success: function(data, textStatus, xhr) {
-                console.log(data);
-                $.each(data, function(index, genre) {
-                    $genres.append('\
-                    <li><a href="/assets/pages/shop.html?genreid=' + genre.id + '">' + genre.name + '</a></li>');
-                });
-            },
-            error: function(xhr, textStatus, errorThrown) {
-                console.log('Error in Operation');
-            }
-        });
-
-    });
-}
-
+/*
+ * displayCartBadge
+ * updates the badge in the menu bar with the amount of books inside the cart
+ */
 var displayCartBadge = function displayCartBadge() {
     $.ajax({
         url: apiURL + '/cart',
@@ -323,6 +343,10 @@ var displayCartBadge = function displayCartBadge() {
     });
 }
 
+/*
+ *  fetchCart
+ *  gets all books in the cart and displays them in the cart page
+ */
 var fetchCart = function fetchCart() {
     $.ajax({
         url: apiURL + '/cart',
@@ -364,6 +388,11 @@ var fetchCart = function fetchCart() {
     });
 }
 
+/*
+ *  updateTotals
+ *  After an edit on the cart (book added or removed),
+ *  this function updates the total price, including the vat
+ */
 var updateTotals = function updateTotals() {
     $.ajax({
         url: apiURL + '/cart',
@@ -383,6 +412,10 @@ var updateTotals = function updateTotals() {
     });
 }
 
+/*
+ *  removeBookFromCart
+ *  removes a book from the logged user's cart
+ */
 var removeBookFromCart = function removeBookFromCart(bookId) {
     $.ajax({
         url: apiURL + "/cart/removeBook?bookId=" + bookId,
@@ -410,6 +443,11 @@ var removeBookFromCart = function removeBookFromCart(bookId) {
     return false;
 }
 
+/*
+ *  addBookToCart
+ *  adds a book to the logged user's cart
+ * 
+ */
 var addBookToCart = function addBookToCart(bookid, amount) {
     $.ajax({
         url: apiURL + "/cart/addBook?bookId=" + bookid + "&amount=" + amount,
@@ -439,6 +477,10 @@ var addBookToCart = function addBookToCart(bookid, amount) {
     return false;
 }
 
+/*
+ *  fetchSingleBook
+ *  gets informations about a single book and puts them in the single book page
+ */
 var fetchSingleBook = function fetchSingleBook(bookid) {
     $.ajax({
         url: apiURL + '/books/' + bookid,
@@ -482,8 +524,11 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
     });
 }
 
+/*
+ * fetchAllEvents
+ * fetches all events and displays them in the events page, optionally filtered
+ */
 var fetchAllEvents = function fetchAllEvents(month, authorId, past, current, bookId) {
-    //fetch all events
     var filled = false;
     var i = 0;
     $.ajax({
@@ -633,6 +678,10 @@ var fetchAllEvents = function fetchAllEvents(month, authorId, past, current, boo
     });
 }
 
+/*
+ *  fetchSingleEvent
+ *  gets informations about a single event and puts them on the single event page
+ */
 var fetchSingleEvent = function fetchSingleEvent(eventId) {
     $.ajax({
         url: apiURL + '/event/' + eventId,
@@ -686,6 +735,10 @@ var fetchSingleEvent = function fetchSingleEvent(eventId) {
     });
 }
 
+/*
+ *  fetchInterview
+ *  gets an interview of a specific book
+ */
 var fetchInterview = function fetchInterview(id_book, authRef, authId, authCover) {
     $.ajax({
         url: apiURL + '/interview',
@@ -720,6 +773,10 @@ var fetchInterview = function fetchInterview(id_book, authRef, authId, authCover
     });
 }
 
+/*
+ *  fetchAllAuthors
+ *  fetches all authors from the server and puts them in the authros page
+ */
 var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
     //fetch all authors
     var params = {};
@@ -753,6 +810,10 @@ var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
     });
 }
 
+/*
+ *  fetchReviews
+ *  gets reviews of a single book and puts them in the single book page
+ */
 var fetchReviews = function fetchReviews(bookId) {
     //fetch all reviews of a book
     $('#book_reviews').empty();
@@ -843,6 +904,10 @@ var fetchReviews = function fetchReviews(bookId) {
     });
 }
 
+/*
+ *  fetchSingleAuthor
+ *  fetches informations about a single author and siplays them on the single author page
+ */
 var fetchSingleAuthor = function fetchSingleAuthor(authorId) {
     $.ajax({
         url: apiURL + '/author/' + authorId,
@@ -869,20 +934,17 @@ var fetchSingleAuthor = function fetchSingleAuthor(authorId) {
     });
 }
 
+/*
+ *  fetchBooksOfAuthor
+ *  gets books of a specific author and puts them in the proper carousel
+ *  inside the single author's page
+ */
 var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
     $.ajax({
         url: apiURL + '/books?authorId=' + authorId,
         type: 'GET',
         dataType: 'json',
         success: function(data, textStatus, xhr) {
-            //to empty already populated carousel:
-            /*
-            var length = $('.item').length;
-            for (var i=0; i<length; i++) {
-              $(".edit-manage-carousel").trigger('remove.owl.carousel', [i])
-                                        .trigger('refresh.owl.carousel');
-            }
-            */
             $.each(data, function(index, book) {
                 $('#featured_books').trigger('add.owl.carousel', ['\
             <div class="product">\
@@ -903,6 +965,10 @@ var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
     });
 }
 
+/*
+ *  addBookReview
+ *  posts a new review to the server to be inserted, for a specific book
+ */
 var addBookReview = function addBookReview(bookId, title, content, star) {
     var review = {};
     review.id_book = parseInt(bookId);
@@ -936,6 +1002,10 @@ var addBookReview = function addBookReview(bookId, title, content, star) {
 
 // COOKIE UTILITIES
 
+/*
+ *  setCookie
+ *  sets a cookie with its content
+ */
 function setCookie(name, value, days) {
     var expires = "";
     if (days) {
@@ -946,6 +1016,10 @@ function setCookie(name, value, days) {
     document.cookie = name + "=" + (value || "") + expires + "; path=/";
 }
 
+/*
+ *  getCookie
+ *  gets a cookie with its content
+ */
 function getCookie(name) {
     var nameEQ = name + "=";
     var ca = document.cookie.split(';');
@@ -957,6 +1031,10 @@ function getCookie(name) {
     return null;
 }
 
+/*
+ *  eraseCookie
+ *  erases a cookie
+ */
 function eraseCookie(name) {
     document.cookie = name + '=; Max-Age=-99999999;';
 }
