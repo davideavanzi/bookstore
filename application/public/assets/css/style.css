@@ -137,6 +137,7 @@ color: #c59b08;
   background-color: #bfbfbf;
   left: 50%;
   margin-left: -1.5px;
+  z-index: -2;
 }
 
 #timeline .clearFix {
@@ -158,6 +159,7 @@ color: #c59b08;
   z-index: 6;
   border-radius: 50%;
   border: 2px solid #bfbfbf;
+  z-index: -1;
 }
 
 #timeline .timeline-badge span.timeline-balloon-date-day {

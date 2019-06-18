@@ -368,11 +368,11 @@ var fetchCart = function fetchCart() {
                 <td>\
                     <div class="input-group mb-3" style="max-width: 120px;">\
                         <div class="input-group-prepend">\
-                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>\
+                            <button class="btn btn-outline-primary js-btn-minus" type="button" disabled>&minus;</button>\
                         </div>\
                         <input type="text" class="form-control text-center" value="' + book.amount + '" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">\
                         <div class="input-group-append">\
-                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>\
+                            <button class="btn btn-outline-primary js-btn-plus" type="button" disabled>&plus;</button>\
                         </div>\
                     </div>\
                 </td>\
