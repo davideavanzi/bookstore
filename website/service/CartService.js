@@ -73,7 +73,6 @@ exports.updateCart = function(cartId,body) {
  * amount Long amount of books to add
  * no response value expected for this operation
  * 
- * TODO: check user authentication. Or in the controller?
  **/
 exports.addBookToCart = function(cartId,bookId,amount) {
   return new Promise(function(resolve, reject) {
@@ -81,6 +80,9 @@ exports.addBookToCart = function(cartId,bookId,amount) {
     .then(book => {
       let availability = book[0].stock;
       //if book availability is <= 0, don't bother.
+      if (amount < 1) {
+        reject({"message":"Provide positive amount"});
+      }
       if (availability < 1) {
         reject({"message":"Book unavailable"});
       } else {

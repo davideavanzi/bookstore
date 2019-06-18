@@ -3,7 +3,6 @@
 var utils = require('../utils/writer.js');
 var Cart = require('../service/CartService');
 var User = require('./User');
-//TODO: remove useless userId
 
 module.exports.getCartById = function getCartById (req, res, next) {
   var cartId = req.session.userId;

@@ -155,7 +155,6 @@ exports.updateBook = function(bookId,body) {
  * bookId Long ID of the book to retrieve authors
  * returns List
  * 
- * TODO: delete id duplicate?
  **/
 function getAuthorsOfBookId(bookId) {
   return new Promise(function(resolve, reject) {
