@@ -24,7 +24,12 @@ exports.seed = function(knex, Promise) {
         {star: 4, date: "April 13, 2019", title: 'Promising', content: "This book was well written and engaging.This book evoked emotion.The story was beautifully written, with a consistent style and tone, and efficiency of description that didn't slow the pace.", id_book: 9, id_user: 1},
         {star: 4, date: "May 21, 2019", title: 'A good example of the genre', content: "This book was original, and well written. An excellent addition to the genre.This book had standard tropes delivered with a smooth writing style", id_book: 2, id_user: 2},
         {star: 2, date: "April 13, 2019", title: 'Unresolving', content: "Most of the time it felt like characters were just explaining things to each other for the whole book - meanwhile, not much was going on in terms of plot. Each scene lead toward a larger goal, but the ending left some questions unanswered. This book seems to be set up for a sequel, and didn't resolve the current plot.", id_book: 8, id_user: 2},
-        
+        {star: 3, date: "April 11, 2019", title: 'Unresolving', content: "Most of the time it felt like characters were just explaining things to each other for the whole book - meanwhile, not much was going on in terms of plot. Each scene lead toward a larger goal, but the ending left some questions unanswered. This book seems to be set up for a sequel, and didn't resolve the current plot.", id_book: 11, id_user: 2},
+        {star: 4, date: "June 04, 2019", title: 'Light read', content: "Take this to the beach with you or read it with the lights out at night. I enjoyed it so much I ordered another of the authors books.", id_book: 12, id_user: 2},        
+        {star: 2, date: "April 13, 2019", title: 'Unresolving', content: "Most of the time it felt like characters were just explaining things to each other for the whole book - meanwhile, not much was going on in terms of plot. Each scene lead toward a larger goal, but the ending left some questions unanswered. This book seems to be set up for a sequel, and didn't resolve the current plot.", id_book: 11, id_user: 1},
+        {star: 3, date: "March 02, 2019", title: 'Average', content: "This book was such a special read. The writing was occasionally good, with a few genuinely humourous moments and some highly quotable lines. Nothing was resolved at the ending of it. It had so much potential but ultimately let me down.", id_book: 11, id_user: 1},
+        {star: 2, date: "May 20, 2019", title: 'Not so good', content: "The characters were not in sync with the plot and took me out of the moment. There didn't seem to be a larger goal, and the conclusion was not satisfying.", id_book: 13, id_user: 2},
+
       ]);
     });
 };

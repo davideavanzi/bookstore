@@ -8,13 +8,14 @@ module.exports.addReview = function addReview (req, res, next) {
   var body = req.swagger.params['body'].value;
   var session = req.session;
   let resBody = {}
-  if (body.star > 5 || body.star < 1) {
-    resBody.message = "invalid input";
-    utils.writeJson(res, resBody, 405);
-  }
+  
   User.alreadyLoggedIn(session).then(result => {
     if(result) {
       body.id_user = session.userId;
+      if (body.star > 5 || body.star < 1) {
+        resBody.message = "invalid input";
+        utils.writeJson(res, resBody, 405);
+      }
       Review.addReview(body)
       .then(function (response) {
         response.message = "Review inserted";
