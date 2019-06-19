@@ -703,10 +703,6 @@ Final review
 
 \begin_layout Plain Layout
 20/05/2019
-\change_deleted 629914139 1560959955
--
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -805,7 +801,7 @@ USABILITY EXAM AND REPORT.pdf
 \end_layout
 
 \begin_layout Section
-Heuristic evaluation: inspection
+Usability evaluation: heuristic inspection
 \end_layout
 
 \begin_layout Subsection
@@ -887,7 +883,7 @@ C-IDM
 \end_layout
 
 \begin_layout Section
-Heuristic evaluation: empirical testing
+Usability evaluation: empirical testing
 \end_layout
 
 \begin_layout Standard
@@ -895,54 +891,327 @@ To further prove the results of our analysis, we conducted some empirical
  tests.
  We'll report in this section how we crafted and carried out the test, along
  with its results.
-\change_inserted 629914139 1560960393
-
 \end_layout
 
 \begin_layout Subsection
+Goal
+\end_layout
 
-\change_inserted 629914139 1560960670
+\begin_layout Standard
+We conducted this usability evaluation to test whether our website was easy
+ to use by the target audience we selected, with the purpose to reveal confusing
+ experiences which may reveal bugs or other issues with our application.
+\end_layout
+
+\begin_layout Subsection
 Test definition
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560961670
-The empirical test we conducted consists in a series of task that a group
+The empirical test we conducted consists in a series of tasks that a group
  of users had to complete in the website while being compliant to a set
  of rules and with the screen being recorded.
  We'll provide here a summary of the test and how it has beed defined.
 \end_layout
 
-\begin_layout Standard
+\begin_layout Subsubsection
+Audience profile
+\end_layout
 
-\change_inserted 629914139 1560960804
+\begin_layout Standard
+We decided to take as reference audience the profile of the user we think
+ will use our website the most: the college student (age 20-25), with a
+ passion for reading books and an overall knowledge of the web and online
+ shopping platforms.
+ We then recruited five different users of this kind and asked them to perform
+ our test.
+\end_layout
+
+\begin_layout Subsubsection
+Participant profiles
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float table
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Tabular
+<lyxtabular version="3" rows="6" columns="4">
+<features tabularvalignment="middle" tabularwidth="100text%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Participant #
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Age
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Gender
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" topline="true" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Education
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Male
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor Degree
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+23
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Female
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor Student
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+2
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Male
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor Degree
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+3
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Female
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor Student
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+4
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+24
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Female
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Bachelor Degree
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Participant profiles
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
 
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 629914139 1560961569
 Rules
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560961661
 These were the rules each user had to follow: failing in respecting those
  rules would have revealed great flaws in the design of the website.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960599
 You should continue to work on each task until you either complete it or
  reach the point at which you give up/wrong answer or seek assistance.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960603
 You have three attempts to complete the tasks.
  You can also have one tip from the supervisor.
  If you can't complete theme within the first three attempts, please report
@@ -950,22 +1219,16 @@ You have three attempts to complete the tasks.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960590
 You have at most 4 minutes to solve each task.
  If you can't complete them within the first four minutes, please report
  it in the evaluation form.
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 629914139 1560961016
 Tasks
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960552
 Suppose you want to buy some books, before doing so you need to be logged
  in: complete the registration procedure and create one account for yourself,
  then login.
@@ -973,57 +1236,41 @@ Suppose you want to buy some books, before doing so you need to be logged
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960558
 Suppose you want to buy a book for your friend that likes a lot Tolkien
  but already owns The Lord of The Rings.
  Find another suitable book add it to your cart.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960561
 Before buying Child of Time, suppose you want to know more about one of
  the two writers of this book (Robert Silverberg): have a look at his biography.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960564
 Suppose you want also to read about JK Rowling: reach her page and get to
  her biography.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960567
 Suppose you change your mind and you don't want to buy a book: remove it
  from your cart.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960569
 Suppose you want to partecipate to an event.
  You like a lot wizards stories.
  Find a suitable event for you and get more informations about it.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560960540
 You are finally done: perform the logout from the system.
 \end_layout
 
 \begin_layout Subsubsection
-
-\change_inserted 629914139 1560960916
 Questions
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560961530
 These are the questions we asked to the user who completed the tasks.
  Each question is defined with a linear scale answer from 1 to 10, ranging
  from 
@@ -1043,184 +1290,1955 @@ strongly agree
 \end_inset
 
 .
+ At the end of the test we collected suggestions and thoughts from the users.
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961502
-Overall, these tasks were easy
+Overall, these tasks were difficult
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961353
-The language of the tasks you were given was easily understood [strongly
- disagree - strongly agree]
+The language of the tasks you were given was easily understood 
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961357
 The content (including images) was easy to understand
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961361
 The pages of the website were fast to load (in average)
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961365
 The texts in the website pages were useful to complete your tasks
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961370
 The text in the website pages were relevant about the topics dealt with
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961374
 I could quickly get to know the structure of the site
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961378
 The organization of the site was clear
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961387
 Under each section the site was well organized
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961391
 It was easy to find the information that I needed
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961408
 I got what I expected when I clicked on things on this website
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961413
 The site helped me to find what I am lookong for
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961419
 Using this website was effortless
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961423
 Using this website made me feel tired
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961427
 The layout of the pages was consistent
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961436
 The colours helped me to distinguish different sections or actions
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961440
 The highlighted areas helped me to find what I was looking for
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961447
 I think that I would like to use this website frequently
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961450
 I found this website unnecessarily complex
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961456
 I thought this website was easy to use
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961462
 I think that I would need assistance to be able to use this website
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961466
 I found the various functions in this website were well integrated
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961472
 I thought there was too much inconsistency in this website's designs, layouts
  or architecture (pretty much anything that bothers you consistency wise)
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961477
 I would imagine that most people would learn to use this website very quickly
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961480
 I found this website very cumbersome/awkward to use
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961488
 I felt very confident using this website
 \end_layout
 
 \begin_layout Enumerate
-
-\change_inserted 629914139 1560961543
 I needed to learn a lot of things before Ic ould get going with this website
 \end_layout
 
-\begin_layout Subsection
-
-\change_inserted 629914139 1560961846
-Test results
-\change_deleted 629914139 1560961561
-
+\begin_layout Standard
 \begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Test results
+\end_layout
+
+\begin_layout Standard
+The test results were overall satisfying, all users were able to complete
+ the tasks while being compliant with the rules.
+ We recorded the test sessions and uploaded to a cloud folder, here is the
+ link:
+\end_layout
+
+\begin_layout Subsubsection
+Answers averages
+\end_layout
+
+\begin_layout Standard
+Here we provide two graps with the average scores, by user and by question.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/means_user.png
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Average score given by each user
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/means_questions.png
+	width 70text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Average answers for each question
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsubsection
+Answers breakdown
+\end_layout
+
+\begin_layout Standard
+Here we provide a breakdown of the answers for each question.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/1.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560965274
+Figure #1
+\change_inserted 629914139 1560965276
+Question 1
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/2.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560965280
+Figure #2
+\change_inserted 629914139 1560965281
+Question 2
+\change_unchanged
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\change_inserted 629914139 1560965250
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965256
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965250
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965250
+\begin_inset Graphics
+	filename img/3.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965250
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965291
+Question 3
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965250
+\begin_inset Graphics
+	filename img/4.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965250
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965299
+Question 4
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965256
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965256
+\begin_inset Graphics
+	filename img/5.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965311
+Question 5
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965256
+\begin_inset Graphics
+	filename img/6.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965321
+Question 6
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965257
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965256
+\begin_inset Graphics
+	filename img/7.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965339
+Question 7
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965256
+\begin_inset Graphics
+	filename img/8.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965256
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965349
+Question 8
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965257
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965257
+\begin_inset Graphics
+	filename img/9.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965378
+Question 9
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965257
+\begin_inset Graphics
+	filename img/10.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965382
+Question 10
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965257
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965257
+\begin_inset Graphics
+	filename img/11.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965390
+Question 11
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965257
+\begin_inset Graphics
+	filename img/12.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965257
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965401
+Question 12
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965258
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965258
+\begin_inset Graphics
+	filename img/13.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965413
+Question 13
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965258
+\begin_inset Graphics
+	filename img/14.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965422
+Question 14
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965258
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965258
+\begin_inset Graphics
+	filename img/15.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965435
+Question 15
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965258
+\begin_inset Graphics
+	filename img/16.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965258
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965445
+Question 16
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965259
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965259
+\begin_inset Graphics
+	filename img/17.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965450
+Question 17
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965259
+\begin_inset Graphics
+	filename img/18.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965464
+Question 18
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965259
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965259
+\begin_inset Graphics
+	filename img/19.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965477
+Question 19
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965259
+\begin_inset Graphics
+	filename img/20.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965259
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965488
+Question 20
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965260
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965260
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965260
+\begin_inset Graphics
+	filename img/21.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965260
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965499
+Question 21
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965260
+\begin_inset Graphics
+	filename img/22.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965260
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965506
+Question 22
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965265
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965265
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965265
+\begin_inset Graphics
+	filename img/23.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965265
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965517
+Question 23
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965265
+\begin_inset Graphics
+	filename img/24.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965265
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965528
+Question 24
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965268
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965266
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965266
+\begin_inset Graphics
+	filename img/25.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965266
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965540
+Question 25
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965266
+\begin_inset Graphics
+	filename img/26.png
+	width 100col%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965266
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965549
+Question 26
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560965268
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965268
+\begin_inset Box Frameless
+position "c"
+hor_pos "c"
+has_inner_box 1
+inner_pos "t"
+use_parbox 0
+use_makebox 0
+width "45text%"
+special "none"
+height "1pt"
+height_special "totalheight"
+thickness "0.4pt"
+separation "3pt"
+shadowsize "4pt"
+framecolor "black"
+backgroundcolor "none"
+status open
+
+\begin_layout Plain Layout
+\align center
+
+\change_inserted 629914139 1560965268
+\begin_inset Graphics
+	filename img/27.png
+	width 100text%
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965268
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560965566
+Question 27
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\begin_inset space \hfill{}
+\end_inset
+
+
+\end_layout
+
 \end_inset
 
 
 \change_unchanged
 
+\end_layout
+
+\begin_layout Subsubsection
+Suggestions from the users
+\end_layout
+
+\begin_layout Standard
+These suggestions highlight some issues in the navigation flow that we didn't
+ realize by ourselves: 
+\end_layout
+
+\begin_layout Enumerate
+Even though I like the fact there are no useless colours I have to say that
+ some more would be useful, in particular to distinguish some areas on the
+ screen (for example when you click on "books" the work should remain red
+ to allow you to recognise more easily where you are).
+ Second, the text is too small compared to the images.
+ (See "stock", the description of the book and also the description of the
+ event which was far too small).
+ The images drive away too much attention.
+ 
+\end_layout
+
+\begin_layout Enumerate
+Add a drop menu under the icon of the person which contains my account (if
+ you're not logged in you would be redirected to the login page) and register.
+ 
+\end_layout
+
+\begin_layout Enumerate
+The search of the event was not so intuitive.
+ You may add a section which summarises the topics (e.g.
+ wizards, fantasy, science etc.).
+ When I click on the topic all the relative events open up.
+ Easier for the user, less time consuming and dispersive.
+\end_layout
+
+\begin_layout Enumerate
+In some areas (e.g.
+ event) the font size of the text was too small
+\end_layout
+
+\begin_layout Subsubsection
+Positive comments
+\end_layout
+
+\begin_layout Enumerate
+There are not too much colors, this allows the user to have a clear view
+ on the website.
+ 
+\end_layout
+
+\begin_layout Enumerate
+It's simple, clear and without too much useless stuff around.
+ It's user friendly.
+ Nothing is terribly difficult.
+ I think everyone will be able to use it easily.
+ I used it on a PC, don't know about the Smartphone version.
+ 
+\end_layout
+
+\begin_layout Enumerate
+I really like that every button/clickable link was in red color, this help
+ me to better use the website
+\end_layout
+
+\begin_layout Subsubsection
+Bugs and issues
+\end_layout
+
+\begin_layout Standard
+The results were very helpful in finding issues in the design of our website,
+ and we are grateful to the users who took part in the test.
+ We also discovered an issue with the overall website: the pages were not
+ loading very fast for most of our users: after analyzing the problem, we
+ found out a speed limit with our custom installation of the server (cloud
+ VPS).
+ We didn't discover this issue before because the developement environment
+ was kept local in our machines.
 \end_layout
 
 \end_body
