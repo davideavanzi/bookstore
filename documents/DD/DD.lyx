@@ -296,7 +296,7 @@ center
 \backslash
 includegraphics[width=0.8
 \backslash
-textwidth]{img/polimilogo1.png}
+textwidth]{../DD/img/polimilogo1.png}
 \backslash
 
 \backslash
@@ -313,7 +313,7 @@ Large Hypermedia Application:}
 \backslash
 
 \backslash
-[0.5cm]
+[0.3cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -326,7 +326,20 @@ Large Web and Multimedia}
 \backslash
 
 \backslash
-[1cm]
+[0.8cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+textwidth]{../Bookstore_LOGO.png}
+\backslash
+
+\backslash
+[0.05cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -484,7 +497,7 @@ end{minipage}
 \backslash
 
 \backslash
-[3cm]
+[2cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -701,7 +714,7 @@ Final review
 \begin_inset Text
 
 \begin_layout Plain Layout
-04/03/2019-
+04/03/2019
 \end_layout
 
 \end_inset
@@ -719,7 +732,7 @@ Davide Avanzi, Francesca Bernecich, Fabrizio Carsenzuola
 \begin_inset Text
 
 \begin_layout Plain Layout
-Initial release
+Living document
 \end_layout
 
 \end_inset

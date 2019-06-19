@@ -328,6 +328,25 @@ Large Web and Multimedia}
 
 \backslash
 [1cm]
+\change_inserted 629914139 1560980042
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560980059
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+textwidth]{../Bookstore_LOGO.png}
+\backslash
+
+\backslash
+[0.05cm]
+\change_unchanged
+
 \end_layout
 
 \begin_layout Plain Layout
@@ -809,28 +828,195 @@ Inspection
 \end_layout
 
 \begin_layout Standard
+We performed an inspection on the main pages of our website using the following
+ heuristics:
+\end_layout
+
+\begin_layout Itemize
+Interaction consistency
+\end_layout
+
+\begin_layout Itemize
+Group navigation
+\end_layout
+
+\begin_layout Itemize
+Structural navigation
+\end_layout
+
+\begin_layout Itemize
+Landmarks
+\end_layout
+
+\begin_layout Itemize
+Information overload
+\end_layout
+
+\begin_layout Itemize
+Text layout
+\end_layout
+
+\begin_layout Itemize
+Interaction placeholder
+\end_layout
+
+\begin_layout Itemize
+Spatial allocation
+\end_layout
+
+\begin_layout Itemize
+Consistency of page
+\end_layout
+
+\begin_layout Standard
+After analyzing the wbsite, we assigned a score for each heuristic for every
+ page.
+ We also added some comments reporting our thoughts on the scores.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status open
+status collapsed
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename img/diagrams/C-IDM.svg
-	width 70text%
-	rotateAngle 90
+	filename Heuristic/Analisi euristica.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for books page
+\end_layout
 
 \end_inset
 
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica2.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-C-IDM
+Heuristic scores for single book
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica3.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for events page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica4.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for login/register page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica7.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for the general website
 \end_layout
 
 \end_inset
@@ -848,28 +1034,28 @@ Results
 \end_layout
 
 \begin_layout Standard
+Here are the results of our heuristic analysis for each page examined, followed
+ by an average of them.
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-\align center
 \begin_inset Graphics
-	filename img/diagrams/L-IDM.svg
-	width 80text%
-	rotateAngle 90
+	filename Heuristic/radars1.png
+	height 95theight%
 
 \end_inset
 
 
-\end_layout
-
-\begin_layout Plain Layout
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-C-IDM
+Heuristics for events and login/registration pages 
 \end_layout
 
 \end_inset
@@ -877,6 +1063,126 @@ C-IDM
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/radars2.png
+	height 95theight%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristics average 
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/radars3.png
+	height 95theight%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Averages for heuristics
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/radarfin.png
+	width 90text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Final result
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This graph shows the final result of the heuristic inspection on our website.
+ we can clearly see the strenghts and weaknesses of our design:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Strenghts: the structural navigation is well defined as well as the landmarks,
+ which got a high score.
+ Pages were overall consistent without too much information overload.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Weaknesses: the website lacks of semantic and group navigation, the spatial
+ allocation is not exploited at its best.
+\end_layout
+
+\begin_layout Standard
+This analysis represent a good starting point for a future redesign of the
+ user interface, giving some hints of possible improvements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 
@@ -1544,13 +1850,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_deleted 629914139 1560965274
-Figure #1
-\change_inserted 629914139 1560965276
 Question 1
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1598,13 +1898,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_deleted 629914139 1560965280
-Figure #2
-\change_inserted 629914139 1560965281
 Question 2
-\change_unchanged
-
 \end_layout
 
 \end_inset
@@ -1619,22 +1913,16 @@ Question 2
 
 \end_inset
 
-
-\change_inserted 629914139 1560965250
 
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965256
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965250
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -1655,8 +1943,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965250
 \begin_inset Graphics
 	filename img/3.png
 	width 100text%
@@ -1667,13 +1953,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965250
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965291
 Question 3
 \end_layout
 
@@ -1709,8 +1991,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965250
 \begin_inset Graphics
 	filename img/4.png
 	width 100col%
@@ -1721,13 +2001,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965250
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965299
 Question 4
 \end_layout
 
@@ -1747,16 +2023,12 @@ Question 4
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965256
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -1777,8 +2049,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965256
 \begin_inset Graphics
 	filename img/5.png
 	width 100text%
@@ -1789,13 +2059,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965311
 Question 5
 \end_layout
 
@@ -1831,8 +2097,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965256
 \begin_inset Graphics
 	filename img/6.png
 	width 100col%
@@ -1843,13 +2107,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965321
 Question 6
 \end_layout
 
@@ -1869,16 +2129,12 @@ Question 6
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965257
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -1899,8 +2155,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965256
 \begin_inset Graphics
 	filename img/7.png
 	width 100text%
@@ -1911,13 +2165,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965339
 Question 7
 \end_layout
 
@@ -1953,8 +2203,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965256
 \begin_inset Graphics
 	filename img/8.png
 	width 100col%
@@ -1965,13 +2213,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965256
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965349
 Question 8
 \end_layout
 
@@ -1991,16 +2235,12 @@ Question 8
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965257
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2021,8 +2261,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965257
 \begin_inset Graphics
 	filename img/9.png
 	width 100text%
@@ -2033,13 +2271,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965378
 Question 9
 \end_layout
 
@@ -2075,8 +2309,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965257
 \begin_inset Graphics
 	filename img/10.png
 	width 100col%
@@ -2087,13 +2319,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965382
 Question 10
 \end_layout
 
@@ -2113,16 +2341,12 @@ Question 10
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965257
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2143,8 +2367,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965257
 \begin_inset Graphics
 	filename img/11.png
 	width 100text%
@@ -2155,13 +2377,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965390
 Question 11
 \end_layout
 
@@ -2197,8 +2415,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965257
 \begin_inset Graphics
 	filename img/12.png
 	width 100col%
@@ -2209,13 +2425,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965257
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965401
 Question 12
 \end_layout
 
@@ -2235,16 +2447,12 @@ Question 12
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965258
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2265,8 +2473,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965258
 \begin_inset Graphics
 	filename img/13.png
 	width 100text%
@@ -2277,13 +2483,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965413
 Question 13
 \end_layout
 
@@ -2319,8 +2521,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965258
 \begin_inset Graphics
 	filename img/14.png
 	width 100col%
@@ -2331,13 +2531,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965422
 Question 14
 \end_layout
 
@@ -2357,16 +2553,12 @@ Question 14
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965258
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2387,8 +2579,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965258
 \begin_inset Graphics
 	filename img/15.png
 	width 100text%
@@ -2399,13 +2589,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965435
 Question 15
 \end_layout
 
@@ -2441,8 +2627,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965258
 \begin_inset Graphics
 	filename img/16.png
 	width 100col%
@@ -2453,13 +2637,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965258
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965445
 Question 16
 \end_layout
 
@@ -2479,16 +2659,12 @@ Question 16
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965259
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2509,8 +2685,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965259
 \begin_inset Graphics
 	filename img/17.png
 	width 100text%
@@ -2521,13 +2695,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965450
 Question 17
 \end_layout
 
@@ -2563,8 +2733,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965259
 \begin_inset Graphics
 	filename img/18.png
 	width 100col%
@@ -2575,13 +2743,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965464
 Question 18
 \end_layout
 
@@ -2601,16 +2765,12 @@ Question 18
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965259
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2631,8 +2791,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965259
 \begin_inset Graphics
 	filename img/19.png
 	width 100text%
@@ -2643,13 +2801,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965477
 Question 19
 \end_layout
 
@@ -2685,8 +2839,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965259
 \begin_inset Graphics
 	filename img/20.png
 	width 100col%
@@ -2697,13 +2849,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965259
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965488
 Question 20
 \end_layout
 
@@ -2723,16 +2871,12 @@ Question 20
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965260
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965260
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2753,8 +2897,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965260
 \begin_inset Graphics
 	filename img/21.png
 	width 100text%
@@ -2765,13 +2907,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965260
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965499
 Question 21
 \end_layout
 
@@ -2807,8 +2945,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965260
 \begin_inset Graphics
 	filename img/22.png
 	width 100col%
@@ -2819,13 +2955,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965260
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965506
 Question 22
 \end_layout
 
@@ -2845,16 +2977,12 @@ Question 22
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965265
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965265
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2875,8 +3003,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965265
 \begin_inset Graphics
 	filename img/23.png
 	width 100text%
@@ -2887,13 +3013,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965265
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965517
 Question 23
 \end_layout
 
@@ -2929,8 +3051,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965265
 \begin_inset Graphics
 	filename img/24.png
 	width 100col%
@@ -2941,13 +3061,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965265
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965528
 Question 24
 \end_layout
 
@@ -2967,16 +3083,12 @@ Question 24
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965268
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965266
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -2997,8 +3109,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965266
 \begin_inset Graphics
 	filename img/25.png
 	width 100text%
@@ -3009,13 +3119,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965266
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965540
 Question 25
 \end_layout
 
@@ -3051,8 +3157,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965266
 \begin_inset Graphics
 	filename img/26.png
 	width 100col%
@@ -3063,13 +3167,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965266
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965549
 Question 26
 \end_layout
 
@@ -3089,16 +3189,12 @@ Question 26
 \end_layout
 
 \begin_layout Standard
-
-\change_inserted 629914139 1560965268
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965268
 \begin_inset Box Frameless
 position "c"
 hor_pos "c"
@@ -3119,8 +3215,6 @@ status open
 
 \begin_layout Plain Layout
 \align center
-
-\change_inserted 629914139 1560965268
 \begin_inset Graphics
 	filename img/27.png
 	width 100text%
@@ -3131,13 +3225,9 @@ status open
 \end_layout
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965268
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-
-\change_inserted 629914139 1560965566
 Question 27
 \end_layout
 
@@ -3158,7 +3248,12 @@ Question 27
 \end_inset
 
 
-\change_unchanged
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
 
 \end_layout
 
@@ -3239,6 +3334,19 @@ The results were very helpful in finding issues in the design of our website,
  VPS).
  We didn't discover this issue before because the developement environment
  was kept local in our machines.
+\end_layout
+
+\begin_layout Section
+Conclusions
+\end_layout
+
+\begin_layout Standard
+We are overall satisfied with the results of both the heuristic inspection
+ and the empirical test we conducted, the flaws reavealed from this usability
+ evaluation are valid and represent friction points preventing the user
+ from having a smooth experience while using our website.
+ We are also pleased by the strenghts of our design and simple navigation
+ process to reach all the informations an user may need.
 \end_layout
 
 \end_body

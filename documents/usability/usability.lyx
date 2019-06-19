@@ -313,7 +313,7 @@ Large Hypermedia Application:}
 \backslash
 
 \backslash
-[0.5cm]
+[0.3cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -326,7 +326,20 @@ Large Web and Multimedia}
 \backslash
 
 \backslash
-[1cm]
+[0.8cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+textwidth]{../Bookstore_LOGO.png}
+\backslash
+
+\backslash
+[0.05cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -484,7 +497,7 @@ end{minipage}
 \backslash
 
 \backslash
-[3cm]
+[2cm]
 \end_layout
 
 \begin_layout Plain Layout
@@ -808,16 +821,195 @@ Inspection
 \end_layout
 
 \begin_layout Standard
+We performed an inspection on the main pages of our website using the following
+ heuristics:
+\end_layout
+
+\begin_layout Itemize
+Interaction consistency
+\end_layout
+
+\begin_layout Itemize
+Group navigation
+\end_layout
+
+\begin_layout Itemize
+Structural navigation
+\end_layout
+
+\begin_layout Itemize
+Landmarks
+\end_layout
+
+\begin_layout Itemize
+Information overload
+\end_layout
+
+\begin_layout Itemize
+Text layout
+\end_layout
+
+\begin_layout Itemize
+Interaction placeholder
+\end_layout
+
+\begin_layout Itemize
+Spatial allocation
+\end_layout
+
+\begin_layout Itemize
+Consistency of page
+\end_layout
+
+\begin_layout Standard
+After analyzing the wbsite, we assigned a score for each heuristic for every
+ page.
+ We also added some comments reporting our thoughts on the scores.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status collapsed
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for books page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
 status open
 
 \begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica2.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-C-IDM
+Heuristic scores for single book
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica3.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for events page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica4.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for login/register page
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/Analisi euristica7.png
+	width 80text%
+	rotateAngle 180
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Heuristic scores for the general website
 \end_layout
 
 \end_inset
@@ -836,18 +1028,19 @@ Results
 
 \begin_layout Standard
 Here are the results of our heuristic analysis for each page examined, followed
- by an average of them all.
+ by an average of them.
 \end_layout
 
 \begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Heuristic/Analisi euristica _tabelle+radar5.png
+	filename Heuristic/radars1.png
+	height 95theight%
 
 \end_inset
 
@@ -855,7 +1048,7 @@ status collapsed
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Heuristics for books and single book pages 
+Heuristics for events and login/registration pages 
 \end_layout
 
 \end_inset
@@ -876,38 +1069,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Heuristic/Analisi euristica _tabelle+radar6.png
-	width 100text%
-
-\end_inset
-
-
-\begin_inset Caption Standard
-
-\begin_layout Plain Layout
-Heuristics for single book and login/registration pages 
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\end_inset
-
-
-\end_layout
-
-\begin_layout Standard
-\begin_inset Float figure
-wide false
-sideways false
-status open
-
-\begin_layout Plain Layout
-\begin_inset Graphics
-	filename Heuristic/Analisi euristica _tabelle+radar8.png
-	width 100text%
+	filename Heuristic/radars2.png
+	height 95theight%
 
 \end_inset
 
@@ -936,7 +1099,8 @@ status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
-	filename Heuristic/Analisi euristica _tabelle+radar9.png
+	filename Heuristic/radars3.png
+	height 95theight%
 
 \end_inset
 
@@ -944,7 +1108,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Heuristics for books and single book pages 
+Averages for heuristics
 \end_layout
 
 \end_inset
@@ -952,6 +1116,66 @@ Heuristics for books and single book pages
 
 \end_layout
 
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\begin_inset Graphics
+	filename Heuristic/radarfin.png
+	width 90text%
+
+\end_inset
+
+
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+Final result
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Standard
+This graph shows the final result of the heuristic inspection on our website.
+ we can clearly see the strenghts and weaknesses of our design:
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Strenghts: the structural navigation is well defined as well as the landmarks,
+ which got a high score.
+ Pages were overall consistent without too much information overload.
+\end_layout
+
+\begin_layout Labeling
+\labelwidthstring 00.00.0000
+Weaknesses: the website lacks of semantic and group navigation, the spatial
+ allocation is not exploited at its best.
+\end_layout
+
+\begin_layout Standard
+This analysis represent a good starting point for a future redesign of the
+ user interface, giving some hints of possible improvements.
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
 \end_inset
 
 

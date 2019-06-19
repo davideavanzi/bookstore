@@ -262,12 +262,16 @@ status open
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 begin{titlepage}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -282,6 +286,8 @@ linewidth}{0.5mm}}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 center
@@ -289,15 +295,19 @@ center
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
 includegraphics[width=0.8
 \backslash
-textwidth]{img/polimilogo1.png}
+textwidth]{../DD/img/polimilogo1.png}
 \backslash
 
 \backslash
@@ -305,6 +315,8 @@ textwidth]{img/polimilogo1.png}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -314,10 +326,12 @@ Large Hypermedia Application:}
 \backslash
 
 \backslash
-[0.5cm]
+[0.3cm]
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -327,10 +341,27 @@ Large Web and Multimedia}
 \backslash
 
 \backslash
-[1cm]
+[0.8cm]
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
+
+
+\backslash
+includegraphics[width=0.6
+\backslash
+textwidth]{../Bookstore_LOGO.png}
+\backslash
+
+\backslash
+[0.05cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -345,9 +376,13 @@ LARGE Bookstore Project}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980432
 
 
 \backslash
@@ -374,6 +409,8 @@ HRule
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 begin{minipage}{0.4
@@ -382,6 +419,8 @@ textwidth}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -398,6 +437,8 @@ emph{Authors:}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 Davide 
 \backslash
 textsc{Avanzi}: davide1.avanzi@mail.polimi.it 
@@ -406,6 +447,8 @@ newline
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 Francesca 
 \backslash
@@ -416,6 +459,8 @@ newline
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 Fabrizio 
 \backslash
 textsc{Carsenzuola}: fabrizio.carsenzuola@mail.polimi.it  
@@ -423,9 +468,13 @@ textsc{Carsenzuola}: fabrizio.carsenzuola@mail.polimi.it
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -434,6 +483,8 @@ end{flushleft}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 end{minipage} 
@@ -441,10 +492,14 @@ end{minipage}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 ~ 
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -459,6 +514,8 @@ large
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 emph{Supervisor:} 
@@ -472,6 +529,8 @@ textsc{Garzotto}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 end{flushright} 
@@ -479,24 +538,32 @@ end{flushright}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 end{minipage}
 \backslash
 
 \backslash
-[3cm]
+[2cm]
 \end_layout
 
 \begin_layout Plain Layout
 
-\end_layout
-
-\begin_layout Plain Layout
+\change_inserted 629914139 1560980417
 
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -505,12 +572,16 @@ vfill
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 pagenumbering{gobble}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 {
 \backslash
@@ -525,6 +596,8 @@ today}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 end{titlepage}
@@ -532,12 +605,16 @@ end{titlepage}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 newpage{}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -550,12 +627,16 @@ newpage
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 newpage{}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -566,12 +647,16 @@ thispagestyle{empty}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 newpage{}
 \end_layout
 
 \begin_layout Plain Layout
+
+\change_inserted 629914139 1560980417
 
 
 \backslash
@@ -580,9 +665,405 @@ setcounter{page}{1}
 
 \begin_layout Plain Layout
 
+\change_inserted 629914139 1560980417
+
 
 \backslash
 pagenumbering{arabic}
+\change_deleted 629914139 1560980416
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+newcommand{
+\backslash
+HRule}{
+\backslash
+rule{
+\backslash
+linewidth}{0.5mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+center
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+textwidth]{img/polimilogo1.png}
+\backslash
+
+\backslash
+[0.05cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+textsc{
+\backslash
+Large Hypermedia Application:}
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+textsc{
+\backslash
+Large Web and Multimedia}
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+textsc{
+\backslash
+LARGE Bookstore Project}
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[0.4cm] { 
+\backslash
+huge 
+\backslash
+bfseries Design Document}
+\backslash
+
+\backslash
+[0.4cm] 
+\backslash
+HRule 
+\backslash
+
+\backslash
+[1.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+begin{flushleft} 
+\backslash
+large 
+\backslash
+emph{Authors:}
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+Davide 
+\backslash
+textsc{Avanzi}: davide1.avanzi@mail.polimi.it 
+\backslash
+newline 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+Francesca 
+\backslash
+textsc{Bernecich}: francesca.bernecich@mail.polimi.it 
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+Fabrizio 
+\backslash
+textsc{Carsenzuola}: fabrizio.carsenzuola@mail.polimi.it  
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+end{flushleft} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+end{minipage} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+~ 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushright} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+emph{Supervisor:} 
+\backslash
+
+\backslash
+ Franca 
+\backslash
+textsc{Garzotto} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+end{flushright} 
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+end{minipage}
+\backslash
+
+\backslash
+[3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+vfill
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+pagenumbering{gobble}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+{
+\backslash
+large 
+\backslash
+today}
+\backslash
+
+\backslash
+[3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+mbox{} 
+\backslash
+thispagestyle{empty} 
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+tableofcontents{}
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+\change_deleted 629914139 1560980416
+
+
+\backslash
+pagenumbering{arabic}
+\change_unchanged
+
 \end_layout
 
 \end_inset
@@ -2304,13 +2785,7 @@ Navigation Map
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 629914139 1560958462
-Low fidelity w
-\change_deleted 629914139 1560958462
-W
-\change_unchanged
-ireframes
+Low fidelity wireframes
 \end_layout
 
 \begin_layout Subsubsection
@@ -2318,14 +2793,8 @@ All-in-one
 \end_layout
 
 \begin_layout Standard
-
-\change_deleted 629914139 1560958381
-This
-\change_inserted 629914139 1560958383
-the following
-\change_unchanged
- wireframe shows the complete structure of our website, highliting the user
- navigation between pages.
+the following wireframe shows the complete structure of our website, highliting
+ the user navigation between pages.
 \end_layout
 
 \begin_layout Standard
@@ -2350,11 +2819,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Wireframe
-\change_inserted 629914139 1560958370
- of the
-\change_unchanged
- whole website
+Wireframe of the whole website
 \end_layout
 
 \end_inset
@@ -2743,8 +3208,6 @@ About/Shipping info page wireframe
 \end_layout
 
 \begin_layout Subsection
-
-\change_inserted 629914139 1560958432
 High fidelity wireframes
 \end_layout
 
