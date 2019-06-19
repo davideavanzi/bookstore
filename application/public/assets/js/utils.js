@@ -1,3 +1,8 @@
+/*
+ * Free template JS for search bar, mobile menu and carousel slider
+ * The main JS for the project is in script.js
+ */
+ 
  AOS.init({
  	duration: 800,
  	easing: 'slide',
@@ -42,9 +47,9 @@ jQuery(document).ready(function($) {
 
 		$('<div class="site-mobile-menu"></div>').prependTo('.site-wrap');
 
-		$('<div class="site-mobile-menu-header"></div>').prependTo('.site-mobile-menu');
-		$('<div class="site-mobile-menu-close "></div>').prependTo('.site-mobile-menu-header');
-		$('<div class="site-mobile-menu-logo"></div>').prependTo('.site-mobile-menu-header');
+		$('<div class="site-mobile-menu-header" aria-label="menu"></div>').prependTo('.site-mobile-menu');
+		$('<div class="site-mobile-menu-close " aria-label="close menu"></div>').prependTo('.site-mobile-menu-header');
+		$('<div class="site-mobile-menu-logo" aria-label="home"></div>').prependTo('.site-mobile-menu-header');
 
 		$('<div class="site-mobile-menu-body"></div>').appendTo('.site-mobile-menu');
 
@@ -52,7 +57,7 @@ jQuery(document).ready(function($) {
 
 		$('.js-logo-clone').clone().appendTo('.site-mobile-menu-logo');
 
-		$('<span class="js-menu-toggle"><font color="red">×</font></div>').prependTo('.site-mobile-menu-close');
+		$('<span class="js-menu-toggle"><font color="red" aria-label="close menu">×</font></div>').prependTo('.site-mobile-menu-close');
 
 		$('.js-clone-nav').each(function() {
 			var $this = $(this);
@@ -214,5 +219,10 @@ jQuery(document).ready(function($) {
 		})
 	};
 	searchShow();
-
 });
+
+// XSS FILTER FUNCTION
+
+var XSSsanitize = function XSSsanitize(input) {
+	return input.replace(/<(|\/|[^>\/bi]|\/[^>bi]|[^\/>][^>]+|\/[^>][^>]+)>/g, '');
+};

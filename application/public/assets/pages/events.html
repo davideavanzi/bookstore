@@ -45,10 +45,10 @@
                             </nav>
                         </div>
                         <div class="icons">
-                            <a href="#" title="search" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                            <a title="user" href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
+                            <a href="#" title="search" aria-label="search bar" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                            <a title="user" aria-label="user page" href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
                             </a>
-                            <a title="cart" href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
+                            <a title="cart" aria-label="shopping cart" href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
                                 <span class="icon-shopping-bag"></span>
                             </a>
                             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
@@ -94,15 +94,11 @@
                             </div>
                         </div>
                         <div class="col-lg-3 order-1 order-lg-2 mb-5 mb-lg-0">
-                            <div class="border p-4 mb-4">
-                                <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html?current=1">This Month</a></h3>
-                            </div>
-                            <div class="border p-4 mb-4">
-                                <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html">All Events</a></h3>
-                            </div>
-                            <div class="border p-4 mb-4">
-                                <h3 class="mb-3 h6 text-uppercase text-black d-block"><a href="events.html?past=1">Past events</a></h3>
-                            </div>
+                            <button type="button" class="btn btn-outline-primary btn-block" onclick="window.location='events.html?current=1'">This Month</button>
+                            <button type="button" class="btn btn-outline-primary btn-block" onclick="window.location='events.html'">All Events</button>
+                            <button type="button" class="btn btn-outline-primary btn-block" onclick="window.location='events.html?past=1'">Past events</button>
+                            <br>
+                            <h2 class="text-black h5">Quick filters</h2>
                             <div class="border p-4 mb-4">
                                 <a data-toggle="collapse" href="#collapseMonths" role="button" aria-expanded="false" aria-controls="collapseMonths">
                                 Months
@@ -194,7 +190,7 @@
         <script src="/assets/js/owl.carousel.min.js"></script>
         <script src="/assets/js/jquery.magnific-popup.min.js"></script>
         <script src="/assets/js/aos.js"></script>
-        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/utils.js"></script>
         <script src="/assets/js/script.js"></script>
         <script type="text/javascript">
             $(document).ready(function() {
@@ -207,9 +203,6 @@
                     displayCartBadge();
                 }
             });
-        </script>
-        <script>
-            $("#menu_container").load("/assets/pages/menu.html");
         </script>
         <script>
             $("footer").load("/assets/pages/footer.html");

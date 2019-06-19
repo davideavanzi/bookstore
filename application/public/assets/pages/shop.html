@@ -45,10 +45,10 @@
                             </nav>
                         </div>
                         <div class="icons">
-                            <a href="#" title="search" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
-                            <a title="user" href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
+                            <a href="#" title="search" aria-label="search bar" class="icons-btn d-inline-block js-search-open"><span class="icon-search"></span></a>
+                            <a title="user" aria-label="user page" href="/assets/pages/register.html" class="icons-btn d-inline-block dropdown"> <span class="icon-user"> </span>
                             </a>
-                            <a title="cart" href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
+                            <a title="cart" aria-label="shopping cart" href="/assets/pages/cart.html" class="icons-btn d-inline-block bag" id="cartIcon">
                                 <span class="icon-shopping-bag"></span>
                             </a>
                             <a href="#" class="site-menu-toggle js-menu-toggle ml-3 d-inline-block d-lg-none"><span class="icon-menu"></span></a>
@@ -84,24 +84,10 @@
                             <div class="row align">
                                 <div class="col-md-12 mb-5">
                                     <div class="float-md-left">
-                                        <h2 class="text-black h5">Shop All</h2>
+                                        <h2 class="text-black h5">Shop All<span id="filterLbl"></span></h2>
                                     </div>
                                     <div class="d-flex">
-                                        <div class="dropdown mr-1 ml-md-auto">
-                                            <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            Latest
-                                            </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                                <a class="dropdown-item" href="#">Fantasy</a>
-                                                <a class="dropdown-item" href="#">Sci-fi</a>
-                                                <a class="dropdown-item" href="#">Western</a>
-                                                <a class="dropdown-item" href="#">Romance</a>
-                                                <a class="dropdown-item" href="#">Thriller</a>
-                                                <a class="dropdown-item" href="#">Mistery</a>
-                                                <a class="dropdown-item" href="#">Detective story</a>
-                                            </div>
-                                        </div>
-                                        <div class="btn-group">
+                                        <div class="btn-group  mr-1 ml-md-auto">
                                             <button type="button" class="btn btn-white btn-sm dropdown-toggle px-4" id="dropdownMenuReference" data-toggle="dropdown">Reference</button>
                                             <div class="dropdown-menu" aria-labelledby="dropdownMenuReference">
                                                 <a class="dropdown-item" href="#">Relevance</a>
@@ -119,8 +105,9 @@
                                 <div class="products-wrap border-top-0">
                                     <div class="container-fluid" id="books-list">
                                         <ul class="row no-gutters products list" id="main_books">    
-                                            <h3>No books found</h3>
+                                            <li class="col-12"><h3>No books found</h3>
                                             <strong>Try looking for something else!</strong>
+                                        </li>
                                         </ul>
                                     </div>
                                 </div>
@@ -149,7 +136,7 @@
                             </div>
                             <div class="border p-4 mb-4">
                                 <h3 class="mb-3 h6 text-uppercase text-black d-block">
-                                    <a data-toggle="collapse" href="#collapseAuthors" role="button" aria-expanded="false" aria-controls="collapseAuthors">
+                                    <a data-toggle="collapse" href="#collapseAuthors" role="button" aria-label="filter by author" aria-expanded="false" aria-controls="collapseAuthors">
                                     Authors
                                     </a>
                                 </h3>
@@ -160,7 +147,7 @@
                             </div>
                             <div class="border p-4 mb-4">
                                 <h3 class="mb-3 h6 text-uppercase text-black d-block">
-                                    <a data-toggle="collapse" href="#collapseGenres" role="button" aria-expanded="false" aria-controls="collapseGenres">
+                                    <a data-toggle="collapse" href="#collapseGenres" role="button" aria-label="filter by genre" aria-expanded="false" aria-controls="collapseGenres">
                                     Genres
                                     </a>
                                 </h3>
@@ -171,7 +158,7 @@
                             </div>
                             <div class="border p-4 mb-4">
                                 <h3 class="mb-3 h6 text-uppercase text-black d-block">
-                                    <a data-toggle="collapse" href="#collapseThemes" role="button" aria-expanded="false" aria-controls="collapseThemes">
+                                    <a data-toggle="collapse" href="#collapseThemes" role="button" aria-label="filter by author" aria-expanded="false" aria-controls="collapseThemes">
                                     Themes
                                     </a>
                                 </h3>
@@ -209,7 +196,7 @@
         <script src="/assets/js/owl.carousel.min.js"></script>
         <script src="/assets/js/jquery.magnific-popup.min.js"></script>
         <script src="/assets/js/aos.js"></script>
-        <script src="/assets/js/main.js"></script>
+        <script src="/assets/js/utils.js"></script>
         <script src="/assets/js/script.js"></script>
         <script type="text/javascript">
             /*
@@ -234,7 +221,7 @@
                 getBooksTotal(authorid, genreid, themeid).then(totalElements => {
                   setPagination(page, limit, totalElements);
                 });
-            
+
                 fetchAuthorFilter();
                 fetchGenreFilter();
                 fetchThemeFilter();
@@ -242,6 +229,12 @@
                 if(getCookie("loggedin") == "true") {
                   displayCartBadge();
                 } 
+
+                var filter = getUrlParameter("filter");
+                if (filter) {
+                    $("#filterLbl").text(": "+XSSsanitize(filter));
+                }
+
               });
         </script>
         <script>$("footer").load("/assets/pages/footer.html");</script>    

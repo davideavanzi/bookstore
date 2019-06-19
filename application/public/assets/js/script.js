@@ -87,8 +87,8 @@ var fetchAuthorFilter = function fetchAuthorFilter() {
             $.each(data, function(index, author) {
                 $('#author_filter').append('\
             <li class="mb-1">\
-                <a href="shop.html?authorid=' + author.id + '" class="d-flex"><span>' + author.name + '</span> \
-                <span class="text-black ml-auto">(5)</span></a></li>\
+                <a href="shop.html?authorid=' + author.id + '&filter=' + author.name + '" class="d-flex"><span>' + author.name + '</span> \
+                <span class="text-black ml-auto"></span></a></li>\
             ');
             });
         },
@@ -113,8 +113,8 @@ var fetchGenreFilter = function fetchGenreFilter() {
             $.each(data, function(index, genre) {
                 $('#genre_filter').append('\
             <li class="mb-1">\
-                <a href="shop.html?genreid=' + genre.id + '" class="d-flex"><span>' + genre.name + '</span> \
-                <span class="text-black ml-auto">(5)</span></a></li>\
+                <a href="shop.html?genreid=' + genre.id + '&filter=' + genre.name + '" class="d-flex"><span>' + genre.name + '</span> \
+                <span class="text-black ml-auto"></span></a></li>\
             ');
             });
         },
@@ -139,8 +139,8 @@ var fetchThemeFilter = function fetchThemeFilter() {
             $.each(data, function(index, theme) {
                 $('#theme_filter').append('\
             <li class="mb-1">\
-                <a href="shop.html?themeid=' + theme.id + '" class="d-flex"><span>' + theme.name + '</span> \
-                <span class="text-black ml-auto">(5)</span></a></li>\
+                <a href="shop.html?themeid=' + theme.id + '&filter=' + theme.name + '" class="d-flex"><span>' + theme.name + '</span> \
+                <span class="text-black ml-auto"></span></a></li>\
             ');
             });
         },
@@ -160,17 +160,17 @@ var setPagination = function setPagination(page, limit, totalElements) {
     $('#pagination').empty();
     console.log("PAGESAMOUNT: " + pagesAmount);
     if (page > 1) {
-        $('#pagination').append('<li><a href="?p=' + (parseInt(page) - 1) + '">&lt;</a></li>');
+        $('#pagination').append('<li><a href="?p=' + (parseInt(page) - 1) + '" aria-label="previous page">&lt;</a></li>');
     }
     for (var i = 1; i <= pagesAmount; i++) {
         if (i == page) {
             $('#pagination').append('<li class="active"><span>' + i + '</span></li>');
         } else {
-            $('#pagination').append('<li><a href="?p=' + i + '">' + i + '</a></li>');
+            $('#pagination').append('<li><a href="?p=' + i + '" aria-label="page number ' + i + '">' + i + '</a></li>');
         }
     }
     if (page < pagesAmount) {
-        $('#pagination').append('<li><a href="?p=' + (parseInt(page) + 1) + '">&gt;</a></li>');
+        $('#pagination').append('<li><a href="?p=' + (parseInt(page) + 1) + '" aria-label="next page">&gt;</a></li>');
     }
 
 }
@@ -368,11 +368,11 @@ var fetchCart = function fetchCart() {
                 <td>\
                     <div class="input-group mb-3" style="max-width: 120px;">\
                         <div class="input-group-prepend">\
-                            <button class="btn btn-outline-primary js-btn-minus" type="button">&minus;</button>\
+                            <button class="btn btn-outline-primary js-btn-minus" type="button" disabled>&minus;</button>\
                         </div>\
                         <input type="text" class="form-control text-center" value="' + book.amount + '" placeholder="" aria-label="Example text with button addon" aria-describedby="button-addon1">\
                         <div class="input-group-append">\
-                            <button class="btn btn-outline-primary js-btn-plus" type="button">&plus;</button>\
+                            <button class="btn btn-outline-primary js-btn-plus" type="button" disabled>&plus;</button>\
                         </div>\
                     </div>\
                 </td>\
@@ -513,7 +513,7 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
                 type: 'GET',
                 dataType: 'json',
                 success: function(event, textStatus, evXHR) {
-                    $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id=' + data.id + '">Discover events with this book</a>');
+                    $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id=' + data.id + '">Discover events for this book</a>');
                 }
             })
             //id_book, authRef, authId, authCover
@@ -828,7 +828,8 @@ var fetchReviews = function fetchReviews(bookId) {
                 var reviewElement = $('\
                     <div class="row">\
                         <div class="col-sm-3">\
-                            <img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">\
+                            <!--<img src="http://dummyimage.com/60x60/666/ffffff&text=No+Image" style="border-radius: 50%" class="img-rounded">-->\
+                            <span class="icon-user userimg"></span>\
                             <div class="review-block-name"><a href="#">' + review.username + '</a></div>\
                             <div class="review-block-date">' + review.date + '</div>\
                         </div>\
@@ -988,8 +989,8 @@ var addBookReview = function addBookReview(bookId, title, content, star) {
             if (jqXHR.status == 403) {
                 errorAlert("Whoops!", "You need to login to post reviews!");
                 $('#review').trigger("reset");
-            } else if (jqXHR.status == 401) {
-                errorAlert("Whoops!", "You inserted invalid data, try again!");
+            } else if (jqXHR.status == 400) {
+                errorAlert("Whoops!", "Please complete all the fields, then try again!");
                 $('#review').trigger("reset");
             } else {
                 errorAlert("Whoops!", "An error occurred, pleasy try again!");

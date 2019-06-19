@@ -248,6 +248,7 @@ End
 \html_math_output 0
 \html_css_as_file 0
 \html_be_strict false
+\author 629914139 "Davide Avanzi"
 \end_header
 
 \begin_body
@@ -2303,7 +2304,13 @@ Navigation Map
 \end_layout
 
 \begin_layout Subsection
-Low fidelity wireframes
+
+\change_inserted 629914139 1560958462
+Low fidelity w
+\change_deleted 629914139 1560958462
+W
+\change_unchanged
+ireframes
 \end_layout
 
 \begin_layout Subsubsection
@@ -2311,8 +2318,14 @@ All-in-one
 \end_layout
 
 \begin_layout Standard
-the following wireframe shows the complete structure of our website, highliting
- the user navigation between pages.
+
+\change_deleted 629914139 1560958381
+This
+\change_inserted 629914139 1560958383
+the following
+\change_unchanged
+ wireframe shows the complete structure of our website, highliting the user
+ navigation between pages.
 \end_layout
 
 \begin_layout Standard
@@ -2337,7 +2350,11 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Wireframe of the whole website
+Wireframe
+\change_inserted 629914139 1560958370
+ of the
+\change_unchanged
+ whole website
 \end_layout
 
 \end_inset
@@ -2726,6 +2743,8 @@ About/Shipping info page wireframe
 \end_layout
 
 \begin_layout Subsection
+
+\change_inserted 629914139 1560958432
 High fidelity wireframes
 \end_layout
 
