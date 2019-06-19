@@ -1,0 +1,1227 @@
+#LyX 2.3 created this file. For more info see http://www.lyx.org/
+\lyxformat 544
+\begin_document
+\begin_header
+\save_transient_properties true
+\origin unavailable
+\textclass article
+\begin_preamble
+\usepackage{listings}
+\usepackage{xcolor}
+\usepackage{pdflscape}
+\usepackage{courier}
+%\usepackage{mathtools}
+\usepackage{graphicx}
+\usepackage{booktabs}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+
+\usepackage{listings}
+\lstset{columns=fullflexible}
+
+\usepackage{charter}
+
+\usepackage{xspace}
+%\usepackage{algorithmicx}
+%\usepackage{algpseudocode}
+
+
+% Definizione intestazioni e pie' di pagina
+\usepackage{fancyhdr}
+
+% _____________________________
+\lstdefinelanguage{JS}{
+keywords={typeof, new, true, false, catch, function, return, null, catch, switch, var, if, in, while, do, else, case, break},
+keywordstyle=\color{blue}\bfseries,
+ndkeywords={class, export, boolean, throw, implements, import, this},   ndkeywordstyle=\color{darkgray}\bfseries,
+identifierstyle=\color{black},
+sensitive=false,   
+comment=[l]{//},   
+morecomment=[s]{/*}{*/},   
+commentstyle=\color{purple}\ttfamily,   
+stringstyle=\color{red}\ttfamily,   
+morestring=[b]',   
+morestring=[b]" 
+}
+
+
+\definecolor{dkgreen}{rgb}{0,0.6,0}
+\definecolor{gray}{rgb}{0.5,0.5,0.5}
+\definecolor{mauve}{rgb}{0.58,0,0.82}
+\lstset{frame=tb,  
+language=JS,
+aboveskip=3mm,   
+belowskip=3mm,   
+showstringspaces=false,   
+columns=flexible,   
+basicstyle={\small\ttfamily},   
+numbers=none,   
+numberstyle=\tiny\color{gray},   
+keywordstyle=\color{blue},   
+commentstyle=\color{dkgreen},   
+stringstyle=\color{mauve},   
+breaklines=true,   
+breakatwhitespace=true,   
+tabsize=3 }
+
+% _____________________________
+
+\usepackage[math]{cellspace}
+    \cellspacetoplimit 4pt
+    \cellspacebottomlimit 4pt
+\end_preamble
+\use_default_options true
+\begin_modules
+InStar
+graphicboxes
+fix-cm
+fixltx2e
+fixme
+customHeadersFooters
+pdfform
+\end_modules
+\maintain_unincluded_children false
+\begin_forced_local_layout
+Format 66
+Style "In Preamble"
+	Category "FrontMatter"
+	Margin Static
+	LatexType Paragraph
+	InTitle 0
+	InPreamble 1
+	TocLevel -1000
+	ResumeCounter 0
+	StepMasterCounter 0
+	NeedProtect 0
+	KeepEmpty 0
+	NextNoIndent 0
+	CommandDepth 0
+	LatexName "dummy"
+	ItemCommand item
+	LabelType No_Label
+	EndLabelType No_Label
+	ParagraphGroup "0"
+	ParIndent MM
+	ParSkip 0.4
+	ItemSep 0
+	TopSep 0
+	BottomSep 0
+	LabelBottomSep 0
+	ParSep 0
+	NewLine 1
+	Align Block
+	AlignPossible Block, Center, Layout, Left, Right
+	FreeSpacing 0
+	PassThru 0
+	ParbreakIsNewline 0
+	RefPrefix OFF
+	HTMLLabelFirst 0
+	HTMLStyle
+div.standard {
+margin-bottom: 2ex;
+}
+	EndHTMLStyle
+	HTMLForceCSS 0
+	HTMLTitle 0
+	Spellcheck 1
+	ForceLocal 1
+End
+Style "In Title"
+	Category "FrontMatter"
+	Margin Static
+	LatexType Paragraph
+	InTitle 1
+	InPreamble 0
+	TocLevel -1000
+	ResumeCounter 0
+	StepMasterCounter 0
+	NeedProtect 0
+	KeepEmpty 0
+	NextNoIndent 0
+	CommandDepth 0
+	LatexName "dummy"
+	ItemCommand item
+	LabelType No_Label
+	EndLabelType No_Label
+	ParagraphGroup "0"
+	ParIndent MM
+	ParSkip 0.4
+	ItemSep 0
+	TopSep 0
+	BottomSep 0
+	LabelBottomSep 0
+	ParSep 0
+	NewLine 1
+	Align Block
+	AlignPossible Block, Center, Layout, Left, Right
+	FreeSpacing 0
+	PassThru 0
+	ParbreakIsNewline 0
+	RefPrefix OFF
+	HTMLLabelFirst 0
+	HTMLStyle
+div.standard {
+margin-bottom: 2ex;
+}
+	EndHTMLStyle
+	HTMLForceCSS 0
+	HTMLTitle 0
+	Spellcheck 1
+	ForceLocal 1
+End
+\end_forced_local_layout
+\language english
+\language_package default
+\inputencoding auto
+\fontencoding global
+\font_roman "default" "default"
+\font_sans "default" "default"
+\font_typewriter "default" "default"
+\font_math "auto" "auto"
+\font_default_family default
+\use_non_tex_fonts false
+\font_sc false
+\font_osf false
+\font_sf_scale 100 100
+\font_tt_scale 100 100
+\use_microtype false
+\use_dash_ligatures true
+\graphics default
+\default_output_format default
+\output_sync 1
+\bibtex_command default
+\index_command default
+\float_placement H
+\paperfontsize default
+\spacing single
+\use_hyperref true
+\pdf_bookmarks true
+\pdf_bookmarksnumbered false
+\pdf_bookmarksopen false
+\pdf_bookmarksopenlevel 1
+\pdf_breaklinks false
+\pdf_pdfborder false
+\pdf_colorlinks false
+\pdf_backref false
+\pdf_pdfusetitle true
+\papersize default
+\use_geometry true
+\use_package amsmath 1
+\use_package amssymb 1
+\use_package cancel 1
+\use_package esint 1
+\use_package mathdots 1
+\use_package mathtools 1
+\use_package mhchem 1
+\use_package stackrel 1
+\use_package stmaryrd 1
+\use_package undertilde 1
+\cite_engine basic
+\cite_engine_type default
+\biblio_style plain
+\use_bibtopic false
+\use_indices false
+\paperorientation portrait
+\suppress_date false
+\justification true
+\use_refstyle 1
+\use_minted 0
+\index Index
+\shortcut idx
+\color #008000
+\end_index
+\leftmargin 2.5cm
+\rightmargin 2.5cm
+\secnumdepth 3
+\tocdepth 3
+\paragraph_separation indent
+\paragraph_indentation default
+\is_math_indent 0
+\math_numbering_side default
+\quotes_style english
+\dynamic_quotes 0
+\papercolumns 1
+\papersides 1
+\paperpagestyle default
+\tracking_changes true
+\output_changes false
+\html_math_output 0
+\html_css_as_file 0
+\html_be_strict false
+\author 629914139 "Davide Avanzi"
+\end_header
+
+\begin_body
+
+\begin_layout Standard
+\begin_inset Preview
+
+\begin_layout Standard
+\begin_inset ERT
+status open
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newcommand{
+\backslash
+HRule}{
+\backslash
+rule{
+\backslash
+linewidth}{0.5mm}}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+center
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+includegraphics[width=0.8
+\backslash
+textwidth]{../DD/img/polimilogo1.png}
+\backslash
+
+\backslash
+[0.05cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+Large Hypermedia Application:}
+\backslash
+
+\backslash
+[0.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+Large Web and Multimedia}
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+textsc{
+\backslash
+LARGE Bookstore Project}
+\backslash
+
+\backslash
+[1cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+HRule 
+\backslash
+
+\backslash
+[0.4cm] { 
+\backslash
+huge 
+\backslash
+bfseries Usability Evaluation Report}
+\backslash
+
+\backslash
+[0.4cm] 
+\backslash
+HRule 
+\backslash
+
+\backslash
+[1.5cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{flushleft} 
+\backslash
+large 
+\backslash
+emph{Authors:}
+\backslash
+
+\backslash
+ 
+\end_layout
+
+\begin_layout Plain Layout
+
+Davide 
+\backslash
+textsc{Avanzi}: davide1.avanzi@mail.polimi.it 
+\backslash
+newline 
+\end_layout
+
+\begin_layout Plain Layout
+
+Francesca 
+\backslash
+textsc{Bernecich}: francesca.bernecich@mail.polimi.it 
+\backslash
+newline
+\end_layout
+
+\begin_layout Plain Layout
+
+Fabrizio 
+\backslash
+textsc{Carsenzuola}: fabrizio.carsenzuola@mail.polimi.it  
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushleft} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage} 
+\end_layout
+
+\begin_layout Plain Layout
+
+~ 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+begin{minipage}{0.4
+\backslash
+textwidth} 
+\backslash
+begin{flushright} 
+\backslash
+large 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+emph{Supervisor:} 
+\backslash
+
+\backslash
+ Franca 
+\backslash
+textsc{Garzotto} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{flushright} 
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{minipage}
+\backslash
+
+\backslash
+[3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+vfill
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{gobble}
+\end_layout
+
+\begin_layout Plain Layout
+
+{
+\backslash
+large 
+\backslash
+today}
+\backslash
+
+\backslash
+[3cm]
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+end{titlepage}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+mbox{} 
+\backslash
+thispagestyle{empty} 
+\backslash
+newpage
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+tableofcontents{}
+\backslash
+thispagestyle{empty}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+newpage{}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+setcounter{page}{1}
+\end_layout
+
+\begin_layout Plain Layout
+
+
+\backslash
+pagenumbering{arabic}
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Introduction
+\end_layout
+
+\begin_layout Subsection
+Revision History
+\end_layout
+
+\begin_layout Standard
+\align center
+\begin_inset Tabular
+<lyxtabular version="3" rows="3" columns="4">
+<features tabularvalignment="middle" tabularwidth="100text%">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top">
+<column alignment="center" valignment="top" width="0pt">
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Version
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Date
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Authors
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Summary
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+1.0
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20/06/2019
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Davide Avanzi, Francesca Bernecich, Fabrizio Carsenzuola
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" bottomline="true" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Final review
+\end_layout
+
+\end_inset
+</cell>
+</row>
+<row topspace="2pt" bottomspace="2pt">
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+0.1
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+20/05/2019
+\change_deleted 629914139 1560959955
+-
+\change_unchanged
+
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Davide Avanzi, Francesca Bernecich, Fabrizio Carsenzuola
+\end_layout
+
+\end_inset
+</cell>
+<cell alignment="center" valignment="top" usebox="none">
+\begin_inset Text
+
+\begin_layout Plain Layout
+Living document
+\end_layout
+
+\end_inset
+</cell>
+</row>
+</lyxtabular>
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Abstract
+\end_layout
+
+\begin_layout Standard
+This document reports our evaluations on the usability of the web application
+ we developed.
+ The target audience of this document are the future developers of the system,
+ as well as the project owner, prof.
+ Garzotto.
+\end_layout
+
+\begin_layout Subsection
+Reference documents
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+HYP_2018_19_PROJECT_SPECIFICATIONS.pdf
+\begin_inset Quotes erd
+\end_inset
+
+: Project assignments
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+PROJECT THEME HYP2018-19 - FRONT END TECH - Till July 2019.pdf
+\begin_inset Quotes erd
+\end_inset
+
+: Front-end document specifications / C-IDM
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+project-manual.pdf
+\begin_inset Quotes erd
+\end_inset
+
+: Back-end document specifications
+\end_layout
+
+\begin_layout Itemize
+\begin_inset Quotes eld
+\end_inset
+
+USABILITY EXAM AND REPORT.pdf
+\begin_inset Quotes erd
+\end_inset
+
+: specifications on the usability report to deliver
+\end_layout
+
+\begin_layout Standard
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Heuristic evaluation: inspection
+\end_layout
+
+\begin_layout Subsection
+Inspection
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/C-IDM.svg
+	width 70text%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C-IDM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Subsection
+Results
+\end_layout
+
+\begin_layout Standard
+\begin_inset Float figure
+wide false
+sideways false
+status open
+
+\begin_layout Plain Layout
+\align center
+\begin_inset Graphics
+	filename img/diagrams/L-IDM.svg
+	width 80text%
+	rotateAngle 90
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Plain Layout
+\begin_inset Caption Standard
+
+\begin_layout Plain Layout
+C-IDM
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\end_inset
+
+
+\end_layout
+
+\begin_layout Section
+Heuristic evaluation: empirical testing
+\end_layout
+
+\begin_layout Standard
+To further prove the results of our analysis, we conducted some empirical
+ tests.
+ We'll report in this section how we crafted and carried out the test, along
+ with its results.
+\change_inserted 629914139 1560960393
+
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 629914139 1560960670
+Test definition
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560961670
+The empirical test we conducted consists in a series of task that a group
+ of users had to complete in the website while being compliant to a set
+ of rules and with the screen being recorded.
+ We'll provide here a summary of the test and how it has beed defined.
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560960804
+
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 629914139 1560961569
+Rules
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560961661
+These were the rules each user had to follow: failing in respecting those
+ rules would have revealed great flaws in the design of the website.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960599
+You should continue to work on each task until you either complete it or
+ reach the point at which you give up/wrong answer or seek assistance.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960603
+You have three attempts to complete the tasks.
+ You can also have one tip from the supervisor.
+ If you can't complete theme within the first three attempts, please report
+ it in the evaluation form.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960590
+You have at most 4 minutes to solve each task.
+ If you can't complete them within the first four minutes, please report
+ it in the evaluation form.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 629914139 1560961016
+Tasks
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960552
+Suppose you want to buy some books, before doing so you need to be logged
+ in: complete the registration procedure and create one account for yourself,
+ then login.
+ 
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960558
+Suppose you want to buy a book for your friend that likes a lot Tolkien
+ but already owns The Lord of The Rings.
+ Find another suitable book add it to your cart.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960561
+Before buying Child of Time, suppose you want to know more about one of
+ the two writers of this book (Robert Silverberg): have a look at his biography.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960564
+Suppose you want also to read about JK Rowling: reach her page and get to
+ her biography.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960567
+Suppose you change your mind and you don't want to buy a book: remove it
+ from your cart.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960569
+Suppose you want to partecipate to an event.
+ You like a lot wizards stories.
+ Find a suitable event for you and get more informations about it.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560960540
+You are finally done: perform the logout from the system.
+\end_layout
+
+\begin_layout Subsubsection
+
+\change_inserted 629914139 1560960916
+Questions
+\end_layout
+
+\begin_layout Standard
+
+\change_inserted 629914139 1560961530
+These are the questions we asked to the user who completed the tasks.
+ Each question is defined with a linear scale answer from 1 to 10, ranging
+ from 
+\begin_inset Quotes eld
+\end_inset
+
+strongly disagree
+\begin_inset Quotes erd
+\end_inset
+
+ to 
+\begin_inset Quotes eld
+\end_inset
+
+strongly agree
+\begin_inset Quotes erd
+\end_inset
+
+.
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961502
+Overall, these tasks were easy
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961353
+The language of the tasks you were given was easily understood [strongly
+ disagree - strongly agree]
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961357
+The content (including images) was easy to understand
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961361
+The pages of the website were fast to load (in average)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961365
+The texts in the website pages were useful to complete your tasks
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961370
+The text in the website pages were relevant about the topics dealt with
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961374
+I could quickly get to know the structure of the site
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961378
+The organization of the site was clear
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961387
+Under each section the site was well organized
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961391
+It was easy to find the information that I needed
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961408
+I got what I expected when I clicked on things on this website
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961413
+The site helped me to find what I am lookong for
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961419
+Using this website was effortless
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961423
+Using this website made me feel tired
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961427
+The layout of the pages was consistent
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961436
+The colours helped me to distinguish different sections or actions
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961440
+The highlighted areas helped me to find what I was looking for
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961447
+I think that I would like to use this website frequently
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961450
+I found this website unnecessarily complex
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961456
+I thought this website was easy to use
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961462
+I think that I would need assistance to be able to use this website
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961466
+I found the various functions in this website were well integrated
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961472
+I thought there was too much inconsistency in this website's designs, layouts
+ or architecture (pretty much anything that bothers you consistency wise)
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961477
+I would imagine that most people would learn to use this website very quickly
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961480
+I found this website very cumbersome/awkward to use
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961488
+I felt very confident using this website
+\end_layout
+
+\begin_layout Enumerate
+
+\change_inserted 629914139 1560961543
+I needed to learn a lot of things before Ic ould get going with this website
+\end_layout
+
+\begin_layout Subsection
+
+\change_inserted 629914139 1560961846
+Test results
+\change_deleted 629914139 1560961561
+
+\begin_inset Newpage pagebreak
+\end_inset
+
+
+\change_unchanged
+
+\end_layout
+
+\end_body
+\end_document
