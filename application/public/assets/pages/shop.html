@@ -199,13 +199,7 @@
         <script src="/assets/js/utils.js"></script>
         <script src="/assets/js/script.js"></script>
         <script type="text/javascript">
-            /*
-            *   TODO:
-            *   + funzione per mostrare quanti libri per ogni autore/genere
-            *   + mostrare filtro attivo (es: si sta guardando libri per il genere x)
-            *
-            */
-              $(document).ready(function(){
+            $(document).ready(function(){
                 
                 var page = getUrlParameter("p");
                 var page = (page && page > 0 ? page : 1 );
@@ -235,7 +229,7 @@
                     $("#filterLbl").text(": "+XSSsanitize(filter));
                 }
 
-              });
+            });
         </script>
         <script>$("footer").load("/assets/pages/footer.html");</script>    
     </body>
