@@ -15,7 +15,9 @@ module.exports.getCartById = function getCartById (req, res, next) {
       utils.writeJson(res, response);
     })
     .catch(function (response) {
-      utils.writeJson(res, response);
+      var responseCode = 500;
+      if(response == "404") responseCode = 404;
+      utils.writeJson(res, response, responseCode);
     });
     } else {
       console.log("Operation on cart not authorized");
