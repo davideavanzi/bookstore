@@ -768,17 +768,6 @@ Bookstore
  Garzotto.
 \end_layout
 
-\begin_layout Standard
-The website is reachable at this address: 
-\begin_inset CommandInset href
-LatexCommand href
-target "https://hyp.avanzi.dev/"
-
-\end_inset
-
-
-\end_layout
-
 \begin_layout Subsection
 Reference documents
 \end_layout

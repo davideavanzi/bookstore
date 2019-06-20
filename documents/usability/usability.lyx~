@@ -871,12 +871,12 @@ After analyzing the wbsite, we assigned a score for each heuristic for every
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Heuristic/Analisi euristica.png
-	width 80text%
+	width 92text%
 	rotateAngle 180
 
 \end_inset
@@ -907,7 +907,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Heuristic/Analisi euristica2.png
-	width 80text%
+	width 92text%
 	rotateAngle 180
 
 \end_inset
@@ -916,7 +916,7 @@ status open
 \begin_inset Caption Standard
 
 \begin_layout Plain Layout
-Heuristic scores for single book
+Heuristic scores for single book page
 \end_layout
 
 \end_inset
@@ -938,7 +938,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Heuristic/Analisi euristica3.png
-	width 80text%
+	width 92text%
 	rotateAngle 180
 
 \end_inset
@@ -1000,7 +1000,7 @@ status open
 \begin_layout Plain Layout
 \begin_inset Graphics
 	filename Heuristic/Analisi euristica7.png
-	width 80text%
+	width 92text%
 	rotateAngle 180
 
 \end_inset
@@ -1715,8 +1715,15 @@ Test results
 \begin_layout Standard
 The test results were overall satisfying, all users were able to complete
  the tasks while being compliant with the rules.
- We recorded the test sessions and uploaded to a cloud folder, here is the
- link:
+ We recorded the test sessions and uploaded to a cloud folder, which is
+ reachable at this link: 
+\begin_inset CommandInset href
+LatexCommand href
+target "https://drive.google.com/drive/folders/1Ds_WksQZ6WwBhbWLwaIJHZgDSsThLSAo?usp=sharing"
+
+\end_inset
+
+
 \end_layout
 
 \begin_layout Subsubsection
