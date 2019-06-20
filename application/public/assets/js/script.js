@@ -94,6 +94,7 @@ var fetchAuthorFilter = function fetchAuthorFilter() {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -120,6 +121,7 @@ var fetchGenreFilter = function fetchGenreFilter() {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -146,6 +148,7 @@ var fetchThemeFilter = function fetchThemeFilter() {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -203,6 +206,7 @@ var getBooksTotal = function getBooksTotal(authorId, genreId, themeId) {
             },
             error: function(xhr, textStatus, errorThrown) {
                 console.log('Error in Operation');
+                errorAlert('Whoops!','there was an error with your request, please try again!');
             }
         });
     });
@@ -226,6 +230,7 @@ var getAuthorsTotal = function getAuthorsTotal() {
             },
             error: function(xhr, textStatus, errorThrown) {
                 console.log('Error in Operation');
+                errorAlert('Whoops!','there was an error with your request, please try again!');
             }
         });
     });
@@ -287,6 +292,7 @@ var fetchAllBooks = function fetchAllBooks(limit, offset, authorId, genreId, the
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -318,6 +324,7 @@ var fetchFeaturedBooks = function fetchFeaturedBooks() {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -515,11 +522,14 @@ var fetchSingleBook = function fetchSingleBook(bookid) {
                 success: function(event, textStatus, evXHR) {
                     $('#event').append('<a class="buy-now btn btn-sm height-auto px-4 py-3 btn-primary" href="/assets/pages/events.html?book_id=' + data.id + '">Discover events for this book</a>');
                 }
-            })
+            });
+            $('#singleBookSection').toggle();
+            $('#interviewSection').toggle();
             //id_book, authRef, authId, authCover
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -674,6 +684,7 @@ var fetchAllEvents = function fetchAllEvents(month, authorId, past, current, boo
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -731,6 +742,7 @@ var fetchSingleEvent = function fetchSingleEvent(eventId) {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -806,6 +818,7 @@ var fetchAllAuthors = function fetchAllAuthors(limit, offset) {
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -898,9 +911,11 @@ var fetchReviews = function fetchReviews(bookId) {
                     }
                 }
             }
+            $('#bookReviewsSection').toggle();
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -928,9 +943,11 @@ var fetchSingleAuthor = function fetchSingleAuthor(authorId) {
                     $('#authors').append(", ");
                 }
             });
+            $('#authorSection').toggle();
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
@@ -959,9 +976,11 @@ var fetchBooksOfAuthor = function fetchBooksOfAuthor(authorId) {
             </div>\
             ']).trigger('refresh.owl.carousel');
             });
+            $('#authorBooksSection').toggle();
         },
         error: function(xhr, textStatus, errorThrown) {
             console.log('Error in Operation');
+            errorAlert('Whoops!','there was an error with your request, please try again!');
         }
     });
 }
