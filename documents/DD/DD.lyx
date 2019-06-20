@@ -2758,7 +2758,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -2779,7 +2780,7 @@ Home page wireframe
 
 \end_inset
 
- 
+
 \begin_inset Float figure
 wide false
 sideways false
@@ -2790,7 +2791,7 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot2.png
 	width 100text%
-	height 90theight%
+	height 100theight%
 
 \end_inset
 
@@ -2812,9 +2813,6 @@ Books page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2825,7 +2823,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot3.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -2847,9 +2846,6 @@ Single book page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2860,7 +2856,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot4.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -2882,9 +2879,6 @@ Authors event page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2895,7 +2889,7 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot5.png
 	width 100text%
-	height 90theight%
+	height 100theight%
 
 \end_inset
 
@@ -2917,9 +2911,6 @@ Single author page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2930,7 +2921,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot6.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -2952,9 +2944,6 @@ Events page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -2965,7 +2954,7 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot7.png
 	width 100text%
-	height 90theight%
+	height 100theight%
 
 \end_inset
 
@@ -2987,9 +2976,6 @@ Single event page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3000,7 +2986,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot8.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -3022,9 +3009,6 @@ About page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
@@ -3035,7 +3019,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot9.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -3057,20 +3042,18 @@ Contacts page wireframe
 \end_inset
 
 
-\end_layout
-
-\begin_layout Standard
 \begin_inset Float figure
 wide false
 sideways false
-status collapsed
+status open
 
 \begin_layout Plain Layout
 \align center
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot10.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
@@ -3092,10 +3075,6 @@ Single event page wireframe
 \end_inset
 
 
-\begin_inset Newline newline
-\end_inset
-
-
 \begin_inset Float figure
 wide false
 sideways false
@@ -3106,7 +3085,8 @@ status open
 \begin_inset Graphics
 	filename hifid_wireframes/Screenshot11.png
 	width 100text%
-	height 90theight%
+	height 100theight%
+	keepAspectRatio
 
 \end_inset
 
