@@ -8,8 +8,8 @@ This page contains useful informations about our project and its architecture.
 | Member n.     | Role           | First name | Last Name | Matricola | Email Address |
 | ------------- | -------------  | ---------- | --------- | --------- | ------------- |
 | 1             | Administrator | Davide     | Avanzi    | 913038    | davide1.avanzi@mail.polimi.it |
-| 2     | Member  | Fabrizio | Carsenzuola | ... | fabrizio.carsenzuola@mail.polimi.it |
-| 2     | Member  | Francesca | Bernecich | ... | francesca.bernecich@mail.polimi.it |
+| 2     | Member  | Fabrizio | Carsenzuola | 899502 | fabrizio.carsenzuola@mail.polimi.it |
+| 2     | Member  | Francesca | Bernecich | 894282 | francesca.bernecich@mail.polimi.it |
 
 ## Project specifications
 
@@ -24,7 +24,7 @@ To run a copy of our project, follow the steps below (for Linux and OSX):
 1. Download the .zip file of the source code (present at this [address](https://hyp.avanzi.dev/backend/source.zip))
 2. Extract the content inside a folder
 3. Open a shell inside the folder just created
-4. Install PostgreSQL and create a new database "postgres" with a relative user "postgres" identified by a psassword "postgres" (these are the default values we used for developement, and are editable in the *knexfile.js* file present in the project root)
+4. Install PostgreSQL and create a new database "postgres" with a relative user "postgres" identified by a password "postgres" (these are the default values we used for developement, and are editable in the *knexfile.js* file present in the other/service folder)
 
 5. run  ```npm start ``` , the setup will take care of creating and populating the database tables
 6. visit http://localhost:8080, the website will be prompted.
@@ -46,3 +46,14 @@ We developed the following functionalities:
 ## Info & troubleshooting
 
 We decided to host the application server on a personal Ubuntu VPS accessible at the domain https://hyp.avanzi.dev. This is because we wanted to challenge ourselves with a real-world scenario in which we are tasked to deploy the application in a Linux server and make it accessible to the public using a real domain name and a reverse proxy. In the remote case the VPS is having issues and the website is not available at the moment of the evaluation, please contact any of the team members and we'll fix the problem within minutes.
+
+
+In some rare cases, during the installation/startup process, npm could return the following error:
+
+```
+bcrypt_lib.node: invalid ELF header
+```
+to solve this error, before running npm install the brcypt library with the following command:
+```
+npm install bcrypt
+```

@@ -8,8 +8,8 @@ This page contains useful informations about our project and its architecture.
 | Member n.     | Role           | First name | Last Name | Matricola | Email Address |
 | ------------- | -------------  | ---------- | --------- | --------- | ------------- |
 | 1             | Administrator | Davide     | Avanzi    | 913038    | davide1.avanzi@mail.polimi.it |
-| 2     | Member  | Fabrizio | Carsenzuola | ... | fabrizio.carsenzuola@mail.polimi.it |
-| 2     | Member  | Francesca | Bernecich | ... | francesca.bernecich@mail.polimi.it |
+| 2     | Member  | Fabrizio | Carsenzuola | 899502 | fabrizio.carsenzuola@mail.polimi.it |
+| 2     | Member  | Francesca | Bernecich | 894282 | francesca.bernecich@mail.polimi.it |
 
 ## Project specifications
 
@@ -46,3 +46,14 @@ We developed the following functionalities:
 ## Info & troubleshooting
 
 We decided to host the application server on a personal Ubuntu VPS accessible at the domain https://hyp.avanzi.dev. This is because we wanted to challenge ourselves with a real-world scenario in which we are tasked to deploy the application in a Linux server and make it accessible to the public using a real domain name and a reverse proxy. In the remote case the VPS is having issues and the website is not available at the moment of the evaluation, please contact any of the team members and we'll fix the problem within minutes.
+
+
+In some rare cases, during the installation/startup process, npm could return the following error:
+
+```
+bcrypt_lib.node: invalid ELF header
+```
+to solve this error, before running npm install the brcypt library with the following command:
+```
+npm install bcrypt
+```

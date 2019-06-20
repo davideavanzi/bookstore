@@ -1,0 +1,932 @@
+---
+swagger: "2.0"
+info:
+  description: "Bookstore - Hypermedia applications project \n"
+  version: "1.0.0"
+  title: "Bookstore"
+  contact:
+    email: "davide@avanzi.dev"
+  license:
+    name: "Apache 2.0"
+    url: "http://www.apache.org/licenses/LICENSE-2.0.html"
+#host: "localhost:8080"
+basePath: "/v2"
+tags:
+- name: "book"
+  description: "Operations on books"
+- name: "cart"
+  description: "Operations on cart"
+- name: "user"
+  description: "Operations on users"
+- name: "review"
+  description: "Operations on reviews"
+- name: "author"
+  description: "Operations on authors"
+- name: "interview"
+  description: "Operations on interviews"
+- name: "theme"
+  description: "Operations on themes"
+- name: "genre"
+  description: "Operations on genres"
+schemes:
+- "https"
+- "http"
+paths:
+  /books:
+    get:
+      tags:
+      - "book"
+      summary: "All books, optionally filtered"
+      description: "List of books inserted books"
+      operationId: "getBooks"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "authorId"
+        in: "query"
+        description: "Id of the author to filter books"
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "themeId"
+        in: "query"
+        description: "Id of the theme to filter books"
+        required: false
+        type: "integer"
+        format: "int64"
+      - name: "genreId"
+        in: "query"
+        description: "Id of the genre to filter books"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "List of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Book"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Book"
+  /books/{bookId}:
+    get:
+      tags:
+      - "book"
+      summary: "Find book by ID"
+      description: "Returns a book"
+      operationId: "getBookById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "path"
+        description: "ID of the book to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Book"
+        400:
+          description: "Invalid input"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Book"
+  /review:
+    get:
+      tags:
+      - "review"
+      summary: "All reviews, optionally filtered"
+      description: "List of reviews"
+      operationId: "getReviews"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "userId"
+        in: "query"
+        description: "Id of the user that made the review"
+        required: false
+        type: "integer"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the book to get reviews"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of reviews"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Review"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Review"
+    post:
+      tags:
+      - "review"
+      summary: "Add a new review"
+      description: "Insert a new review in the system - this can only be done by logged\
+        \ users."
+      operationId: "addReview"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "The review object that needs to be added"
+        required: true
+        schema:
+          $ref: "#/definitions/Review"
+      responses:
+        200:
+          description: "Review added"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+        405:
+          description: "Invalid input"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Review"
+  /event:
+    get:
+      tags:
+      - "event"
+      summary: "All events, optionally filtered"
+      description: "List of events"
+      operationId: "getEvents"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the presented book on the event"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of events"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Event"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Event"
+  /event/{eventId}:
+    get:
+      tags:
+      - "event"
+      summary: "Find event by ID"
+      description: "Returns a event"
+      operationId: "getEventById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "eventId"
+        in: "path"
+        description: "ID of the event to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Event"
+        400:
+          description: "Invalid input"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Event"
+  /author:
+    get:
+      tags:
+      - "author"
+      summary: "All authors, optionally filtered"
+      description: "List of authors"
+      operationId: "getAuthors"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the book to filter authors"
+        required: false
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "List of Books"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Author"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Author"
+  /author/{authorId}:
+    get:
+      tags:
+      - "author"
+      summary: "Find author by ID"
+      description: "Returns an author"
+      operationId: "getAuthorById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "authorId"
+        in: "path"
+        description: "ID of the author to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Author"
+        400:
+          description: "Invalid input"
+        404:
+          description: "Author not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Author"
+  /user/register:
+    post:
+      tags:
+      - "user"
+      summary: "Register a new user"
+      description: "This registers a new user in the store."
+      operationId: "registerUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/User"
+      responses:
+        200:
+          description: "User added"
+        401:
+          description: "Unauthorized"
+        403:
+          description: "Forbidden"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "User"
+  /user/login:
+    post:
+      tags:
+      - "user"
+      summary: "Logs user into the system"
+      operationId: "loginUser"
+      consumes:
+      - "application/json"
+      produces:
+      - "application/json"
+      parameters:
+      - in: "body"
+        name: "body"
+        description: "Created user object"
+        required: true
+        schema:
+          $ref: "#/definitions/Login"
+      responses:
+        200:
+          description: "User logged in"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "User"
+  /user/logout:
+    get:
+      tags:
+      - "user"
+      summary: "Logs out current logged in user session"
+      operationId: "logoutUser"
+      produces:
+      - "application/json"
+      parameters: []
+      responses:
+        200:
+          description: "successful operation"
+        401:
+          description: "Unauthorized"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "User"
+
+  /user:
+    get:
+      tags:
+      - "user"
+      summary: "Get user by cookie"
+      operationId: "getUserByCookie"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/User"
+        401:
+          description: "Unauthorize"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "User"
+  /cart:
+    get:
+      tags:
+      - "cart"
+      summary: "Get the content of a cart"
+      operationId: "getCartById"
+      produces:
+      - "application/json"
+      responses:
+        200:
+          description: "success"
+          schema:
+            $ref: "#/definitions/Cart"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Cart"
+  /cart/addBook:
+    put:
+      tags:
+      - "cart"
+      summary: "Add a book to an user's cart"
+      description: "Update  - this can only be done by the logged in USER (proprietary\
+        \ of the cart or by an ADMIN)."
+      operationId: "addBookToCart"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "query"
+        description: "id of the book that needs to be added"
+        required: true
+        type: "integer"
+        format: "int64"
+      - name: "amount"
+        in: "query"
+        description: "id of the book that needs to be added"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid input"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        406:
+          description: "Not Acceptable"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Cart"
+  /cart/removeBook:
+    put:
+      tags:
+      - "cart"
+      summary: "Remove a book from an user's cart"
+      description: "Update  - this can only be done by the logged in USER (proprietary\
+        \ of the cart or by an ADMIN). The amount of the ordered book gets restored in the stock"
+      operationId: "removeBookFromCart"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "bookId"
+        in: "query"
+        description: "id of the book that needs to be removed"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        400:
+          description: "Invalid input"
+        401:
+          description: "Unauthorized"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Cart"
+  /interview:
+    get:
+      tags:
+      - "interview"
+      summary: "All interviews, optionally filtered"
+      description: "List of interviews"
+      operationId: "getInterviews"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      - name: "bookId"
+        in: "query"
+        description: "Id of the book to get interviews"
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of interviews"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Interview"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Interview"
+  /theme:
+    get:
+      tags:
+      - "theme"
+      summary: "All themes, optionally filtered"
+      description: "List of thmes"
+      operationId: "getThemes"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of themes"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Theme"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Theme"
+  /theme/{themeId}:
+    get:
+      tags:
+      - "theme"
+      summary: "Find theme by ID"
+      description: "Insert get a single theme in the system"
+      operationId: "getThemeById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "themeId"
+        in: "path"
+        description: "ID of the theme to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Theme"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Theme"
+  /genre:
+    get:
+      tags:
+      - "genre"
+      summary: "All genres, optionally filtered"
+      description: "List of genres"
+      operationId: "getGenres"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "offset"
+        in: "query"
+        description: "Pagination offset. Default is 0"
+        required: false
+        type: "integer"
+      - name: "limit"
+        in: "query"
+        description: "Maximum number of items per page. Default is 20, max is 500."
+        required: false
+        type: "integer"
+      responses:
+        200:
+          description: "List of genres"
+          schema:
+            type: "array"
+            items:
+              $ref: "#/definitions/Genre"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Genre"
+  /genre/{genreId}:
+    get:
+      tags:
+      - "genre"
+      summary: "Find genre by ID"
+      description: "Insert get a single genre in the system"
+      operationId: "getGenreById"
+      produces:
+      - "application/json"
+      parameters:
+      - name: "genreId"
+        in: "path"
+        description: "ID of the genre to retrieve"
+        required: true
+        type: "integer"
+        format: "int64"
+      responses:
+        200:
+          description: "successful operation"
+          schema:
+            $ref: "#/definitions/Genre"
+        400:
+          description: "Invalid input"
+        403:
+          description: "Forbidden"
+        404:
+          description: "Not found"
+        500:
+          description: "Internal server error"
+      x-swagger-router-controller: "Genre"
+definitions:
+  Book:
+    type: "object"
+    required:
+    - "title"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      genres:
+        type: "array"
+        items:
+          $ref: "#/definitions/Genre"
+      cover:
+        type: "string"
+      value:
+        type: "number"
+      abstract:
+        type: "string"
+      fact_sheet:
+        type: "string"
+      stock:
+        type: "integer"
+        format: "int64"
+      authors:
+        type: "array"
+        items:
+          $ref: "#/definitions/Author"
+    xml:
+      name: "Book"
+    example:
+      id: 1
+      title: "title"
+      cover: "cover"
+      abstract: "abstract"
+      fact_sheet: "fact_sheet"
+      genre_id: 1
+      value: 10
+      stock: 10
+      authors:
+      - id: 1
+        name: "name"
+        bio: "bio"
+        photo: "photo"
+      genre:
+      - id: 1
+        name: "name"
+  Event:
+    type: "object"
+    required:
+    - "bookId"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      bookId:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      location:
+        type: "string"
+      content:
+        type: "string"
+      datetime:
+        type: "string"
+    xml:
+      name: "Event"
+    example:
+      location: "location"
+      id: 1
+      title: "title"
+      content: "content"
+      date: "2019-07-06T08:15:00.000Z"
+      bookId: 6
+  Author:
+    type: "object"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+      bio:
+        type: "string"
+      photo:
+        type: "string"
+    xml:
+      name: "Author"
+    example:
+      name: "name"
+      id: 6
+      bio: "bio"
+      photo: "photoUrl"
+  Cart:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+      books:
+        type: "array"
+        items:
+          $ref: "#/definitions/Book"
+    xml:
+      name: "Cart"
+    example:
+      books:
+      - id: 1
+        title: "title"
+        cover: "cover"
+        abstract: "abstract"
+        fact_sheet: "fact_sheet"
+        genre_id: 1
+        value: 10
+        stock: 10
+        authors:
+        - id: 1
+          name: "name"
+          bio: "bio"
+          photo: "photo"
+        genre:
+        - id: 1
+          name: "name"
+      id: 1
+  User:
+    type: "object"
+    required:
+    - "email"
+    - "password"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      firstName:
+        type: "string"
+      lastName:
+        type: "string"
+      email:
+        type: "string"
+      password:
+        type: "string"
+      phone:
+        type: "string"
+      address:
+        type: "string"
+      country:
+        type: "string"
+      zip:
+        type: "string"
+    xml:
+      name: "User"
+    example:
+      firstName: "Paolo"
+      lastName: "Garrone"
+      password: "test1234"
+      phone: "3344343443"
+      email: "paolo@garrone.com"
+      address: "Via martiri del Poli, Milano"
+      country: "Italy"
+      zip: "21050"
+  Login:
+    type: "object"
+    required:
+    - "email"
+    - "password"
+    properties:
+      email:
+        type: "string"
+      password:
+        type: "string"
+      remember:
+        type: "string"
+        default: false
+    xml:
+      name: "Login"
+    example:
+      password: "test1234"
+      email: "mymail.vario@gmail.com"
+      remember: "false"
+  Review:
+    type: "object"
+    required:
+    - "id_book"
+    - "star"
+    - "title"
+    - "content"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      id_user:
+        type: "integer"
+        format: "int64"
+      id_book:
+        type: "integer"
+        format: "int64"
+      content:
+        type: "string"
+      title:
+        type: "string"
+      username:
+        type: "string"
+      star:
+        type: "integer"
+        format: "int64"
+        enum:
+        - 1
+        - 2
+        - 3
+        - 4
+        - 5
+    xml:
+      name: "Review"
+    example:
+      star: 5
+      id: 0
+      title: "title of the review"
+      content: "content of the review"
+      userId: 6
+      bookId: 1
+      username: "Mark"
+  Interview:
+    type: "object"
+    required:
+    - "bookId"
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      bookId:
+        type: "integer"
+        format: "int64"
+      title:
+        type: "string"
+      content:
+        type: "string"
+      interviewer:
+        type: "string"
+    xml:
+      name: "Interview"
+    example:
+      id: 0
+      title: "title"
+      content: "content"
+      interviewr: "interviewer"
+      bookId: 1
+  Theme:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Interview"
+    example:
+      id: 0
+      name: "Theme"
+  Genre:
+    type: "object"
+    required:
+    - "id"
+    properties:
+      id:
+        type: "integer"
+        format: "int64"
+      name:
+        type: "string"
+    xml:
+      name: "Genre"
+    example:
+      id: 0
+      name: "name"
