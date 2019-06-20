@@ -21,7 +21,7 @@ exports.addReview = function(body) {
     const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
     let current_datetime = new Date()
     let formatted_date = months[current_datetime.getMonth()] + " " + current_datetime.getDate() + ", " + current_datetime.getFullYear();
-
+    let response = {};
     db(TABLES.REVIEW).insert({
       id_user: body.id_user, 
       id_book: body.id_book, 
@@ -30,9 +30,9 @@ exports.addReview = function(body) {
       star: xss(body.star),
       date: xss(formatted_date)
     }).then(() => {
-      resolve();
+      resolve(response);
     });
-  });
+  });reject();
 }
 
 /**
@@ -110,19 +110,3 @@ exports.getReviews = function(offset,limit,userId,bookId) {
     }); 
   });
 }
-
-
-/**
- * Update a specific review
- * Update values of a review - this can only be done by the logged in ADMIN or the user that made it.
- *
- * reviewId Long id of the review that needs to be updated
- * body Review Updated review object
- * no response value expected for this operation
- **/
-exports.updateReview = function(reviewId,body) {
-  return new Promise(function(resolve, reject) {
-    resolve();
-  });
-}
-

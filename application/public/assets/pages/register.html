@@ -204,6 +204,7 @@
                             success: function(data, textStatus, jqXHR) {
                                 successAlert("All Good!","Thank you for your subscription, you can now login!");
                                 $('#register').trigger("reset");
+                                $("html, body").animate({ scrollTop: 0 }, "slow");
                             },
                             error: function(jqXHR, textStatus, errorThrown) {
                                 if (jqXHR.status == 403) {
@@ -216,6 +217,7 @@
                                     alertAlert("Whoops!", "An error occurred, pleasy try again!");
                                     $('#register').trigger("reset");
                                 }
+                                $("html, body").animate({ scrollTop: 0 }, "slow");
                             }
                         });
                         return false;
@@ -231,6 +233,7 @@
                                 successAlert("All Good!","You are now loggedin");
                                 setCookie("loggedin","true", cookieDays);
                                 window.location.href = '/index.html';
+                                $("html, body").animate({ scrollTop: 0 }, "slow");
                             },
                             error: function(jqXHR, textStatus, errorThrown) {
                                 if (jqXHR.status == 401) {
@@ -240,6 +243,7 @@
                                     alertAlert("Whoops!", "An error occurred, pleasy try again!");
                                     $('#login').trigger("reset");
                                 }
+                                $("html, body").animate({ scrollTop: 0 }, "slow");
                             }
                         });
                         return false;

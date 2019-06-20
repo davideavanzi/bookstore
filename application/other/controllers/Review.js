@@ -22,6 +22,7 @@ module.exports.addReview = function addReview (req, res, next) {
         utils.writeJson(res, response, 200);
       })
       .catch(function (response) {
+        console.log(response)
         var responseCode = 500;
         if(response == "404") responseCode = 404;
         utils.writeJson(res, response, responseCode);

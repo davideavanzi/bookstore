@@ -468,13 +468,11 @@ var addBookToCart = function addBookToCart(bookid, amount) {
             }
         },
         error: function(jqXHR, textStatus, errorThrown) {
-            if (jqXHR.status == 403) {
+            if (jqXHR.status == 401) {
                 errorAlert("Whoops!", "You need to be logged in to buy books!");
-            } else if (jqXHR.status == 401) {
-                ;
+            } else if (jqXHR.status == 403) {
                 errorAlert("Whoops!", "Data provided are invalid, try again!");
             } else if (jqXHR.status == 406) {
-                ;
                 errorAlert("Whoops!", "You are trying to buy a book which is out of stock!");
             } else {
                 errorAlert("Whoops!", "An error occurred, pleasy try again!");
